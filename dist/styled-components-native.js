@@ -9016,5 +9016,6 @@ exports.ThemeConsumer = ThemeConsumer;
 exports.ThemeContext = ThemeContext;
 exports.ThemeProvider = ThemeProvider;
 exports.css = css;
+exports.default = styled;
 exports.isStyledComponent = isStyledComponent;
 exports.withTheme = withTheme;

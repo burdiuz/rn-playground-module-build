@@ -6,9 +6,8 @@ import image from 'rollup-plugin-image';
 
 const plugins = [
 	resolve({
+		mainFields: ['jsnext:main', 'module', 'main'], 
 		extensions: ['.mjs', '.js', '.jsx', '.android.mjs', '.android.js', '.android.jsx', '.json', '.node'],
-		jsnext: true,
-		main: false,
 	}),
 	babel({
 		presets: [['module:metro-react-native-babel-preset', { disableImportExportTransform: true }]],
@@ -20,7 +19,7 @@ const plugins = [
 			'node_modules/react-native-ui-kitten/**',
 			'node_modules/react-native-material-ui/**',
 			'node_modules/react-native-ratings/**',
-			'node_modules/react-native-material-ui/**',
+			'node_modules/victory-native/**',
 			'node_modules/react-native-material-ui/**',
 			'node_modules/react-native-material-ui/**',
 			'node_modules/react-native-material-ui/**',
@@ -885,4 +884,5 @@ export default [
 	getEndpointConfig('react-native-elements'),
 	getEndpointConfig('react-native-ui-kitten'),
 	getEndpointConfig('react-native-material-ui'),
+	getEndpointConfig('victory-native'),
 ];

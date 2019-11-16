@@ -21,7 +21,8 @@
     "rollup-plugin-image": "^1.0.2",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "victory-native": "^33.0.0"
   },
   "devDependencies": {},
   "scripts": {

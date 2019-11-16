@@ -185,4 +185,10 @@ gql.disableExperimentalFragmentVariables = disableExperimentalFragmentVariables;
 
 var src = gql;
 
-exports.__moduleExports = src;
+var gql$1=src.default,resetCaches$1=src.resetCaches,disableFragmentWarnings$1=src.disableFragmentWarnings,enableExperimentalFragmentVariables$1=src.enableExperimentalFragmentVariables,disableExperimentalFragmentVariables$1=src.disableExperimentalFragmentVariables;
+
+exports.default = gql$1;
+exports.disableExperimentalFragmentVariables = disableExperimentalFragmentVariables$1;
+exports.disableFragmentWarnings = disableFragmentWarnings$1;
+exports.enableExperimentalFragmentVariables = enableExperimentalFragmentVariables$1;
+exports.resetCaches = resetCaches$1;
