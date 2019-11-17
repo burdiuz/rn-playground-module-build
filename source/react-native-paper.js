@@ -1,7 +1,6 @@
 export * from 'react-native-paper';
 
-/*
-@callstack/react-theme-provider
-color
-react-native-safe-area-view
-*/
+import * as $themeProvider from '@callstack/react-theme-provider';
+import * as $safeAreaView from 'react-native-safe-area-view';
+
+export { $themeProvider, $safeAreaView };

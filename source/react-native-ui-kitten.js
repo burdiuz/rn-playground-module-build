@@ -1,7 +1,16 @@
 export * from 'react-native-ui-kitten';
+import * as $kittenEvaIcons from '@ui-kitten/eva-icons';
+import * as $kittenMoment from '@ui-kitten/moment';
+import * as $kittenDateFns from '@ui-kitten/date-fns';
+import * as $fetcha from 'fecha';
+import * as $dateFnsParse from 'date-fns/parse';
+import * as $dateFnsFormat from 'date-fns/format';
 
-/*
-    "@eva-design/dss": "^1.2.0",
-    "@eva-design/processor": "^1.2.0",
-    "fecha": "3.0.3",
-*/
+export {
+  $kittenEvaIcons,
+  $kittenMoment,
+  $kittenDateFns,
+  $fetcha,
+  $dateFnsParse,
+  $dateFnsFormat,
+};

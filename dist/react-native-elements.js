@@ -32,190 +32,6 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var _extends_1 = createCommonjsModule(function (module) {
-function _extends() {
-  module.exports = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-module.exports = _extends;
-});
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-var defineProperty = _defineProperty;
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-var objectWithoutPropertiesLoose = _objectWithoutPropertiesLoose;
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = objectWithoutPropertiesLoose(source, excluded);
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
-var objectWithoutProperties = _objectWithoutProperties;
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-var classCallCheck = _classCallCheck;
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-var createClass = _createClass;
-
-var _typeof_1 = createCommonjsModule(function (module) {
-function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return _typeof2(obj);
-    };
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
-    };
-  }
-
-  return _typeof(obj);
-}
-
-module.exports = _typeof;
-});
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-var assertThisInitialized = _assertThisInitialized;
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof_1(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return assertThisInitialized(self);
-}
-
-var possibleConstructorReturn = _possibleConstructorReturn;
-
-var getPrototypeOf = createCommonjsModule(function (module) {
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-module.exports = _getPrototypeOf;
-});
-
-var setPrototypeOf = createCommonjsModule(function (module) {
-function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-module.exports = _setPrototypeOf;
-});
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) setPrototypeOf(subClass, superClass);
-}
-
-var inherits = _inherits;
-
 var reactIs_production_min = createCommonjsModule(function (module, exports) {
 Object.defineProperty(exports,"__esModule",{value:!0});
 var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?Symbol.for("react.suspense_list"):
@@ -1384,6 +1200,10 @@ if (reactNative.Platform.OS === 'ios' && !reactNative.Platform.isPad && !reactNa
     isIPhoneX = W_WIDTH === X_WIDTH && W_HEIGHT === X_HEIGHT || W_WIDTH === XSMAX_WIDTH && W_HEIGHT === XSMAX_HEIGHT;
 }
 
+const getExpoRoot = () => global.Expo || global.__expo || global.__exponent;
+
+const isExpo = () => getExpoRoot() !== undefined;
+
 function getStatusBarHeight(skipAndroid) {
     return reactNative.Platform.select({
         ios: isIPhoneX ? 44 : 20,
@@ -1392,13 +1212,85 @@ function getStatusBarHeight(skipAndroid) {
     })
 }
 
-var BackgroundImage=reactNative.ImageBackground||reactNative.Image;
+var index = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	isExpo: isExpo,
+	getStatusBarHeight: getStatusBarHeight
+});
 
-var colors = {primary:'#2089dc',secondary:'#8F0CE8',grey0:'#393e42',grey1:'#43484d',grey2:'#5e6977',grey3:'#86939e',grey4:'#bdc6cf',grey5:'#e1e8ee',greyOutline:'#bbb',searchBg:'#303337',success:'#52c41a',error:'#ff190c',warning:'#faad14',disabled:'hsl(208, 8%, 90%)',divider:reactNative.StyleSheet.hairlineWidth<1?'#bcbbc1':'rgba(0, 0, 0, 0.12)',platform:{ios:{primary:'#007aff',secondary:'#5856d6',success:'#4cd964',error:'#ff3b30',warning:'#ffcc00'},android:{primary:'#2196f3',secondary:'#9C27B0',success:'#4caf50',error:'#f44336',warning:'#ffeb3b'}}};
+const BackgroundImage = reactNative.ImageBackground || reactNative.Image;
 
-var ViewPropTypes=reactNative.ViewPropTypes||reactNative.View.propTypes;
+var colors = {
+  primary: '#2089dc',
+  secondary: '#8F0CE8',
+  grey0: '#393e42',
+  grey1: '#43484d',
+  grey2: '#5e6977',
+  grey3: '#86939e',
+  grey4: '#bdc6cf',
+  grey5: '#e1e8ee',
+  greyOutline: '#bbb',
+  searchBg: '#303337',
+  success: '#52c41a',
+  error: '#ff190c',
+  warning: '#faad14',
+  disabled: 'hsl(208, 8%, 90%)',
+  // Darker color if hairlineWidth is not thin enough
+  divider: reactNative.StyleSheet.hairlineWidth < 1 ? '#bcbbc1' : 'rgba(0, 0, 0, 0.12)',
+  platform: {
+    ios: {
+      primary: '#007aff',
+      secondary: '#5856d6',
+      success: '#4cd964',
+      error: '#ff3b30',
+      warning: '#ffcc00'
+    },
+    android: {
+      primary: '#2196f3',
+      secondary: '#9C27B0',
+      success: '#4caf50',
+      error: '#f44336',
+      warning: '#ffeb3b'
+    }
+  }
+};
 
-var fonts = {android:{regular:{fontFamily:'sans-serif'},light:{fontFamily:'sans-serif-light'},condensed:{fontFamily:'sans-serif-condensed'},condensed_light:{fontFamily:'sans-serif-condensed',fontWeight:'light'},black:{fontFamily:'sans-serif',fontWeight:'bold'},thin:{fontFamily:'sans-serif-thin'},medium:{fontFamily:'sans-serif-medium'},bold:{fontFamily:'sans-serif',fontWeight:'bold'}},default:{}};
+const ViewPropTypes = reactNative.ViewPropTypes || reactNative.View.propTypes;
+
+var fonts = {
+  android: {
+    regular: {
+      fontFamily: 'sans-serif'
+    },
+    light: {
+      fontFamily: 'sans-serif-light'
+    },
+    condensed: {
+      fontFamily: 'sans-serif-condensed'
+    },
+    condensed_light: {
+      fontFamily: 'sans-serif-condensed',
+      fontWeight: 'light'
+    },
+    black: {
+      // note(brentvatne): sans-serif-black is only supported on Android 5+,
+      // we can detect that here and use it in that case at some point.
+      fontFamily: 'sans-serif',
+      fontWeight: 'bold'
+    },
+    thin: {
+      fontFamily: 'sans-serif-thin'
+    },
+    medium: {
+      fontFamily: 'sans-serif-medium'
+    },
+    bold: {
+      fontFamily: 'sans-serif',
+      fontWeight: 'bold'
+    }
+  },
+  default: {}
+};
 
 var umd = createCommonjsModule(function (module, exports) {
 (function (global, factory) {
@@ -1517,15 +1409,235 @@ var umd = createCommonjsModule(function (module, exports) {
 }));
 });
 
-var _jsxFileName="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\config\\ThemeProvider.js";var ThemeContext=React__default.createContext({theme:{colors:colors}});var ThemeProvider=function(_React$Component){inherits(ThemeProvider,_React$Component);function ThemeProvider(props){var _this;classCallCheck(this,ThemeProvider);_this=possibleConstructorReturn(this,getPrototypeOf(ThemeProvider).call(this,props));_this.updateTheme=function(updates){_this.setState(function(_ref){var theme=_ref.theme;return {theme:umd(theme,updates)};});};_this.replaceTheme=function(theme){_this.setState(function(){return {theme:umd(_this.defaultTheme,theme)};});};_this.getTheme=function(){return _this.state.theme;};_this.defaultTheme=umd({colors:colors},props.theme);_this.state={theme:_this.defaultTheme};return _this;}createClass(ThemeProvider,[{key:"render",value:function render(){return React__default.createElement(ThemeContext.Provider,{value:{theme:this.state.theme,updateTheme:this.updateTheme,replaceTheme:this.replaceTheme},__source:{fileName:_jsxFileName,lineNumber:44}},this.props.children);}}]);return ThemeProvider;}(React__default.Component);ThemeProvider.propTypes={theme:propTypes.object,children:propTypes.node.isRequired};ThemeProvider.defaultProps={theme:{}};var ThemeConsumer=ThemeContext.Consumer;
+var umd$1 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': umd,
+	__moduleExports: umd
+});
 
-var REACT_STATICS={childContextTypes:true,contextType:true,contextTypes:true,defaultProps:true,displayName:true,getDefaultProps:true,getDerivedStateFromError:true,getDerivedStateFromProps:true,mixins:true,propTypes:true,type:true};var KNOWN_STATICS={name:true,length:true,prototype:true,caller:true,callee:true,arguments:true,arity:true};var FORWARD_REF_STATICS={'$$typeof':true,render:true,defaultProps:true,displayName:true,propTypes:true};var MEMO_STATICS={'$$typeof':true,compare:true,defaultProps:true,displayName:true,propTypes:true,type:true};var TYPE_STATICS={};TYPE_STATICS[reactIs.ForwardRef]=FORWARD_REF_STATICS;function getStatics(component){if(reactIs.isMemo(component)){return MEMO_STATICS;}return TYPE_STATICS[component['$$typeof']]||REACT_STATICS;}var defineProperty$1=Object.defineProperty;var getOwnPropertyNames=Object.getOwnPropertyNames;var getOwnPropertySymbols$1=Object.getOwnPropertySymbols;var getOwnPropertyDescriptor=Object.getOwnPropertyDescriptor;var getPrototypeOf$1=Object.getPrototypeOf;var objectPrototype=Object.prototype;function hoistNonReactStatics(targetComponent,sourceComponent,blacklist){if(typeof sourceComponent!=='string'){if(objectPrototype){var inheritedComponent=getPrototypeOf$1(sourceComponent);if(inheritedComponent&&inheritedComponent!==objectPrototype){hoistNonReactStatics(targetComponent,inheritedComponent,blacklist);}}var keys=getOwnPropertyNames(sourceComponent);if(getOwnPropertySymbols$1){keys=keys.concat(getOwnPropertySymbols$1(sourceComponent));}var targetStatics=getStatics(targetComponent);var sourceStatics=getStatics(sourceComponent);for(var i=0;i<keys.length;++i){var key=keys[i];if(!KNOWN_STATICS[key]&&!(blacklist&&blacklist[key])&&!(sourceStatics&&sourceStatics[key])&&!(targetStatics&&targetStatics[key])){var descriptor=getOwnPropertyDescriptor(sourceComponent,key);try{defineProperty$1(targetComponent,key,descriptor);}catch(e){}}}}return targetComponent;}var hoistNonReactStatics_cjs=hoistNonReactStatics;
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+const ThemeContext = React__default.createContext({
+  theme: {
+    colors
+  }
+});
+class ThemeProvider extends React__default.Component {
+  constructor(props) {
+    super(props);
 
-var DefaultTheme = {colors:colors};
+    _defineProperty(this, "updateTheme", updates => {
+      this.setState(({
+        theme
+      }) => ({
+        theme: umd(theme, updates)
+      }));
+    });
 
-var _jsxFileName$1="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\config\\withTheme.js";function ownKeys(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var isClassComponent=function isClassComponent(Component){return Boolean(Component.prototype&&Component.prototype.isReactComponent);};var withTheme=function withTheme(WrappedComponent,themeKey){var ThemedComponent=function(_React$Component){inherits(ThemedComponent,_React$Component);function ThemedComponent(){classCallCheck(this,ThemedComponent);return possibleConstructorReturn(this,getPrototypeOf(ThemedComponent).apply(this,arguments));}createClass(ThemedComponent,[{key:"render",value:function render(){var _this$props=this.props,forwardedRef=_this$props.forwardedRef,children=_this$props.children,rest=objectWithoutProperties(_this$props,["forwardedRef","children"]);return React__default.createElement(ThemeConsumer,{__source:{fileName:_jsxFileName$1,lineNumber:17}},function(context){if(!context){var _props=_objectSpread({},rest,{theme:DefaultTheme,children:children});return isClassComponent(WrappedComponent)?React__default.createElement(WrappedComponent,_extends_1({ref:forwardedRef},_props,{__source:{fileName:_jsxFileName$1,lineNumber:24}})):React__default.createElement(WrappedComponent,_extends_1({},_props,{__source:{fileName:_jsxFileName$1,lineNumber:26}}));}var theme=context.theme,updateTheme=context.updateTheme,replaceTheme=context.replaceTheme;var props=_objectSpread({theme:theme,updateTheme:updateTheme,replaceTheme:replaceTheme},umd(themeKey&&theme[themeKey]||{},rest),{children:children});if(isClassComponent(WrappedComponent)){return React__default.createElement(WrappedComponent,_extends_1({ref:forwardedRef},props,{__source:{fileName:_jsxFileName$1,lineNumber:40}}));}return React__default.createElement(WrappedComponent,_extends_1({},props,{__source:{fileName:_jsxFileName$1,lineNumber:42}}));});}}]);return ThemedComponent;}(React__default.Component);var name=themeKey?"Themed."+themeKey:"Themed."+(WrappedComponent.displayName||WrappedComponent.name||'Component');if(isClassComponent(WrappedComponent)){var forwardRef=function forwardRef(props,ref){return React__default.createElement(ThemedComponent,_extends_1({},props,{forwardedRef:ref,__source:{fileName:_jsxFileName$1,lineNumber:57}}));};forwardRef.displayName=name;return hoistNonReactStatics_cjs(React__default.forwardRef(forwardRef),WrappedComponent);}ThemedComponent.displayName=name;return ThemedComponent;};
+    _defineProperty(this, "replaceTheme", theme => {
+      this.setState(() => ({
+        theme: umd(this.defaultTheme, theme)
+      }));
+    });
 
-var TextPropTypes=reactNative.Text.propTypes;
+    _defineProperty(this, "getTheme", () => this.state.theme);
+
+    this.defaultTheme = umd({
+      colors
+    }, props.theme);
+    this.state = {
+      theme: this.defaultTheme
+    };
+  }
+
+  render() {
+    return React__default.createElement(ThemeContext.Provider, {
+      value: {
+        theme: this.state.theme,
+        updateTheme: this.updateTheme,
+        replaceTheme: this.replaceTheme
+      }
+    }, this.props.children);
+  }
+
+}
+ThemeProvider.propTypes = {
+  theme: propTypes.object,
+  children: propTypes.node.isRequired
+};
+ThemeProvider.defaultProps = {
+  theme: {}
+};
+const ThemeConsumer = ThemeContext.Consumer;
+
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */
+
+
+var REACT_STATICS = {
+  childContextTypes: true,
+  contextType: true,
+  contextTypes: true,
+  defaultProps: true,
+  displayName: true,
+  getDefaultProps: true,
+  getDerivedStateFromError: true,
+  getDerivedStateFromProps: true,
+  mixins: true,
+  propTypes: true,
+  type: true
+};
+var KNOWN_STATICS = {
+  name: true,
+  length: true,
+  prototype: true,
+  caller: true,
+  callee: true,
+  arguments: true,
+  arity: true
+};
+var FORWARD_REF_STATICS = {
+  '$$typeof': true,
+  render: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true
+};
+var MEMO_STATICS = {
+  '$$typeof': true,
+  compare: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true,
+  type: true
+};
+var TYPE_STATICS = {};
+TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
+
+function getStatics(component) {
+  if (reactIs.isMemo(component)) {
+    return MEMO_STATICS;
+  }
+
+  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
+}
+
+var defineProperty = Object.defineProperty;
+var getOwnPropertyNames = Object.getOwnPropertyNames;
+var getOwnPropertySymbols$1 = Object.getOwnPropertySymbols;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var getPrototypeOf = Object.getPrototypeOf;
+var objectPrototype = Object.prototype;
+
+function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+  if (typeof sourceComponent !== 'string') {
+    // don't hoist over string (html) components
+    if (objectPrototype) {
+      var inheritedComponent = getPrototypeOf(sourceComponent);
+
+      if (inheritedComponent && inheritedComponent !== objectPrototype) {
+        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+      }
+    }
+
+    var keys = getOwnPropertyNames(sourceComponent);
+
+    if (getOwnPropertySymbols$1) {
+      keys = keys.concat(getOwnPropertySymbols$1(sourceComponent));
+    }
+
+    var targetStatics = getStatics(targetComponent);
+    var sourceStatics = getStatics(sourceComponent);
+
+    for (var i = 0; i < keys.length; ++i) {
+      var key = keys[i];
+
+      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
+        var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+
+        try {
+          // Avoid failures from read-only properties
+          defineProperty(targetComponent, key, descriptor);
+        } catch (e) {}
+      }
+    }
+  }
+
+  return targetComponent;
+}
+
+var hoistNonReactStatics_cjs = hoistNonReactStatics;
+
+var DefaultTheme = {
+  colors
+};
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+const isClassComponent = Component => Boolean(Component.prototype && Component.prototype.isReactComponent);
+
+const withTheme = (WrappedComponent, themeKey) => {
+  class ThemedComponent extends React__default.Component {
+    render() {
+      const {
+        forwardedRef,
+        children,
+        ...rest
+      } = this.props;
+      return React__default.createElement(ThemeConsumer, null, context => {
+        // If user isn't using ThemeProvider
+        if (!context) {
+          const props = { ...rest,
+            theme: DefaultTheme,
+            children
+          };
+          return isClassComponent(WrappedComponent) ? React__default.createElement(WrappedComponent, _extends({
+            ref: forwardedRef
+          }, props)) : React__default.createElement(WrappedComponent, props);
+        }
+
+        const {
+          theme,
+          updateTheme,
+          replaceTheme
+        } = context;
+        const props = {
+          theme,
+          updateTheme,
+          replaceTheme,
+          ...umd(themeKey && theme[themeKey] || {}, rest),
+          children
+        };
+
+        if (isClassComponent(WrappedComponent)) {
+          return React__default.createElement(WrappedComponent, _extends({
+            ref: forwardedRef
+          }, props));
+        }
+
+        return React__default.createElement(WrappedComponent, props);
+      });
+    }
+
+  }
+
+  const name = themeKey ? `Themed.${themeKey}` : `Themed.${WrappedComponent.displayName || WrappedComponent.name || 'Component'}`;
+
+  if (isClassComponent(WrappedComponent)) {
+    const forwardRef = (props, ref) => React__default.createElement(ThemedComponent, _extends({}, props, {
+      forwardedRef: ref
+    }));
+
+    forwardRef.displayName = name;
+    return hoistNonReactStatics_cjs(React__default.forwardRef(forwardRef), WrappedComponent);
+  }
+
+  ThemedComponent.displayName = name;
+  return ThemedComponent;
+};
+
+const TextPropTypes = reactNative.Text.propTypes;
 
 var colorName = {
 	"aliceblue": [240, 248, 255],
@@ -3493,840 +3605,4901 @@ function zeroArray(arr, length) {
 
 var color = Color;
 
-var _jsxFileName$2="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\helpers\\renderNode.js";var renderNode=function renderNode(Component,content,defaultProps){if(content==null||content===false){return null;}if(React__default.isValidElement(content)){return content;}if(typeof content==='function'){return content();}if(content===true){return React__default.createElement(Component,_extends_1({},defaultProps,{__source:{fileName:_jsxFileName$2,lineNumber:15}}));}if(typeof content==='string'||typeof content==='number'){return React__default.createElement(Component,_extends_1({},defaultProps,{__source:{fileName:_jsxFileName$2,lineNumber:18}}),content);}return React__default.createElement(Component,_extends_1({},defaultProps,content,{__source:{fileName:_jsxFileName$2,lineNumber:20}}));};
+function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
 
-var customIcons={};var registerCustomIconType=function registerCustomIconType(id,customIcon){customIcons[id]=customIcon;};var getIconType = (function(type){switch(type){case'zocial':return ZocialIcon;case'octicon':return OcticonIcon;case'material':return MaterialIcon;case'material-community':return MaterialCommunityIcon;case'ionicon':return Ionicon;case'foundation':return FoundationIcon;case'evilicon':return EvilIcon;case'entypo':return EntypoIcon;case'font-awesome':return FAIcon;case'simple-line-icon':return SimpleLineIcon;case'feather':return FeatherIcon;case'antdesign':return AntIcon;default:if(Object.prototype.hasOwnProperty.call(customIcons,type)){return customIcons[type];}return MaterialIcon;}});
+const renderNode = (Component, content, defaultProps) => {
+  if (content == null || content === false) {
+    return null;
+  }
 
-var pixelRatio=reactNative.PixelRatio.get();var deviceHeight=reactNative.Dimensions.get('window').height;var deviceWidth=reactNative.Dimensions.get('window').width;var normalize=function normalize(size){if(pixelRatio>=2&&pixelRatio<3){if(deviceWidth<360){return size*0.95;}if(deviceHeight<667){return size;}if(deviceHeight>=667&&deviceHeight<=735){return size*1.15;}return size*1.25;}if(pixelRatio>=3&&pixelRatio<3.5){if(deviceWidth<=360){return size;}if(deviceHeight<667){return size*1.15;}if(deviceHeight>=667&&deviceHeight<=735){return size*1.2;}return size*1.27;}if(pixelRatio>=3.5){if(deviceWidth<=360){return size;}if(deviceHeight<667){return size*1.2;}if(deviceHeight>=667&&deviceHeight<=735){return size*1.25;}return size*1.4;}return size;};
+  if (React__default.isValidElement(content)) {
+    return content;
+  }
 
-var nodeType = propTypes.oneOfType([propTypes.element,propTypes.object,propTypes.bool,propTypes.func]);
+  if (typeof content === 'function') {
+    return content();
+  } // Just in case
 
-var Screen=reactNative.Dimensions.get('window');var ScreenWidth=Screen.width;var ScreenHeight=Screen.height;var isIOS=reactNative.Platform.OS==='ios';var conditionalStyle=function conditionalStyle(condition,style){return condition?style:{};};var patchWebProps=function patchWebProps(_ref){var updateTheme=_ref.updateTheme,replaceTheme=_ref.replaceTheme,onClear=_ref.onClear,rest=objectWithoutProperties(_ref,["updateTheme","replaceTheme","onClear"]);return rest;};
 
-var _jsxFileName$3="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\icons\\Icon.js";function ownKeys$1(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$1(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$1(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$1(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var Icon=function Icon(props){var type=props.type,name=props.name,size=props.size,color=props.color,iconStyle=props.iconStyle,underlayColor=props.underlayColor,reverse=props.reverse,raised=props.raised,containerStyle=props.containerStyle,reverseColor=props.reverseColor,disabled=props.disabled,disabledStyle=props.disabledStyle,onPress=props.onPress,_props$Component=props.Component,Component=_props$Component===void 0?onPress?reactNative.TouchableHighlight:reactNative.View:_props$Component,attributes=objectWithoutProperties(props,["type","name","size","color","iconStyle","underlayColor","reverse","raised","containerStyle","reverseColor","disabled","disabledStyle","onPress","Component"]);var IconComponent=getIconType(type);var getBackgroundColor=function getBackgroundColor(){if(reverse){return color;}return raised?'white':'transparent';};return React__default.createElement(reactNative.View,{style:containerStyle&&containerStyle,__source:{fileName:_jsxFileName$3,lineNumber:43}},React__default.createElement(Component,_extends_1({},attributes,{underlayColor:reverse?color:underlayColor||color,style:reactNative.StyleSheet.flatten([(reverse||raised)&&styles.button,(reverse||raised)&&{borderRadius:size+4,height:size*2+4,width:size*2+4},raised&&styles.raised,{backgroundColor:getBackgroundColor(),alignItems:'center',justifyContent:'center'},disabled&&styles.disabled,disabled&&disabledStyle])},onPress&&{disabled:disabled},{onPress:onPress,__source:{fileName:_jsxFileName$3,lineNumber:44}}),React__default.createElement(IconComponent,{testID:"iconIcon",style:reactNative.StyleSheet.flatten([{backgroundColor:'transparent'},iconStyle&&iconStyle]),size:size,name:name,color:reverse?reverseColor:color,__source:{fileName:_jsxFileName$3,lineNumber:66}})));};Icon.propTypes={type:propTypes.string,name:propTypes.string,size:propTypes.number,color:propTypes.string,Component:propTypes.elementType,underlayColor:propTypes.string,reverse:propTypes.bool,raised:propTypes.bool,containerStyle:ViewPropTypes.style,iconStyle:reactNative.Text.propTypes.style,onPress:propTypes.func,reverseColor:propTypes.string,disabled:propTypes.bool,disabledStyle:ViewPropTypes.style};Icon.defaultProps={underlayColor:'white',reverse:false,raised:false,size:24,color:'black',reverseColor:'white',disabled:false,type:'material'};var styles=reactNative.StyleSheet.create({button:{margin:7},raised:_objectSpread$1({},reactNative.Platform.select({android:{elevation:2},default:{shadowColor:'rgba(0,0,0, .4)',shadowOffset:{height:1,width:1},shadowOpacity:1,shadowRadius:1}})),disabled:{backgroundColor:'#D1D5D8'}});var Icon$1 = withTheme(Icon,'Icon');
+  if (content === true) {
+    return React__default.createElement(Component, defaultProps);
+  }
 
-var _jsxFileName$4="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\buttons\\Button.js";function ownKeys$2(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$2(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$2(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$2(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var defaultLoadingProps=function defaultLoadingProps(type,theme){return {color:type==='solid'?'white':theme.colors.primary,size:'small'};};var Button=function(_Component){inherits(Button,_Component);function Button(){classCallCheck(this,Button);return possibleConstructorReturn(this,getPrototypeOf(Button).apply(this,arguments));}createClass(Button,[{key:"componentDidMount",value:function componentDidMount(){var _this$props=this.props,linearGradientProps=_this$props.linearGradientProps,ViewComponent=_this$props.ViewComponent;if(linearGradientProps&&!global.Expo&&!ViewComponent){console.error("You need to pass a ViewComponent to use linearGradientProps !\nExample: ViewComponent={require('react-native-linear-gradient')}");}}},{key:"render",value:function render(){var _this$props2=this.props,TouchableComponent=_this$props2.TouchableComponent,containerStyle=_this$props2.containerStyle,onPress=_this$props2.onPress,buttonStyle=_this$props2.buttonStyle,type=_this$props2.type,loading=_this$props2.loading,loadingStyle=_this$props2.loadingStyle,passedLoadingProps=_this$props2.loadingProps,title=_this$props2.title,titleProps=_this$props2.titleProps,titleStyle=_this$props2.titleStyle,icon=_this$props2.icon,iconContainerStyle=_this$props2.iconContainerStyle,iconRight=_this$props2.iconRight,disabled=_this$props2.disabled,disabledStyle=_this$props2.disabledStyle,disabledTitleStyle=_this$props2.disabledTitleStyle,raised=_this$props2.raised,linearGradientProps=_this$props2.linearGradientProps,_this$props2$ViewComp=_this$props2.ViewComponent,ViewComponent=_this$props2$ViewComp===void 0?!disabled&&linearGradientProps&&global.Expo?global.Expo.LinearGradient:reactNative.View:_this$props2$ViewComp,theme=_this$props2.theme,attributes=objectWithoutProperties(_this$props2,["TouchableComponent","containerStyle","onPress","buttonStyle","type","loading","loadingStyle","loadingProps","title","titleProps","titleStyle","icon","iconContainerStyle","iconRight","disabled","disabledStyle","disabledTitleStyle","raised","linearGradientProps","ViewComponent","theme"]);if(reactNative.Platform.OS==='android'&&buttonStyle.borderRadius&&!attributes.background){if(reactNative.Platform.Version>=21){attributes.background=reactNative.TouchableNativeFeedback.Ripple(undefined,false);}else{attributes.background=reactNative.TouchableNativeFeedback.SelectableBackground();}}var loadingProps=_objectSpread$2({},defaultLoadingProps(type,theme),{},passedLoadingProps);return React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$1.container,{borderRadius:buttonStyle.borderRadius||styles$1.container.borderRadius},containerStyle,raised&&!disabled&&styles$1.raised(type)]),__source:{fileName:_jsxFileName$4,lineNumber:80}},React__default.createElement(TouchableComponent,_extends_1({onPress:onPress,activeOpacity:0.3,disabled:disabled},attributes,{__source:{fileName:_jsxFileName$4,lineNumber:91}}),React__default.createElement(ViewComponent,_extends_1({},linearGradientProps,{style:reactNative.StyleSheet.flatten([styles$1.button(type,theme),buttonStyle,disabled&&styles$1.disabled(type,theme),disabled&&disabledStyle]),__source:{fileName:_jsxFileName$4,lineNumber:97}}),loading&&React__default.createElement(reactNative.ActivityIndicator,_extends_1({style:reactNative.StyleSheet.flatten([styles$1.loading,loadingStyle]),color:loadingProps.color,size:loadingProps.size},loadingProps,{__source:{fileName:_jsxFileName$4,lineNumber:107}})),!loading&&icon&&!iconRight&&renderNode(Icon$1,icon,{containerStyle:reactNative.StyleSheet.flatten([styles$1.iconContainer,iconContainerStyle])}),!loading&&!!title&&React__default.createElement(reactNative.Text,_extends_1({style:reactNative.StyleSheet.flatten([styles$1.title(type,theme),titleStyle,disabled&&styles$1.disabledTitle(theme),disabled&&disabledTitleStyle])},titleProps,{__source:{fileName:_jsxFileName$4,lineNumber:126}}),title),!loading&&icon&&iconRight&&renderNode(Icon$1,icon,{containerStyle:reactNative.StyleSheet.flatten([styles$1.iconContainer,iconContainerStyle])}))));}}]);return Button;}(React.Component);Button.propTypes={title:propTypes.string,titleStyle:reactNative.Text.propTypes.style,titleProps:propTypes.object,buttonStyle:ViewPropTypes.style,type:propTypes.oneOf(['solid','clear','outline']),loading:propTypes.bool,loadingStyle:ViewPropTypes.style,loadingProps:propTypes.object,onPress:propTypes.func,containerStyle:ViewPropTypes.style,icon:nodeType,iconContainerStyle:ViewPropTypes.style,iconRight:propTypes.bool,linearGradientProps:propTypes.object,TouchableComponent:propTypes.elementType,ViewComponent:propTypes.elementType,disabled:propTypes.bool,disabledStyle:ViewPropTypes.style,disabledTitleStyle:reactNative.Text.propTypes.style,raised:propTypes.bool,theme:propTypes.object};Button.defaultProps={title:'',iconRight:false,TouchableComponent:reactNative.Platform.select({android:reactNative.TouchableNativeFeedback,default:reactNative.TouchableOpacity}),onPress:function onPress(){return console.log('Please attach a method to this component');},type:'solid',buttonStyle:{borderRadius:3},disabled:false,raised:false,loading:false};var styles$1={button:function button(type,theme){return {flexDirection:'row',justifyContent:'center',alignItems:'center',borderRadius:3,backgroundColor:type==='solid'?theme.colors.primary:'transparent',padding:8,borderWidth:type==='outline'?reactNative.StyleSheet.hairlineWidth:0,borderColor:theme.colors.primary};},container:{borderRadius:3},disabled:function disabled(type,theme){return _objectSpread$2({},conditionalStyle(type==='solid',{backgroundColor:theme.colors.disabled}),{},conditionalStyle(type==='outline',{borderColor:color(theme.colors.disabled).darken(0.3)}));},disabledTitle:function disabledTitle(theme){return {color:color(theme.colors.disabled).darken(0.3)};},title:function title(type,theme){return _objectSpread$2({color:type==='solid'?'white':theme.colors.primary,fontSize:16,textAlign:'center',paddingTop:2,paddingBottom:1},reactNative.Platform.select({android:{fontFamily:'sans-serif-medium'},default:{fontSize:18}}));},iconContainer:{marginHorizontal:5},raised:function raised(type){return type!=='clear'&&_objectSpread$2({backgroundColor:'#fff'},reactNative.Platform.select({android:{elevation:4},default:{shadowColor:'rgba(0,0,0, .4)',shadowOffset:{height:1,width:1},shadowOpacity:1,shadowRadius:1}}));},loading:{marginVertical:2}};var Button$1 = withTheme(Button,'Button');
+  if (typeof content === 'string' || typeof content === 'number') {
+    return React__default.createElement(Component, defaultProps, content);
+  }
 
-var _jsxFileName$5="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\input\\Input.js";function ownKeys$3(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$3(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$3(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$3(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var renderText=function renderText(content,defaultProps,style){return renderNode(reactNative.Text,content,_objectSpread$3({},defaultProps,{style:reactNative.StyleSheet.flatten([style,defaultProps&&defaultProps.style])}));};var Input=function(_React$Component){inherits(Input,_React$Component);function Input(){var _getPrototypeOf2;var _this;classCallCheck(this,Input);for(var _len=arguments.length,args=new Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}_this=possibleConstructorReturn(this,(_getPrototypeOf2=getPrototypeOf(Input)).call.apply(_getPrototypeOf2,[this].concat(args)));_this.shakeAnimationValue=new reactNative.Animated.Value(0);_this.shake=function(){var _assertThisInitialize=assertThisInitialized(_this),shakeAnimationValue=_assertThisInitialize.shakeAnimationValue;shakeAnimationValue.setValue(0);reactNative.Animated.timing(shakeAnimationValue,{duration:375,toValue:3,ease:reactNative.Easing.bounce}).start();};return _this;}createClass(Input,[{key:"focus",value:function focus(){this.input.focus();}},{key:"blur",value:function blur(){this.input.blur();}},{key:"clear",value:function clear(){this.input.clear();}},{key:"isFocused",value:function isFocused(){return this.input.isFocused();}},{key:"setNativeProps",value:function setNativeProps(nativeProps){this.input.setNativeProps(nativeProps);}},{key:"render",value:function render(){var _this2=this;var _this$props=this.props,containerStyle=_this$props.containerStyle,disabled=_this$props.disabled,disabledInputStyle=_this$props.disabledInputStyle,inputContainerStyle=_this$props.inputContainerStyle,leftIcon=_this$props.leftIcon,leftIconContainerStyle=_this$props.leftIconContainerStyle,rightIcon=_this$props.rightIcon,rightIconContainerStyle=_this$props.rightIconContainerStyle,_this$props$inputComp=_this$props.inputComponent,InputComponent=_this$props$inputComp===void 0?reactNative.TextInput:_this$props$inputComp,inputStyle=_this$props.inputStyle,errorProps=_this$props.errorProps,errorStyle=_this$props.errorStyle,errorMessage=_this$props.errorMessage,label=_this$props.label,labelStyle=_this$props.labelStyle,labelProps=_this$props.labelProps,theme=_this$props.theme,attributes=objectWithoutProperties(_this$props,["containerStyle","disabled","disabledInputStyle","inputContainerStyle","leftIcon","leftIconContainerStyle","rightIcon","rightIconContainerStyle","inputComponent","inputStyle","errorProps","errorStyle","errorMessage","label","labelStyle","labelProps","theme"]);var translateX=this.shakeAnimationValue.interpolate({inputRange:[0,0.5,1,1.5,2,2.5,3],outputRange:[0,-15,0,15,0,-15,0]});return React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$2.container,containerStyle]),__source:{fileName:_jsxFileName$5,lineNumber:88}},renderText(label,_objectSpread$3({style:labelStyle},labelProps),styles$2.label(theme)),React__default.createElement(reactNative.Animated.View,{style:reactNative.StyleSheet.flatten([styles$2.inputContainer(theme),inputContainerStyle,{transform:[{translateX:translateX}]}]),__source:{fileName:_jsxFileName$5,lineNumber:95}},leftIcon&&React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$2.iconContainer,leftIconContainerStyle]),__source:{fileName:_jsxFileName$5,lineNumber:103}},renderNode(Icon$1,leftIcon)),React__default.createElement(InputComponent,_extends_1({testID:"RNE__Input__text-input",underlineColorAndroid:"transparent",editable:!disabled},patchWebProps(attributes),{ref:function ref(_ref){_this2.input=_ref;},style:reactNative.StyleSheet.flatten([styles$2.input,inputStyle,disabled&&styles$2.disabledInput,disabled&&disabledInputStyle]),__source:{fileName:_jsxFileName$5,lineNumber:113}})),rightIcon&&React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$2.iconContainer,rightIconContainerStyle]),__source:{fileName:_jsxFileName$5,lineNumber:130}},renderNode(Icon$1,rightIcon))),!!errorMessage&&React__default.createElement(reactNative.Text,_extends_1({},errorProps,{style:reactNative.StyleSheet.flatten([styles$2.error(theme),errorStyle&&errorStyle]),__source:{fileName:_jsxFileName$5,lineNumber:142}}),errorMessage));}}]);return Input;}(React__default.Component);Input.propTypes={containerStyle:ViewPropTypes.style,disabled:propTypes.bool,disabledInputStyle:TextPropTypes.style,inputContainerStyle:ViewPropTypes.style,leftIcon:nodeType,leftIconContainerStyle:ViewPropTypes.style,rightIcon:nodeType,rightIconContainerStyle:ViewPropTypes.style,inputStyle:TextPropTypes.style,inputComponent:propTypes.elementType,errorProps:propTypes.object,errorStyle:TextPropTypes.style,errorMessage:propTypes.string,label:propTypes.node,labelStyle:TextPropTypes.style,labelProps:propTypes.object,theme:propTypes.object};var styles$2={container:{width:'100%',paddingHorizontal:10},disabledInput:{opacity:0.5},inputContainer:function inputContainer(theme){return {flexDirection:'row',borderBottomWidth:1,alignItems:'center',borderColor:theme.colors.grey3};},iconContainer:{height:40,justifyContent:'center',alignItems:'center',marginLeft:15},input:{alignSelf:'center',color:'black',fontSize:18,flex:1,minHeight:40},error:function error(theme){return {margin:5,fontSize:12,color:theme.colors.error};},label:function label(theme){return _objectSpread$3({fontSize:16,color:theme.colors.grey3},reactNative.Platform.select({android:_objectSpread$3({},fonts.android.bold),default:{fontWeight:'bold'}}));}};var Input$1 = withTheme(Input,'Input');
+  return React__default.createElement(Component, _extends$1({}, defaultProps, content));
+};
 
-var _jsxFileName$6="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\image\\Image.js";function ownKeys$4(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$4(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$4(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$4(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var Image=function(_React$Component){inherits(Image,_React$Component);function Image(){var _getPrototypeOf2;var _this;classCallCheck(this,Image);for(var _len=arguments.length,args=new Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}_this=possibleConstructorReturn(this,(_getPrototypeOf2=getPrototypeOf(Image)).call.apply(_getPrototypeOf2,[this].concat(args)));_this.state={placeholderOpacity:new reactNative.Animated.Value(1)};_this.onLoad=function(){var minimumWait=100;var staggerNonce=200*Math.random();setTimeout(function(){reactNative.Animated.timing(_this.state.placeholderOpacity,{toValue:0,duration:350,useNativeDriver:reactNative.Platform.OS==='android'?false:true}).start();},reactNative.Platform.OS==='android'?0:Math.floor(minimumWait+staggerNonce));};return _this;}createClass(Image,[{key:"render",value:function render(){var _this$props=this.props,placeholderStyle=_this$props.placeholderStyle,PlaceholderContent=_this$props.PlaceholderContent,containerStyle=_this$props.containerStyle,style=_this$props.style,ImageComponent=_this$props.ImageComponent,children=_this$props.children,attributes=objectWithoutProperties(_this$props,["placeholderStyle","PlaceholderContent","containerStyle","style","ImageComponent","children"]);var hasImage=Boolean(attributes.source);return React__default.createElement(reactNative.View,{accessibilityIgnoresInvertColors:true,style:reactNative.StyleSheet.flatten([styles$3.container,containerStyle]),__source:{fileName:_jsxFileName$6,lineNumber:48}},React__default.createElement(ImageComponent,_extends_1({testID:"RNE__Image"},attributes,{onLoad:this.onLoad,style:[reactNative.StyleSheet.absoluteFill,{width:style.width,height:style.height}],__source:{fileName:_jsxFileName$6,lineNumber:52}})),React__default.createElement(reactNative.Animated.View,{pointerEvents:hasImage?'none':'auto',accessibilityElementsHidden:hasImage,importantForAccessibility:hasImage?'no-hide-descendants':'yes',style:[styles$3.placeholderContainer,{opacity:hasImage?this.state.placeholderOpacity:1}],__source:{fileName:_jsxFileName$6,lineNumber:65}},React__default.createElement(reactNative.View,{testID:"RNE__Image__placeholder",style:reactNative.StyleSheet.flatten([style,styles$3.placeholder,placeholderStyle]),__source:{fileName:_jsxFileName$6,lineNumber:76}},PlaceholderContent)),React__default.createElement(reactNative.View,{style:style,__source:{fileName:_jsxFileName$6,lineNumber:88}},children));}}]);return Image;}(React__default.Component);var styles$3={container:{backgroundColor:'transparent',position:'relative'},placeholderContainer:_objectSpread$4({},reactNative.StyleSheet.absoluteFillObject),placeholder:{backgroundColor:'#bdbdbd',alignItems:'center',justifyContent:'center'}};Image.propTypes=_objectSpread$4({},reactNative.Image.propTypes,{ImageComponent:propTypes.elementType,PlaceholderContent:nodeType,containerStyle:ViewPropTypes.style,placeholderStyle:reactNative.Image.propTypes.style});Image.defaultProps={ImageComponent:reactNative.Image,style:{}};var Image$1 = withTheme(Image,'Image');
+const customIcons = {};
+const registerCustomIconType = (id, customIcon) => {
+  customIcons[id] = customIcon;
+};
+var getIconType = (type => {
+  switch (type) {
+    case 'zocial':
+      return ZocialIcon;
 
-var _jsxFileName$7="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\avatar\\Avatar.js";function ownKeys$5(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$5(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$5(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$5(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var avatarSizes={small:34,medium:50,large:75,xlarge:150};var defaultEditButton={name:'mode-edit',type:'material',color:'#fff',underlayColor:'#000'};var Avatar=function Avatar(_ref){var onPress=_ref.onPress,onLongPress=_ref.onLongPress,_ref$Component=_ref.Component,Component=_ref$Component===void 0?onPress||onLongPress?reactNative.TouchableOpacity:reactNative.View:_ref$Component,containerStyle=_ref.containerStyle,icon=_ref.icon,iconStyle=_ref.iconStyle,source=_ref.source,size=_ref.size,avatarStyle=_ref.avatarStyle,rounded=_ref.rounded,title=_ref.title,titleStyle=_ref.titleStyle,overlayContainerStyle=_ref.overlayContainerStyle,showEditButton=_ref.showEditButton,passedEditButton=_ref.editButton,onEditPress=_ref.onEditPress,imageProps=_ref.imageProps,placeholderStyle=_ref.placeholderStyle,renderPlaceholderContent=_ref.renderPlaceholderContent,ImageComponent=_ref.ImageComponent,attributes=objectWithoutProperties(_ref,["onPress","onLongPress","Component","containerStyle","icon","iconStyle","source","size","avatarStyle","rounded","title","titleStyle","overlayContainerStyle","showEditButton","editButton","onEditPress","imageProps","placeholderStyle","renderPlaceholderContent","ImageComponent"]);var width=typeof size==='number'?size:avatarSizes[size]||avatarSizes.small;var height=width;var titleSize=width/2;var iconSize=width/2;var editButton=_objectSpread$5({},defaultEditButton,{},passedEditButton);var editButtonSize=editButton.size||(width+height)/2/3;var Utils=showEditButton&&React__default.createElement(reactNative.TouchableHighlight,{style:reactNative.StyleSheet.flatten([styles$4.editButton,{width:editButtonSize,height:editButtonSize,borderRadius:editButtonSize/2},editButton.style]),underlayColor:editButton.underlayColor,onPress:onEditPress,__source:{fileName:_jsxFileName$7,lineNumber:71}},React__default.createElement(reactNative.View,{__source:{fileName:_jsxFileName$7,lineNumber:84}},React__default.createElement(Icon$1,_extends_1({size:editButtonSize*0.8},editButton,{__source:{fileName:_jsxFileName$7,lineNumber:85}}))));var PlaceholderContent=renderPlaceholderContent&&renderNode(undefined,renderPlaceholderContent)||title&&React__default.createElement(reactNative.Text,{style:reactNative.StyleSheet.flatten([styles$4.title,{fontSize:titleSize},titleStyle]),__source:{fileName:_jsxFileName$7,lineNumber:94}},title)||icon&&React__default.createElement(Icon$1,{style:iconStyle&&iconStyle,color:icon.color||'white',name:icon.name||'user',size:icon.size||iconSize,type:icon.type&&icon.type,__source:{fileName:_jsxFileName$7,lineNumber:105}});var hidePlaceholder=!source;return React__default.createElement(Component,_extends_1({onPress:onPress,onLongPress:onLongPress,style:reactNative.StyleSheet.flatten([styles$4.container,{height:height,width:width},rounded&&{borderRadius:width/2},containerStyle])},attributes,{__source:{fileName:_jsxFileName$7,lineNumber:118}}),React__default.createElement(Image$1,_extends_1({placeholderStyle:reactNative.StyleSheet.flatten([placeholderStyle,hidePlaceholder&&{backgroundColor:'transparent'}]),PlaceholderContent:PlaceholderContent,containerStyle:reactNative.StyleSheet.flatten([styles$4.overlayContainer,overlayContainerStyle,rounded&&{borderRadius:width/2,overflow:'hidden'}]),source:source},imageProps,{style:reactNative.StyleSheet.flatten([styles$4.avatar,imageProps&&imageProps.style,avatarStyle]),ImageComponent:ImageComponent,__source:{fileName:_jsxFileName$7,lineNumber:129}})),Utils);};var styles$4=reactNative.StyleSheet.create({container:{backgroundColor:'transparent'},avatar:{flex:1,width:null,height:null},overlayContainer:{flex:1,backgroundColor:'#bdbdbd'},title:{color:'#ffffff',backgroundColor:'transparent',textAlign:'center'},editButton:_objectSpread$5({position:'absolute',bottom:0,right:0,alignItems:'center',justifyContent:'center',backgroundColor:'#aaa'},reactNative.Platform.select({android:{elevation:1},default:{shadowColor:'#000',shadowOffset:{width:1,height:1},shadowRadius:2,shadowOpacity:0.5}}))});Avatar.propTypes={Component:propTypes.oneOf([reactNative.View,reactNative.TouchableOpacity,reactNative.TouchableHighlight,reactNative.TouchableNativeFeedback,reactNative.TouchableWithoutFeedback]),onPress:propTypes.func,onLongPress:propTypes.func,containerStyle:ViewPropTypes.style,source:reactNative.Image.propTypes.source,avatarStyle:ViewPropTypes.style,rounded:propTypes.bool,title:propTypes.string,titleStyle:reactNative.Text.propTypes.style,overlayContainerStyle:ViewPropTypes.style,activeOpacity:propTypes.number,icon:propTypes.object,iconStyle:reactNative.Text.propTypes.style,size:propTypes.oneOfType([propTypes.oneOf(['small','medium','large','xlarge']),propTypes.number]),showEditButton:propTypes.bool,onEditPress:propTypes.func,editButton:propTypes.shape({size:propTypes.number,name:propTypes.string,type:propTypes.string,color:propTypes.string,underlayColor:propTypes.string,style:ViewPropTypes.style}),placeholderStyle:ViewPropTypes.style,renderPlaceholderContent:nodeType,imageProps:propTypes.object,ImageComponent:propTypes.elementType};Avatar.defaultProps={showEditButton:false,onEditPress:null,size:'small',editButton:defaultEditButton,ImageComponent:reactNative.Image};var Avatar$1 = withTheme(Avatar,'Avatar');
+    case 'octicon':
+      return OcticonIcon;
 
-var _jsxFileName$8="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\badge\\Badge.js";var Badge=function Badge(props){var containerStyle=props.containerStyle,textStyle=props.textStyle,badgeStyle=props.badgeStyle,onPress=props.onPress,_props$Component=props.Component,Component=_props$Component===void 0?onPress?reactNative.TouchableOpacity:reactNative.View:_props$Component,value=props.value,theme=props.theme,status=props.status,attributes=objectWithoutProperties(props,["containerStyle","textStyle","badgeStyle","onPress","Component","value","theme","status"]);var element=renderNode(reactNative.Text,value,{style:reactNative.StyleSheet.flatten([styles$5.text,textStyle&&textStyle])});return React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([containerStyle&&containerStyle]),__source:{fileName:_jsxFileName$8,lineNumber:26}},React__default.createElement(Component,_extends_1({},attributes,{style:reactNative.StyleSheet.flatten([styles$5.badge(theme,status),!element&&styles$5.miniBadge,badgeStyle&&badgeStyle]),onPress:onPress,__source:{fileName:_jsxFileName$8,lineNumber:27}}),element));};Badge.propTypes={containerStyle:ViewPropTypes.style,badgeStyle:ViewPropTypes.style,textStyle:reactNative.Text.propTypes.style,value:propTypes.node,onPress:propTypes.func,Component:propTypes.elementType,theme:propTypes.object,status:propTypes.oneOf(['primary','success','warning','error'])};Badge.defaultProps={status:'primary'};var size=18;var miniSize=8;var styles$5={badge:function badge(theme,status){return {alignSelf:'center',minWidth:size,height:size,borderRadius:size/2,alignItems:'center',justifyContent:'center',backgroundColor:theme.colors[status],borderWidth:reactNative.StyleSheet.hairlineWidth,borderColor:'#fff'};},miniBadge:{paddingHorizontal:0,paddingVertical:0,minWidth:miniSize,height:miniSize,borderRadius:miniSize/2},text:{fontSize:12,color:'white',paddingHorizontal:4}};var Badge$1 = withTheme(Badge,'Badge');
+    case 'material':
+      return MaterialIcon;
 
-var _jsxFileName$9="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\text\\Text.js";function ownKeys$6(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$6(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$6(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$6(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var TextElement=function TextElement(props){var style=props.style,children=props.children,h1=props.h1,h2=props.h2,h3=props.h3,h4=props.h4,h1Style=props.h1Style,h2Style=props.h2Style,h3Style=props.h3Style,h4Style=props.h4Style,rest=objectWithoutProperties(props,["style","children","h1","h2","h3","h4","h1Style","h2Style","h3Style","h4Style"]);return React__default.createElement(reactNative.Text,_extends_1({style:reactNative.StyleSheet.flatten([styles$6.text,style&&style,h1&&styles$6.bold,h2&&styles$6.bold,h3&&styles$6.bold,h4&&styles$6.bold,h1&&reactNative.StyleSheet.flatten([{fontSize:normalize(40)},h1Style]),h2&&reactNative.StyleSheet.flatten([{fontSize:normalize(34)},h2Style]),h3&&reactNative.StyleSheet.flatten([{fontSize:normalize(28)},h3Style]),h4&&reactNative.StyleSheet.flatten([{fontSize:normalize(22)},h4Style])])},patchWebProps(rest),{__source:{fileName:_jsxFileName$9,lineNumber:25}}),children);};TextElement.propTypes={style:reactNative.Text.propTypes.style,h1:propTypes.bool,h2:propTypes.bool,h3:propTypes.bool,h4:propTypes.bool,h1Style:reactNative.Text.propTypes.style,h2Style:reactNative.Text.propTypes.style,h3Style:reactNative.Text.propTypes.style,h4Style:reactNative.Text.propTypes.style,children:propTypes.node};TextElement.defaultProps={h1:false,h2:false,h3:false,h4:false,style:{},h1Style:{},h2Style:{},h3Style:{},h4Style:{},children:''};var styles$6=reactNative.StyleSheet.create({text:_objectSpread$6({},reactNative.Platform.select({android:_objectSpread$6({},fonts.android.regular)})),bold:_objectSpread$6({},reactNative.Platform.select({android:_objectSpread$6({},fonts.android.bold)}))});var Text = withTheme(TextElement,'Text');
+    case 'material-community':
+      return MaterialCommunityIcon;
 
-var _jsxFileName$a="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\checkbox\\CheckBoxIcon.js";var CheckBoxIcon=function CheckBoxIcon(_ref){var checked=_ref.checked,onIconPress=_ref.onIconPress,onLongIconPress=_ref.onLongIconPress,size=_ref.size,checkedIcon=_ref.checkedIcon,uncheckedIcon=_ref.uncheckedIcon,iconType=_ref.iconType,checkedColor=_ref.checkedColor,uncheckedColor=_ref.uncheckedColor;if(checked&&React__default.isValidElement(checkedIcon)){return checkedIcon;}if(!checked&&React__default.isValidElement(uncheckedIcon)){return uncheckedIcon;}var VectorIcon=iconType?getIconType(iconType):FAIcon;return React__default.createElement(VectorIcon,{color:checked?checkedColor:uncheckedColor,name:checked?checkedIcon:uncheckedIcon,size:size||24,style:{minWidth:size||24},onLongPress:onLongIconPress,onPress:onIconPress,__source:{fileName:_jsxFileName$a,lineNumber:29}});};CheckBoxIcon.propTypes={checked:propTypes.bool,onIconPress:propTypes.func,onLongIconPress:propTypes.func,size:propTypes.number,checkedIcon:propTypes.oneOfType([propTypes.string,propTypes.element]),uncheckedIcon:propTypes.oneOfType([propTypes.string,propTypes.element]),iconType:propTypes.string,checkedColor:propTypes.string,uncheckedColor:propTypes.string};
+    case 'ionicon':
+      return Ionicon;
 
-var _jsxFileName$b="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\checkbox\\CheckBox.js";function ownKeys$7(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$7(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$7(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$7(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var CheckBox=function CheckBox(props){var theme=props.theme,rest=objectWithoutProperties(props,["theme"]);var Component=rest.Component,checked=rest.checked,iconRight=rest.iconRight,title=rest.title,titleProps=rest.titleProps,center=rest.center,right=rest.right,containerStyle=rest.containerStyle,textStyle=rest.textStyle,wrapperStyle=rest.wrapperStyle,onPress=rest.onPress,onLongPress=rest.onLongPress,checkedTitle=rest.checkedTitle,fontFamily=rest.fontFamily,_rest$checkedColor=rest.checkedColor,checkedColor=_rest$checkedColor===void 0?theme.colors.primary:_rest$checkedColor,attributes=objectWithoutProperties(rest,["Component","checked","iconRight","title","titleProps","center","right","containerStyle","textStyle","wrapperStyle","onPress","onLongPress","checkedTitle","fontFamily","checkedColor"]);return React__default.createElement(Component,_extends_1({},attributes,{testID:"checkbox",onLongPress:onLongPress,onPress:onPress,style:reactNative.StyleSheet.flatten([styles$7.container,title&&styles$7.containerHasTitle,containerStyle&&containerStyle]),__source:{fileName:_jsxFileName$b,lineNumber:38}}),React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$7.wrapper,right&&{justifyContent:'flex-end'},center&&{justifyContent:'center'},wrapperStyle&&wrapperStyle]),__source:{fileName:_jsxFileName$b,lineNumber:49}},!iconRight&&React__default.createElement(CheckBoxIcon,_extends_1({},props,{checkedColor:checkedColor,__source:{fileName:_jsxFileName$b,lineNumber:57}})),React__default.isValidElement(title)?title:title&&React__default.createElement(Text,_extends_1({testID:"checkboxTitle",style:reactNative.StyleSheet.flatten([styles$7.text(theme),textStyle&&textStyle,fontFamily&&{fontFamily:fontFamily}])},titleProps,{__source:{fileName:_jsxFileName$b,lineNumber:62}}),checked?checkedTitle||title:title),iconRight&&React__default.createElement(CheckBoxIcon,_extends_1({},props,{checkedColor:checkedColor,__source:{fileName:_jsxFileName$b,lineNumber:75}}))));};CheckBox.propTypes=_objectSpread$7({},CheckBoxIcon.propTypes,{Component:propTypes.elementType,iconRight:propTypes.bool,title:propTypes.oneOfType([propTypes.string,propTypes.element]),titleProps:propTypes.object,center:propTypes.bool,right:propTypes.bool,containerStyle:ViewPropTypes.style,wrapperStyle:ViewPropTypes.style,textStyle:reactNative.Text.propTypes.style,onPress:propTypes.func,onLongPress:propTypes.func,checkedTitle:propTypes.string,fontFamily:propTypes.string});CheckBox.defaultProps={checked:false,iconRight:false,right:false,center:false,uncheckedColor:'#bfbfbf',checkedIcon:'check-square-o',uncheckedIcon:'square-o',size:24,Component:reactNative.TouchableOpacity,titleProps:{}};var styles$7={wrapper:{flexDirection:'row',alignItems:'center'},container:{margin:5,marginLeft:10,marginRight:10,padding:10},containerHasTitle:{borderWidth:1,borderRadius:3,backgroundColor:'#fafafa',borderColor:'#ededed'},text:function text(theme){return _objectSpread$7({marginLeft:10,marginRight:10,color:theme.colors.grey1},reactNative.Platform.select({android:_objectSpread$7({},fonts.android.bold),default:{fontWeight:'bold'}}));}};var CheckBox$1 = withTheme(CheckBox,'CheckBox');
+    case 'foundation':
+      return FoundationIcon;
 
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
+    case 'evilicon':
+      return EvilIcon;
+
+    case 'entypo':
+      return EntypoIcon;
+
+    case 'font-awesome':
+      return FAIcon;
+
+    case 'simple-line-icon':
+      return SimpleLineIcon;
+
+    case 'feather':
+      return FeatherIcon;
+
+    case 'antdesign':
+      return AntIcon;
+
+    default:
+      if (Object.prototype.hasOwnProperty.call(customIcons, type)) {
+        return customIcons[type];
+      }
+
+      return MaterialIcon;
+  }
+});
+
+//
+const pixelRatio = reactNative.PixelRatio.get();
+const deviceHeight = reactNative.Dimensions.get('window').height;
+const deviceWidth = reactNative.Dimensions.get('window').width; // -- Testing Only --
+// const fontScale = PixelRatio.getFontScale();
+// const layoutSize = PixelRatio.getPixelSizeForLayoutSize(14);
+// console.log('normalizeText getPR ->', pixelRatio);
+// console.log('normalizeText getFS ->', fontScale);
+// console.log('normalizeText getDH ->', deviceHeight);
+// console.log('normalizeText getDW ->', deviceWidth);
+// console.log('normalizeText getPSFLS ->', layoutSize);
+
+const normalize = size => {
+  if (pixelRatio >= 2 && pixelRatio < 3) {
+    // iphone 5s and older Androids
+    if (deviceWidth < 360) {
+      return size * 0.95;
+    } // iphone 5
+
+
+    if (deviceHeight < 667) {
+      return size; // iphone 6-6s
     }
 
-    return arr2;
+    if (deviceHeight >= 667 && deviceHeight <= 735) {
+      return size * 1.15;
+    } // older phablets
+
+
+    return size * 1.25;
   }
-}
 
-var arrayWithoutHoles = _arrayWithoutHoles;
+  if (pixelRatio >= 3 && pixelRatio < 3.5) {
+    // catch Android font scaling on small machines
+    // where pixel ratio / font scale ratio => 3:3
+    if (deviceWidth <= 360) {
+      return size;
+    } // Catch other weird android width sizings
 
-function _iterableToArray(iter) {
-  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
-}
 
-var iterableToArray = _iterableToArray;
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-var nonIterableSpread = _nonIterableSpread;
-
-function _toConsumableArray(arr) {
-  return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
-}
-
-var toConsumableArray = _toConsumableArray;
-
-var _jsxFileName$c="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\buttons\\ButtonGroup.js";function ownKeys$8(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$8(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$8(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$8(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var ButtonGroup=function ButtonGroup(props){var theme=props.theme,rest=objectWithoutProperties(props,["theme"]);var Component=rest.Component,buttons=rest.buttons,_onPress=rest.onPress,selectedIndex=rest.selectedIndex,selectedIndexes=rest.selectedIndexes,selectMultiple=rest.selectMultiple,containerStyle=rest.containerStyle,innerBorderStyle=rest.innerBorderStyle,lastBorderStyle=rest.lastBorderStyle,buttonStyle=rest.buttonStyle,textStyle=rest.textStyle,selectedTextStyle=rest.selectedTextStyle,selectedButtonStyle=rest.selectedButtonStyle,_rest$underlayColor=rest.underlayColor,underlayColor=_rest$underlayColor===void 0?theme.colors.primary:_rest$underlayColor,activeOpacity=rest.activeOpacity,onHideUnderlay=rest.onHideUnderlay,onShowUnderlay=rest.onShowUnderlay,setOpacityTo=rest.setOpacityTo,containerBorderRadius=rest.containerBorderRadius,disabled=rest.disabled,disabledStyle=rest.disabledStyle,disabledTextStyle=rest.disabledTextStyle,disabledSelectedStyle=rest.disabledSelectedStyle,disabledSelectedTextStyle=rest.disabledSelectedTextStyle,attributes=objectWithoutProperties(rest,["Component","buttons","onPress","selectedIndex","selectedIndexes","selectMultiple","containerStyle","innerBorderStyle","lastBorderStyle","buttonStyle","textStyle","selectedTextStyle","selectedButtonStyle","underlayColor","activeOpacity","onHideUnderlay","onShowUnderlay","setOpacityTo","containerBorderRadius","disabled","disabledStyle","disabledTextStyle","disabledSelectedStyle","disabledSelectedTextStyle"]);var innerBorderWidth=1;if(innerBorderStyle&&Object.prototype.hasOwnProperty.call(innerBorderStyle,'width')){innerBorderWidth=innerBorderStyle.width;}return React__default.createElement(reactNative.View,_extends_1({},attributes,{style:reactNative.StyleSheet.flatten([styles$8.container,containerStyle&&containerStyle]),__source:{fileName:_jsxFileName$c,lineNumber:58}}),buttons.map(function(button,i){var isSelected=selectedIndex===i||selectedIndexes.includes(i);var isDisabled=disabled===true||Array.isArray(disabled)&&disabled.includes(i);return React__default.createElement(reactNative.View,{key:i,style:reactNative.StyleSheet.flatten([styles$8.button,i<buttons.length-1&&{borderRightWidth:i===0?0:innerBorderWidth,borderRightColor:innerBorderStyle&&innerBorderStyle.color||theme.colors.grey4},i===1&&{borderLeftWidth:innerBorderWidth,borderLeftColor:innerBorderStyle&&innerBorderStyle.color||theme.colors.grey4},i===buttons.length-1&&_objectSpread$8({},lastBorderStyle,{borderTopRightRadius:containerBorderRadius,borderBottomRightRadius:containerBorderRadius}),i===0&&{borderTopLeftRadius:containerBorderRadius,borderBottomLeftRadius:containerBorderRadius}]),__source:{fileName:_jsxFileName$c,lineNumber:72}},React__default.createElement(Component,{testID:"buttonGroupItem",activeOpacity:activeOpacity,setOpacityTo:setOpacityTo,onHideUnderlay:onHideUnderlay,onShowUnderlay:onShowUnderlay,underlayColor:underlayColor,disabled:isDisabled,onPress:function onPress(){if(selectMultiple){if(selectedIndexes.includes(i)){_onPress(selectedIndexes.filter(function(index){return index!==i;}));}else{_onPress([].concat(toConsumableArray(selectedIndexes),[i]));}}else{_onPress(i);}},style:styles$8.button,__source:{fileName:_jsxFileName$c,lineNumber:101}},React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$8.textContainer,buttonStyle&&buttonStyle,isSelected&&{backgroundColor:theme.colors.primary},isSelected&&selectedButtonStyle&&selectedButtonStyle,isDisabled&&styles$8.disabled,isDisabled&&disabledStyle,isDisabled&&isSelected&&styles$8.disabledSelected(theme),isDisabled&&isSelected&&disabledSelectedStyle]),__source:{fileName:_jsxFileName$c,lineNumber:122}},button.element?React__default.createElement(button.element,{__source:{fileName:_jsxFileName$c,lineNumber:137}}):React__default.createElement(Text,{testID:"buttonGroupItemText",style:reactNative.StyleSheet.flatten([styles$8.buttonText(theme),textStyle&&textStyle,isSelected&&{color:'#fff'},isSelected&&selectedTextStyle,isDisabled&&styles$8.disabledText(theme),isDisabled&&disabledTextStyle,isDisabled&&isSelected&&disabledSelectedTextStyle]),__source:{fileName:_jsxFileName$c,lineNumber:139}},button))));}));};var styles$8={button:{flex:1},textContainer:{flex:1,justifyContent:'center',alignItems:'center'},container:{marginLeft:10,marginRight:10,marginBottom:5,marginTop:5,borderColor:'#e3e3e3',borderWidth:1,flexDirection:'row',borderRadius:3,overflow:'hidden',backgroundColor:'#fff',height:40},buttonText:function buttonText(theme){return _objectSpread$8({fontSize:normalize(13),color:theme.colors.grey2},reactNative.Platform.select({android:{},default:{fontWeight:'500'}}));},disabled:{backgroundColor:'transparent'},disabledText:function disabledText(theme){return {color:color(theme.colors.disabled).darken(0.3).toString()};},disabledSelected:function disabledSelected(theme){return {backgroundColor:theme.colors.disabled};}};ButtonGroup.propTypes={button:propTypes.object,Component:propTypes.elementType,onPress:propTypes.func,buttons:propTypes.array,containerStyle:ViewPropTypes.style,textStyle:reactNative.Text.propTypes.style,selectedTextStyle:reactNative.Text.propTypes.style,selectedButtonStyle:ViewPropTypes.style,underlayColor:propTypes.string,selectedIndex:propTypes.number,selectedIndexes:propTypes.arrayOf(propTypes.number),activeOpacity:propTypes.number,onHideUnderlay:propTypes.func,onShowUnderlay:propTypes.func,setOpacityTo:propTypes.func,innerBorderStyle:propTypes.shape({color:propTypes.string,width:propTypes.number}),lastBorderStyle:propTypes.oneOfType([ViewPropTypes.style,reactNative.Text.propTypes.style]),buttonStyle:ViewPropTypes.style,containerBorderRadius:propTypes.number,selectMultiple:propTypes.bool,theme:propTypes.object,disabled:propTypes.oneOfType([propTypes.bool,propTypes.arrayOf(propTypes.number)]),disabledStyle:ViewPropTypes.style,disabledTextStyle:reactNative.Text.propTypes.style,disabledSelectedStyle:ViewPropTypes.style,disabledSelectedTextStyle:reactNative.Text.propTypes.style};ButtonGroup.defaultProps={selectedIndex:null,selectedIndexes:[],selectMultiple:false,containerBorderRadius:3,disabled:false,Component:reactNative.Platform.select({android:reactNative.TouchableNativeFeedback,default:reactNative.TouchableOpacity}),onPress:function onPress(){return null;}};var ButtonGroup$1 = withTheme(ButtonGroup,'ButtonGroup');
-
-var _jsxFileName$d="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\list\\ListItem.js";function ownKeys$9(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$9(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$9(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$9(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var ANDROID_SECONDARY='rgba(0, 0, 0, 0.54)';var chevronDefaultProps={type:reactNative.Platform.OS==='ios'?'ionicon':'material',color:'#D1D1D6',name:reactNative.Platform.OS==='ios'?'ios-arrow-forward':'keyboard-arrow-right',size:16};var checkmarkDefaultProps=function checkmarkDefaultProps(theme){return {name:'check',size:20,color:theme.colors.primary};};var renderText$1=function renderText(content,defaultProps,style){return renderNode(Text,content,_objectSpread$9({},defaultProps,{style:reactNative.StyleSheet.flatten([style,defaultProps&&defaultProps.style])}));};var renderAvatar=function renderAvatar(content){return renderNode(Avatar$1,content,{size:40,rounded:true});};var renderIcon=function renderIcon(content){return renderNode(Icon$1,content,{color:reactNative.Platform.OS==='ios'?null:ANDROID_SECONDARY,size:24});};var ListItem=function ListItem(props){var title=props.title,titleStyle=props.titleStyle,titleProps=props.titleProps,subtitle=props.subtitle,subtitleStyle=props.subtitleStyle,subtitleProps=props.subtitleProps,containerStyle=props.containerStyle,onPress=props.onPress,onLongPress=props.onLongPress,_props$Component=props.Component,Component=_props$Component===void 0?onPress||onLongPress?reactNative.TouchableHighlight:reactNative.View:_props$Component,leftIcon=props.leftIcon,leftAvatar=props.leftAvatar,leftElement=props.leftElement,rightIcon=props.rightIcon,rightAvatar=props.rightAvatar,rightElement=props.rightElement,rightTitle=props.rightTitle,rightTitleStyle=props.rightTitleStyle,rightTitleProps=props.rightTitleProps,rightSubtitle=props.rightSubtitle,rightSubtitleStyle=props.rightSubtitleStyle,rightSubtitleProps=props.rightSubtitleProps,input=props.input,buttonGroup=props.buttonGroup,switchProps=props.switch,checkBox=props.checkBox,badge=props.badge,chevron=props.chevron,contentContainerStyle=props.contentContainerStyle,rightContentContainerStyle=props.rightContentContainerStyle,checkmark=props.checkmark,disabled=props.disabled,disabledStyle=props.disabledStyle,bottomDivider=props.bottomDivider,topDivider=props.topDivider,pad=props.pad,linearGradientProps=props.linearGradientProps,_props$ViewComponent=props.ViewComponent,ViewComponent=_props$ViewComponent===void 0?linearGradientProps&&global.Expo?global.Expo.LinearGradient:reactNative.View:_props$ViewComponent,theme=props.theme,attributes=objectWithoutProperties(props,["title","titleStyle","titleProps","subtitle","subtitleStyle","subtitleProps","containerStyle","onPress","onLongPress","Component","leftIcon","leftAvatar","leftElement","rightIcon","rightAvatar","rightElement","rightTitle","rightTitleStyle","rightTitleProps","rightSubtitle","rightSubtitleStyle","rightSubtitleProps","input","buttonGroup","switch","checkBox","badge","chevron","contentContainerStyle","rightContentContainerStyle","checkmark","disabled","disabledStyle","bottomDivider","topDivider","pad","linearGradientProps","ViewComponent","theme"]);return React__default.createElement(Component,_extends_1({},attributes,{onPress:onPress,onLongPress:onLongPress,disabled:disabled,__source:{fileName:_jsxFileName$d,lineNumber:101}}),React__default.createElement(PadView,_extends_1({Component:ViewComponent},linearGradientProps,{style:reactNative.StyleSheet.flatten([styles$9.container(theme),(buttonGroup||switchProps)&&{paddingVertical:8},topDivider&&{borderTopWidth:reactNative.StyleSheet.hairlineWidth},bottomDivider&&{borderBottomWidth:reactNative.StyleSheet.hairlineWidth},containerStyle,disabled&&disabledStyle]),pad:pad,__source:{fileName:_jsxFileName$d,lineNumber:107}}),renderNode(Text,leftElement),renderIcon(leftIcon),renderAvatar(leftAvatar),(typeof title!=='undefined'||subtitle)&&React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$9.contentContainer,contentContainerStyle]),__source:{fileName:_jsxFileName$d,lineNumber:125}},renderText$1(title,_objectSpread$9({testID:'listItemTitle'},titleProps),reactNative.StyleSheet.flatten([styles$9.title,titleStyle])),renderText$1(subtitle,subtitleProps,reactNative.StyleSheet.flatten([styles$9.subtitle,subtitleStyle]))),(!!rightTitle||!!rightSubtitle)&&React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$9.rightContentContainer,rightContentContainerStyle]),__source:{fileName:_jsxFileName$d,lineNumber:145}},renderText$1(rightTitle,rightTitleProps,reactNative.StyleSheet.flatten([styles$9.title,styles$9.rightTitle,rightTitleStyle])),renderText$1(rightSubtitle,rightSubtitleProps,reactNative.StyleSheet.flatten([styles$9.subtitle,styles$9.rightSubtitle,rightSubtitleStyle]))),input&&React__default.createElement(Input$1,_extends_1({},input,{inputStyle:reactNative.StyleSheet.flatten([styles$9.input,input&&input.inputStyle]),inputContainerStyle:reactNative.StyleSheet.flatten([styles$9.inputContentContainer,input&&input.inputContainerStyle]),containerStyle:reactNative.StyleSheet.flatten([styles$9.inputContainer,input&&input.containerStyle]),__source:{fileName:_jsxFileName$d,lineNumber:174}})),switchProps&&React__default.createElement(reactNative.Switch,_extends_1({},switchProps,{__source:{fileName:_jsxFileName$d,lineNumber:190}})),checkBox&&React__default.createElement(CheckBox$1,_extends_1({},checkBox,{containerStyle:reactNative.StyleSheet.flatten([styles$9.checkboxContainer,checkBox&&checkBox.containerStyle]),__source:{fileName:_jsxFileName$d,lineNumber:192}})),badge&&React__default.createElement(Badge$1,_extends_1({},badge,{__source:{fileName:_jsxFileName$d,lineNumber:200}})),buttonGroup&&React__default.createElement(ButtonGroup$1,_extends_1({},buttonGroup,{containerStyle:reactNative.StyleSheet.flatten([styles$9.buttonGroupContainer,buttonGroup&&buttonGroup.containerStyle]),__source:{fileName:_jsxFileName$d,lineNumber:202}})),renderAvatar(rightAvatar),renderIcon(rightIcon),renderNode(Text,rightElement),renderNode(Icon$1,checkmark,checkmarkDefaultProps(theme)),renderNode(Icon$1,chevron,chevronDefaultProps)));};var styles$9={container:function container(theme){return _objectSpread$9({},reactNative.Platform.select({ios:{padding:14},default:{padding:16}}),{flexDirection:'row',alignItems:'center',backgroundColor:'white',borderColor:theme.colors.divider});},title:_objectSpread$9({backgroundColor:'transparent'},reactNative.Platform.select({ios:{fontSize:17},default:{fontSize:16}})),subtitle:_objectSpread$9({backgroundColor:'transparent'},reactNative.Platform.select({ios:{fontSize:15},default:{color:ANDROID_SECONDARY,fontSize:14}})),contentContainer:{flex:1,justifyContent:'center'},rightContentContainer:{flex:0.5,justifyContent:'center',alignItems:'flex-end'},inputContainer:{flex:1,paddingRight:0},inputContentContainer:{flex:1,borderBottomWidth:0,width:null,height:null},input:{flex:1,textAlign:'right',width:null,height:null},checkboxContainer:{margin:0,marginRight:0,marginLeft:0,padding:0},buttonGroupContainer:{flex:1,marginLeft:0,marginRight:0,marginTop:0,marginBottom:0},rightTitle:{color:ANDROID_SECONDARY},rightSubtitle:{color:ANDROID_SECONDARY}};ListItem.propTypes={containerStyle:ViewPropTypes.style,contentContainerStyle:ViewPropTypes.style,rightContentContainerStyle:ViewPropTypes.style,Component:propTypes.elementType,onPress:propTypes.func,onLongPress:propTypes.func,title:propTypes.oneOfType([propTypes.string,propTypes.element]),titleStyle:TextPropTypes.style,titleProps:propTypes.object,subtitle:propTypes.oneOfType([propTypes.string,propTypes.element]),subtitleStyle:TextPropTypes.style,subtitleProps:propTypes.object,leftIcon:nodeType,leftAvatar:nodeType,leftElement:nodeType,rightIcon:nodeType,rightAvatar:nodeType,rightElement:nodeType,rightTitle:propTypes.oneOfType([propTypes.string,propTypes.element]),rightTitleStyle:TextPropTypes.style,rightTitleProps:propTypes.object,rightSubtitle:propTypes.oneOfType([propTypes.string,propTypes.element]),rightSubtitleStyle:TextPropTypes.style,rightSubtitleProps:propTypes.object,input:propTypes.object,buttonGroup:propTypes.object,switch:propTypes.object,checkBox:propTypes.object,badge:propTypes.object,chevron:nodeType,checkmark:nodeType,disabled:propTypes.bool,disabledStyle:ViewPropTypes.style,topDivider:propTypes.bool,bottomDivider:propTypes.bool,pad:propTypes.number,linearGradientProps:propTypes.object,ViewComponent:propTypes.elementType,theme:propTypes.object};ListItem.defaultProps={pad:16,title:''};var PadView=function(_React$Component){inherits(PadView,_React$Component);function PadView(props){var _this;classCallCheck(this,PadView);_this=possibleConstructorReturn(this,getPrototypeOf(PadView).call(this,props));_this.setNativeProps=function(nativeProps){_this._root.current.setNativeProps(nativeProps);};_this._root=React__default.createRef();return _this;}createClass(PadView,[{key:"render",value:function render(){var _this$props=this.props,children=_this$props.children,pad=_this$props.pad,Component=_this$props.Component,props=objectWithoutProperties(_this$props,["children","pad","Component"]);var childrens=React__default.Children.toArray(children);var length=childrens.length;var Container=Component||reactNative.View;return React__default.createElement(Container,_extends_1({},props,{ref:this._root,__source:{fileName:_jsxFileName$d,lineNumber:367}}),React__default.Children.map(childrens,function(child,index){return child&&[child,index!==length-1&&React__default.createElement(reactNative.View,{width:pad,__source:{fileName:_jsxFileName$d,lineNumber:371}})];}));}}]);return PadView;}(React__default.Component);PadView.propTypes={children:propTypes.node,pad:propTypes.number,Component:propTypes.elementType};var ListItem$1 = withTheme(ListItem,'ListItem');
-
-var _jsxFileName$e="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\social\\SocialIcon.js";function ownKeys$a(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$a(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$a(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$a(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var colors$1={'github-alt':'#000000','google-plus-official':'#dd4b39',google:'#dd4b39','reddit-alien':'#fc461e','stack-overflow':'#f27f33',angellist:'#1c4082',codepen:'#000000',envelope:'#000000',etsy:'#f2581e',facebook:'#3b5998',flickr:'#ff0084',foursquare:'#0072b1',github:'#000000',gitlab:'#e14329',instagram:'#517fa4',linkedin:'#007bb6',medium:'#02b875',pinterest:'#cb2027',quora:'#a82400',soundcloud:'#f50',steam:'#c6c3c1',stumbleupon:'#EB4823',tumblr:'#32506d',twitch:'#6441A5',twitter:'#00aced',vimeo:'#aad450',vk:'#5181b8',wechat:'#7bb32e',weibo:'#e6162d',wordpress:'#21759b',youtube:'#bb0000'};var SocialIcon=function SocialIcon(props){var activityIndicatorStyle=props.activityIndicatorStyle,button=props.button,disabled=props.disabled,fontFamily=props.fontFamily,fontStyle=props.fontStyle,fontWeight=props.fontWeight,iconColor=props.iconColor,iconSize=props.iconSize,iconStyle=props.iconStyle,light=props.light,loading=props.loading,onLongPress=props.onLongPress,onPress=props.onPress,_props$Component=props.Component,Component=_props$Component===void 0?onPress||onLongPress?reactNative.TouchableHighlight:reactNative.View:_props$Component,raised=props.raised,small=props.small,style=props.style,title=props.title,type=props.type,underlayColor=props.underlayColor,attributes=objectWithoutProperties(props,["activityIndicatorStyle","button","disabled","fontFamily","fontStyle","fontWeight","iconColor","iconSize","iconStyle","light","loading","onLongPress","onPress","Component","raised","small","style","title","type","underlayColor"]);return React__default.createElement(Component,_extends_1({},attributes,{underlayColor:light?'white':underlayColor||colors$1[type],onLongPress:disabled?null:onLongPress,onPress:disabled?null:onPress,disabled:disabled,style:reactNative.StyleSheet.flatten([raised&&styles$a.raised,styles$a.container,button&&styles$a.button,!button&&raised&&styles$a.icon,!button&&!light&&!raised&&{width:iconSize*2+4,height:iconSize*2+4,borderRadius:iconSize*2},{backgroundColor:colors$1[type]},light&&{backgroundColor:'white'},style&&style]),__source:{fileName:_jsxFileName$e,lineNumber:78}}),React__default.createElement(reactNative.View,{style:styles$a.wrapper,__source:{fileName:_jsxFileName$e,lineNumber:101}},React__default.createElement(FAIcon,{style:reactNative.StyleSheet.flatten([iconStyle&&iconStyle]),color:light?colors$1[type]:iconColor,name:type,size:iconSize,__source:{fileName:_jsxFileName$e,lineNumber:102}}),button&&title&&React__default.createElement(Text,{style:reactNative.StyleSheet.flatten([styles$a.title,light&&{color:colors$1[type]},fontFamily&&{fontFamily:fontFamily},fontWeight&&{fontWeight:fontWeight},fontStyle&&fontStyle]),__source:{fileName:_jsxFileName$e,lineNumber:109}},title),loading&&React__default.createElement(reactNative.ActivityIndicator,{animating:true,style:reactNative.StyleSheet.flatten([styles$a.activityIndicatorStyle,activityIndicatorStyle]),color:iconColor||'white',size:small&&'small'||'large',__source:{fileName:_jsxFileName$e,lineNumber:123}})));};SocialIcon.propTypes={Component:propTypes.elementType,type:propTypes.string,button:propTypes.bool,onPress:propTypes.func,onLongPress:propTypes.func,iconStyle:ViewPropTypes.style,style:ViewPropTypes.style,iconColor:propTypes.string,underlayColor:propTypes.string,title:propTypes.string,raised:propTypes.bool,disabled:propTypes.bool,loading:propTypes.bool,activityIndicatorStyle:ViewPropTypes.style,small:propTypes.string,iconSize:propTypes.oneOfType([propTypes.string,propTypes.number]),light:propTypes.bool,fontWeight:propTypes.string,fontStyle:reactNative.Text.propTypes.style,fontFamily:propTypes.string};SocialIcon.defaultProps={raised:true,iconColor:'white',iconSize:24,button:false};var styles$a=reactNative.StyleSheet.create({container:{margin:7,borderRadius:30,flexDirection:'row',justifyContent:'center',alignItems:'center'},button:{paddingTop:14,paddingBottom:14},raised:_objectSpread$a({},reactNative.Platform.select({android:{elevation:2},default:{shadowColor:'rgba(0,0,0, .4)',shadowOffset:{height:1,width:1},shadowOpacity:1,shadowRadius:1}})),wrapper:{flexDirection:'row',justifyContent:'center',alignItems:'center'},title:_objectSpread$a({color:'white',marginLeft:15},reactNative.Platform.select({android:_objectSpread$a({},fonts.android.black),default:{fontWeight:'bold'}})),icon:{height:52,width:52},activityIndicatorStyle:{marginHorizontal:10,height:0}});var SocialIcon$1 = withTheme(SocialIcon,'SocialIcon');
-
-var _jsxFileName$f="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\overlay\\Overlay.js";function ownKeys$b(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$b(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$b(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$b(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var Overlay=function Overlay(props){var children=props.children,isVisible=props.isVisible,containerStyle=props.containerStyle,overlayStyle=props.overlayStyle,windowBackgroundColor=props.windowBackgroundColor,overlayBackgroundColor=props.overlayBackgroundColor,onBackdropPress=props.onBackdropPress,borderRadius=props.borderRadius,width=props.width,height=props.height,fullScreen=props.fullScreen,rest=objectWithoutProperties(props,["children","isVisible","containerStyle","overlayStyle","windowBackgroundColor","overlayBackgroundColor","onBackdropPress","borderRadius","width","height","fullScreen"]);return React__default.createElement(reactNative.Modal,_extends_1({visible:isVisible,onRequestClose:onBackdropPress,transparent:true},rest,{__source:{fileName:_jsxFileName$f,lineNumber:31}}),React__default.createElement(reactNative.TouchableWithoutFeedback,{onPress:onBackdropPress,testID:"RNE__Overlay__backdrop",__source:{fileName:_jsxFileName$f,lineNumber:37}},React__default.createElement(reactNative.View,{testID:"overlayContainer",style:reactNative.StyleSheet.flatten([styles$b.backdrop,{backgroundColor:windowBackgroundColor},containerStyle]),__source:{fileName:_jsxFileName$f,lineNumber:41}})),React__default.createElement(reactNative.View,{style:styles$b.container,pointerEvents:"box-none",__source:{fileName:_jsxFileName$f,lineNumber:51}},React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$b.overlay,{borderRadius:borderRadius,backgroundColor:overlayBackgroundColor,width:width,height:height},fullScreen&&styles$b.fullscreen,overlayStyle]),__source:{fileName:_jsxFileName$f,lineNumber:52}},children)));};Overlay.propTypes={children:propTypes.element.isRequired,isVisible:propTypes.bool.isRequired,containerStyle:ViewPropTypes.style,overlayStyle:ViewPropTypes.style,windowBackgroundColor:propTypes.string,overlayBackgroundColor:propTypes.string,onBackdropPress:propTypes.func,borderRadius:propTypes.number,width:propTypes.oneOfType([propTypes.string,propTypes.number]),height:propTypes.oneOfType([propTypes.string,propTypes.number]),fullScreen:propTypes.bool};Overlay.defaultProps={borderRadius:3,fullScreen:false,windowBackgroundColor:'rgba(0, 0, 0, .4)',overlayBackgroundColor:'white',width:ScreenWidth-80,height:ScreenHeight-180,onBackdropPress:function onBackdropPress(){return null;}};var styles$b=reactNative.StyleSheet.create({backdrop:{position:'absolute',top:0,left:0,width:'100%',height:'100%',justifyContent:'center',alignItems:'center'},container:{flex:1,alignItems:'center',justifyContent:'center'},fullscreen:{width:'100%',height:'100%'},overlay:_objectSpread$b({borderRadius:5,padding:10},reactNative.Platform.select({android:{elevation:2},default:{shadowColor:'rgba(0, 0, 0, .3)',shadowOffset:{width:0,height:1},shadowRadius:4}}))});var Overlay$1 = withTheme(Overlay,'Overlay');
-
-var _jsxFileName$g="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\searchbar\\SearchBar-ios.js";function ownKeys$c(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$c(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$c(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$c(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var IOS_GRAY='#7d7d7d';var defaultSearchIcon={type:'ionicon',size:20,name:'ios-search',color:IOS_GRAY};var defaultClearIcon={type:'ionicon',name:'ios-close-circle',size:20,color:IOS_GRAY};var SearchBar=function(_Component){inherits(SearchBar,_Component);function SearchBar(props){var _this;classCallCheck(this,SearchBar);_this=possibleConstructorReturn(this,getPrototypeOf(SearchBar).call(this,props));_this.focus=function(){_this.input.focus();};_this.blur=function(){_this.input.blur();};_this.clear=function(){_this.input.clear();_this.onChangeText('');_this.props.onClear();};_this.cancel=function(){_this.onChangeText('');if(_this.props.showCancel){reactNative.UIManager.configureNextLayoutAnimation&&reactNative.LayoutAnimation.easeInEaseOut();_this.setState({hasFocus:false});}setTimeout(function(){_this.blur();_this.props.onCancel();},0);};_this.onFocus=function(){_this.props.onFocus();reactNative.UIManager.configureNextLayoutAnimation&&reactNative.LayoutAnimation.easeInEaseOut();_this.setState({hasFocus:true,isEmpty:_this.props.value===''});};_this.onBlur=function(){_this.props.onBlur();reactNative.UIManager.configureNextLayoutAnimation&&reactNative.LayoutAnimation.easeInEaseOut();if(!_this.props.showCancel){_this.setState({hasFocus:false});}};_this.onChangeText=function(text){_this.props.onChangeText(text);_this.setState({isEmpty:text===''});};var value=props.value;_this.state={hasFocus:false,isEmpty:value?value==='':true,cancelButtonWidth:null};return _this;}createClass(SearchBar,[{key:"render",value:function render(){var _this2=this;var _this$props=this.props,cancelButtonProps=_this$props.cancelButtonProps,cancelButtonTitle=_this$props.cancelButtonTitle,clearIcon=_this$props.clearIcon,containerStyle=_this$props.containerStyle,leftIconContainerStyle=_this$props.leftIconContainerStyle,rightIconContainerStyle=_this$props.rightIconContainerStyle,inputContainerStyle=_this$props.inputContainerStyle,inputStyle=_this$props.inputStyle,placeholderTextColor=_this$props.placeholderTextColor,showLoading=_this$props.showLoading,loadingProps=_this$props.loadingProps,searchIcon=_this$props.searchIcon,showCancel=_this$props.showCancel,attributes=objectWithoutProperties(_this$props,["cancelButtonProps","cancelButtonTitle","clearIcon","containerStyle","leftIconContainerStyle","rightIconContainerStyle","inputContainerStyle","inputStyle","placeholderTextColor","showLoading","loadingProps","searchIcon","showCancel"]);var _this$state=this.state,hasFocus=_this$state.hasFocus,isEmpty=_this$state.isEmpty;var loadingStyle=loadingProps.style,otherLoadingProps=objectWithoutProperties(loadingProps,["style"]);var buttonStyle=cancelButtonProps.buttonStyle,buttonTextStyle=cancelButtonProps.buttonTextStyle,buttonColor=cancelButtonProps.color,buttonDisabled=cancelButtonProps.disabled,buttonDisabledStyle=cancelButtonProps.buttonDisabledStyle,buttonDisabledTextStyle=cancelButtonProps.buttonDisabledTextStyle,otherCancelButtonProps=objectWithoutProperties(cancelButtonProps,["buttonStyle","buttonTextStyle","color","disabled","buttonDisabledStyle","buttonDisabledTextStyle"]);return React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$c.container,containerStyle]),__source:{fileName:_jsxFileName$g,lineNumber:130}},React__default.createElement(Input$1,_extends_1({testID:"searchInput"},attributes,{onFocus:this.onFocus,onBlur:this.onBlur,onChangeText:this.onChangeText,ref:function ref(input){_this2.input=input;},inputStyle:reactNative.StyleSheet.flatten([styles$c.input,inputStyle]),containerStyle:{paddingHorizontal:0},inputContainerStyle:reactNative.StyleSheet.flatten([styles$c.inputContainer,hasFocus&&{marginRight:this.state.cancelButtonWidth},inputContainerStyle]),leftIcon:renderNode(Icon$1,searchIcon,defaultSearchIcon),leftIconContainerStyle:reactNative.StyleSheet.flatten([styles$c.leftIconContainerStyle,leftIconContainerStyle]),placeholderTextColor:placeholderTextColor,rightIcon:React__default.createElement(reactNative.View,{style:{flexDirection:'row'},__source:{fileName:_jsxFileName$g,lineNumber:156}},showLoading&&React__default.createElement(reactNative.ActivityIndicator,_extends_1({key:"loading",style:reactNative.StyleSheet.flatten([{marginRight:5},loadingStyle])},otherLoadingProps,{__source:{fileName:_jsxFileName$g,lineNumber:158}})),!isEmpty&&renderNode(Icon$1,clearIcon,_objectSpread$c({},defaultClearIcon,{key:'cancel',onPress:this.clear}))),rightIconContainerStyle:reactNative.StyleSheet.flatten([styles$c.rightIconContainerStyle,rightIconContainerStyle]),__source:{fileName:_jsxFileName$g,lineNumber:131}})),React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$c.cancelButtonContainer,{opacity:this.state.cancelButtonWidth===null?0:1,right:hasFocus?0:-this.state.cancelButtonWidth}]),onLayout:function onLayout(event){return _this2.setState({cancelButtonWidth:event.nativeEvent.layout.width});},__source:{fileName:_jsxFileName$g,lineNumber:178}},React__default.createElement(reactNative.TouchableOpacity,_extends_1({accessibilityRole:"button",onPress:this.cancel,disabled:buttonDisabled},otherCancelButtonProps,{__source:{fileName:_jsxFileName$g,lineNumber:190}}),React__default.createElement(reactNative.View,{style:[buttonStyle,buttonDisabled&&buttonDisabledStyle],__source:{fileName:_jsxFileName$g,lineNumber:196}},React__default.createElement(reactNative.Text,{style:[styles$c.buttonTextStyle,buttonColor&&{color:buttonColor},buttonTextStyle,buttonDisabled&&(buttonDisabledTextStyle||styles$c.buttonTextDisabled)],disabled:buttonDisabled,__source:{fileName:_jsxFileName$g,lineNumber:197}},cancelButtonTitle)))));}}]);return SearchBar;}(React.Component);SearchBar.propTypes={value:propTypes.string,cancelButtonProps:propTypes.object,cancelButtonTitle:propTypes.string,clearIcon:nodeType,searchIcon:nodeType,loadingProps:propTypes.object,showLoading:propTypes.bool,onClear:propTypes.func,onCancel:propTypes.func,onFocus:propTypes.func,onBlur:propTypes.func,onChangeText:propTypes.func,containerStyle:ViewPropTypes.style,leftIconContainerStyle:ViewPropTypes.style,rightIconContainerStyle:ViewPropTypes.style,inputContainerStyle:ViewPropTypes.style,inputStyle:reactNative.Text.propTypes.style,placeholderTextColor:propTypes.string,showCancel:propTypes.bool};SearchBar.defaultProps={value:'',cancelButtonTitle:'Cancel',loadingProps:{},cancelButtonProps:{},showLoading:false,onClear:function onClear(){return null;},onCancel:function onCancel(){return null;},onFocus:function onFocus(){return null;},onBlur:function onBlur(){return null;},onChangeText:function onChangeText(){return null;},placeholderTextColor:IOS_GRAY,searchIcon:defaultSearchIcon,clearIcon:defaultClearIcon,showCancel:false};var styles$c=reactNative.StyleSheet.create({container:{backgroundColor:'#f5f5f5',paddingBottom:13,paddingTop:13,flexDirection:'row',overflow:'hidden',alignItems:'center'},input:{marginLeft:6,overflow:'hidden'},inputContainer:{borderBottomWidth:0,backgroundColor:'#dcdce1',borderRadius:9,minHeight:36,marginLeft:8,marginRight:8},rightIconContainerStyle:{marginRight:8},leftIconContainerStyle:{marginLeft:8},buttonTextStyle:{color:'#007aff',textAlign:'center',padding:8,fontSize:18},buttonTextDisabled:{color:'#cdcdcd'},cancelButtonContainer:{position:'absolute'}});
-
-var _jsxFileName$h="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\searchbar\\SearchBar-android.js";function ownKeys$d(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$d(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$d(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$d(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var ANDROID_GRAY='rgba(0, 0, 0, 0.54)';var defaultSearchIcon$1={type:'material',size:25,color:ANDROID_GRAY,name:'search'};var defaultCancelIcon={type:'material',size:25,color:ANDROID_GRAY,name:'arrow-back'};var defaultClearIcon$1={type:'material',size:25,color:ANDROID_GRAY,name:'clear'};var SearchBar$1=function(_Component){inherits(SearchBar,_Component);function SearchBar(props){var _this;classCallCheck(this,SearchBar);_this=possibleConstructorReturn(this,getPrototypeOf(SearchBar).call(this,props));_this.focus=function(){_this.input.focus();};_this.blur=function(){_this.input.blur();};_this.clear=function(){_this.input.clear();_this.onChangeText('');_this.props.onClear();};_this.cancel=function(){_this.blur();_this.props.onCancel();};_this.onFocus=function(){_this.props.onFocus();_this.setState({hasFocus:true,isEmpty:_this.props.value===''});};_this.onBlur=function(){_this.props.onBlur();_this.setState({hasFocus:false});};_this.onChangeText=function(text){_this.props.onChangeText(text);_this.setState({isEmpty:text===''});};var value=props.value;_this.state={hasFocus:false,isEmpty:value?value==='':true};return _this;}createClass(SearchBar,[{key:"render",value:function render(){var _this2=this;var _this$props=this.props,clearIcon=_this$props.clearIcon,containerStyle=_this$props.containerStyle,leftIconContainerStyle=_this$props.leftIconContainerStyle,rightIconContainerStyle=_this$props.rightIconContainerStyle,inputContainerStyle=_this$props.inputContainerStyle,inputStyle=_this$props.inputStyle,searchIcon=_this$props.searchIcon,cancelIcon=_this$props.cancelIcon,showLoading=_this$props.showLoading,loadingProps=_this$props.loadingProps,attributes=objectWithoutProperties(_this$props,["clearIcon","containerStyle","leftIconContainerStyle","rightIconContainerStyle","inputContainerStyle","inputStyle","searchIcon","cancelIcon","showLoading","loadingProps"]);var _this$state=this.state,hasFocus=_this$state.hasFocus,isEmpty=_this$state.isEmpty;var loadingStyle=loadingProps.style,otherLoadingProps=objectWithoutProperties(loadingProps,["style"]);return React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$d.container,containerStyle]),__source:{fileName:_jsxFileName$h,lineNumber:99}},React__default.createElement(Input$1,_extends_1({testID:"searchInput"},attributes,{onFocus:this.onFocus,onBlur:this.onBlur,onChangeText:this.onChangeText,ref:function ref(input){_this2.input=input;},containerStyle:{paddingHorizontal:0},inputStyle:reactNative.StyleSheet.flatten([styles$d.input,inputStyle]),inputContainerStyle:reactNative.StyleSheet.flatten([styles$d.inputContainer,inputContainerStyle]),leftIcon:hasFocus?renderNode(Icon$1,cancelIcon,_objectSpread$d({},defaultCancelIcon,{onPress:this.cancel})):renderNode(Icon$1,searchIcon,defaultSearchIcon$1),leftIconContainerStyle:reactNative.StyleSheet.flatten([styles$d.leftIconContainerStyle,leftIconContainerStyle]),rightIcon:React__default.createElement(reactNative.View,{style:{flexDirection:'row'},__source:{fileName:_jsxFileName$h,lineNumber:128}},showLoading&&React__default.createElement(reactNative.ActivityIndicator,_extends_1({key:"loading",style:reactNative.StyleSheet.flatten([{marginRight:5},loadingStyle])},otherLoadingProps,{__source:{fileName:_jsxFileName$h,lineNumber:130}})),!isEmpty&&renderNode(Icon$1,clearIcon,_objectSpread$d({},defaultClearIcon$1,{key:'cancel',onPress:this.clear}))),rightIconContainerStyle:reactNative.StyleSheet.flatten([styles$d.rightIconContainerStyle,rightIconContainerStyle]),__source:{fileName:_jsxFileName$h,lineNumber:100}})));}}]);return SearchBar;}(React.Component);SearchBar$1.propTypes={value:propTypes.string,clearIcon:nodeType,searchIcon:nodeType,cancelIcon:nodeType,loadingProps:propTypes.object,showLoading:propTypes.bool,containerStyle:ViewPropTypes.style,leftIconContainerStyle:ViewPropTypes.style,rightIconContainerStyle:ViewPropTypes.style,inputContainerStyle:ViewPropTypes.style,inputStyle:reactNative.Text.propTypes.style,onClear:propTypes.func,onCancel:propTypes.func,onFocus:propTypes.func,onBlur:propTypes.func,onChangeText:propTypes.func};SearchBar$1.defaultProps={value:'',loadingProps:{},showLoading:false,onClear:function onClear(){return null;},onCancel:function onCancel(){return null;},onFocus:function onFocus(){return null;},onBlur:function onBlur(){return null;},onChangeText:function onChangeText(){return null;},searchIcon:defaultSearchIcon$1,clearIcon:defaultClearIcon$1,cancelIcon:defaultCancelIcon};var styles$d=reactNative.StyleSheet.create({container:{backgroundColor:'white',paddingTop:8,paddingBottom:8},input:{marginLeft:24,marginRight:8},inputContainer:{borderBottomWidth:0,width:'100%'},rightIconContainerStyle:{marginRight:8},leftIconContainerStyle:{marginLeft:8}});
-
-var _jsxFileName$i="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\searchbar\\SearchBar-default.js";function ownKeys$e(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$e(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$e(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$e(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var defaultSearchIcon$2=function defaultSearchIcon(theme){return {type:'material',size:18,name:'search',color:theme.colors.grey3};};var defaultClearIcon$2=function defaultClearIcon(theme){return {type:'material',size:18,name:'clear',color:theme.colors.grey3};};var SearchBar$2=function(_React$Component){inherits(SearchBar,_React$Component);function SearchBar(props){var _this;classCallCheck(this,SearchBar);_this=possibleConstructorReturn(this,getPrototypeOf(SearchBar).call(this,props));_this.focus=function(){_this.input.focus();};_this.blur=function(){_this.input.blur();};_this.clear=function(){_this.input.clear();_this.onChangeText('');_this.props.onClear();};_this.onFocus=function(){_this.props.onFocus();_this.setState({isEmpty:_this.props.value===''});};_this.onBlur=function(){_this.props.onBlur();};_this.onChangeText=function(text){_this.props.onChangeText(text);_this.setState({isEmpty:text===''});};var value=props.value;_this.state={isEmpty:value?value==='':true};return _this;}createClass(SearchBar,[{key:"render",value:function render(){var _this2=this;var _this$props=this.props,theme=_this$props.theme,rest=objectWithoutProperties(_this$props,["theme"]);var lightTheme=rest.lightTheme,round=rest.round,_rest$clearIcon=rest.clearIcon,clearIcon=_rest$clearIcon===void 0?defaultClearIcon$2(theme):_rest$clearIcon,containerStyle=rest.containerStyle,_rest$searchIcon=rest.searchIcon,searchIcon=_rest$searchIcon===void 0?defaultSearchIcon$2(theme):_rest$searchIcon,leftIconContainerStyle=rest.leftIconContainerStyle,rightIconContainerStyle=rest.rightIconContainerStyle,inputContainerStyle=rest.inputContainerStyle,inputStyle=rest.inputStyle,showLoading=rest.showLoading,loadingProps=rest.loadingProps,_rest$placeholderText=rest.placeholderTextColor,placeholderTextColor=_rest$placeholderText===void 0?theme.colors.grey3:_rest$placeholderText,attributes=objectWithoutProperties(rest,["lightTheme","round","clearIcon","containerStyle","searchIcon","leftIconContainerStyle","rightIconContainerStyle","inputContainerStyle","inputStyle","showLoading","loadingProps","placeholderTextColor"]);var isEmpty=this.state.isEmpty;var loadingStyle=loadingProps.style,otherLoadingProps=objectWithoutProperties(loadingProps,["style"]);return React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$e.container(theme),lightTheme&&styles$e.containerLight(theme),containerStyle]),__source:{fileName:_jsxFileName$i,lineNumber:85}},React__default.createElement(Input$1,_extends_1({testID:"searchInput"},attributes,{onFocus:this.onFocus,onBlur:this.onBlur,onChangeText:this.onChangeText,ref:function ref(input){_this2.input=input;},placeholderTextColor:placeholderTextColor,inputStyle:reactNative.StyleSheet.flatten([styles$e.inputStyle(theme),inputStyle]),inputContainerStyle:reactNative.StyleSheet.flatten([styles$e.inputContentContainer(theme),lightTheme&&styles$e.inputContentContainerLight(theme),round&&styles$e.round,inputContainerStyle]),containerStyle:styles$e.inputContainer,leftIcon:renderNode(Icon$1,searchIcon,defaultSearchIcon$2(theme)),leftIconContainerStyle:reactNative.StyleSheet.flatten([styles$e.leftIconContainerStyle,leftIconContainerStyle]),rightIcon:React__default.createElement(reactNative.View,{style:{flexDirection:'row'},__source:{fileName:_jsxFileName$i,lineNumber:119}},showLoading&&React__default.createElement(reactNative.ActivityIndicator,_extends_1({key:"loading",style:reactNative.StyleSheet.flatten([{marginRight:5},loadingStyle])},otherLoadingProps,{__source:{fileName:_jsxFileName$i,lineNumber:121}})),!isEmpty&&renderNode(Icon$1,clearIcon,_objectSpread$e({},defaultClearIcon$2(theme),{key:'cancel',onPress:this.clear}))),rightIconContainerStyle:reactNative.StyleSheet.flatten([styles$e.rightIconContainerStyle,rightIconContainerStyle]),__source:{fileName:_jsxFileName$i,lineNumber:92}})));}}]);return SearchBar;}(React__default.Component);SearchBar$2.propTypes={value:propTypes.string,clearIcon:nodeType,searchIcon:nodeType,loadingProps:propTypes.object,showLoading:propTypes.bool,containerStyle:ViewPropTypes.style,leftIconContainerStyle:ViewPropTypes.style,rightIconContainerStyle:ViewPropTypes.style,inputContainerStyle:ViewPropTypes.style,inputStyle:reactNative.Text.propTypes.style,onClear:propTypes.func,onFocus:propTypes.func,onBlur:propTypes.func,onChangeText:propTypes.func,placeholderTextColor:propTypes.string,lightTheme:propTypes.bool,round:propTypes.bool,theme:propTypes.object};SearchBar$2.defaultProps={value:'',loadingProps:{},showLoading:false,lightTheme:false,round:false,onClear:function onClear(){return null;},onFocus:function onFocus(){return null;},onBlur:function onBlur(){return null;},onChangeText:function onChangeText(){return null;}};var styles$e={container:function container(theme){return {borderTopWidth:1,borderBottomWidth:1,borderBottomColor:'#000',borderTopColor:'#000',padding:8,backgroundColor:theme.colors.grey0};},rightIconContainerStyle:{marginRight:8},leftIconContainerStyle:{marginLeft:8},containerLight:function containerLight(theme){return {borderTopColor:'#e1e1e1',borderBottomColor:'#e1e1e1',backgroundColor:theme.colors.grey5};},inputContainer:{paddingHorizontal:0},inputStyle:function inputStyle(theme){return {color:theme.colors.grey3,marginLeft:10};},inputContentContainer:function inputContentContainer(theme){return {borderBottomWidth:0,borderRadius:3,overflow:'hidden',minHeight:30,backgroundColor:theme.colors.searchBg};},inputContentContainerLight:function inputContentContainerLight(theme){return {backgroundColor:theme.colors.grey4};},round:{borderRadius:15}};
-
-var _jsxFileName$j="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\searchbar\\SearchBar.js";var SEARCHBAR_COMPONENTS={ios:SearchBar,android:SearchBar$1,default:SearchBar$2};var SearchBar$3=function(_React$Component){inherits(SearchBar,_React$Component);function SearchBar(){var _getPrototypeOf2;var _this;classCallCheck(this,SearchBar);for(var _len=arguments.length,args=new Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}_this=possibleConstructorReturn(this,(_getPrototypeOf2=getPrototypeOf(SearchBar)).call.apply(_getPrototypeOf2,[this].concat(args)));_this.focus=function(){_this.searchbar.focus();};_this.blur=function(){_this.searchbar.blur();};_this.clear=function(){_this.searchbar.clear();};_this.cancel=function(){_this.searchbar.cancel&&_this.searchbar.cancel();};return _this;}createClass(SearchBar,[{key:"render",value:function render(){var _this2=this;var Component=SEARCHBAR_COMPONENTS[this.props.platform]||SearchBar$2;return React__default.createElement(Component,_extends_1({ref:function ref(_ref){_this2.searchbar=_ref;}},this.props,{__source:{fileName:_jsxFileName$j,lineNumber:38}}));}}]);return SearchBar;}(React__default.Component);SearchBar$3.propTypes={platform:propTypes.oneOf(['default','ios','android'])};SearchBar$3.defaultProps={platform:'default'};var SearchBar$4 = withTheme(SearchBar$3,'SearchBar');
-
-var _jsxFileName$k="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\badge\\withBadge.js";var withBadge=function withBadge(value){var options=arguments.length>1&&arguments[1]!==undefined?arguments[1]:{};return function(WrappedComponent){var WithBadge=function WithBadge(props){var bottom=options.bottom,_options$hidden=options.hidden,hidden=_options$hidden===void 0?false:_options$hidden,left=options.left,containerStyle=options.containerStyle,badgeProps=objectWithoutProperties(options,["bottom","hidden","left","containerStyle"]);var _options$right=options.right,right=_options$right===void 0?-16:_options$right,_options$top=options.top,top=_options$top===void 0?-1:_options$top;if(!value){right=-3;top=3;}var badgeValue=typeof value==='function'?value(props):value;return React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$f.container,containerStyle]),__source:{fileName:_jsxFileName$k,lineNumber:26}},React__default.createElement(WrappedComponent,_extends_1({},props,{__source:{fileName:_jsxFileName$k,lineNumber:27}})),!hidden&&React__default.createElement(Badge$1,_extends_1({value:badgeValue,status:"error",containerStyle:reactNative.StyleSheet.flatten([styles$f.badgeContainer,{bottom:bottom,left:left,right:right,top:top}])},badgeProps,{__source:{fileName:_jsxFileName$k,lineNumber:30}})));};WithBadge.displayName="WithBadge("+(WrappedComponent.displayName||WrappedComponent.name||'Component')+")";return WithBadge;};};var styles$f=reactNative.StyleSheet.create({badgeContainer:{position:'absolute'},container:{alignItems:'center',justifyContent:'center',position:'relative'}});
-
-var _jsxFileName$l="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\divider\\Divider.js";var Divider=function Divider(_ref){var style=_ref.style,theme=_ref.theme,rest=objectWithoutProperties(_ref,["style","theme"]);return React__default.createElement(reactNative.View,_extends_1({style:reactNative.StyleSheet.flatten([styles$g.container(theme),style])},rest,{__source:{fileName:_jsxFileName$l,lineNumber:8}}));};Divider.propTypes={style:ViewPropTypes.style,theme:propTypes.object};var styles$g={container:function container(theme){return {backgroundColor:theme.colors.divider,height:reactNative.StyleSheet.hairlineWidth};}};var Divider$1 = withTheme(Divider,'Divider');
-
-var _jsxFileName$m="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\slider\\Slider.js";function ownKeys$f(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$f(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$f(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$f(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var TRACK_SIZE=4;var THUMB_SIZE=20;var DEFAULT_ANIMATION_CONFIGS={spring:{friction:7,tension:100},timing:{duration:150,easing:reactNative.Easing.inOut(reactNative.Easing.ease),delay:0}};var getBoundedValue=function getBoundedValue(_ref){var value=_ref.value,maximumValue=_ref.maximumValue,minimumValue=_ref.minimumValue;return value>maximumValue?maximumValue:value<minimumValue?minimumValue:value;};var Rect=function(){function Rect(x,y,width,height){classCallCheck(this,Rect);this.x=x;this.y=y;this.width=width;this.height=height;}createClass(Rect,[{key:"containsPoint",value:function containsPoint(x,y){return x>=this.x&&y>=this.y&&x<=this.x+this.width&&y<=this.y+this.height;}}]);return Rect;}();var Slider=function(_Component){inherits(Slider,_Component);function Slider(props){var _this;classCallCheck(this,Slider);_this=possibleConstructorReturn(this,getPrototypeOf(Slider).call(this,props));_this.measureContainer=function(x){_this.handleMeasure('containerSize',x);};_this.measureTrack=function(x){_this.handleMeasure('trackSize',x);};_this.measureThumb=function(x){_this.handleMeasure('thumbSize',x);};_this.state={containerSize:{width:0,height:0},trackSize:{width:0,height:0},thumbSize:{width:0,height:0},allMeasured:false,value:new reactNative.Animated.Value(getBoundedValue(props))};_this.panResponder=reactNative.PanResponder.create({onStartShouldSetPanResponder:_this.handleStartShouldSetPanResponder.bind(assertThisInitialized(_this)),onMoveShouldSetPanResponder:_this.handleMoveShouldSetPanResponder.bind(assertThisInitialized(_this)),onPanResponderGrant:_this.handlePanResponderGrant.bind(assertThisInitialized(_this)),onPanResponderMove:_this.handlePanResponderMove.bind(assertThisInitialized(_this)),onPanResponderRelease:_this.handlePanResponderEnd.bind(assertThisInitialized(_this)),onPanResponderTerminationRequest:_this.handlePanResponderRequestEnd.bind(assertThisInitialized(_this)),onPanResponderTerminate:_this.handlePanResponderEnd.bind(assertThisInitialized(_this))});return _this;}createClass(Slider,[{key:"componentDidUpdate",value:function componentDidUpdate(prevProps){var newValue=getBoundedValue(this.props);if(prevProps.value!==newValue){if(this.props.animateTransitions){this.setCurrentValueAnimated(newValue);}else{this.setCurrentValue(newValue);}}}},{key:"setCurrentValue",value:function setCurrentValue(value){this.state.value.setValue(value);}},{key:"setCurrentValueAnimated",value:function setCurrentValueAnimated(value){var animationType=this.props.animationType;var animationConfig=_extends_1({},DEFAULT_ANIMATION_CONFIGS[animationType],this.props.animationConfig,{toValue:value});reactNative.Animated[animationType](this.state.value,animationConfig).start();}},{key:"handleMoveShouldSetPanResponder",value:function handleMoveShouldSetPanResponder(){return false;}},{key:"handlePanResponderGrant",value:function handlePanResponderGrant(){this._previousLeft=this.getThumbLeft(this.getCurrentValue());this.fireChangeEvent('onSlidingStart');}},{key:"handlePanResponderMove",value:function handlePanResponderMove(_,gestureState){if(this.props.disabled){return;}this.setCurrentValue(this.getValue(gestureState));this.fireChangeEvent('onValueChange');}},{key:"handlePanResponderRequestEnd",value:function handlePanResponderRequestEnd(){return false;}},{key:"handlePanResponderEnd",value:function handlePanResponderEnd(_,gestureState){if(this.props.disabled){return;}this.setCurrentValue(this.getValue(gestureState));this.fireChangeEvent('onSlidingComplete');}},{key:"thumbHitTest",value:function thumbHitTest(_ref2){var nativeEvent=_ref2.nativeEvent;var thumbTouchRect=this.getThumbTouchRect();return thumbTouchRect.containsPoint(nativeEvent.locationX,nativeEvent.locationY);}},{key:"handleStartShouldSetPanResponder",value:function handleStartShouldSetPanResponder(e){return this.thumbHitTest(e);}},{key:"fireChangeEvent",value:function fireChangeEvent(event){if(this.props[event]){this.props[event](this.getCurrentValue());}}},{key:"getTouchOverflowSize",value:function getTouchOverflowSize(){var _this$state=this.state,thumbSize=_this$state.thumbSize,allMeasured=_this$state.allMeasured,containerSize=_this$state.containerSize;var thumbTouchSize=this.props.thumbTouchSize;var size={};if(allMeasured===true){size.width=Math.max(0,thumbTouchSize.width-thumbSize.width);size.height=Math.max(0,thumbTouchSize.height-containerSize.height);}return size;}},{key:"getTouchOverflowStyle",value:function getTouchOverflowStyle(){var _this$getTouchOverflo=this.getTouchOverflowSize(),width=_this$getTouchOverflo.width,height=_this$getTouchOverflo.height;var touchOverflowStyle={};if(width!==undefined&&height!==undefined){var verticalMargin=-height/2;touchOverflowStyle.marginTop=verticalMargin;touchOverflowStyle.marginBottom=verticalMargin;var horizontalMargin=-width/2;touchOverflowStyle.marginLeft=horizontalMargin;touchOverflowStyle.marginRight=horizontalMargin;}if(this.props.debugTouchArea===true){touchOverflowStyle.backgroundColor='orange';touchOverflowStyle.opacity=0.5;}return touchOverflowStyle;}},{key:"handleMeasure",value:function handleMeasure(name,x){var _x$nativeEvent$layout=x.nativeEvent.layout,layoutWidth=_x$nativeEvent$layout.width,layoutHeight=_x$nativeEvent$layout.height;var width=this.props.orientation==='vertical'?layoutHeight:layoutWidth;var height=this.props.orientation==='vertical'?layoutWidth:layoutHeight;var size={width:width,height:height};var storeName="_"+name;var currentSize=this[storeName];if(currentSize&&width===currentSize.width&&height===currentSize.height){return;}this[storeName]=size;if(this._containerSize&&this._trackSize&&this._thumbSize){this.setState({containerSize:this._containerSize,trackSize:this._trackSize,thumbSize:this._thumbSize,allMeasured:true});}}},{key:"getValue",value:function getValue(gestureState){var length=this.state.containerSize.width-this.state.thumbSize.width;var thumbLeft=this._previousLeft+(this.props.orientation==='vertical'?gestureState.dy:gestureState.dx);var ratio=thumbLeft/length;if(this.props.step){return Math.max(this.props.minimumValue,Math.min(this.props.maximumValue,this.props.minimumValue+Math.round(ratio*(this.props.maximumValue-this.props.minimumValue)/this.props.step)*this.props.step));}return Math.max(this.props.minimumValue,Math.min(this.props.maximumValue,ratio*(this.props.maximumValue-this.props.minimumValue)+this.props.minimumValue));}},{key:"getCurrentValue",value:function getCurrentValue(){return this.state.value.__getValue();}},{key:"getRatio",value:function getRatio(value){return (value-this.props.minimumValue)/(this.props.maximumValue-this.props.minimumValue);}},{key:"getThumbLeft",value:function getThumbLeft(value){var ratio=this.getRatio(value);return ratio*(this.state.containerSize.width-this.state.thumbSize.width);}},{key:"getThumbTouchRect",value:function getThumbTouchRect(){var _this$state2=this.state,thumbSize=_this$state2.thumbSize,containerSize=_this$state2.containerSize;var thumbTouchSize=this.props.thumbTouchSize;var touchOverflowSize=this.getTouchOverflowSize();if(this.props.orientation==='vertical'){return new Rect(touchOverflowSize.height/2+(containerSize.height-thumbTouchSize.height)/2,touchOverflowSize.width/2+this.getThumbLeft(this.getCurrentValue())+(thumbSize.width-thumbTouchSize.width)/2,thumbTouchSize.width,thumbTouchSize.height);}return new Rect(touchOverflowSize.width/2+this.getThumbLeft(this.getCurrentValue())+(thumbSize.width-thumbTouchSize.width)/2,touchOverflowSize.height/2+(containerSize.height-thumbTouchSize.height)/2,thumbTouchSize.width,thumbTouchSize.height);}},{key:"renderDebugThumbTouchRect",value:function renderDebugThumbTouchRect(thumbLeft){var thumbTouchRect=this.getThumbTouchRect();var positionStyle={left:thumbLeft,top:thumbTouchRect.y,width:thumbTouchRect.width,height:thumbTouchRect.height};return React__default.createElement(reactNative.Animated.View,{style:positionStyle,pointerEvents:"none",__source:{fileName:_jsxFileName$m,lineNumber:319}});}},{key:"getMinimumTrackStyles",value:function getMinimumTrackStyles(thumbStart){var _this$state3=this.state,thumbSize=_this$state3.thumbSize,trackSize=_this$state3.trackSize;var minimumTrackStyle={position:'absolute'};if(this.props.orientation==='vertical'){minimumTrackStyle.height=reactNative.Animated.add(thumbStart,thumbSize.height/2);minimumTrackStyle.marginLeft=-trackSize.width;}else{minimumTrackStyle.width=reactNative.Animated.add(thumbStart,thumbSize.width/2);minimumTrackStyle.marginTop=-trackSize.height;}return minimumTrackStyle;}},{key:"getThumbPositionStyles",value:function getThumbPositionStyles(thumbStart){if(this.props.orientation==='vertical'){return [{translateX:-(this.state.trackSize.height+this.state.thumbSize.height)/2},{translateY:thumbStart}];}return [{translateX:thumbStart},{translateY:-(this.state.trackSize.height+this.state.thumbSize.height)/2}];}},{key:"render",value:function render(){var _this$props=this.props,minimumValue=_this$props.minimumValue,maximumValue=_this$props.maximumValue,minimumTrackTintColor=_this$props.minimumTrackTintColor,maximumTrackTintColor=_this$props.maximumTrackTintColor,thumbTintColor=_this$props.thumbTintColor,containerStyle=_this$props.containerStyle,style=_this$props.style,trackStyle=_this$props.trackStyle,thumbStyle=_this$props.thumbStyle,debugTouchArea=_this$props.debugTouchArea,orientation=_this$props.orientation,other=objectWithoutProperties(_this$props,["minimumValue","maximumValue","minimumTrackTintColor","maximumTrackTintColor","thumbTintColor","containerStyle","style","trackStyle","thumbStyle","debugTouchArea","orientation"]);var _this$state4=this.state,value=_this$state4.value,containerSize=_this$state4.containerSize,thumbSize=_this$state4.thumbSize,allMeasured=_this$state4.allMeasured;var mainStyles=containerStyle||styles$h;var thumbStart=value.interpolate({inputRange:[minimumValue,maximumValue],outputRange:[0,containerSize.width-thumbSize.width]});var valueVisibleStyle={};if(!allMeasured){valueVisibleStyle.height=0;valueVisibleStyle.width=0;}var minimumTrackStyle=_objectSpread$f({},this.getMinimumTrackStyles(thumbStart),{backgroundColor:minimumTrackTintColor},valueVisibleStyle);var thumbStyleTransform=thumbStyle&&thumbStyle.transform||[];var touchOverflowStyle=this.getTouchOverflowStyle();return React__default.createElement(reactNative.View,_extends_1({},other,{style:reactNative.StyleSheet.flatten([orientation==='vertical'?mainStyles.containerVertical:mainStyles.containerHorizontal,style]),onLayout:this.measureContainer,__source:{fileName:_jsxFileName$m,lineNumber:397}}),React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([mainStyles.track,orientation==='vertical'?mainStyles.trackVertical:mainStyles.trackHorizontal,trackStyle,{backgroundColor:maximumTrackTintColor}]),onLayout:this.measureTrack,__source:{fileName:_jsxFileName$m,lineNumber:407}}),React__default.createElement(reactNative.Animated.View,{style:reactNative.StyleSheet.flatten([mainStyles.track,orientation==='vertical'?mainStyles.trackVertical:mainStyles.trackHorizontal,trackStyle,minimumTrackStyle]),__source:{fileName:_jsxFileName$m,lineNumber:418}}),React__default.createElement(reactNative.Animated.View,{testID:"sliderThumb",onLayout:this.measureThumb,style:reactNative.StyleSheet.flatten([{backgroundColor:thumbTintColor},mainStyles.thumb,orientation==='vertical'?mainStyles.thumbVertical(trackStyle&&trackStyle.width):mainStyles.thumbHorizontal(trackStyle&&trackStyle.height),thumbStyle,_objectSpread$f({transform:[].concat(toConsumableArray(this.getThumbPositionStyles(thumbStart)),toConsumableArray(thumbStyleTransform))},valueVisibleStyle)]),__source:{fileName:_jsxFileName$m,lineNumber:428}}),React__default.createElement(reactNative.View,_extends_1({style:reactNative.StyleSheet.flatten([styles$h.touchArea,touchOverflowStyle])},this.panResponder.panHandlers,{__source:{fileName:_jsxFileName$m,lineNumber:447}}),debugTouchArea===true&&this.renderDebugThumbTouchRect(thumbStart)));}}]);return Slider;}(React.Component);Slider.propTypes={value:propTypes.number,disabled:propTypes.bool,minimumValue:propTypes.number,maximumValue:propTypes.number,step:propTypes.number,minimumTrackTintColor:propTypes.string,maximumTrackTintColor:propTypes.string,thumbTintColor:propTypes.string,thumbTouchSize:propTypes.shape({width:propTypes.number,height:propTypes.number}),onValueChange:propTypes.func,onSlidingStart:propTypes.func,onSlidingComplete:propTypes.func,style:ViewPropTypes.style,trackStyle:ViewPropTypes.style,thumbStyle:ViewPropTypes.style,debugTouchArea:propTypes.bool,animateTransitions:propTypes.bool,animationType:propTypes.oneOf(['spring','timing']),orientation:propTypes.oneOf(['horizontal','vertical']),animationConfig:propTypes.object,containerStyle:ViewPropTypes.style};Slider.defaultProps={value:0,minimumValue:0,maximumValue:1,step:0,minimumTrackTintColor:'#3f3f3f',maximumTrackTintColor:'#b3b3b3',thumbTintColor:'red',thumbTouchSize:{width:40,height:40},debugTouchArea:false,animationType:'timing',orientation:'horizontal'};var styles$h=reactNative.StyleSheet.create({containerHorizontal:{height:40,justifyContent:'center'},containerVertical:{width:40,flexDirection:'column',alignItems:'center'},track:{borderRadius:TRACK_SIZE/2},trackHorizontal:{height:TRACK_SIZE},trackVertical:{flex:1,width:TRACK_SIZE},thumb:{position:'absolute',width:THUMB_SIZE,height:THUMB_SIZE,borderRadius:THUMB_SIZE/2},thumbHorizontal:function thumbHorizontal(height){return {top:22+(height?(height-4)/2:0)};},thumbVertical:function thumbVertical(width){return {left:22+(width?(width-4)/2:0)};},touchArea:{position:'absolute',backgroundColor:'transparent',top:0,left:0,right:0,bottom:0},debugThumbTouchArea:{position:'absolute',backgroundColor:'green',opacity:0.5}});var Slider$1 = withTheme(Slider,'Slider');
-
-var _jsxFileName$n="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\card\\Card.js";function ownKeys$g(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$g(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$g(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$g(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var Card=function Card(props){var children=props.children,containerStyle=props.containerStyle,wrapperStyle=props.wrapperStyle,imageWrapperStyle=props.imageWrapperStyle,title=props.title,titleStyle=props.titleStyle,titleNumberOfLines=props.titleNumberOfLines,featuredTitle=props.featuredTitle,featuredTitleStyle=props.featuredTitleStyle,featuredSubtitle=props.featuredSubtitle,featuredSubtitleStyle=props.featuredSubtitleStyle,dividerStyle=props.dividerStyle,image=props.image,imageStyle=props.imageStyle,imageProps=props.imageProps,theme=props.theme,attributes=objectWithoutProperties(props,["children","containerStyle","wrapperStyle","imageWrapperStyle","title","titleStyle","titleNumberOfLines","featuredTitle","featuredTitleStyle","featuredSubtitle","featuredSubtitleStyle","dividerStyle","image","imageStyle","imageProps","theme"]);return React__default.createElement(reactNative.View,_extends_1({},attributes,{style:reactNative.StyleSheet.flatten([styles$i.container(theme),image&&{padding:0},containerStyle&&containerStyle]),__source:{fileName:_jsxFileName$n,lineNumber:34}}),React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$i.wrapper,wrapperStyle&&wrapperStyle]),__source:{fileName:_jsxFileName$n,lineNumber:42}},title===''||React__default.isValidElement(title)?title:title&&title.length&&React__default.createElement(reactNative.View,{__source:{fileName:_jsxFileName$n,lineNumber:52}},React__default.createElement(Text,{testID:"cardTitle",style:reactNative.StyleSheet.flatten([styles$i.cardTitle(theme),image&&styles$i.imageCardTitle,titleStyle&&titleStyle]),numberOfLines:titleNumberOfLines,__source:{fileName:_jsxFileName$n,lineNumber:53}},title),!image&&React__default.createElement(Divider$1,{style:reactNative.StyleSheet.flatten([styles$i.divider,dividerStyle&&dividerStyle]),__source:{fileName:_jsxFileName$n,lineNumber:66}})),image&&React__default.createElement(reactNative.View,{style:imageWrapperStyle&&imageWrapperStyle,__source:{fileName:_jsxFileName$n,lineNumber:77}},React__default.createElement(Image$1,_extends_1({style:[{width:null,height:150},imageStyle&&imageStyle],source:image},imageProps,{__source:{fileName:_jsxFileName$n,lineNumber:78}}),(featuredTitle||featuredSubtitle)&&React__default.createElement(reactNative.View,{style:styles$i.overlayContainer,__source:{fileName:_jsxFileName$n,lineNumber:84}},featuredTitle&&React__default.createElement(Text,{style:reactNative.StyleSheet.flatten([styles$i.featuredTitle,featuredTitleStyle&&featuredTitleStyle]),__source:{fileName:_jsxFileName$n,lineNumber:86}},featuredTitle),featuredSubtitle&&React__default.createElement(Text,{style:reactNative.StyleSheet.flatten([styles$i.featuredSubtitle,featuredSubtitleStyle&&featuredSubtitleStyle]),__source:{fileName:_jsxFileName$n,lineNumber:96}},featuredSubtitle))),React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([{padding:10},wrapperStyle&&wrapperStyle]),__source:{fileName:_jsxFileName$n,lineNumber:109}},children)),!image&&children));};Card.propTypes={children:propTypes.oneOfType([propTypes.element,propTypes.arrayOf(propTypes.element)]),containerStyle:ViewPropTypes.style,wrapperStyle:ViewPropTypes.style,overlayStyle:ViewPropTypes.style,title:propTypes.oneOfType([propTypes.string,propTypes.element]),titleStyle:TextPropTypes.style,featuredTitle:propTypes.string,featuredTitleStyle:TextPropTypes.style,featuredSubtitle:propTypes.string,featuredSubtitleStyle:TextPropTypes.style,dividerStyle:ViewPropTypes.style,image:reactNative.Image.propTypes.source,imageStyle:ViewPropTypes.style,imageWrapperStyle:ViewPropTypes.style,imageProps:propTypes.object,titleNumberOfLines:propTypes.number,theme:propTypes.object};var styles$i={container:function container(theme){return _objectSpread$g({backgroundColor:'white',borderWidth:1,padding:15,margin:15,marginBottom:0,borderColor:theme.colors.grey5},reactNative.Platform.select({android:{elevation:1},default:{shadowColor:'rgba(0,0,0, .2)',shadowOffset:{height:0,width:0},shadowOpacity:1,shadowRadius:1}}));},featuredTitle:_objectSpread$g({fontSize:normalize(18),marginBottom:8,color:'white'},reactNative.Platform.select({android:_objectSpread$g({},fonts.android.black),default:{fontWeight:'800'}})),featuredSubtitle:_objectSpread$g({fontSize:normalize(13),marginBottom:8,color:'white'},reactNative.Platform.select({android:_objectSpread$g({},fonts.android.black),default:{fontWeight:'400'}})),wrapper:{backgroundColor:'transparent'},divider:{marginBottom:15},cardTitle:function cardTitle(theme){return _objectSpread$g({fontSize:normalize(14),color:theme.colors.grey1},reactNative.Platform.select({android:_objectSpread$g({},fonts.android.black),default:{fontWeight:'bold'}}),{textAlign:'center',marginBottom:15});},imageCardTitle:{marginTop:15},overlayContainer:{flex:1,alignItems:'center',backgroundColor:'rgba(0, 0, 0, 0.2)',alignSelf:'stretch',justifyContent:'center',position:'absolute',top:0,left:0,right:0,bottom:0}};var Card$1 = withTheme(Card,'Card');
-
-var _jsxFileName$o="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\tile\\FeaturedTile.js";function ownKeys$h(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$h(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$h(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$h(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var renderText$2=function renderText(content,defaultProps,style){return renderNode(Text,content,_objectSpread$h({},defaultProps,{style:reactNative.StyleSheet.flatten([style,defaultProps&&defaultProps.style])}));};var FeaturedTile=function FeaturedTile(props){var title=props.title,icon=props.icon,caption=props.caption,imageSrc=props.imageSrc,containerStyle=props.containerStyle,imageContainerStyle=props.imageContainerStyle,overlayContainerStyle=props.overlayContainerStyle,iconContainerStyle=props.iconContainerStyle,titleStyle=props.titleStyle,captionStyle=props.captionStyle,ImageComponent=props.ImageComponent,imageProps=props.imageProps,attributes=objectWithoutProperties(props,["title","icon","caption","imageSrc","containerStyle","imageContainerStyle","overlayContainerStyle","iconContainerStyle","titleStyle","captionStyle","ImageComponent","imageProps"]);var _props$width=props.width,width=_props$width===void 0?reactNative.Dimensions.get('window').width:_props$width,_props$height=props.height,height=_props$height===void 0?width*0.8:_props$height;var styles=reactNative.StyleSheet.create({container:{width:width,height:height},imageContainer:{alignItems:'center',justifyContent:'center',width:width,height:height},overlayContainer:{flex:1,alignItems:'center',alignSelf:'stretch',justifyContent:'center',paddingLeft:25,paddingRight:25,paddingTop:45,paddingBottom:40,position:'absolute',top:0,left:0,right:0,bottom:0},text:{color:'#ffffff',backgroundColor:'rgba(0,0,0,0)',marginBottom:15,textAlign:'center'},iconContainer:{justifyContent:'center',alignItems:'center',alignSelf:'center'}});return React__default.createElement(reactNative.TouchableOpacity,_extends_1({},attributes,{style:reactNative.StyleSheet.flatten([styles.container,containerStyle&&containerStyle]),__source:{fileName:_jsxFileName$o,lineNumber:86}}),React__default.createElement(ImageComponent,_extends_1({resizeMode:"cover"},imageProps,{source:imageSrc,style:reactNative.StyleSheet.flatten([styles.imageContainer,imageContainerStyle&&imageContainerStyle]),__source:{fileName:_jsxFileName$o,lineNumber:93}}),React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles.overlayContainer,overlayContainerStyle&&overlayContainerStyle]),__source:{fileName:_jsxFileName$o,lineNumber:102}},React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles.iconContainer,iconContainerStyle&&iconContainerStyle]),__source:{fileName:_jsxFileName$o,lineNumber:108}},icon&&React__default.createElement(Icon$1,_extends_1({},icon,{__source:{fileName:_jsxFileName$o,lineNumber:114}}))),React__default.createElement(Text,{testID:"featuredTileTitle",h4:true,style:reactNative.StyleSheet.flatten([styles.text,titleStyle&&titleStyle]),__source:{fileName:_jsxFileName$o,lineNumber:116}},title),renderText$2(caption,{style:captionStyle},styles.text))));};FeaturedTile.propTypes={title:propTypes.string,icon:propTypes.object,caption:propTypes.node,imageSrc:reactNative.Image.propTypes.source,onPress:propTypes.func,containerStyle:ViewPropTypes.style,iconContainerStyle:ViewPropTypes.style,imageContainerStyle:ViewPropTypes.style,overlayContainerStyle:ViewPropTypes.style,titleStyle:reactNative.Text.propTypes.style,captionStyle:reactNative.Text.propTypes.style,width:propTypes.number,height:propTypes.number,ImageComponent:propTypes.elementType,imageProps:propTypes.object};FeaturedTile.defaultProps={ImageComponent:BackgroundImage,imageProps:{}};var FeaturedTile$1 = withTheme(FeaturedTile,'FeaturedTile');
-
-var _jsxFileName$p="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\tile\\Tile.js";function ownKeys$i(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$i(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$i(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$i(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var Tile=function Tile(props){var featured=props.featured,imageSrc=props.imageSrc,icon=props.icon,title=props.title,children=props.children,caption=props.caption,titleStyle=props.titleStyle,onPress=props.onPress,activeOpacity=props.activeOpacity,overlayContainerStyle=props.overlayContainerStyle,captionStyle=props.captionStyle,iconContainerStyle=props.iconContainerStyle,imageContainerStyle=props.imageContainerStyle,containerStyle=props.containerStyle,contentContainerStyle=props.contentContainerStyle,titleNumberOfLines=props.titleNumberOfLines,ImageComponent=props.ImageComponent,imageProps=props.imageProps,attributes=objectWithoutProperties(props,["featured","imageSrc","icon","title","children","caption","titleStyle","onPress","activeOpacity","overlayContainerStyle","captionStyle","iconContainerStyle","imageContainerStyle","containerStyle","contentContainerStyle","titleNumberOfLines","ImageComponent","imageProps"]);var width=props.width,_props$height=props.height,height=_props$height===void 0?width*0.8:_props$height;if(featured){var featuredProps={title:title,icon:icon,caption:caption,imageSrc:imageSrc,onPress:onPress,activeOpacity:activeOpacity,containerStyle:containerStyle,imageContainerStyle:imageContainerStyle,overlayContainerStyle:overlayContainerStyle,titleStyle:titleStyle,captionStyle:captionStyle,width:width,height:height,imageProps:imageProps,ImageComponent:ImageComponent};return React__default.createElement(FeaturedTile$1,_extends_1({},featuredProps,{__source:{fileName:_jsxFileName$p,lineNumber:61}}));}return React__default.createElement(reactNative.TouchableOpacity,_extends_1({},attributes,{onPress:onPress,activeOpacity:activeOpacity,style:reactNative.StyleSheet.flatten([{width:width,height:height},containerStyle&&containerStyle]),__source:{fileName:_jsxFileName$p,lineNumber:65}}),React__default.createElement(ImageComponent,_extends_1({resizeMode:"cover",source:imageSrc,containerStyle:reactNative.StyleSheet.flatten([styles$j.imageContainer,imageContainerStyle&&imageContainerStyle]),style:_objectSpread$i({},reactNative.StyleSheet.absoluteFillObject,{alignItems:'center',justifyContent:'center'})},imageProps,{__source:{fileName:_jsxFileName$p,lineNumber:77}}),React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$j.iconContainer,iconContainerStyle&&iconContainerStyle]),__source:{fileName:_jsxFileName$p,lineNumber:91}},icon&&React__default.createElement(Icon$1,_extends_1({},icon,{__source:{fileName:_jsxFileName$p,lineNumber:97}})))),React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$j.contentContainer,contentContainerStyle&&contentContainerStyle]),__source:{fileName:_jsxFileName$p,lineNumber:101}},React__default.createElement(Text,{testID:"tileTitle",h4:true,style:reactNative.StyleSheet.flatten([styles$j.text,titleStyle&&titleStyle]),numberOfLines:titleNumberOfLines,__source:{fileName:_jsxFileName$p,lineNumber:107}},title),children));};Tile.propTypes={title:propTypes.string,icon:propTypes.object,caption:propTypes.node,imageSrc:reactNative.Image.propTypes.source,onPress:propTypes.func,activeOpacity:propTypes.number,containerStyle:ViewPropTypes.style,imageContainerStyle:ViewPropTypes.style,iconContainerStyle:ViewPropTypes.style,overlayContainerStyle:ViewPropTypes.style,titleStyle:TextPropTypes.style,captionStyle:TextPropTypes.style,width:propTypes.number,height:propTypes.number,featured:propTypes.bool,children:propTypes.node,contentContainerStyle:ViewPropTypes.style,titleNumberOfLines:propTypes.number,imageProps:propTypes.object,ImageComponent:propTypes.elementType};Tile.defaultProps={width:reactNative.Dimensions.get('window').width,ImageComponent:Image$1,imageProps:{}};var styles$j=reactNative.StyleSheet.create({imageContainer:{flex:2},text:{backgroundColor:'rgba(0,0,0,0)',marginBottom:5},contentContainer:{paddingTop:15,paddingBottom:5,paddingLeft:15,paddingRight:15},iconContainer:{justifyContent:'center',alignItems:'center',alignSelf:'center'}});var Tile$1 = withTheme(Tile,'Tile');
-
-var _jsxFileName$q="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\header\\Header.js";function ownKeys$j(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$j(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$j(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$j(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var ALIGN_STYLE={left:'flex-start',right:'flex-end',center:'center'};var Children=function Children(_ref){var style=_ref.style,placement=_ref.placement,children=_ref.children;return React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([{alignItems:ALIGN_STYLE[placement]},style]),__source:{fileName:_jsxFileName$q,lineNumber:25}},children==null||children===false?null:children.text?renderNode(Text,children.text,_objectSpread$j({numberOfLines:1},children)):children.icon?renderNode(Icon$1,_objectSpread$j({},children,{name:children.icon,containerStyle:reactNative.StyleSheet.flatten([{alignItems:ALIGN_STYLE[placement]},children.containerStyle])})):renderNode(Text,children));};Children.propTypes={placement:propTypes.oneOf(['left','center','right']),style:ViewPropTypes.style,children:propTypes.oneOfType([nodeType,propTypes.node])};var Header=function(_Component){inherits(Header,_Component);function Header(){classCallCheck(this,Header);return possibleConstructorReturn(this,getPrototypeOf(Header).apply(this,arguments));}createClass(Header,[{key:"componentDidMount",value:function componentDidMount(){var _this$props=this.props,linearGradientProps=_this$props.linearGradientProps,ViewComponent=_this$props.ViewComponent;if(linearGradientProps&&!global.Expo&&!ViewComponent){console.error("You need to pass a ViewComponent to use linearGradientProps !\nExample: ViewComponent={require('react-native-linear-gradient')}");}}},{key:"render",value:function render(){var _this$props2=this.props,statusBarProps=_this$props2.statusBarProps,leftComponent=_this$props2.leftComponent,centerComponent=_this$props2.centerComponent,rightComponent=_this$props2.rightComponent,leftContainerStyle=_this$props2.leftContainerStyle,centerContainerStyle=_this$props2.centerContainerStyle,rightContainerStyle=_this$props2.rightContainerStyle,backgroundColor=_this$props2.backgroundColor,backgroundImage=_this$props2.backgroundImage,backgroundImageStyle=_this$props2.backgroundImageStyle,containerStyle=_this$props2.containerStyle,placement=_this$props2.placement,barStyle=_this$props2.barStyle,children=_this$props2.children,linearGradientProps=_this$props2.linearGradientProps,_this$props2$ViewComp=_this$props2.ViewComponent,ViewComponent=_this$props2$ViewComp===void 0?linearGradientProps&&global.Expo?global.Expo.LinearGradient:reactNative.ImageBackground:_this$props2$ViewComp,theme=_this$props2.theme,attributes=objectWithoutProperties(_this$props2,["statusBarProps","leftComponent","centerComponent","rightComponent","leftContainerStyle","centerContainerStyle","rightContainerStyle","backgroundColor","backgroundImage","backgroundImageStyle","containerStyle","placement","barStyle","children","linearGradientProps","ViewComponent","theme"]);return React__default.createElement(ViewComponent,_extends_1({testID:"headerContainer"},attributes,{style:reactNative.StyleSheet.flatten([styles$k.container(theme),backgroundColor&&{backgroundColor:backgroundColor},containerStyle]),source:backgroundImage,imageStyle:backgroundImageStyle},linearGradientProps,{__source:{fileName:_jsxFileName$q,lineNumber:86}}),React__default.createElement(reactNative.StatusBar,_extends_1({barStyle:barStyle},statusBarProps,{__source:{fileName:_jsxFileName$q,lineNumber:98}})),React__default.createElement(Children,{style:reactNative.StyleSheet.flatten([placement==='center'&&styles$k.rightLeftContainer,leftContainerStyle]),placement:"left",__source:{fileName:_jsxFileName$q,lineNumber:99}},React__default.isValidElement(children)&&children||children[0]||leftComponent),React__default.createElement(Children,{style:reactNative.StyleSheet.flatten([styles$k.centerContainer,placement!=='center'&&{paddingHorizontal:reactNative.Platform.select({android:16,default:15})},centerContainerStyle]),placement:placement,__source:{fileName:_jsxFileName$q,lineNumber:111}},children[1]||centerComponent),React__default.createElement(Children,{style:reactNative.StyleSheet.flatten([placement==='center'&&styles$k.rightLeftContainer,rightContainerStyle]),placement:"right",__source:{fileName:_jsxFileName$q,lineNumber:127}},children[2]||rightComponent));}}]);return Header;}(React.Component);Header.propTypes={placement:propTypes.oneOf(['left','center','right']),leftComponent:nodeType,centerComponent:nodeType,rightComponent:nodeType,leftContainerStyle:ViewPropTypes.style,centerContainerStyle:ViewPropTypes.style,rightContainerStyle:ViewPropTypes.style,backgroundColor:propTypes.string,backgroundImage:reactNative.Image.propTypes.source,backgroundImageStyle:reactNative.Image.propTypes.style,containerStyle:ViewPropTypes.style,statusBarProps:propTypes.object,barStyle:propTypes.oneOf(['default','light-content','dark-content']),children:propTypes.oneOfType([propTypes.arrayOf(propTypes.node),propTypes.node]),theme:propTypes.object,linearGradientProps:propTypes.object,ViewComponent:propTypes.elementType};Header.defaultProps={placement:'center',children:[]};var styles$k={container:function container(theme){return {borderBottomColor:'#f2f2f2',borderBottomWidth:reactNative.StyleSheet.hairlineWidth,paddingHorizontal:10,backgroundColor:theme.colors.primary,paddingTop:getStatusBarHeight(),flexDirection:'row',justifyContent:'space-between',alignItems:'center',height:reactNative.Platform.select({android:56,default:44})+getStatusBarHeight()};},centerContainer:{flex:3},rightLeftContainer:{flex:1}};var Header$1 = withTheme(Header,'Header');
-
-var _jsxFileName$r="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\pricing\\PricingCard.js";function ownKeys$k(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$k(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$k(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$k(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var PricingCard=function PricingCard(props){var theme=props.theme,rest=objectWithoutProperties(props,["theme"]);var containerStyle=rest.containerStyle,wrapperStyle=rest.wrapperStyle,title=rest.title,price=rest.price,info=rest.info,button=rest.button,_rest$color=rest.color,color=_rest$color===void 0?theme.colors.primary:_rest$color,titleStyle=rest.titleStyle,pricingStyle=rest.pricingStyle,infoStyle=rest.infoStyle,onButtonPress=rest.onButtonPress,attributes=objectWithoutProperties(rest,["containerStyle","wrapperStyle","title","price","info","button","color","titleStyle","pricingStyle","infoStyle","onButtonPress"]);return React__default.createElement(reactNative.View,_extends_1({},attributes,{style:reactNative.StyleSheet.flatten([styles$l.container(theme),containerStyle&&containerStyle]),__source:{fileName:_jsxFileName$r,lineNumber:31}}),React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$l.wrapper,wrapperStyle&&wrapperStyle]),__source:{fileName:_jsxFileName$r,lineNumber:38}},React__default.createElement(Text,{testID:"pricingCardTitle",style:reactNative.StyleSheet.flatten([styles$l.pricingTitle,titleStyle,{color:color}]),__source:{fileName:_jsxFileName$r,lineNumber:44}},title),React__default.createElement(Text,{style:reactNative.StyleSheet.flatten([styles$l.pricingPrice,pricingStyle]),__source:{fileName:_jsxFileName$r,lineNumber:55}},price),info.map(function(item){return React__default.createElement(Text,{key:item,style:reactNative.StyleSheet.flatten([styles$l.pricingInfo(theme),infoStyle]),__source:{fileName:_jsxFileName$r,lineNumber:60}},item);}),React__default.createElement(Button$1,{title:button.title,buttonStyle:reactNative.StyleSheet.flatten([styles$l.button,button.buttonStyle,{backgroundColor:color}]),titleStyle:button.titleStyle,onPress:onButtonPress,icon:React__default.createElement(Icon$1,{name:button.icon,size:15,color:"white",__source:{fileName:_jsxFileName$r,lineNumber:77}}),__source:{fileName:_jsxFileName$r,lineNumber:68}})));};PricingCard.propTypes={containerStyle:ViewPropTypes.style,wrapperStyle:ViewPropTypes.style,title:propTypes.string,price:propTypes.oneOfType([propTypes.string,propTypes.number]),info:propTypes.arrayOf(propTypes.string),button:propTypes.object,color:propTypes.string,onButtonPress:propTypes.func,titleStyle:reactNative.Text.propTypes.style,pricingStyle:reactNative.Text.propTypes.style,infoStyle:reactNative.Text.propTypes.style,theme:propTypes.object};PricingCard.defaultProps={info:[]};var styles$l={container:function container(theme){return _objectSpread$k({margin:15,marginBottom:15,backgroundColor:'white',borderWidth:1,padding:15,borderColor:theme.colors.grey5},reactNative.Platform.select({android:{elevation:1},default:{shadowColor:'rgba(0,0,0, .2)',shadowOffset:{height:1,width:0},shadowOpacity:0.5,shadowRadius:0.5}}));},wrapper:{backgroundColor:'transparent'},pricingTitle:_objectSpread$k({textAlign:'center',fontSize:normalize(30)},reactNative.Platform.select({android:_objectSpread$k({},fonts.android.black),default:{fontWeight:'800'}})),pricingPrice:_objectSpread$k({textAlign:'center',marginTop:10,marginBottom:10,fontSize:normalize(40)},reactNative.Platform.select({android:_objectSpread$k({},fonts.android.bold),default:{fontWeight:'700'}})),pricingInfo:function pricingInfo(theme){return _objectSpread$k({textAlign:'center',marginTop:5,marginBottom:5,color:theme.colors.grey3},reactNative.Platform.select({android:_objectSpread$k({},fonts.android.bold),default:{fontWeight:'600'}}));},button:{marginTop:15,marginBottom:10}};var PricingCard$1 = withTheme(PricingCard,'PricingCard');
-
-var _jsxFileName$s="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\tooltip\\Triangle.js";var Triangle=function Triangle(_ref){var style=_ref.style,isDown=_ref.isDown;return React__default.createElement(reactNative.View,{style:reactNative.StyleSheet.flatten([styles$m.triangle,style,isDown?styles$m.down:{}]),__source:{fileName:_jsxFileName$s,lineNumber:8}});};Triangle.propTypes={style:ViewPropTypes.style,isDown:propTypes.bool};var styles$m=reactNative.StyleSheet.create({down:{transform:[{rotate:'180deg'}]},triangle:{width:0,height:0,backgroundColor:'transparent',borderStyle:'solid',borderLeftWidth:8,borderRightWidth:8,borderBottomWidth:15,borderLeftColor:'transparent',borderRightColor:'transparent',borderBottomColor:'white'}});
-
-var getArea=function getArea(a,b){return a*b;};var getPointDistance=function getPointDistance(a,b){return Math.sqrt(Math.pow(a[0]-b[0],2)+Math.pow(a[1]-b[1],2));};var getElementVisibleWidth=function getElementVisibleWidth(elementWidth,xOffset,ScreenWidth){if(xOffset>=0){return xOffset+elementWidth<=ScreenWidth?elementWidth:ScreenWidth-xOffset;}return elementWidth-xOffset;};var getTooltipCoordinate=function getTooltipCoordinate(x,y,width,height,ScreenWidth,ScreenHeight,tooltipWidth,tooltipHeight,withPointer){var center=[x+getElementVisibleWidth(width,x,ScreenWidth)/2,y+height/2];var pOne=[center[0],0];var pTwo=[ScreenWidth,center[1]];var pThree=[center[0],ScreenHeight];var pFour=[0,center[1]];var vOne=getPointDistance(center,pOne);var vTwo=getPointDistance(center,pTwo);var vThree=getPointDistance(center,pThree);var vFour=getPointDistance(center,pFour);var areas=[getArea(vOne,vFour),getArea(vOne,vTwo),getArea(vTwo,vThree),getArea(vThree,vFour)].map(function(each,index){return {area:each,id:index};});var sortedArea=areas.sort(function(a,b){return b.area-a.area;});var dX=0.001;var dY=height/2;var directionCorrection=[[-1,-1],[1,-1],[1,1],[-1,1]];var deslocateReferencePoint=[[-tooltipWidth,-tooltipHeight],[0,-tooltipHeight],[0,0],[-tooltipWidth,0]];var qIndex=sortedArea[0].id;var getWithPointerOffsetY=function getWithPointerOffsetY(){return withPointer?10*directionCorrection[qIndex][1]:0;};var getWithPointerOffsetX=function getWithPointerOffsetX(){return withPointer?center[0]-18*directionCorrection[qIndex][0]:center[0];};var newX=getWithPointerOffsetX()+(dX*directionCorrection[qIndex][0]+deslocateReferencePoint[qIndex][0]);return {x:constraintX(newX,qIndex,center[0],ScreenWidth,tooltipWidth),y:center[1]+(dY*directionCorrection[qIndex][1]+deslocateReferencePoint[qIndex][1])+getWithPointerOffsetY()};};var constraintX=function constraintX(newX,qIndex,x,ScreenWidth,tooltipWidth){switch(qIndex){case 0:case 3:{var maxWidth=newX>ScreenWidth?ScreenWidth-10:newX;return newX<1?10:maxWidth;}case 1:case 2:{var leftOverSpace=ScreenWidth-newX;return leftOverSpace>=tooltipWidth?newX:newX-(tooltipWidth-leftOverSpace+10);}default:{return 0;}}};
-
-var _jsxFileName$t="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-elements\\src\\tooltip\\Tooltip.js";function ownKeys$l(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$l(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$l(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$l(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var Tooltip=function(_React$PureComponent){inherits(Tooltip,_React$PureComponent);function Tooltip(){var _getPrototypeOf2;var _this;classCallCheck(this,Tooltip);for(var _len=arguments.length,args=new Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}_this=possibleConstructorReturn(this,(_getPrototypeOf2=getPrototypeOf(Tooltip)).call.apply(_getPrototypeOf2,[this].concat(args)));_this.state={isVisible:false,yOffset:0,xOffset:0,elementWidth:0,elementHeight:0};_this.toggleTooltip=function(){var onClose=_this.props.onClose;_this.getElementPosition();_this.setState(function(prevState){if(prevState.isVisible&&!isIOS){onClose&&onClose();}return {isVisible:!prevState.isVisible};});};_this.wrapWithPress=function(toggleOnPress,children){if(toggleOnPress){return React__default.createElement(reactNative.TouchableOpacity,{onPress:_this.toggleTooltip,activeOpacity:1,__source:{fileName:_jsxFileName$t,lineNumber:39}},children);}return children;};_this.getTooltipStyle=function(){var _this$state=_this.state,yOffset=_this$state.yOffset,xOffset=_this$state.xOffset,elementHeight=_this$state.elementHeight,elementWidth=_this$state.elementWidth;var _this$props=_this.props,height=_this$props.height,backgroundColor=_this$props.backgroundColor,width=_this$props.width,withPointer=_this$props.withPointer,containerStyle=_this$props.containerStyle;var _getTooltipCoordinate=getTooltipCoordinate(xOffset,yOffset,elementWidth,elementHeight,ScreenWidth,ScreenHeight,width,height,withPointer),x=_getTooltipCoordinate.x,y=_getTooltipCoordinate.y;return _objectSpread$l({position:'absolute',left:x,top:y,width:width,height:height,backgroundColor:backgroundColor,display:'flex',alignItems:'center',justifyContent:'center',flex:1,borderRadius:10,padding:10},containerStyle);};_this.renderPointer=function(tooltipY){var _this$state2=_this.state,yOffset=_this$state2.yOffset,xOffset=_this$state2.xOffset,elementHeight=_this$state2.elementHeight,elementWidth=_this$state2.elementWidth;var _this$props2=_this.props,backgroundColor=_this$props2.backgroundColor,pointerColor=_this$props2.pointerColor;var pastMiddleLine=yOffset>tooltipY;return React__default.createElement(reactNative.View,{style:{position:'absolute',top:pastMiddleLine?yOffset-13:yOffset+elementHeight-2,left:xOffset+getElementVisibleWidth(elementWidth,xOffset,ScreenWidth)/2-7.5},__source:{fileName:_jsxFileName$t,lineNumber:94}},React__default.createElement(Triangle,{style:{borderBottomColor:pointerColor||backgroundColor},isDown:pastMiddleLine,__source:{fileName:_jsxFileName$t,lineNumber:104}}));};_this.renderContent=function(withTooltip){var _this$props3=_this.props,popover=_this$props3.popover,withPointer=_this$props3.withPointer,toggleOnPress=_this$props3.toggleOnPress,highlightColor=_this$props3.highlightColor;if(!withTooltip){return _this.wrapWithPress(toggleOnPress,_this.props.children);}var _this$state3=_this.state,yOffset=_this$state3.yOffset,xOffset=_this$state3.xOffset,elementWidth=_this$state3.elementWidth,elementHeight=_this$state3.elementHeight;var tooltipStyle=_this.getTooltipStyle();return React__default.createElement(reactNative.View,{__source:{fileName:_jsxFileName$t,lineNumber:122}},React__default.createElement(reactNative.View,{style:{position:'absolute',top:yOffset,left:xOffset,backgroundColor:highlightColor,overflow:'visible',width:elementWidth,height:elementHeight},__source:{fileName:_jsxFileName$t,lineNumber:123}},_this.props.children),withPointer&&_this.renderPointer(tooltipStyle.top),React__default.createElement(reactNative.View,{style:tooltipStyle,testID:"tooltipPopoverContainer",__source:{fileName:_jsxFileName$t,lineNumber:137}},popover));};_this.getElementPosition=function(){_this.renderedElement&&_this.renderedElement.measure(function(frameOffsetX,frameOffsetY,width,height,pageOffsetX,pageOffsetY){_this.setState({xOffset:pageOffsetX,yOffset:isIOS?pageOffsetY:pageOffsetY-reactNative.StatusBar.currentHeight,elementWidth:width,elementHeight:height});});};return _this;}createClass(Tooltip,[{key:"componentDidMount",value:function componentDidMount(){setTimeout(this.getElementPosition,500);}},{key:"render",value:function render(){var _this2=this;var isVisible=this.state.isVisible;var _this$props4=this.props,onClose=_this$props4.onClose,withOverlay=_this$props4.withOverlay,overlayColor=_this$props4.overlayColor,onOpen=_this$props4.onOpen;return React__default.createElement(reactNative.View,{collapsable:false,ref:function ref(e){_this2.renderedElement=e;},__source:{fileName:_jsxFileName$t,lineNumber:177}},this.renderContent(false),React__default.createElement(reactNative.Modal,{animationType:"fade",visible:isVisible,transparent:true,onDismiss:onClose,onShow:onOpen,onRequestClose:onClose,__source:{fileName:_jsxFileName$t,lineNumber:184}},React__default.createElement(reactNative.TouchableOpacity,{style:styles$n.container(withOverlay,overlayColor),onPress:this.toggleTooltip,activeOpacity:1,__source:{fileName:_jsxFileName$t,lineNumber:192}},this.renderContent(true))));}}]);return Tooltip;}(React__default.PureComponent);Tooltip.propTypes={children:propTypes.element,withPointer:propTypes.bool,popover:propTypes.element,toggleOnPress:propTypes.bool,height:propTypes.number,width:propTypes.oneOfType([propTypes.number,propTypes.string]),containerStyle:ViewPropTypes.style,pointerColor:propTypes.string,onClose:propTypes.func,onOpen:propTypes.func,overlayColor:propTypes.string,withOverlay:propTypes.bool,backgroundColor:propTypes.string,highlightColor:propTypes.string};Tooltip.defaultProps={withOverlay:true,overlayColor:'rgba(250, 250, 250, 0.70)',highlightColor:'transparent',withPointer:true,toggleOnPress:true,height:40,width:150,containerStyle:{},backgroundColor:'#617080',onClose:function onClose(){},onOpen:function onOpen(){}};var styles$n={container:function container(withOverlay,overlayColor){return {backgroundColor:withOverlay?overlayColor:'transparent',flex:1};}};var Tooltip$1 = withTheme(Tooltip,'Tooltip');
-
-var runtime_1 = createCommonjsModule(function (module) {
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var runtime = (function (exports) {
-
-  var Op = Object.prototype;
-  var hasOwn = Op.hasOwnProperty;
-  var undefined$1; // More compressible than void 0.
-  var $Symbol = typeof Symbol === "function" ? Symbol : {};
-  var iteratorSymbol = $Symbol.iterator || "@@iterator";
-  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
-  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-
-  function wrap(innerFn, outerFn, self, tryLocsList) {
-    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
-    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
-    var generator = Object.create(protoGenerator.prototype);
-    var context = new Context(tryLocsList || []);
-
-    // The ._invoke method unifies the implementations of the .next,
-    // .throw, and .return methods.
-    generator._invoke = makeInvokeMethod(innerFn, self, context);
-
-    return generator;
-  }
-  exports.wrap = wrap;
-
-  // Try/catch helper to minimize deoptimizations. Returns a completion
-  // record like context.tryEntries[i].completion. This interface could
-  // have been (and was previously) designed to take a closure to be
-  // invoked without arguments, but in all the cases we care about we
-  // already have an existing method we want to call, so there's no need
-  // to create a new function object. We can even get away with assuming
-  // the method takes exactly one argument, since that happens to be true
-  // in every case, so we don't have to touch the arguments object. The
-  // only additional allocation required is the completion record, which
-  // has a stable shape and so hopefully should be cheap to allocate.
-  function tryCatch(fn, obj, arg) {
-    try {
-      return { type: "normal", arg: fn.call(obj, arg) };
-    } catch (err) {
-      return { type: "throw", arg: err };
+    if (deviceHeight < 667) {
+      return size * 1.15; // catch in-between size Androids and scale font up
+      // a tad but not too much
     }
+
+    if (deviceHeight >= 667 && deviceHeight <= 735) {
+      return size * 1.2;
+    } // catch larger devices
+    // ie iphone 6s plus / 7 plus / mi note 等等
+
+
+    return size * 1.27;
   }
 
-  var GenStateSuspendedStart = "suspendedStart";
-  var GenStateSuspendedYield = "suspendedYield";
-  var GenStateExecuting = "executing";
-  var GenStateCompleted = "completed";
+  if (pixelRatio >= 3.5) {
+    // catch Android font scaling on small machines
+    // where pixel ratio / font scale ratio => 3:3
+    if (deviceWidth <= 360) {
+      return size; // Catch other smaller android height sizings
+    }
 
-  // Returning this object from the innerFn has the same effect as
-  // breaking out of the dispatch switch statement.
-  var ContinueSentinel = {};
+    if (deviceHeight < 667) {
+      return size * 1.2; // catch in-between size Androids and scale font up
+      // a tad but not too much
+    }
 
-  // Dummy constructor functions that we use as the .constructor and
-  // .constructor.prototype properties for functions that return Generator
-  // objects. For full spec compliance, you may wish to configure your
-  // minifier not to mangle the names of these two functions.
-  function Generator() {}
-  function GeneratorFunction() {}
-  function GeneratorFunctionPrototype() {}
+    if (deviceHeight >= 667 && deviceHeight <= 735) {
+      return size * 1.25;
+    } // catch larger phablet devices
 
-  // This is a polyfill for %IteratorPrototype% for environments that
-  // don't natively support it.
-  var IteratorPrototype = {};
-  IteratorPrototype[iteratorSymbol] = function () {
-    return this;
+
+    return size * 1.4;
+  }
+
+  return size;
+};
+
+var nodeType = propTypes.oneOfType([propTypes.element, propTypes.object, propTypes.bool, propTypes.func]);
+
+const Screen = reactNative.Dimensions.get('window');
+const ScreenWidth = Screen.width;
+const ScreenHeight = Screen.height;
+const isIOS = reactNative.Platform.OS === 'ios';
+
+const conditionalStyle = (condition, style) => condition ? style : {};
+
+const patchWebProps = ({
+  updateTheme,
+  replaceTheme,
+  onClear,
+  ...rest
+}) => {
+  return rest;
+};
+
+function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
+
+const Icon = props => {
+  const {
+    type,
+    name,
+    size,
+    color,
+    iconStyle,
+    underlayColor,
+    reverse,
+    raised,
+    containerStyle,
+    reverseColor,
+    disabled,
+    disabledStyle,
+    onPress,
+    Component = onPress ? reactNative.TouchableHighlight : reactNative.View,
+    ...attributes
+  } = props;
+  const IconComponent = getIconType(type);
+
+  const getBackgroundColor = () => {
+    if (reverse) {
+      return color;
+    }
+
+    return raised ? 'white' : 'transparent';
   };
 
-  var getProto = Object.getPrototypeOf;
-  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-  if (NativeIteratorPrototype &&
-      NativeIteratorPrototype !== Op &&
-      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
-    // This environment has a native %IteratorPrototype%; use it instead
-    // of the polyfill.
-    IteratorPrototype = NativeIteratorPrototype;
+  return React__default.createElement(reactNative.View, {
+    style: containerStyle && containerStyle
+  }, React__default.createElement(Component, _extends$2({}, attributes, {
+    underlayColor: reverse ? color : underlayColor || color,
+    style: reactNative.StyleSheet.flatten([(reverse || raised) && styles.button, (reverse || raised) && {
+      borderRadius: size + 4,
+      height: size * 2 + 4,
+      width: size * 2 + 4
+    }, raised && styles.raised, {
+      backgroundColor: getBackgroundColor(),
+      alignItems: 'center',
+      justifyContent: 'center'
+    }, disabled && styles.disabled, disabled && disabledStyle])
+  }, onPress && {
+    disabled
+  }, {
+    onPress: onPress
+  }), React__default.createElement(IconComponent, {
+    testID: "iconIcon",
+    style: reactNative.StyleSheet.flatten([{
+      backgroundColor: 'transparent'
+    }, iconStyle && iconStyle]),
+    size: size,
+    name: name,
+    color: reverse ? reverseColor : color
+  })));
+};
+
+Icon.propTypes = {
+  type: propTypes.string,
+  name: propTypes.string,
+  size: propTypes.number,
+  color: propTypes.string,
+  Component: propTypes.elementType,
+  underlayColor: propTypes.string,
+  reverse: propTypes.bool,
+  raised: propTypes.bool,
+  containerStyle: ViewPropTypes.style,
+  iconStyle: reactNative.Text.propTypes.style,
+  onPress: propTypes.func,
+  reverseColor: propTypes.string,
+  disabled: propTypes.bool,
+  disabledStyle: ViewPropTypes.style
+};
+Icon.defaultProps = {
+  underlayColor: 'white',
+  reverse: false,
+  raised: false,
+  size: 24,
+  color: 'black',
+  reverseColor: 'white',
+  disabled: false,
+  type: 'material'
+};
+const styles = reactNative.StyleSheet.create({
+  button: {
+    margin: 7
+  },
+  raised: { ...reactNative.Platform.select({
+      android: {
+        elevation: 2
+      },
+      default: {
+        shadowColor: 'rgba(0,0,0, .4)',
+        shadowOffset: {
+          height: 1,
+          width: 1
+        },
+        shadowOpacity: 1,
+        shadowRadius: 1
+      }
+    })
+  },
+  disabled: {
+    backgroundColor: '#D1D5D8'
+  }
+});
+var Icon$1 = withTheme(Icon, 'Icon');
+
+function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
+
+const defaultLoadingProps = (type, theme) => ({
+  color: type === 'solid' ? 'white' : theme.colors.primary,
+  size: 'small'
+});
+
+class Button extends React.Component {
+  componentDidMount() {
+    const {
+      linearGradientProps,
+      ViewComponent
+    } = this.props;
+
+    if (linearGradientProps && !global.Expo && !ViewComponent) {
+      console.error("You need to pass a ViewComponent to use linearGradientProps !\nExample: ViewComponent={require('react-native-linear-gradient')}");
+    }
   }
 
-  var Gp = GeneratorFunctionPrototype.prototype =
-    Generator.prototype = Object.create(IteratorPrototype);
-  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
-  GeneratorFunctionPrototype.constructor = GeneratorFunction;
-  GeneratorFunctionPrototype[toStringTagSymbol] =
-    GeneratorFunction.displayName = "GeneratorFunction";
+  render() {
+    const {
+      TouchableComponent,
+      containerStyle,
+      onPress,
+      buttonStyle,
+      type,
+      loading,
+      loadingStyle,
+      loadingProps: passedLoadingProps,
+      title,
+      titleProps,
+      titleStyle,
+      icon,
+      iconContainerStyle,
+      iconRight,
+      disabled,
+      disabledStyle,
+      disabledTitleStyle,
+      raised,
+      linearGradientProps,
+      ViewComponent = !disabled && linearGradientProps && global.Expo ? global.Expo.LinearGradient : reactNative.View,
+      theme,
+      ...attributes
+    } = this.props;
 
-  // Helper for defining the .next, .throw, and .return methods of the
-  // Iterator interface in terms of a single ._invoke method.
-  function defineIteratorMethods(prototype) {
-    ["next", "throw", "return"].forEach(function(method) {
-      prototype[method] = function(arg) {
-        return this._invoke(method, arg);
-      };
+    if (reactNative.Platform.OS === 'android' && buttonStyle.borderRadius && !attributes.background) {
+      if (reactNative.Platform.Version >= 21) {
+        attributes.background = reactNative.TouchableNativeFeedback.Ripple(undefined, false);
+      } else {
+        attributes.background = reactNative.TouchableNativeFeedback.SelectableBackground();
+      }
+    }
+
+    const loadingProps = { ...defaultLoadingProps(type, theme),
+      ...passedLoadingProps
+    };
+    return React__default.createElement(reactNative.View, {
+      style: reactNative.StyleSheet.flatten([styles$1.container, {
+        borderRadius: buttonStyle.borderRadius || styles$1.container.borderRadius
+      }, containerStyle, raised && !disabled && styles$1.raised(type)])
+    }, React__default.createElement(TouchableComponent, _extends$3({
+      onPress: onPress,
+      activeOpacity: 0.3,
+      disabled: disabled
+    }, attributes), React__default.createElement(ViewComponent, _extends$3({}, linearGradientProps, {
+      style: reactNative.StyleSheet.flatten([styles$1.button(type, theme), buttonStyle, disabled && styles$1.disabled(type, theme), disabled && disabledStyle])
+    }), loading && React__default.createElement(reactNative.ActivityIndicator, _extends$3({
+      style: reactNative.StyleSheet.flatten([styles$1.loading, loadingStyle]),
+      color: loadingProps.color,
+      size: loadingProps.size
+    }, loadingProps)), !loading && icon && !iconRight && renderNode(Icon$1, icon, {
+      containerStyle: reactNative.StyleSheet.flatten([styles$1.iconContainer, iconContainerStyle])
+    }), !loading && !!title && React__default.createElement(reactNative.Text, _extends$3({
+      style: reactNative.StyleSheet.flatten([styles$1.title(type, theme), titleStyle, disabled && styles$1.disabledTitle(theme), disabled && disabledTitleStyle])
+    }, titleProps), title), !loading && icon && iconRight && renderNode(Icon$1, icon, {
+      containerStyle: reactNative.StyleSheet.flatten([styles$1.iconContainer, iconContainerStyle])
+    }))));
+  }
+
+}
+
+Button.propTypes = {
+  title: propTypes.string,
+  titleStyle: reactNative.Text.propTypes.style,
+  titleProps: propTypes.object,
+  buttonStyle: ViewPropTypes.style,
+  type: propTypes.oneOf(['solid', 'clear', 'outline']),
+  loading: propTypes.bool,
+  loadingStyle: ViewPropTypes.style,
+  loadingProps: propTypes.object,
+  onPress: propTypes.func,
+  containerStyle: ViewPropTypes.style,
+  icon: nodeType,
+  iconContainerStyle: ViewPropTypes.style,
+  iconRight: propTypes.bool,
+  linearGradientProps: propTypes.object,
+  TouchableComponent: propTypes.elementType,
+  ViewComponent: propTypes.elementType,
+  disabled: propTypes.bool,
+  disabledStyle: ViewPropTypes.style,
+  disabledTitleStyle: reactNative.Text.propTypes.style,
+  raised: propTypes.bool,
+  theme: propTypes.object
+};
+Button.defaultProps = {
+  title: '',
+  iconRight: false,
+  TouchableComponent: reactNative.Platform.select({
+    android: reactNative.TouchableNativeFeedback,
+    default: reactNative.TouchableOpacity
+  }),
+  onPress: () => console.log('Please attach a method to this component'),
+  type: 'solid',
+  buttonStyle: {
+    borderRadius: 3
+  },
+  disabled: false,
+  raised: false,
+  loading: false
+};
+const styles$1 = {
+  button: (type, theme) => ({
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 3,
+    backgroundColor: type === 'solid' ? theme.colors.primary : 'transparent',
+    padding: 8,
+    borderWidth: type === 'outline' ? reactNative.StyleSheet.hairlineWidth : 0,
+    borderColor: theme.colors.primary
+  }),
+  container: {
+    borderRadius: 3
+  },
+  disabled: (type, theme) => ({ ...conditionalStyle(type === 'solid', {
+      backgroundColor: theme.colors.disabled
+    }),
+    ...conditionalStyle(type === 'outline', {
+      borderColor: color(theme.colors.disabled).darken(0.3)
+    })
+  }),
+  disabledTitle: theme => ({
+    color: color(theme.colors.disabled).darken(0.3)
+  }),
+  title: (type, theme) => ({
+    color: type === 'solid' ? 'white' : theme.colors.primary,
+    fontSize: 16,
+    textAlign: 'center',
+    paddingTop: 2,
+    paddingBottom: 1,
+    ...reactNative.Platform.select({
+      android: {
+        fontFamily: 'sans-serif-medium'
+      },
+      default: {
+        fontSize: 18
+      }
+    })
+  }),
+  iconContainer: {
+    marginHorizontal: 5
+  },
+  raised: type => type !== 'clear' && {
+    backgroundColor: '#fff',
+    ...reactNative.Platform.select({
+      android: {
+        elevation: 4
+      },
+      default: {
+        shadowColor: 'rgba(0,0,0, .4)',
+        shadowOffset: {
+          height: 1,
+          width: 1
+        },
+        shadowOpacity: 1,
+        shadowRadius: 1
+      }
+    })
+  },
+  loading: {
+    marginVertical: 2
+  }
+};
+var Button$1 = withTheme(Button, 'Button');
+
+function _extends$4() { _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4.apply(this, arguments); }
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const renderText = (content, defaultProps, style) => renderNode(reactNative.Text, content, { ...defaultProps,
+  style: reactNative.StyleSheet.flatten([style, defaultProps && defaultProps.style])
+});
+
+class Input extends React__default.Component {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty$1(this, "shakeAnimationValue", new reactNative.Animated.Value(0));
+
+    _defineProperty$1(this, "shake", () => {
+      const {
+        shakeAnimationValue
+      } = this;
+      shakeAnimationValue.setValue(0); // Animation duration based on Material Design
+      // https://material.io/guidelines/motion/duration-easing.html#duration-easing-common-durations
+
+      reactNative.Animated.timing(shakeAnimationValue, {
+        duration: 375,
+        toValue: 3,
+        ease: reactNative.Easing.bounce
+      }).start();
     });
   }
 
-  exports.isGeneratorFunction = function(genFun) {
-    var ctor = typeof genFun === "function" && genFun.constructor;
-    return ctor
-      ? ctor === GeneratorFunction ||
-        // For the native GeneratorFunction constructor, the best we can
-        // do is to check its .name property.
-        (ctor.displayName || ctor.name) === "GeneratorFunction"
-      : false;
-  };
-
-  exports.mark = function(genFun) {
-    if (Object.setPrototypeOf) {
-      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
-    } else {
-      genFun.__proto__ = GeneratorFunctionPrototype;
-      if (!(toStringTagSymbol in genFun)) {
-        genFun[toStringTagSymbol] = "GeneratorFunction";
-      }
-    }
-    genFun.prototype = Object.create(Gp);
-    return genFun;
-  };
-
-  // Within the body of any async function, `await x` is transformed to
-  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
-  // `hasOwn.call(value, "__await")` to determine if the yielded value is
-  // meant to be awaited.
-  exports.awrap = function(arg) {
-    return { __await: arg };
-  };
-
-  function AsyncIterator(generator) {
-    function invoke(method, arg, resolve, reject) {
-      var record = tryCatch(generator[method], generator, arg);
-      if (record.type === "throw") {
-        reject(record.arg);
-      } else {
-        var result = record.arg;
-        var value = result.value;
-        if (value &&
-            typeof value === "object" &&
-            hasOwn.call(value, "__await")) {
-          return Promise.resolve(value.__await).then(function(value) {
-            invoke("next", value, resolve, reject);
-          }, function(err) {
-            invoke("throw", err, resolve, reject);
-          });
-        }
-
-        return Promise.resolve(value).then(function(unwrapped) {
-          // When a yielded Promise is resolved, its final value becomes
-          // the .value of the Promise<{value,done}> result for the
-          // current iteration.
-          result.value = unwrapped;
-          resolve(result);
-        }, function(error) {
-          // If a rejected Promise was yielded, throw the rejection back
-          // into the async generator function so it can be handled there.
-          return invoke("throw", error, resolve, reject);
-        });
-      }
-    }
-
-    var previousPromise;
-
-    function enqueue(method, arg) {
-      function callInvokeWithMethodAndArg() {
-        return new Promise(function(resolve, reject) {
-          invoke(method, arg, resolve, reject);
-        });
-      }
-
-      return previousPromise =
-        // If enqueue has been called before, then we want to wait until
-        // all previous Promises have been resolved before calling invoke,
-        // so that results are always delivered in the correct order. If
-        // enqueue has not been called before, then it is important to
-        // call invoke immediately, without waiting on a callback to fire,
-        // so that the async generator function has the opportunity to do
-        // any necessary setup in a predictable way. This predictability
-        // is why the Promise constructor synchronously invokes its
-        // executor callback, and why async functions synchronously
-        // execute code before the first await. Since we implement simple
-        // async functions in terms of async generators, it is especially
-        // important to get this right, even though it requires care.
-        previousPromise ? previousPromise.then(
-          callInvokeWithMethodAndArg,
-          // Avoid propagating failures to Promises returned by later
-          // invocations of the iterator.
-          callInvokeWithMethodAndArg
-        ) : callInvokeWithMethodAndArg();
-    }
-
-    // Define the unified helper method that is used to implement .next,
-    // .throw, and .return (see defineIteratorMethods).
-    this._invoke = enqueue;
+  focus() {
+    this.input.focus();
   }
 
-  defineIteratorMethods(AsyncIterator.prototype);
-  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
-    return this;
-  };
-  exports.AsyncIterator = AsyncIterator;
-
-  // Note that simple async functions are implemented on top of
-  // AsyncIterator objects; they just return a Promise for the value of
-  // the final result produced by the iterator.
-  exports.async = function(innerFn, outerFn, self, tryLocsList) {
-    var iter = new AsyncIterator(
-      wrap(innerFn, outerFn, self, tryLocsList)
-    );
-
-    return exports.isGeneratorFunction(outerFn)
-      ? iter // If outerFn is a generator, return the full iterator.
-      : iter.next().then(function(result) {
-          return result.done ? result.value : iter.next();
-        });
-  };
-
-  function makeInvokeMethod(innerFn, self, context) {
-    var state = GenStateSuspendedStart;
-
-    return function invoke(method, arg) {
-      if (state === GenStateExecuting) {
-        throw new Error("Generator is already running");
-      }
-
-      if (state === GenStateCompleted) {
-        if (method === "throw") {
-          throw arg;
-        }
-
-        // Be forgiving, per 25.3.3.3.3 of the spec:
-        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
-        return doneResult();
-      }
-
-      context.method = method;
-      context.arg = arg;
-
-      while (true) {
-        var delegate = context.delegate;
-        if (delegate) {
-          var delegateResult = maybeInvokeDelegate(delegate, context);
-          if (delegateResult) {
-            if (delegateResult === ContinueSentinel) continue;
-            return delegateResult;
-          }
-        }
-
-        if (context.method === "next") {
-          // Setting context._sent for legacy support of Babel's
-          // function.sent implementation.
-          context.sent = context._sent = context.arg;
-
-        } else if (context.method === "throw") {
-          if (state === GenStateSuspendedStart) {
-            state = GenStateCompleted;
-            throw context.arg;
-          }
-
-          context.dispatchException(context.arg);
-
-        } else if (context.method === "return") {
-          context.abrupt("return", context.arg);
-        }
-
-        state = GenStateExecuting;
-
-        var record = tryCatch(innerFn, self, context);
-        if (record.type === "normal") {
-          // If an exception is thrown from innerFn, we leave state ===
-          // GenStateExecuting and loop back for another invocation.
-          state = context.done
-            ? GenStateCompleted
-            : GenStateSuspendedYield;
-
-          if (record.arg === ContinueSentinel) {
-            continue;
-          }
-
-          return {
-            value: record.arg,
-            done: context.done
-          };
-
-        } else if (record.type === "throw") {
-          state = GenStateCompleted;
-          // Dispatch the exception by looping back around to the
-          // context.dispatchException(context.arg) call above.
-          context.method = "throw";
-          context.arg = record.arg;
-        }
-      }
-    };
+  blur() {
+    this.input.blur();
   }
 
-  // Call delegate.iterator[context.method](context.arg) and handle the
-  // result, either by returning a { value, done } result from the
-  // delegate iterator, or by modifying context.method and context.arg,
-  // setting context.delegate to null, and returning the ContinueSentinel.
-  function maybeInvokeDelegate(delegate, context) {
-    var method = delegate.iterator[context.method];
-    if (method === undefined$1) {
-      // A .throw or .return when the delegate iterator has no .throw
-      // method always terminates the yield* loop.
-      context.delegate = null;
-
-      if (context.method === "throw") {
-        // Note: ["return"] must be used for ES3 parsing compatibility.
-        if (delegate.iterator["return"]) {
-          // If the delegate iterator has a return method, give it a
-          // chance to clean up.
-          context.method = "return";
-          context.arg = undefined$1;
-          maybeInvokeDelegate(delegate, context);
-
-          if (context.method === "throw") {
-            // If maybeInvokeDelegate(context) changed context.method from
-            // "return" to "throw", let that override the TypeError below.
-            return ContinueSentinel;
-          }
-        }
-
-        context.method = "throw";
-        context.arg = new TypeError(
-          "The iterator does not provide a 'throw' method");
-      }
-
-      return ContinueSentinel;
-    }
-
-    var record = tryCatch(method, delegate.iterator, context.arg);
-
-    if (record.type === "throw") {
-      context.method = "throw";
-      context.arg = record.arg;
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    var info = record.arg;
-
-    if (! info) {
-      context.method = "throw";
-      context.arg = new TypeError("iterator result is not an object");
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    if (info.done) {
-      // Assign the result of the finished delegate to the temporary
-      // variable specified by delegate.resultName (see delegateYield).
-      context[delegate.resultName] = info.value;
-
-      // Resume execution at the desired location (see delegateYield).
-      context.next = delegate.nextLoc;
-
-      // If context.method was "throw" but the delegate handled the
-      // exception, let the outer generator proceed normally. If
-      // context.method was "next", forget context.arg since it has been
-      // "consumed" by the delegate iterator. If context.method was
-      // "return", allow the original .return call to continue in the
-      // outer generator.
-      if (context.method !== "return") {
-        context.method = "next";
-        context.arg = undefined$1;
-      }
-
-    } else {
-      // Re-yield the result returned by the delegate method.
-      return info;
-    }
-
-    // The delegate iterator is finished, so forget it and continue with
-    // the outer generator.
-    context.delegate = null;
-    return ContinueSentinel;
+  clear() {
+    this.input.clear();
   }
 
-  // Define Generator.prototype.{next,throw,return} in terms of the
-  // unified ._invoke helper method.
-  defineIteratorMethods(Gp);
-
-  Gp[toStringTagSymbol] = "Generator";
-
-  // A Generator should always return itself as the iterator object when the
-  // @@iterator function is called on it. Some browsers' implementations of the
-  // iterator prototype chain incorrectly implement this, causing the Generator
-  // object to not be returned from this call. This ensures that doesn't happen.
-  // See https://github.com/facebook/regenerator/issues/274 for more details.
-  Gp[iteratorSymbol] = function() {
-    return this;
-  };
-
-  Gp.toString = function() {
-    return "[object Generator]";
-  };
-
-  function pushTryEntry(locs) {
-    var entry = { tryLoc: locs[0] };
-
-    if (1 in locs) {
-      entry.catchLoc = locs[1];
-    }
-
-    if (2 in locs) {
-      entry.finallyLoc = locs[2];
-      entry.afterLoc = locs[3];
-    }
-
-    this.tryEntries.push(entry);
+  isFocused() {
+    return this.input.isFocused();
   }
 
-  function resetTryEntry(entry) {
-    var record = entry.completion || {};
-    record.type = "normal";
-    delete record.arg;
-    entry.completion = record;
+  setNativeProps(nativeProps) {
+    this.input.setNativeProps(nativeProps);
   }
 
-  function Context(tryLocsList) {
-    // The root entry object (effectively a try statement without a catch
-    // or a finally block) gives us a place to store values thrown from
-    // locations where there is no enclosing try statement.
-    this.tryEntries = [{ tryLoc: "root" }];
-    tryLocsList.forEach(pushTryEntry, this);
-    this.reset(true);
+  render() {
+    const {
+      containerStyle,
+      disabled,
+      disabledInputStyle,
+      inputContainerStyle,
+      leftIcon,
+      leftIconContainerStyle,
+      rightIcon,
+      rightIconContainerStyle,
+      inputComponent: InputComponent = reactNative.TextInput,
+      inputStyle,
+      errorProps,
+      errorStyle,
+      errorMessage,
+      label,
+      labelStyle,
+      labelProps,
+      theme,
+      ...attributes
+    } = this.props;
+    const translateX = this.shakeAnimationValue.interpolate({
+      inputRange: [0, 0.5, 1, 1.5, 2, 2.5, 3],
+      outputRange: [0, -15, 0, 15, 0, -15, 0]
+    });
+    return React__default.createElement(reactNative.View, {
+      style: reactNative.StyleSheet.flatten([styles$2.container, containerStyle])
+    }, renderText(label, {
+      style: labelStyle,
+      ...labelProps
+    }, styles$2.label(theme)), React__default.createElement(reactNative.Animated.View, {
+      style: reactNative.StyleSheet.flatten([styles$2.inputContainer(theme), inputContainerStyle, {
+        transform: [{
+          translateX
+        }]
+      }])
+    }, leftIcon && React__default.createElement(reactNative.View, {
+      style: reactNative.StyleSheet.flatten([styles$2.iconContainer, leftIconContainerStyle])
+    }, renderNode(Icon$1, leftIcon)), React__default.createElement(InputComponent, _extends$4({
+      testID: "RNE__Input__text-input",
+      underlineColorAndroid: "transparent",
+      editable: !disabled
+    }, patchWebProps(attributes), {
+      ref: ref => {
+        this.input = ref;
+      },
+      style: reactNative.StyleSheet.flatten([styles$2.input, inputStyle, disabled && styles$2.disabledInput, disabled && disabledInputStyle])
+    })), rightIcon && React__default.createElement(reactNative.View, {
+      style: reactNative.StyleSheet.flatten([styles$2.iconContainer, rightIconContainerStyle])
+    }, renderNode(Icon$1, rightIcon))), !!errorMessage && React__default.createElement(reactNative.Text, _extends$4({}, errorProps, {
+      style: reactNative.StyleSheet.flatten([styles$2.error(theme), errorStyle && errorStyle])
+    }), errorMessage));
   }
 
-  exports.keys = function(object) {
-    var keys = [];
-    for (var key in object) {
-      keys.push(key);
-    }
-    keys.reverse();
-
-    // Rather than returning an object with a next method, we keep
-    // things simple and return the next function itself.
-    return function next() {
-      while (keys.length) {
-        var key = keys.pop();
-        if (key in object) {
-          next.value = key;
-          next.done = false;
-          return next;
-        }
-      }
-
-      // To avoid creating an additional object, we just hang the .value
-      // and .done properties off the next function object itself. This
-      // also ensures that the minifier will not anonymize the function.
-      next.done = true;
-      return next;
-    };
-  };
-
-  function values(iterable) {
-    if (iterable) {
-      var iteratorMethod = iterable[iteratorSymbol];
-      if (iteratorMethod) {
-        return iteratorMethod.call(iterable);
-      }
-
-      if (typeof iterable.next === "function") {
-        return iterable;
-      }
-
-      if (!isNaN(iterable.length)) {
-        var i = -1, next = function next() {
-          while (++i < iterable.length) {
-            if (hasOwn.call(iterable, i)) {
-              next.value = iterable[i];
-              next.done = false;
-              return next;
-            }
-          }
-
-          next.value = undefined$1;
-          next.done = true;
-
-          return next;
-        };
-
-        return next.next = next;
-      }
-    }
-
-    // Return an iterator with no values.
-    return { next: doneResult };
-  }
-  exports.values = values;
-
-  function doneResult() {
-    return { value: undefined$1, done: true };
-  }
-
-  Context.prototype = {
-    constructor: Context,
-
-    reset: function(skipTempReset) {
-      this.prev = 0;
-      this.next = 0;
-      // Resetting context._sent for legacy support of Babel's
-      // function.sent implementation.
-      this.sent = this._sent = undefined$1;
-      this.done = false;
-      this.delegate = null;
-
-      this.method = "next";
-      this.arg = undefined$1;
-
-      this.tryEntries.forEach(resetTryEntry);
-
-      if (!skipTempReset) {
-        for (var name in this) {
-          // Not sure about the optimal order of these conditions:
-          if (name.charAt(0) === "t" &&
-              hasOwn.call(this, name) &&
-              !isNaN(+name.slice(1))) {
-            this[name] = undefined$1;
-          }
-        }
-      }
-    },
-
-    stop: function() {
-      this.done = true;
-
-      var rootEntry = this.tryEntries[0];
-      var rootRecord = rootEntry.completion;
-      if (rootRecord.type === "throw") {
-        throw rootRecord.arg;
-      }
-
-      return this.rval;
-    },
-
-    dispatchException: function(exception) {
-      if (this.done) {
-        throw exception;
-      }
-
-      var context = this;
-      function handle(loc, caught) {
-        record.type = "throw";
-        record.arg = exception;
-        context.next = loc;
-
-        if (caught) {
-          // If the dispatched exception was caught by a catch block,
-          // then let that catch block handle the exception normally.
-          context.method = "next";
-          context.arg = undefined$1;
-        }
-
-        return !! caught;
-      }
-
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        var record = entry.completion;
-
-        if (entry.tryLoc === "root") {
-          // Exception thrown outside of any try block that could handle
-          // it, so set the completion value of the entire function to
-          // throw the exception.
-          return handle("end");
-        }
-
-        if (entry.tryLoc <= this.prev) {
-          var hasCatch = hasOwn.call(entry, "catchLoc");
-          var hasFinally = hasOwn.call(entry, "finallyLoc");
-
-          if (hasCatch && hasFinally) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            } else if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else if (hasCatch) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            }
-
-          } else if (hasFinally) {
-            if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else {
-            throw new Error("try statement without catch or finally");
-          }
-        }
-      }
-    },
-
-    abrupt: function(type, arg) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc <= this.prev &&
-            hasOwn.call(entry, "finallyLoc") &&
-            this.prev < entry.finallyLoc) {
-          var finallyEntry = entry;
-          break;
-        }
-      }
-
-      if (finallyEntry &&
-          (type === "break" ||
-           type === "continue") &&
-          finallyEntry.tryLoc <= arg &&
-          arg <= finallyEntry.finallyLoc) {
-        // Ignore the finally entry if control is not jumping to a
-        // location outside the try/catch block.
-        finallyEntry = null;
-      }
-
-      var record = finallyEntry ? finallyEntry.completion : {};
-      record.type = type;
-      record.arg = arg;
-
-      if (finallyEntry) {
-        this.method = "next";
-        this.next = finallyEntry.finallyLoc;
-        return ContinueSentinel;
-      }
-
-      return this.complete(record);
-    },
-
-    complete: function(record, afterLoc) {
-      if (record.type === "throw") {
-        throw record.arg;
-      }
-
-      if (record.type === "break" ||
-          record.type === "continue") {
-        this.next = record.arg;
-      } else if (record.type === "return") {
-        this.rval = this.arg = record.arg;
-        this.method = "return";
-        this.next = "end";
-      } else if (record.type === "normal" && afterLoc) {
-        this.next = afterLoc;
-      }
-
-      return ContinueSentinel;
-    },
-
-    finish: function(finallyLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.finallyLoc === finallyLoc) {
-          this.complete(entry.completion, entry.afterLoc);
-          resetTryEntry(entry);
-          return ContinueSentinel;
-        }
-      }
-    },
-
-    "catch": function(tryLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc === tryLoc) {
-          var record = entry.completion;
-          if (record.type === "throw") {
-            var thrown = record.arg;
-            resetTryEntry(entry);
-          }
-          return thrown;
-        }
-      }
-
-      // The context.catch method must only be called with a location
-      // argument that corresponds to a known catch block.
-      throw new Error("illegal catch attempt");
-    },
-
-    delegateYield: function(iterable, resultName, nextLoc) {
-      this.delegate = {
-        iterator: values(iterable),
-        resultName: resultName,
-        nextLoc: nextLoc
-      };
-
-      if (this.method === "next") {
-        // Deliberately forget the last sent value so that we don't
-        // accidentally pass it on to the delegate.
-        this.arg = undefined$1;
-      }
-
-      return ContinueSentinel;
-    }
-  };
-
-  // Regardless of whether this script is executing as a CommonJS module
-  // or not, return the runtime object so that we can declare the variable
-  // regeneratorRuntime in the outer scope, which allows this module to be
-  // injected easily by `bin/regenerator --include-runtime script.js`.
-  return exports;
-
-}(
-  // If this script is executing as a CommonJS module, use module.exports
-  // as the regeneratorRuntime namespace. Otherwise create a new empty
-  // object. Either way, the resulting object will be used to initialize
-  // the regeneratorRuntime variable at the top of this file.
-   module.exports 
-));
-
-try {
-  regeneratorRuntime = runtime;
-} catch (accidentalStrictMode) {
-  // This module should not be running in strict mode, so the above
-  // assignment should always work unless something is misconfigured. Just
-  // in case runtime.js accidentally runs in strict mode, we can escape
-  // strict mode using a global Function call. This could conceivably fail
-  // if a Content Security Policy forbids using Function, but in that case
-  // the proper solution is to fix the accidental strict mode problem. If
-  // you've misconfigured your bundler to force strict mode and applied a
-  // CSP to forbid Function, and you're not willing to fix either of those
-  // problems, please detail your unique predicament in a GitHub issue.
-  Function("r", "regeneratorRuntime = r")(runtime);
 }
+
+Input.propTypes = {
+  containerStyle: ViewPropTypes.style,
+  disabled: propTypes.bool,
+  disabledInputStyle: TextPropTypes.style,
+  inputContainerStyle: ViewPropTypes.style,
+  leftIcon: nodeType,
+  leftIconContainerStyle: ViewPropTypes.style,
+  rightIcon: nodeType,
+  rightIconContainerStyle: ViewPropTypes.style,
+  inputStyle: TextPropTypes.style,
+  inputComponent: propTypes.elementType,
+  errorProps: propTypes.object,
+  errorStyle: TextPropTypes.style,
+  errorMessage: propTypes.string,
+  label: propTypes.node,
+  labelStyle: TextPropTypes.style,
+  labelProps: propTypes.object,
+  theme: propTypes.object
+};
+const styles$2 = {
+  container: {
+    width: '100%',
+    paddingHorizontal: 10
+  },
+  disabledInput: {
+    opacity: 0.5
+  },
+  inputContainer: theme => ({
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    alignItems: 'center',
+    borderColor: theme.colors.grey3
+  }),
+  iconContainer: {
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 15
+  },
+  input: {
+    alignSelf: 'center',
+    color: 'black',
+    fontSize: 18,
+    flex: 1,
+    minHeight: 40
+  },
+  error: theme => ({
+    margin: 5,
+    fontSize: 12,
+    color: theme.colors.error
+  }),
+  label: theme => ({
+    fontSize: 16,
+    color: theme.colors.grey3,
+    ...reactNative.Platform.select({
+      android: { ...fonts.android.bold
+      },
+      default: {
+        fontWeight: 'bold'
+      }
+    })
+  })
+};
+var Input$1 = withTheme(Input, 'Input');
+
+function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
+
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class Image extends React__default.Component {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty$2(this, "state", {
+      placeholderOpacity: new reactNative.Animated.Value(1)
+    });
+
+    _defineProperty$2(this, "onLoad", () => {
+      const minimumWait = 100;
+      const staggerNonce = 200 * Math.random();
+      setTimeout(() => {
+        reactNative.Animated.timing(this.state.placeholderOpacity, {
+          toValue: 0,
+          duration: 350,
+          useNativeDriver: reactNative.Platform.OS === 'android' ? false : true
+        }).start();
+      }, reactNative.Platform.OS === 'android' ? 0 : Math.floor(minimumWait + staggerNonce));
+    });
+  }
+
+  render() {
+    const {
+      placeholderStyle,
+      PlaceholderContent,
+      containerStyle,
+      style,
+      ImageComponent,
+      children,
+      ...attributes
+    } = this.props;
+    const hasImage = Boolean(attributes.source);
+    return React__default.createElement(reactNative.View, {
+      accessibilityIgnoresInvertColors: true,
+      style: reactNative.StyleSheet.flatten([styles$3.container, containerStyle])
+    }, React__default.createElement(ImageComponent, _extends$5({
+      testID: "RNE__Image"
+    }, attributes, {
+      onLoad: this.onLoad,
+      style: [reactNative.StyleSheet.absoluteFill, {
+        width: style.width,
+        height: style.height
+      }]
+    })), React__default.createElement(reactNative.Animated.View, {
+      pointerEvents: hasImage ? 'none' : 'auto',
+      accessibilityElementsHidden: hasImage,
+      importantForAccessibility: hasImage ? 'no-hide-descendants' : 'yes',
+      style: [styles$3.placeholderContainer, {
+        opacity: hasImage ? this.state.placeholderOpacity : 1
+      }]
+    }, React__default.createElement(reactNative.View, {
+      testID: "RNE__Image__placeholder",
+      style: reactNative.StyleSheet.flatten([style, styles$3.placeholder, placeholderStyle])
+    }, PlaceholderContent)), React__default.createElement(reactNative.View, {
+      style: style
+    }, children));
+  }
+
+}
+
+const styles$3 = {
+  container: {
+    backgroundColor: 'transparent',
+    position: 'relative'
+  },
+  placeholderContainer: { ...reactNative.StyleSheet.absoluteFillObject
+  },
+  placeholder: {
+    backgroundColor: '#bdbdbd',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+};
+Image.propTypes = { ...reactNative.Image.propTypes,
+  ImageComponent: propTypes.elementType,
+  PlaceholderContent: nodeType,
+  containerStyle: ViewPropTypes.style,
+  placeholderStyle: reactNative.Image.propTypes.style
+};
+Image.defaultProps = {
+  ImageComponent: reactNative.Image,
+  style: {}
+};
+var Image$1 = withTheme(Image, 'Image');
+
+function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
+const avatarSizes = {
+  small: 34,
+  medium: 50,
+  large: 75,
+  xlarge: 150
+};
+const defaultEditButton = {
+  name: 'mode-edit',
+  type: 'material',
+  color: '#fff',
+  underlayColor: '#000'
+};
+
+const Avatar = ({
+  onPress,
+  onLongPress,
+  Component = onPress || onLongPress ? reactNative.TouchableOpacity : reactNative.View,
+  containerStyle,
+  icon,
+  iconStyle,
+  source,
+  size,
+  avatarStyle,
+  rounded,
+  title,
+  titleStyle,
+  overlayContainerStyle,
+  showEditButton,
+  editButton: passedEditButton,
+  onEditPress,
+  imageProps,
+  placeholderStyle,
+  renderPlaceholderContent,
+  ImageComponent,
+  ...attributes
+}) => {
+  const width = typeof size === 'number' ? size : avatarSizes[size] || avatarSizes.small;
+  const height = width;
+  const titleSize = width / 2;
+  const iconSize = width / 2;
+  const editButton = { ...defaultEditButton,
+    ...passedEditButton
+  };
+  const editButtonSize = editButton.size || (width + height) / 2 / 3;
+  const Utils = showEditButton && React__default.createElement(reactNative.TouchableHighlight, {
+    style: reactNative.StyleSheet.flatten([styles$4.editButton, {
+      width: editButtonSize,
+      height: editButtonSize,
+      borderRadius: editButtonSize / 2
+    }, editButton.style]),
+    underlayColor: editButton.underlayColor,
+    onPress: onEditPress
+  }, React__default.createElement(reactNative.View, null, React__default.createElement(Icon$1, _extends$6({
+    size: editButtonSize * 0.8
+  }, editButton))));
+  const PlaceholderContent = renderPlaceholderContent && renderNode(undefined, renderPlaceholderContent) || title && React__default.createElement(reactNative.Text, {
+    style: reactNative.StyleSheet.flatten([styles$4.title, {
+      fontSize: titleSize
+    }, titleStyle])
+  }, title) || icon && React__default.createElement(Icon$1, {
+    style: iconStyle && iconStyle,
+    color: icon.color || 'white',
+    name: icon.name || 'user',
+    size: icon.size || iconSize,
+    type: icon.type && icon.type
+  }); // Remove placeholder styling if we're not using image
+
+  const hidePlaceholder = !source;
+  return React__default.createElement(Component, _extends$6({
+    onPress: onPress,
+    onLongPress: onLongPress,
+    style: reactNative.StyleSheet.flatten([styles$4.container, {
+      height,
+      width
+    }, rounded && {
+      borderRadius: width / 2
+    }, containerStyle])
+  }, attributes), React__default.createElement(Image$1, _extends$6({
+    placeholderStyle: reactNative.StyleSheet.flatten([placeholderStyle, hidePlaceholder && {
+      backgroundColor: 'transparent'
+    }]),
+    PlaceholderContent: PlaceholderContent,
+    containerStyle: reactNative.StyleSheet.flatten([styles$4.overlayContainer, overlayContainerStyle, rounded && {
+      borderRadius: width / 2,
+      overflow: 'hidden'
+    }]),
+    source: source
+  }, imageProps, {
+    style: reactNative.StyleSheet.flatten([styles$4.avatar, imageProps && imageProps.style, avatarStyle]),
+    ImageComponent: ImageComponent
+  })), Utils);
+};
+
+const styles$4 = reactNative.StyleSheet.create({
+  container: {
+    backgroundColor: 'transparent'
+  },
+  avatar: {
+    flex: 1,
+    width: null,
+    height: null
+  },
+  overlayContainer: {
+    flex: 1,
+    backgroundColor: '#bdbdbd'
+  },
+  title: {
+    color: '#ffffff',
+    backgroundColor: 'transparent',
+    textAlign: 'center'
+  },
+  editButton: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#aaa',
+    ...reactNative.Platform.select({
+      android: {
+        elevation: 1
+      },
+      default: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 1,
+          height: 1
+        },
+        shadowRadius: 2,
+        shadowOpacity: 0.5
+      }
+    })
+  }
+});
+Avatar.propTypes = {
+  Component: propTypes.oneOf([reactNative.View, reactNative.TouchableOpacity, reactNative.TouchableHighlight, reactNative.TouchableNativeFeedback, reactNative.TouchableWithoutFeedback]),
+  onPress: propTypes.func,
+  onLongPress: propTypes.func,
+  containerStyle: ViewPropTypes.style,
+  source: reactNative.Image.propTypes.source,
+  avatarStyle: ViewPropTypes.style,
+  rounded: propTypes.bool,
+  title: propTypes.string,
+  titleStyle: reactNative.Text.propTypes.style,
+  overlayContainerStyle: ViewPropTypes.style,
+  activeOpacity: propTypes.number,
+  icon: propTypes.object,
+  iconStyle: reactNative.Text.propTypes.style,
+  size: propTypes.oneOfType([propTypes.oneOf(['small', 'medium', 'large', 'xlarge']), propTypes.number]),
+  showEditButton: propTypes.bool,
+  onEditPress: propTypes.func,
+  editButton: propTypes.shape({
+    size: propTypes.number,
+    name: propTypes.string,
+    type: propTypes.string,
+    color: propTypes.string,
+    underlayColor: propTypes.string,
+    style: ViewPropTypes.style
+  }),
+  placeholderStyle: ViewPropTypes.style,
+  renderPlaceholderContent: nodeType,
+  imageProps: propTypes.object,
+  ImageComponent: propTypes.elementType
+};
+Avatar.defaultProps = {
+  showEditButton: false,
+  onEditPress: null,
+  size: 'small',
+  editButton: defaultEditButton,
+  ImageComponent: reactNative.Image
+};
+var Avatar$1 = withTheme(Avatar, 'Avatar');
+
+function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
+
+const Badge = props => {
+  const {
+    containerStyle,
+    textStyle,
+    badgeStyle,
+    onPress,
+    Component = onPress ? reactNative.TouchableOpacity : reactNative.View,
+    value,
+    theme,
+    status,
+    ...attributes
+  } = props;
+  const element = renderNode(reactNative.Text, value, {
+    style: reactNative.StyleSheet.flatten([styles$5.text, textStyle && textStyle])
+  });
+  return React__default.createElement(reactNative.View, {
+    style: reactNative.StyleSheet.flatten([containerStyle && containerStyle])
+  }, React__default.createElement(Component, _extends$7({}, attributes, {
+    style: reactNative.StyleSheet.flatten([styles$5.badge(theme, status), !element && styles$5.miniBadge, badgeStyle && badgeStyle]),
+    onPress: onPress
+  }), element));
+};
+
+Badge.propTypes = {
+  containerStyle: ViewPropTypes.style,
+  badgeStyle: ViewPropTypes.style,
+  textStyle: reactNative.Text.propTypes.style,
+  value: propTypes.node,
+  onPress: propTypes.func,
+  Component: propTypes.elementType,
+  theme: propTypes.object,
+  status: propTypes.oneOf(['primary', 'success', 'warning', 'error'])
+};
+Badge.defaultProps = {
+  status: 'primary'
+};
+const size = 18;
+const miniSize = 8;
+const styles$5 = {
+  badge: (theme, status) => ({
+    alignSelf: 'center',
+    minWidth: size,
+    height: size,
+    borderRadius: size / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: theme.colors[status],
+    borderWidth: reactNative.StyleSheet.hairlineWidth,
+    borderColor: '#fff'
+  }),
+  miniBadge: {
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+    minWidth: miniSize,
+    height: miniSize,
+    borderRadius: miniSize / 2
+  },
+  text: {
+    fontSize: 12,
+    color: 'white',
+    paddingHorizontal: 4
+  }
+};
+var Badge$1 = withTheme(Badge, 'Badge');
+
+function _extends$8() { _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
+
+const TextElement = props => {
+  const {
+    style,
+    children,
+    h1,
+    h2,
+    h3,
+    h4,
+    h1Style,
+    h2Style,
+    h3Style,
+    h4Style,
+    ...rest
+  } = props;
+  return React__default.createElement(reactNative.Text, _extends$8({
+    style: reactNative.StyleSheet.flatten([styles$6.text, style && style, h1 && styles$6.bold, h2 && styles$6.bold, h3 && styles$6.bold, h4 && styles$6.bold, h1 && reactNative.StyleSheet.flatten([{
+      fontSize: normalize(40)
+    }, h1Style]), h2 && reactNative.StyleSheet.flatten([{
+      fontSize: normalize(34)
+    }, h2Style]), h3 && reactNative.StyleSheet.flatten([{
+      fontSize: normalize(28)
+    }, h3Style]), h4 && reactNative.StyleSheet.flatten([{
+      fontSize: normalize(22)
+    }, h4Style])])
+  }, patchWebProps(rest)), children);
+};
+
+TextElement.propTypes = {
+  style: reactNative.Text.propTypes.style,
+  h1: propTypes.bool,
+  h2: propTypes.bool,
+  h3: propTypes.bool,
+  h4: propTypes.bool,
+  h1Style: reactNative.Text.propTypes.style,
+  h2Style: reactNative.Text.propTypes.style,
+  h3Style: reactNative.Text.propTypes.style,
+  h4Style: reactNative.Text.propTypes.style,
+  children: propTypes.node
+};
+TextElement.defaultProps = {
+  h1: false,
+  h2: false,
+  h3: false,
+  h4: false,
+  style: {},
+  h1Style: {},
+  h2Style: {},
+  h3Style: {},
+  h4Style: {},
+  children: ''
+};
+const styles$6 = reactNative.StyleSheet.create({
+  text: { ...reactNative.Platform.select({
+      android: { ...fonts.android.regular
+      }
+    })
+  },
+  bold: { ...reactNative.Platform.select({
+      android: { ...fonts.android.bold
+      }
+    })
+  }
+});
+var Text = withTheme(TextElement, 'Text');
+
+const CheckBoxIcon = ({
+  checked,
+  onIconPress,
+  onLongIconPress,
+  size,
+  checkedIcon,
+  uncheckedIcon,
+  iconType,
+  checkedColor,
+  uncheckedColor
+}) => {
+  if (checked && React__default.isValidElement(checkedIcon)) {
+    return checkedIcon;
+  }
+
+  if (!checked && React__default.isValidElement(uncheckedIcon)) {
+    return uncheckedIcon;
+  }
+
+  const VectorIcon = iconType ? getIconType(iconType) : FAIcon;
+  return React__default.createElement(VectorIcon, {
+    color: checked ? checkedColor : uncheckedColor,
+    name: checked ? checkedIcon : uncheckedIcon,
+    size: size || 24,
+    style: {
+      minWidth: size || 24
+    },
+    onLongPress: onLongIconPress,
+    onPress: onIconPress
+  });
+};
+
+CheckBoxIcon.propTypes = {
+  checked: propTypes.bool,
+  onIconPress: propTypes.func,
+  onLongIconPress: propTypes.func,
+  size: propTypes.number,
+  checkedIcon: propTypes.oneOfType([propTypes.string, propTypes.element]),
+  uncheckedIcon: propTypes.oneOfType([propTypes.string, propTypes.element]),
+  iconType: propTypes.string,
+  checkedColor: propTypes.string,
+  uncheckedColor: propTypes.string
+};
+
+function _extends$9() { _extends$9 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$9.apply(this, arguments); }
+
+const CheckBox = props => {
+  const {
+    theme,
+    ...rest
+  } = props;
+  const {
+    Component,
+    checked,
+    iconRight,
+    title,
+    titleProps,
+    center,
+    right,
+    containerStyle,
+    textStyle,
+    wrapperStyle,
+    onPress,
+    onLongPress,
+    checkedTitle,
+    fontFamily,
+    checkedColor = theme.colors.primary,
+    ...attributes
+  } = rest;
+  return React__default.createElement(Component, _extends$9({}, attributes, {
+    testID: "checkbox",
+    onLongPress: onLongPress,
+    onPress: onPress,
+    style: reactNative.StyleSheet.flatten([styles$7.container, title && styles$7.containerHasTitle, containerStyle && containerStyle])
+  }), React__default.createElement(reactNative.View, {
+    style: reactNative.StyleSheet.flatten([styles$7.wrapper, right && {
+      justifyContent: 'flex-end'
+    }, center && {
+      justifyContent: 'center'
+    }, wrapperStyle && wrapperStyle])
+  }, !iconRight && React__default.createElement(CheckBoxIcon, _extends$9({}, props, {
+    checkedColor: checkedColor
+  })), React__default.isValidElement(title) ? title : title && React__default.createElement(Text, _extends$9({
+    testID: "checkboxTitle",
+    style: reactNative.StyleSheet.flatten([styles$7.text(theme), textStyle && textStyle, fontFamily && {
+      fontFamily
+    }])
+  }, titleProps), checked ? checkedTitle || title : title), iconRight && React__default.createElement(CheckBoxIcon, _extends$9({}, props, {
+    checkedColor: checkedColor
+  }))));
+};
+
+CheckBox.propTypes = { ...CheckBoxIcon.propTypes,
+  Component: propTypes.elementType,
+  iconRight: propTypes.bool,
+  title: propTypes.oneOfType([propTypes.string, propTypes.element]),
+  titleProps: propTypes.object,
+  center: propTypes.bool,
+  right: propTypes.bool,
+  containerStyle: ViewPropTypes.style,
+  wrapperStyle: ViewPropTypes.style,
+  textStyle: reactNative.Text.propTypes.style,
+  onPress: propTypes.func,
+  onLongPress: propTypes.func,
+  checkedTitle: propTypes.string,
+  fontFamily: propTypes.string
+};
+CheckBox.defaultProps = {
+  checked: false,
+  iconRight: false,
+  right: false,
+  center: false,
+  uncheckedColor: '#bfbfbf',
+  checkedIcon: 'check-square-o',
+  uncheckedIcon: 'square-o',
+  size: 24,
+  Component: reactNative.TouchableOpacity,
+  titleProps: {}
+};
+const styles$7 = {
+  wrapper: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  container: {
+    margin: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    padding: 10
+  },
+  containerHasTitle: {
+    borderWidth: 1,
+    borderRadius: 3,
+    backgroundColor: '#fafafa',
+    borderColor: '#ededed'
+  },
+  text: theme => ({
+    marginLeft: 10,
+    marginRight: 10,
+    color: theme.colors.grey1,
+    ...reactNative.Platform.select({
+      android: { ...fonts.android.bold
+      },
+      default: {
+        fontWeight: 'bold'
+      }
+    })
+  })
+};
+var CheckBox$1 = withTheme(CheckBox, 'CheckBox');
+
+function _extends$a() { _extends$a = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a.apply(this, arguments); }
+
+const ButtonGroup = props => {
+  const {
+    theme,
+    ...rest
+  } = props;
+  const {
+    Component,
+    buttons,
+    onPress,
+    selectedIndex,
+    selectedIndexes,
+    selectMultiple,
+    containerStyle,
+    innerBorderStyle,
+    lastBorderStyle,
+    buttonStyle,
+    textStyle,
+    selectedTextStyle,
+    selectedButtonStyle,
+    underlayColor = theme.colors.primary,
+    activeOpacity,
+    onHideUnderlay,
+    onShowUnderlay,
+    setOpacityTo,
+    containerBorderRadius,
+    disabled,
+    disabledStyle,
+    disabledTextStyle,
+    disabledSelectedStyle,
+    disabledSelectedTextStyle,
+    ...attributes
+  } = rest;
+  let innerBorderWidth = 1;
+
+  if (innerBorderStyle && Object.prototype.hasOwnProperty.call(innerBorderStyle, 'width')) {
+    innerBorderWidth = innerBorderStyle.width;
+  }
+
+  return React__default.createElement(reactNative.View, _extends$a({}, attributes, {
+    style: reactNative.StyleSheet.flatten([styles$8.container, containerStyle && containerStyle])
+  }), buttons.map((button, i) => {
+    const isSelected = selectedIndex === i || selectedIndexes.includes(i);
+    const isDisabled = disabled === true || Array.isArray(disabled) && disabled.includes(i);
+    return React__default.createElement(reactNative.View, {
+      key: i,
+      style: reactNative.StyleSheet.flatten([// FIXME: This is a workaround to the borderColor and borderRadius bug
+      // react-native ref: https://github.com/facebook/react-native/issues/8236
+      styles$8.button, i < buttons.length - 1 && {
+        borderRightWidth: i === 0 ? 0 : innerBorderWidth,
+        borderRightColor: innerBorderStyle && innerBorderStyle.color || theme.colors.grey4
+      }, i === 1 && {
+        borderLeftWidth: innerBorderWidth,
+        borderLeftColor: innerBorderStyle && innerBorderStyle.color || theme.colors.grey4
+      }, i === buttons.length - 1 && { ...lastBorderStyle,
+        borderTopRightRadius: containerBorderRadius,
+        borderBottomRightRadius: containerBorderRadius
+      }, i === 0 && {
+        borderTopLeftRadius: containerBorderRadius,
+        borderBottomLeftRadius: containerBorderRadius
+      }])
+    }, React__default.createElement(Component, {
+      testID: "buttonGroupItem",
+      activeOpacity: activeOpacity,
+      setOpacityTo: setOpacityTo,
+      onHideUnderlay: onHideUnderlay,
+      onShowUnderlay: onShowUnderlay,
+      underlayColor: underlayColor,
+      disabled: isDisabled,
+      onPress: () => {
+        if (selectMultiple) {
+          if (selectedIndexes.includes(i)) {
+            onPress(selectedIndexes.filter(index => index !== i));
+          } else {
+            onPress([...selectedIndexes, i]);
+          }
+        } else {
+          onPress(i);
+        }
+      },
+      style: styles$8.button
+    }, React__default.createElement(reactNative.View, {
+      style: reactNative.StyleSheet.flatten([styles$8.textContainer, buttonStyle && buttonStyle, isSelected && {
+        backgroundColor: theme.colors.primary
+      }, isSelected && selectedButtonStyle && selectedButtonStyle, isDisabled && styles$8.disabled, isDisabled && disabledStyle, isDisabled && isSelected && styles$8.disabledSelected(theme), isDisabled && isSelected && disabledSelectedStyle])
+    }, button.element ? React__default.createElement(button.element, null) : React__default.createElement(Text, {
+      testID: "buttonGroupItemText",
+      style: reactNative.StyleSheet.flatten([styles$8.buttonText(theme), textStyle && textStyle, isSelected && {
+        color: '#fff'
+      }, isSelected && selectedTextStyle, isDisabled && styles$8.disabledText(theme), isDisabled && disabledTextStyle, isDisabled && isSelected && disabledSelectedTextStyle])
+    }, button))));
+  }));
+};
+
+const styles$8 = {
+  button: {
+    flex: 1
+  },
+  textContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  container: {
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 5,
+    marginTop: 5,
+    borderColor: '#e3e3e3',
+    borderWidth: 1,
+    flexDirection: 'row',
+    borderRadius: 3,
+    overflow: 'hidden',
+    backgroundColor: '#fff',
+    height: 40
+  },
+  buttonText: theme => ({
+    fontSize: normalize(13),
+    color: theme.colors.grey2,
+    ...reactNative.Platform.select({
+      android: {},
+      default: {
+        fontWeight: '500'
+      }
+    })
+  }),
+  disabled: {
+    backgroundColor: 'transparent'
+  },
+  disabledText: theme => ({
+    color: color(theme.colors.disabled).darken(0.3).toString()
+  }),
+  disabledSelected: theme => ({
+    backgroundColor: theme.colors.disabled
+  })
+};
+ButtonGroup.propTypes = {
+  button: propTypes.object,
+  Component: propTypes.elementType,
+  onPress: propTypes.func,
+  buttons: propTypes.array,
+  containerStyle: ViewPropTypes.style,
+  textStyle: reactNative.Text.propTypes.style,
+  selectedTextStyle: reactNative.Text.propTypes.style,
+  selectedButtonStyle: ViewPropTypes.style,
+  underlayColor: propTypes.string,
+  selectedIndex: propTypes.number,
+  selectedIndexes: propTypes.arrayOf(propTypes.number),
+  activeOpacity: propTypes.number,
+  onHideUnderlay: propTypes.func,
+  onShowUnderlay: propTypes.func,
+  setOpacityTo: propTypes.func,
+  innerBorderStyle: propTypes.shape({
+    color: propTypes.string,
+    width: propTypes.number
+  }),
+  lastBorderStyle: propTypes.oneOfType([ViewPropTypes.style, reactNative.Text.propTypes.style]),
+  buttonStyle: ViewPropTypes.style,
+  containerBorderRadius: propTypes.number,
+  selectMultiple: propTypes.bool,
+  theme: propTypes.object,
+  disabled: propTypes.oneOfType([propTypes.bool, propTypes.arrayOf(propTypes.number)]),
+  disabledStyle: ViewPropTypes.style,
+  disabledTextStyle: reactNative.Text.propTypes.style,
+  disabledSelectedStyle: ViewPropTypes.style,
+  disabledSelectedTextStyle: reactNative.Text.propTypes.style
+};
+ButtonGroup.defaultProps = {
+  selectedIndex: null,
+  selectedIndexes: [],
+  selectMultiple: false,
+  containerBorderRadius: 3,
+  disabled: false,
+  Component: reactNative.Platform.select({
+    android: reactNative.TouchableNativeFeedback,
+    default: reactNative.TouchableOpacity
+  }),
+  onPress: () => null
+};
+var ButtonGroup$1 = withTheme(ButtonGroup, 'ButtonGroup');
+
+function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends$b() { _extends$b = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
+const ANDROID_SECONDARY = 'rgba(0, 0, 0, 0.54)';
+const chevronDefaultProps = {
+  type: reactNative.Platform.OS === 'ios' ? 'ionicon' : 'material',
+  color: '#D1D1D6',
+  name: reactNative.Platform.OS === 'ios' ? 'ios-arrow-forward' : 'keyboard-arrow-right',
+  size: 16
+};
+
+const checkmarkDefaultProps = theme => ({
+  name: 'check',
+  size: 20,
+  color: theme.colors.primary
 });
 
-var regenerator = runtime_1;
+const renderText$1 = (content, defaultProps, style) => renderNode(Text, content, { ...defaultProps,
+  style: reactNative.StyleSheet.flatten([style, defaultProps && defaultProps.style])
+});
 
-var _jsxFileName$u="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-ratings\\src\\SwipeRating.js";var STAR_IMAGE=require('./images/star.png');var HEART_IMAGE=require('./images/heart.png');var ROCKET_IMAGE=require('./images/rocket.png');var BELL_IMAGE=require('./images/bell.png');var TYPES={star:{source:STAR_IMAGE,color:'#f1c40f',backgroundColor:'white'},heart:{source:HEART_IMAGE,color:'#e74c3c',backgroundColor:'white'},rocket:{source:ROCKET_IMAGE,color:'#2ecc71',backgroundColor:'white'},bell:{source:BELL_IMAGE,color:'#f39c12',backgroundColor:'white'}};var SwipeRating=function(_Component){inherits(SwipeRating,_Component);function SwipeRating(props){var _this;classCallCheck(this,SwipeRating);_this=possibleConstructorReturn(this,getPrototypeOf(SwipeRating).call(this,props));var _this$props=_this.props,onStartRating=_this$props.onStartRating,onFinishRating=_this$props.onFinishRating,fractions=_this$props.fractions;var position=new reactNative.Animated.ValueXY();var panResponder=reactNative.PanResponder.create({onStartShouldSetPanResponder:function onStartShouldSetPanResponder(){return true;},onPanResponderGrant:function onPanResponderGrant(){if(typeof onStartRating==='function'){onStartRating();}},onPanResponderMove:function onPanResponderMove(event,gesture){var newPosition=new reactNative.Animated.ValueXY();newPosition.setValue({x:gesture.dx,y:0});_this.setState({position:newPosition,value:gesture.dx});},onPanResponderRelease:function onPanResponderRelease(event){var rating=_this.getCurrentRating(_this.state.value);if(rating>=_this.props.minValue){if(!fractions){_this.setCurrentRating(rating);}onFinishRating(rating);}}});_this.state={panResponder:panResponder,position:position,display:false};return _this;}createClass(SwipeRating,[{key:"componentDidMount",value:function componentDidMount(){var _STAR_IMAGE,_HEART_IMAGE,_ROCKET_IMAGE,_BELL_IMAGE;return regenerator.async(function componentDidMount$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.prev=0;_context.next=3;return regenerator.awrap(require('./images/star.png'));case 3:_STAR_IMAGE=_context.sent;_context.next=6;return regenerator.awrap(require('./images/heart.png'));case 6:_HEART_IMAGE=_context.sent;_context.next=9;return regenerator.awrap(require('./images/rocket.png'));case 9:_ROCKET_IMAGE=_context.sent;_context.next=12;return regenerator.awrap(require('./images/bell.png'));case 12:_BELL_IMAGE=_context.sent;this.setState({display:true});_context.next=19;break;case 16:_context.prev=16;_context.t0=_context["catch"](0);console.log(_context.t0);case 19:this.setCurrentRating(this.props.startingValue);case 20:case"end":return _context.stop();}}},null,this,[[0,16]]);}},{key:"componentDidUpdate",value:function componentDidUpdate(prevProps){if(this.props.startingValue!==prevProps.startingValue){this.setCurrentRating(this.props.startingValue);}}},{key:"getPrimaryViewStyle",value:function getPrimaryViewStyle(){var position=this.state.position;var _this$props2=this.props,imageSize=_this$props2.imageSize,ratingCount=_this$props2.ratingCount,type=_this$props2.type;var color=TYPES[type].color;var width=position.x.interpolate({inputRange:[-ratingCount*(imageSize/2),0,ratingCount*(imageSize/2)],outputRange:[0,ratingCount*imageSize/2,ratingCount*imageSize],extrapolate:'clamp'},{useNativeDriver:true});return {backgroundColor:color,width:width,height:width?imageSize:0};}},{key:"getSecondaryViewStyle",value:function getSecondaryViewStyle(){var position=this.state.position;var _this$props3=this.props,imageSize=_this$props3.imageSize,ratingCount=_this$props3.ratingCount,type=_this$props3.type;var backgroundColor=TYPES[type].backgroundColor;var width=position.x.interpolate({inputRange:[-ratingCount*(imageSize/2),0,ratingCount*(imageSize/2)],outputRange:[ratingCount*imageSize,ratingCount*imageSize/2,0],extrapolate:'clamp'},{useNativeDriver:true});return {backgroundColor:backgroundColor,width:width,height:width?imageSize:0};}},{key:"renderRatings",value:function renderRatings(){var _this$props4=this.props,imageSize=_this$props4.imageSize,ratingCount=_this$props4.ratingCount,type=_this$props4.type,tintColor=_this$props4.tintColor;var source=TYPES[type].source;return times(ratingCount,function(index){return React__default.createElement(reactNative.View,{key:index,style:styles$o.starContainer,__source:{fileName:_jsxFileName$u,lineNumber:158}},React__default.createElement(reactNative.Image,{source:source,style:{width:imageSize,height:imageSize,tintColor:tintColor},__source:{fileName:_jsxFileName$u,lineNumber:159}}));});}},{key:"getCurrentRating",value:function getCurrentRating(value){var _this$props5=this.props,fractions=_this$props5.fractions,imageSize=_this$props5.imageSize,ratingCount=_this$props5.ratingCount;var startingValue=ratingCount/2;var currentRating=this.props.minValue?this.props.minValue:0;if(value>ratingCount*imageSize/2){currentRating=ratingCount;}else if(value<-ratingCount*imageSize/2){currentRating=this.props.minValue?this.props.minValue:0;}else if(value<=imageSize||value>imageSize){currentRating=startingValue+value/imageSize;currentRating=!fractions?Math.ceil(currentRating):+currentRating.toFixed(fractions);}else{currentRating=!fractions?Math.ceil(startingValue):+startingValue.toFixed(fractions);}return currentRating;}},{key:"setCurrentRating",value:function setCurrentRating(rating){var _this$props6=this.props,imageSize=_this$props6.imageSize,ratingCount=_this$props6.ratingCount;var initialRating=ratingCount/2;var value=null;if(rating>ratingCount){value=ratingCount*imageSize/2;}else if(rating<0){value=-ratingCount*imageSize/2;}else if(rating<ratingCount/2||rating>ratingCount/2){value=(rating-initialRating)*imageSize;}else{value=0;}var newPosition=new reactNative.Animated.ValueXY();newPosition.setValue({x:value,y:0});this.setState({position:newPosition,value:value});}},{key:"displayCurrentRating",value:function displayCurrentRating(){var _this$props7=this.props,ratingCount=_this$props7.ratingCount,type=_this$props7.type,readonly=_this$props7.readonly,ratingTextColor=_this$props7.ratingTextColor;var color=ratingTextColor||TYPES[type].color;return React__default.createElement(reactNative.View,{style:styles$o.showRatingView,__source:{fileName:_jsxFileName$u,lineNumber:213}},React__default.createElement(reactNative.View,{style:styles$o.ratingView,__source:{fileName:_jsxFileName$u,lineNumber:214}},React__default.createElement(reactNative.Text,{style:[styles$o.ratingText,{color:color}],__source:{fileName:_jsxFileName$u,lineNumber:215}},"Rating:",' '),React__default.createElement(reactNative.Text,{style:[styles$o.currentRatingText,{color:color}],__source:{fileName:_jsxFileName$u,lineNumber:216}},this.getCurrentRating(this.state.value)),React__default.createElement(reactNative.Text,{style:[styles$o.maxRatingText,{color:color}],__source:{fileName:_jsxFileName$u,lineNumber:217}},"/",ratingCount)),React__default.createElement(reactNative.View,{__source:{fileName:_jsxFileName$u,lineNumber:219}},readonly&&React__default.createElement(reactNative.Text,{style:[styles$o.readonlyLabel,{color:color}],__source:{fileName:_jsxFileName$u,lineNumber:219}},"(readonly)")));}},{key:"render",value:function render(){var _this$props8=this.props,readonly=_this$props8.readonly,type=_this$props8.type,ratingImage=_this$props8.ratingImage,ratingColor=_this$props8.ratingColor,ratingBackgroundColor=_this$props8.ratingBackgroundColor,style=_this$props8.style,showRating=_this$props8.showRating;if(type==='custom'){var custom={source:ratingImage,color:ratingColor,backgroundColor:ratingBackgroundColor};TYPES.custom=custom;}return this.state.display?React__default.createElement(reactNative.View,{pointerEvents:readonly?'none':'auto',style:style,__source:{fileName:_jsxFileName$u,lineNumber:238}},showRating&&this.displayCurrentRating(),React__default.createElement(reactNative.View,_extends_1({style:styles$o.starsWrapper},this.state.panResponder.panHandlers,{__source:{fileName:_jsxFileName$u,lineNumber:240}}),React__default.createElement(reactNative.View,{style:styles$o.starsInsideWrapper,__source:{fileName:_jsxFileName$u,lineNumber:241}},React__default.createElement(reactNative.Animated.View,{style:this.getPrimaryViewStyle(),__source:{fileName:_jsxFileName$u,lineNumber:242}}),React__default.createElement(reactNative.Animated.View,{style:this.getSecondaryViewStyle(),__source:{fileName:_jsxFileName$u,lineNumber:243}})),this.renderRatings())):null;}}]);return SwipeRating;}(React.Component);SwipeRating.defaultProps={type:'star',ratingImage:require('./images/star.png'),ratingColor:'#f1c40f',ratingBackgroundColor:'white',ratingCount:5,imageSize:40,onFinishRating:function onFinishRating(){return console.log('Attach a onFinishRating function here.');},minValue:0};var styles$o=reactNative.StyleSheet.create({starsWrapper:{flexDirection:'row',justifyContent:'center',alignItems:'center'},starsInsideWrapper:{position:'absolute',top:0,left:0,right:0,bottom:0,flexDirection:'row',justifyContent:'center',alignItems:'center'},showRatingView:{flexDirection:'column',justifyContent:'center',alignItems:'center',paddingBottom:5},ratingView:{flexDirection:'row',justifyContent:'center',alignItems:'center',paddingBottom:5},ratingText:{fontSize:15,textAlign:'center',fontFamily:reactNative.Platform.OS==='ios'?'Trebuchet MS':null,color:'#34495e'},readonlyLabel:{justifyContent:'center',alignItems:'center',fontSize:12,textAlign:'center',fontFamily:reactNative.Platform.OS==='ios'?'Trebuchet MS':null,color:'#34495a'},currentRatingText:{fontSize:30,textAlign:'center',fontFamily:reactNative.Platform.OS==='ios'?'Trebuchet MS':null},maxRatingText:{fontSize:18,textAlign:'center',fontFamily:reactNative.Platform.OS==='ios'?'Trebuchet MS':null,color:'#34495e'}});var fractionsType=function fractionsType(props,propName,componentName){if(props[propName]){var value=props[propName];if(typeof value==='number'){return value>=0&&value<=20?null:new Error("`"+propName+"` in `"+componentName+"` must be between 0 and 20");}return new Error("`"+propName+"` in `"+componentName+"` must be a number");}};SwipeRating.propTypes={type:propTypes.string,ratingImage:reactNative.Image.propTypes.source,ratingColor:propTypes.string,ratingBackgroundColor:propTypes.string,ratingCount:propTypes.number,ratingTextColor:propTypes.string,imageSize:propTypes.number,onStartRating:propTypes.func,onFinishRating:propTypes.func,showRating:propTypes.bool,style:reactNative.ViewPropTypes.style,readonly:propTypes.bool,startingValue:propTypes.number,fractions:fractionsType,minValue:propTypes.number};
+const renderAvatar = content => renderNode(Avatar$1, content, {
+  size: 40,
+  rounded: true
+});
 
-var _jsxFileName$v="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-ratings\\src\\components\\Star.js";var STAR_IMAGE$1=require('../images/airbnb-star.png');var STAR_SELECTED_IMAGE=require('../images/airbnb-star-selected.png');var STAR_SIZE=40;var Star=function(_PureComponent){inherits(Star,_PureComponent);function Star(){var _this;classCallCheck(this,Star);_this=possibleConstructorReturn(this,getPrototypeOf(Star).call(this));_this.springValue=new reactNative.Animated.Value(1);_this.state={selected:false};return _this;}createClass(Star,[{key:"spring",value:function spring(){var _this$props=this.props,position=_this$props.position,starSelectedInPosition=_this$props.starSelectedInPosition;this.springValue.setValue(1.2);reactNative.Animated.spring(this.springValue,{toValue:1,friction:2,tension:1}).start();this.setState({selected:!this.state.selected});starSelectedInPosition(position);}},{key:"render",value:function render(){var _this$props2=this.props,fill=_this$props2.fill,size=_this$props2.size,selectedColor=_this$props2.selectedColor,isDisabled=_this$props2.isDisabled,starStyle=_this$props2.starStyle;var starSource=fill&&selectedColor===null?STAR_SELECTED_IMAGE:STAR_IMAGE$1;return React__default.createElement(reactNative.TouchableOpacity,{activeOpacity:1,onPress:this.spring.bind(this),disabled:isDisabled,__source:{fileName:_jsxFileName$v,lineNumber:45}},React__default.createElement(reactNative.Animated.Image,{source:starSource,style:[styles$p.starStyle,{tintColor:fill&&selectedColor?selectedColor:undefined,width:size||STAR_SIZE,height:size||STAR_SIZE,transform:[{scale:this.springValue}]},starStyle],__source:{fileName:_jsxFileName$v,lineNumber:46}}));}}]);return Star;}(React.PureComponent);Star.defaultProps={selectedColor:'#f1c40f'};var styles$p=reactNative.StyleSheet.create({starStyle:{margin:3}});
+const renderIcon = content => renderNode(Icon$1, content, {
+  color: reactNative.Platform.OS === 'ios' ? null : ANDROID_SECONDARY,
+  size: 24
+});
 
-var _jsxFileName$w="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\react-native-ratings\\src\\TapRating.js";var TapRating=function(_Component){inherits(TapRating,_Component);createClass(TapRating,null,[{key:"getDerivedStateFromProps",value:function getDerivedStateFromProps(nextProps,prevState){var defaultRating=nextProps.defaultRating;if(defaultRating!==prevState.defaultRating){return {position:defaultRating,defaultRating:defaultRating};}return null;}}]);function TapRating(){var _this;classCallCheck(this,TapRating);_this=possibleConstructorReturn(this,getPrototypeOf(TapRating).call(this));_this.state={position:5};return _this;}createClass(TapRating,[{key:"componentDidMount",value:function componentDidMount(){var defaultRating=this.props.defaultRating;this.setState({position:defaultRating});}},{key:"renderStars",value:function renderStars(rating_array){return _.map(rating_array,function(star,index){return star;});}},{key:"starSelectedInPosition",value:function starSelectedInPosition(position){var onFinishRating=this.props.onFinishRating;onFinishRating(position);this.setState({position:position});}},{key:"render",value:function render(){var _this2=this;var position=this.state.position;var _this$props=this.props,count=_this$props.count,reviews=_this$props.reviews,showRating=_this$props.showRating,reviewColor=_this$props.reviewColor,reviewSize=_this$props.reviewSize;var rating_array=[];var starContainerStyle=[styles$q.starContainer];if(this.props.starContainerStyle){starContainerStyle.push(this.props.starContainerStyle);}_.times(count,function(index){rating_array.push(React__default.createElement(Star,_extends_1({key:index,position:index+1,starSelectedInPosition:_this2.starSelectedInPosition.bind(_this2),fill:position>=index+1},_this2.props,{__source:{fileName:_jsxFileName$w,lineNumber:73}})));});return React__default.createElement(reactNative.View,{style:styles$q.ratingContainer,__source:{fileName:_jsxFileName$w,lineNumber:84}},showRating&&React__default.createElement(reactNative.Text,{style:[styles$q.reviewText,{fontSize:reviewSize,color:reviewColor}],__source:{fileName:_jsxFileName$w,lineNumber:86}},reviews[position-1]),React__default.createElement(reactNative.View,{style:starContainerStyle,__source:{fileName:_jsxFileName$w,lineNumber:90}},this.renderStars(rating_array)));}}]);return TapRating;}(React.Component);TapRating.defaultProps={defaultRating:3,reviews:["Terrible","Bad","Okay","Good","Great"],count:5,onFinishRating:function onFinishRating(){return console.log('Rating selected. Attach a function here.');},showRating:true,reviewColor:'rgba(230, 196, 46, 1)',reviewSize:25};var styles$q=reactNative.StyleSheet.create({ratingContainer:{backgroundColor:'transparent',flexDirection:'column',alignItems:'center',justifyContent:'center'},reviewText:{fontWeight:'bold',margin:10},starContainer:{flexDirection:'row',alignItems:'center',justifyContent:'center'}});
+const ListItem = props => {
+  const {
+    title,
+    titleStyle,
+    titleProps,
+    subtitle,
+    subtitleStyle,
+    subtitleProps,
+    containerStyle,
+    onPress,
+    onLongPress,
+    Component = onPress || onLongPress ? reactNative.TouchableHighlight : reactNative.View,
+    leftIcon,
+    leftAvatar,
+    leftElement,
+    rightIcon,
+    rightAvatar,
+    rightElement,
+    rightTitle,
+    rightTitleStyle,
+    rightTitleProps,
+    rightSubtitle,
+    rightSubtitleStyle,
+    rightSubtitleProps,
+    input,
+    buttonGroup,
+    switch: switchProps,
+    // switch is a reserved keyword
+    checkBox,
+    badge,
+    chevron,
+    contentContainerStyle,
+    rightContentContainerStyle,
+    checkmark,
+    disabled,
+    disabledStyle,
+    bottomDivider,
+    topDivider,
+    pad,
+    linearGradientProps,
+    ViewComponent = linearGradientProps && global.Expo ? global.Expo.LinearGradient : reactNative.View,
+    theme,
+    ...attributes
+  } = props;
+  return React__default.createElement(Component, _extends$b({}, attributes, {
+    onPress: onPress,
+    onLongPress: onLongPress,
+    disabled: disabled
+  }), React__default.createElement(PadView, _extends$b({
+    Component: ViewComponent
+  }, linearGradientProps, {
+    style: reactNative.StyleSheet.flatten([styles$9.container(theme), (buttonGroup || switchProps) && {
+      paddingVertical: 8
+    }, topDivider && {
+      borderTopWidth: reactNative.StyleSheet.hairlineWidth
+    }, bottomDivider && {
+      borderBottomWidth: reactNative.StyleSheet.hairlineWidth
+    }, containerStyle, disabled && disabledStyle]),
+    pad: pad
+  }), renderNode(Text, leftElement), renderIcon(leftIcon), renderAvatar(leftAvatar), (typeof title !== 'undefined' || subtitle) && React__default.createElement(reactNative.View, {
+    style: reactNative.StyleSheet.flatten([styles$9.contentContainer, contentContainerStyle])
+  }, renderText$1(title, {
+    testID: 'listItemTitle',
+    ...titleProps
+  }, reactNative.StyleSheet.flatten([styles$9.title, titleStyle])), renderText$1(subtitle, subtitleProps, reactNative.StyleSheet.flatten([styles$9.subtitle, subtitleStyle]))), (!!rightTitle || !!rightSubtitle) && React__default.createElement(reactNative.View, {
+    style: reactNative.StyleSheet.flatten([styles$9.rightContentContainer, rightContentContainerStyle])
+  }, renderText$1(rightTitle, rightTitleProps, reactNative.StyleSheet.flatten([styles$9.title, styles$9.rightTitle, rightTitleStyle])), renderText$1(rightSubtitle, rightSubtitleProps, reactNative.StyleSheet.flatten([styles$9.subtitle, styles$9.rightSubtitle, rightSubtitleStyle]))), input && React__default.createElement(Input$1, _extends$b({}, input, {
+    inputStyle: reactNative.StyleSheet.flatten([styles$9.input, input && input.inputStyle]),
+    inputContainerStyle: reactNative.StyleSheet.flatten([styles$9.inputContentContainer, input && input.inputContainerStyle]),
+    containerStyle: reactNative.StyleSheet.flatten([styles$9.inputContainer, input && input.containerStyle])
+  })), switchProps && React__default.createElement(reactNative.Switch, switchProps), checkBox && React__default.createElement(CheckBox$1, _extends$b({}, checkBox, {
+    containerStyle: reactNative.StyleSheet.flatten([styles$9.checkboxContainer, checkBox && checkBox.containerStyle])
+  })), badge && React__default.createElement(Badge$1, badge), buttonGroup && React__default.createElement(ButtonGroup$1, _extends$b({}, buttonGroup, {
+    containerStyle: reactNative.StyleSheet.flatten([styles$9.buttonGroupContainer, buttonGroup && buttonGroup.containerStyle])
+  })), renderAvatar(rightAvatar), renderIcon(rightIcon), renderNode(Text, rightElement), renderNode(Icon$1, checkmark, checkmarkDefaultProps(theme)), renderNode(Icon$1, chevron, chevronDefaultProps)));
+};
 
-var AirbnbRating=withTheme(TapRating,'AirbnbRating');var Rating=withTheme(SwipeRating,'Rating');
+const styles$9 = {
+  container: theme => ({ ...reactNative.Platform.select({
+      ios: {
+        padding: 14
+      },
+      default: {
+        padding: 16
+      }
+    }),
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderColor: theme.colors.divider
+  }),
+  title: {
+    backgroundColor: 'transparent',
+    ...reactNative.Platform.select({
+      ios: {
+        fontSize: 17
+      },
+      default: {
+        fontSize: 16
+      }
+    })
+  },
+  subtitle: {
+    backgroundColor: 'transparent',
+    ...reactNative.Platform.select({
+      ios: {
+        fontSize: 15
+      },
+      default: {
+        color: ANDROID_SECONDARY,
+        fontSize: 14
+      }
+    })
+  },
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  rightContentContainer: {
+    flex: 0.5,
+    justifyContent: 'center',
+    alignItems: 'flex-end'
+  },
+  inputContainer: {
+    flex: 1,
+    paddingRight: 0
+  },
+  inputContentContainer: {
+    flex: 1,
+    borderBottomWidth: 0,
+    width: null,
+    height: null
+  },
+  input: {
+    flex: 1,
+    textAlign: 'right',
+    width: null,
+    height: null
+  },
+  checkboxContainer: {
+    margin: 0,
+    marginRight: 0,
+    marginLeft: 0,
+    padding: 0
+  },
+  buttonGroupContainer: {
+    flex: 1,
+    marginLeft: 0,
+    marginRight: 0,
+    marginTop: 0,
+    marginBottom: 0
+  },
+  rightTitle: {
+    color: ANDROID_SECONDARY
+  },
+  rightSubtitle: {
+    color: ANDROID_SECONDARY
+  }
+};
+ListItem.propTypes = {
+  containerStyle: ViewPropTypes.style,
+  contentContainerStyle: ViewPropTypes.style,
+  rightContentContainerStyle: ViewPropTypes.style,
+  Component: propTypes.elementType,
+  onPress: propTypes.func,
+  onLongPress: propTypes.func,
+  title: propTypes.oneOfType([propTypes.string, propTypes.element]),
+  titleStyle: TextPropTypes.style,
+  titleProps: propTypes.object,
+  subtitle: propTypes.oneOfType([propTypes.string, propTypes.element]),
+  subtitleStyle: TextPropTypes.style,
+  subtitleProps: propTypes.object,
+  leftIcon: nodeType,
+  leftAvatar: nodeType,
+  leftElement: nodeType,
+  rightIcon: nodeType,
+  rightAvatar: nodeType,
+  rightElement: nodeType,
+  rightTitle: propTypes.oneOfType([propTypes.string, propTypes.element]),
+  rightTitleStyle: TextPropTypes.style,
+  rightTitleProps: propTypes.object,
+  rightSubtitle: propTypes.oneOfType([propTypes.string, propTypes.element]),
+  rightSubtitleStyle: TextPropTypes.style,
+  rightSubtitleProps: propTypes.object,
+  input: propTypes.object,
+  buttonGroup: propTypes.object,
+  switch: propTypes.object,
+  checkBox: propTypes.object,
+  badge: propTypes.object,
+  chevron: nodeType,
+  checkmark: nodeType,
+  disabled: propTypes.bool,
+  disabledStyle: ViewPropTypes.style,
+  topDivider: propTypes.bool,
+  bottomDivider: propTypes.bool,
+  pad: propTypes.number,
+  linearGradientProps: propTypes.object,
+  ViewComponent: propTypes.elementType,
+  theme: propTypes.object
+};
+ListItem.defaultProps = {
+  pad: 16,
+  title: ''
+};
 
+class PadView extends React__default.Component {
+  constructor(props) {
+    super(props);
+
+    _defineProperty$3(this, "setNativeProps", nativeProps => {
+      this._root.current.setNativeProps(nativeProps);
+    });
+
+    this._root = React__default.createRef();
+  }
+
+  render() {
+    const {
+      children,
+      pad,
+      Component,
+      ...props
+    } = this.props;
+    const childrens = React__default.Children.toArray(children);
+    const {
+      length
+    } = childrens;
+    const Container = Component || reactNative.View;
+    return React__default.createElement(Container, _extends$b({}, props, {
+      ref: this._root
+    }), React__default.Children.map(childrens, (child, index) => child && [child, index !== length - 1 && React__default.createElement(reactNative.View, {
+      width: pad
+    })]));
+  }
+
+}
+
+PadView.propTypes = {
+  children: propTypes.node,
+  pad: propTypes.number,
+  Component: propTypes.elementType
+};
+var ListItem$1 = withTheme(ListItem, 'ListItem');
+
+function _extends$c() { _extends$c = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$c.apply(this, arguments); }
+const colors$1 = {
+  'github-alt': '#000000',
+  'google-plus-official': '#dd4b39',
+  google: '#dd4b39',
+  'reddit-alien': '#fc461e',
+  'stack-overflow': '#f27f33',
+  angellist: '#1c4082',
+  codepen: '#000000',
+  envelope: '#000000',
+  etsy: '#f2581e',
+  facebook: '#3b5998',
+  flickr: '#ff0084',
+  foursquare: '#0072b1',
+  github: '#000000',
+  gitlab: '#e14329',
+  instagram: '#517fa4',
+  linkedin: '#007bb6',
+  medium: '#02b875',
+  pinterest: '#cb2027',
+  quora: '#a82400',
+  soundcloud: '#f50',
+  steam: '#c6c3c1',
+  stumbleupon: '#EB4823',
+  tumblr: '#32506d',
+  twitch: '#6441A5',
+  twitter: '#00aced',
+  vimeo: '#aad450',
+  vk: '#5181b8',
+  wechat: '#7bb32e',
+  weibo: '#e6162d',
+  wordpress: '#21759b',
+  youtube: '#bb0000'
+};
+
+const SocialIcon = props => {
+  const {
+    activityIndicatorStyle,
+    button,
+    disabled,
+    fontFamily,
+    fontStyle,
+    fontWeight,
+    iconColor,
+    iconSize,
+    iconStyle,
+    light,
+    loading,
+    onLongPress,
+    onPress,
+    Component = onPress || onLongPress ? reactNative.TouchableHighlight : reactNative.View,
+    raised,
+    small,
+    style,
+    title,
+    type,
+    underlayColor,
+    ...attributes
+  } = props;
+  return React__default.createElement(Component, _extends$c({}, attributes, {
+    underlayColor: light ? 'white' : underlayColor || colors$1[type],
+    onLongPress: disabled ? null : onLongPress,
+    onPress: disabled ? null : onPress,
+    disabled: disabled,
+    style: reactNative.StyleSheet.flatten([raised && styles$a.raised, styles$a.container, button && styles$a.button, !button && raised && styles$a.icon, !button && !light && !raised && {
+      width: iconSize * 2 + 4,
+      height: iconSize * 2 + 4,
+      borderRadius: iconSize * 2
+    }, {
+      backgroundColor: colors$1[type]
+    }, light && {
+      backgroundColor: 'white'
+    }, style && style])
+  }), React__default.createElement(reactNative.View, {
+    style: styles$a.wrapper
+  }, React__default.createElement(FAIcon, {
+    style: reactNative.StyleSheet.flatten([iconStyle && iconStyle]),
+    color: light ? colors$1[type] : iconColor,
+    name: type,
+    size: iconSize
+  }), button && title && React__default.createElement(Text, {
+    style: reactNative.StyleSheet.flatten([styles$a.title, light && {
+      color: colors$1[type]
+    }, fontFamily && {
+      fontFamily
+    }, fontWeight && {
+      fontWeight
+    }, fontStyle && fontStyle])
+  }, title), loading && React__default.createElement(reactNative.ActivityIndicator, {
+    animating: true,
+    style: reactNative.StyleSheet.flatten([styles$a.activityIndicatorStyle, activityIndicatorStyle]),
+    color: iconColor || 'white',
+    size: small && 'small' || 'large'
+  })));
+};
+
+SocialIcon.propTypes = {
+  Component: propTypes.elementType,
+  type: propTypes.string,
+  button: propTypes.bool,
+  onPress: propTypes.func,
+  onLongPress: propTypes.func,
+  iconStyle: ViewPropTypes.style,
+  style: ViewPropTypes.style,
+  iconColor: propTypes.string,
+  underlayColor: propTypes.string,
+  title: propTypes.string,
+  raised: propTypes.bool,
+  disabled: propTypes.bool,
+  loading: propTypes.bool,
+  activityIndicatorStyle: ViewPropTypes.style,
+  small: propTypes.string,
+  iconSize: propTypes.oneOfType([propTypes.string, propTypes.number]),
+  light: propTypes.bool,
+  fontWeight: propTypes.string,
+  fontStyle: reactNative.Text.propTypes.style,
+  fontFamily: propTypes.string
+};
+SocialIcon.defaultProps = {
+  raised: true,
+  iconColor: 'white',
+  iconSize: 24,
+  button: false
+};
+const styles$a = reactNative.StyleSheet.create({
+  container: {
+    margin: 7,
+    borderRadius: 30,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  button: {
+    paddingTop: 14,
+    paddingBottom: 14
+  },
+  raised: { ...reactNative.Platform.select({
+      android: {
+        elevation: 2
+      },
+      default: {
+        shadowColor: 'rgba(0,0,0, .4)',
+        shadowOffset: {
+          height: 1,
+          width: 1
+        },
+        shadowOpacity: 1,
+        shadowRadius: 1
+      }
+    })
+  },
+  wrapper: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  title: {
+    color: 'white',
+    marginLeft: 15,
+    ...reactNative.Platform.select({
+      android: { ...fonts.android.black
+      },
+      default: {
+        fontWeight: 'bold'
+      }
+    })
+  },
+  icon: {
+    height: 52,
+    width: 52
+  },
+  activityIndicatorStyle: {
+    marginHorizontal: 10,
+    height: 0
+  }
+});
+var SocialIcon$1 = withTheme(SocialIcon, 'SocialIcon');
+
+function _extends$d() { _extends$d = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$d.apply(this, arguments); }
+
+const Overlay = props => {
+  const {
+    children,
+    isVisible,
+    containerStyle,
+    overlayStyle,
+    windowBackgroundColor,
+    overlayBackgroundColor,
+    onBackdropPress,
+    borderRadius,
+    width,
+    height,
+    fullScreen,
+    ...rest
+  } = props;
+  return React__default.createElement(reactNative.Modal, _extends$d({
+    visible: isVisible,
+    onRequestClose: onBackdropPress,
+    transparent: true
+  }, rest), React__default.createElement(reactNative.TouchableWithoutFeedback, {
+    onPress: onBackdropPress,
+    testID: "RNE__Overlay__backdrop"
+  }, React__default.createElement(reactNative.View, {
+    testID: "overlayContainer",
+    style: reactNative.StyleSheet.flatten([styles$b.backdrop, {
+      backgroundColor: windowBackgroundColor
+    }, containerStyle])
+  })), React__default.createElement(reactNative.View, {
+    style: styles$b.container,
+    pointerEvents: "box-none"
+  }, React__default.createElement(reactNative.View, {
+    style: reactNative.StyleSheet.flatten([styles$b.overlay, {
+      borderRadius,
+      backgroundColor: overlayBackgroundColor,
+      width,
+      height
+    }, fullScreen && styles$b.fullscreen, overlayStyle])
+  }, children)));
+};
+
+Overlay.propTypes = {
+  children: propTypes.element.isRequired,
+  isVisible: propTypes.bool.isRequired,
+  containerStyle: ViewPropTypes.style,
+  overlayStyle: ViewPropTypes.style,
+  windowBackgroundColor: propTypes.string,
+  overlayBackgroundColor: propTypes.string,
+  onBackdropPress: propTypes.func,
+  borderRadius: propTypes.number,
+  width: propTypes.oneOfType([propTypes.string, propTypes.number]),
+  height: propTypes.oneOfType([propTypes.string, propTypes.number]),
+  fullScreen: propTypes.bool
+};
+Overlay.defaultProps = {
+  borderRadius: 3,
+  fullScreen: false,
+  windowBackgroundColor: 'rgba(0, 0, 0, .4)',
+  overlayBackgroundColor: 'white',
+  width: ScreenWidth - 80,
+  height: ScreenHeight - 180,
+  onBackdropPress: () => null
+};
+const styles$b = reactNative.StyleSheet.create({
+  backdrop: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  fullscreen: {
+    width: '100%',
+    height: '100%'
+  },
+  overlay: {
+    borderRadius: 5,
+    padding: 10,
+    ...reactNative.Platform.select({
+      android: {
+        elevation: 2
+      },
+      default: {
+        shadowColor: 'rgba(0, 0, 0, .3)',
+        shadowOffset: {
+          width: 0,
+          height: 1
+        },
+        shadowRadius: 4
+      }
+    })
+  }
+});
+var Overlay$1 = withTheme(Overlay, 'Overlay');
+
+function _extends$e() { _extends$e = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$e.apply(this, arguments); }
+
+function _defineProperty$4(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+const IOS_GRAY = '#7d7d7d';
+const defaultSearchIcon = {
+  type: 'ionicon',
+  size: 20,
+  name: 'ios-search',
+  color: IOS_GRAY
+};
+const defaultClearIcon = {
+  type: 'ionicon',
+  name: 'ios-close-circle',
+  size: 20,
+  color: IOS_GRAY
+};
+
+class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    _defineProperty$4(this, "focus", () => {
+      this.input.focus();
+    });
+
+    _defineProperty$4(this, "blur", () => {
+      this.input.blur();
+    });
+
+    _defineProperty$4(this, "clear", () => {
+      this.input.clear();
+      this.onChangeText('');
+      this.props.onClear();
+    });
+
+    _defineProperty$4(this, "cancel", () => {
+      this.onChangeText('');
+
+      if (this.props.showCancel) {
+        reactNative.UIManager.configureNextLayoutAnimation && reactNative.LayoutAnimation.easeInEaseOut();
+        this.setState({
+          hasFocus: false
+        });
+      }
+
+      setTimeout(() => {
+        this.blur();
+        this.props.onCancel();
+      }, 0);
+    });
+
+    _defineProperty$4(this, "onFocus", () => {
+      this.props.onFocus();
+      reactNative.UIManager.configureNextLayoutAnimation && reactNative.LayoutAnimation.easeInEaseOut();
+      this.setState({
+        hasFocus: true,
+        isEmpty: this.props.value === ''
+      });
+    });
+
+    _defineProperty$4(this, "onBlur", () => {
+      this.props.onBlur();
+      reactNative.UIManager.configureNextLayoutAnimation && reactNative.LayoutAnimation.easeInEaseOut();
+
+      if (!this.props.showCancel) {
+        this.setState({
+          hasFocus: false
+        });
+      }
+    });
+
+    _defineProperty$4(this, "onChangeText", text => {
+      this.props.onChangeText(text);
+      this.setState({
+        isEmpty: text === ''
+      });
+    });
+
+    const {
+      value
+    } = props;
+    this.state = {
+      hasFocus: false,
+      isEmpty: value ? value === '' : true,
+      cancelButtonWidth: null
+    };
+  }
+
+  render() {
+    const {
+      cancelButtonProps,
+      cancelButtonTitle,
+      clearIcon,
+      containerStyle,
+      leftIconContainerStyle,
+      rightIconContainerStyle,
+      inputContainerStyle,
+      inputStyle,
+      placeholderTextColor,
+      showLoading,
+      loadingProps,
+      searchIcon,
+      showCancel,
+      ...attributes
+    } = this.props;
+    const {
+      hasFocus,
+      isEmpty
+    } = this.state;
+    const {
+      style: loadingStyle,
+      ...otherLoadingProps
+    } = loadingProps;
+    const {
+      buttonStyle,
+      buttonTextStyle,
+      color: buttonColor,
+      disabled: buttonDisabled,
+      buttonDisabledStyle,
+      buttonDisabledTextStyle,
+      ...otherCancelButtonProps
+    } = cancelButtonProps;
+    return React__default.createElement(reactNative.View, {
+      style: reactNative.StyleSheet.flatten([styles$c.container, containerStyle])
+    }, React__default.createElement(Input$1, _extends$e({
+      testID: "searchInput"
+    }, attributes, {
+      onFocus: this.onFocus,
+      onBlur: this.onBlur,
+      onChangeText: this.onChangeText,
+      ref: input => {
+        this.input = input;
+      },
+      inputStyle: reactNative.StyleSheet.flatten([styles$c.input, inputStyle]),
+      containerStyle: {
+        paddingHorizontal: 0
+      },
+      inputContainerStyle: reactNative.StyleSheet.flatten([styles$c.inputContainer, hasFocus && {
+        marginRight: this.state.cancelButtonWidth
+      }, inputContainerStyle]),
+      leftIcon: renderNode(Icon$1, searchIcon, defaultSearchIcon),
+      leftIconContainerStyle: reactNative.StyleSheet.flatten([styles$c.leftIconContainerStyle, leftIconContainerStyle]),
+      placeholderTextColor: placeholderTextColor,
+      rightIcon: React__default.createElement(reactNative.View, {
+        style: {
+          flexDirection: 'row'
+        }
+      }, showLoading && React__default.createElement(reactNative.ActivityIndicator, _extends$e({
+        key: "loading",
+        style: reactNative.StyleSheet.flatten([{
+          marginRight: 5
+        }, loadingStyle])
+      }, otherLoadingProps)), !isEmpty && renderNode(Icon$1, clearIcon, { ...defaultClearIcon,
+        key: 'cancel',
+        onPress: this.clear
+      })),
+      rightIconContainerStyle: reactNative.StyleSheet.flatten([styles$c.rightIconContainerStyle, rightIconContainerStyle])
+    })), React__default.createElement(reactNative.View, {
+      style: reactNative.StyleSheet.flatten([styles$c.cancelButtonContainer, {
+        opacity: this.state.cancelButtonWidth === null ? 0 : 1,
+        right: hasFocus ? 0 : -this.state.cancelButtonWidth
+      }]),
+      onLayout: event => this.setState({
+        cancelButtonWidth: event.nativeEvent.layout.width
+      })
+    }, React__default.createElement(reactNative.TouchableOpacity, _extends$e({
+      accessibilityRole: "button",
+      onPress: this.cancel,
+      disabled: buttonDisabled
+    }, otherCancelButtonProps), React__default.createElement(reactNative.View, {
+      style: [buttonStyle, buttonDisabled && buttonDisabledStyle]
+    }, React__default.createElement(reactNative.Text, {
+      style: [styles$c.buttonTextStyle, buttonColor && {
+        color: buttonColor
+      }, buttonTextStyle, buttonDisabled && (buttonDisabledTextStyle || styles$c.buttonTextDisabled)],
+      disabled: buttonDisabled
+    }, cancelButtonTitle)))));
+  }
+
+}
+
+SearchBar.propTypes = {
+  value: propTypes.string,
+  cancelButtonProps: propTypes.object,
+  cancelButtonTitle: propTypes.string,
+  clearIcon: nodeType,
+  searchIcon: nodeType,
+  loadingProps: propTypes.object,
+  showLoading: propTypes.bool,
+  onClear: propTypes.func,
+  onCancel: propTypes.func,
+  onFocus: propTypes.func,
+  onBlur: propTypes.func,
+  onChangeText: propTypes.func,
+  containerStyle: ViewPropTypes.style,
+  leftIconContainerStyle: ViewPropTypes.style,
+  rightIconContainerStyle: ViewPropTypes.style,
+  inputContainerStyle: ViewPropTypes.style,
+  inputStyle: reactNative.Text.propTypes.style,
+  placeholderTextColor: propTypes.string,
+  showCancel: propTypes.bool
+};
+SearchBar.defaultProps = {
+  value: '',
+  cancelButtonTitle: 'Cancel',
+  loadingProps: {},
+  cancelButtonProps: {},
+  showLoading: false,
+  onClear: () => null,
+  onCancel: () => null,
+  onFocus: () => null,
+  onBlur: () => null,
+  onChangeText: () => null,
+  placeholderTextColor: IOS_GRAY,
+  searchIcon: defaultSearchIcon,
+  clearIcon: defaultClearIcon,
+  showCancel: false
+};
+const styles$c = reactNative.StyleSheet.create({
+  container: {
+    backgroundColor: '#f5f5f5',
+    paddingBottom: 13,
+    paddingTop: 13,
+    flexDirection: 'row',
+    overflow: 'hidden',
+    alignItems: 'center'
+  },
+  input: {
+    marginLeft: 6,
+    overflow: 'hidden'
+  },
+  inputContainer: {
+    borderBottomWidth: 0,
+    backgroundColor: '#dcdce1',
+    borderRadius: 9,
+    minHeight: 36,
+    marginLeft: 8,
+    marginRight: 8
+  },
+  rightIconContainerStyle: {
+    marginRight: 8
+  },
+  leftIconContainerStyle: {
+    marginLeft: 8
+  },
+  buttonTextStyle: {
+    color: '#007aff',
+    textAlign: 'center',
+    padding: 8,
+    fontSize: 18
+  },
+  buttonTextDisabled: {
+    color: '#cdcdcd'
+  },
+  cancelButtonContainer: {
+    position: 'absolute'
+  }
+});
+
+function _extends$f() { _extends$f = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$f.apply(this, arguments); }
+
+function _defineProperty$5(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+const ANDROID_GRAY = 'rgba(0, 0, 0, 0.54)';
+const defaultSearchIcon$1 = {
+  type: 'material',
+  size: 25,
+  color: ANDROID_GRAY,
+  name: 'search'
+};
+const defaultCancelIcon = {
+  type: 'material',
+  size: 25,
+  color: ANDROID_GRAY,
+  name: 'arrow-back'
+};
+const defaultClearIcon$1 = {
+  type: 'material',
+  size: 25,
+  color: ANDROID_GRAY,
+  name: 'clear'
+};
+
+class SearchBar$1 extends React.Component {
+  constructor(props) {
+    super(props);
+
+    _defineProperty$5(this, "focus", () => {
+      this.input.focus();
+    });
+
+    _defineProperty$5(this, "blur", () => {
+      this.input.blur();
+    });
+
+    _defineProperty$5(this, "clear", () => {
+      this.input.clear();
+      this.onChangeText('');
+      this.props.onClear();
+    });
+
+    _defineProperty$5(this, "cancel", () => {
+      this.blur();
+      this.props.onCancel();
+    });
+
+    _defineProperty$5(this, "onFocus", () => {
+      this.props.onFocus();
+      this.setState({
+        hasFocus: true,
+        isEmpty: this.props.value === ''
+      });
+    });
+
+    _defineProperty$5(this, "onBlur", () => {
+      this.props.onBlur();
+      this.setState({
+        hasFocus: false
+      });
+    });
+
+    _defineProperty$5(this, "onChangeText", text => {
+      this.props.onChangeText(text);
+      this.setState({
+        isEmpty: text === ''
+      });
+    });
+
+    const {
+      value
+    } = props;
+    this.state = {
+      hasFocus: false,
+      isEmpty: value ? value === '' : true
+    };
+  }
+
+  render() {
+    const {
+      clearIcon,
+      containerStyle,
+      leftIconContainerStyle,
+      rightIconContainerStyle,
+      inputContainerStyle,
+      inputStyle,
+      searchIcon,
+      cancelIcon,
+      showLoading,
+      loadingProps,
+      ...attributes
+    } = this.props;
+    const {
+      hasFocus,
+      isEmpty
+    } = this.state;
+    const {
+      style: loadingStyle,
+      ...otherLoadingProps
+    } = loadingProps;
+    return React__default.createElement(reactNative.View, {
+      style: reactNative.StyleSheet.flatten([styles$d.container, containerStyle])
+    }, React__default.createElement(Input$1, _extends$f({
+      testID: "searchInput"
+    }, attributes, {
+      onFocus: this.onFocus,
+      onBlur: this.onBlur,
+      onChangeText: this.onChangeText,
+      ref: input => {
+        this.input = input;
+      },
+      containerStyle: {
+        paddingHorizontal: 0
+      },
+      inputStyle: reactNative.StyleSheet.flatten([styles$d.input, inputStyle]),
+      inputContainerStyle: reactNative.StyleSheet.flatten([styles$d.inputContainer, inputContainerStyle]),
+      leftIcon: hasFocus ? renderNode(Icon$1, cancelIcon, { ...defaultCancelIcon,
+        onPress: this.cancel
+      }) : renderNode(Icon$1, searchIcon, defaultSearchIcon$1),
+      leftIconContainerStyle: reactNative.StyleSheet.flatten([styles$d.leftIconContainerStyle, leftIconContainerStyle]),
+      rightIcon: React__default.createElement(reactNative.View, {
+        style: {
+          flexDirection: 'row'
+        }
+      }, showLoading && React__default.createElement(reactNative.ActivityIndicator, _extends$f({
+        key: "loading",
+        style: reactNative.StyleSheet.flatten([{
+          marginRight: 5
+        }, loadingStyle])
+      }, otherLoadingProps)), !isEmpty && renderNode(Icon$1, clearIcon, { ...defaultClearIcon$1,
+        key: 'cancel',
+        onPress: this.clear
+      })),
+      rightIconContainerStyle: reactNative.StyleSheet.flatten([styles$d.rightIconContainerStyle, rightIconContainerStyle])
+    })));
+  }
+
+}
+
+SearchBar$1.propTypes = {
+  value: propTypes.string,
+  clearIcon: nodeType,
+  searchIcon: nodeType,
+  cancelIcon: nodeType,
+  loadingProps: propTypes.object,
+  showLoading: propTypes.bool,
+  containerStyle: ViewPropTypes.style,
+  leftIconContainerStyle: ViewPropTypes.style,
+  rightIconContainerStyle: ViewPropTypes.style,
+  inputContainerStyle: ViewPropTypes.style,
+  inputStyle: reactNative.Text.propTypes.style,
+  onClear: propTypes.func,
+  onCancel: propTypes.func,
+  onFocus: propTypes.func,
+  onBlur: propTypes.func,
+  onChangeText: propTypes.func
+};
+SearchBar$1.defaultProps = {
+  value: '',
+  loadingProps: {},
+  showLoading: false,
+  onClear: () => null,
+  onCancel: () => null,
+  onFocus: () => null,
+  onBlur: () => null,
+  onChangeText: () => null,
+  searchIcon: defaultSearchIcon$1,
+  clearIcon: defaultClearIcon$1,
+  cancelIcon: defaultCancelIcon
+};
+const styles$d = reactNative.StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    paddingTop: 8,
+    paddingBottom: 8
+  },
+  input: {
+    marginLeft: 24,
+    marginRight: 8
+  },
+  inputContainer: {
+    borderBottomWidth: 0,
+    width: '100%'
+  },
+  rightIconContainerStyle: {
+    marginRight: 8
+  },
+  leftIconContainerStyle: {
+    marginLeft: 8
+  }
+});
+
+function _extends$g() { _extends$g = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$g.apply(this, arguments); }
+
+function _defineProperty$6(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const defaultSearchIcon$2 = theme => ({
+  type: 'material',
+  size: 18,
+  name: 'search',
+  color: theme.colors.grey3
+});
+
+const defaultClearIcon$2 = theme => ({
+  type: 'material',
+  size: 18,
+  name: 'clear',
+  color: theme.colors.grey3
+});
+
+class SearchBar$2 extends React__default.Component {
+  constructor(props) {
+    super(props);
+
+    _defineProperty$6(this, "focus", () => {
+      this.input.focus();
+    });
+
+    _defineProperty$6(this, "blur", () => {
+      this.input.blur();
+    });
+
+    _defineProperty$6(this, "clear", () => {
+      this.input.clear();
+      this.onChangeText('');
+      this.props.onClear();
+    });
+
+    _defineProperty$6(this, "onFocus", () => {
+      this.props.onFocus();
+      this.setState({
+        isEmpty: this.props.value === ''
+      });
+    });
+
+    _defineProperty$6(this, "onBlur", () => {
+      this.props.onBlur();
+    });
+
+    _defineProperty$6(this, "onChangeText", text => {
+      this.props.onChangeText(text);
+      this.setState({
+        isEmpty: text === ''
+      });
+    });
+
+    const {
+      value
+    } = props;
+    this.state = {
+      isEmpty: value ? value === '' : true
+    };
+  }
+
+  render() {
+    const {
+      theme,
+      ...rest
+    } = this.props;
+    const {
+      lightTheme,
+      round,
+      clearIcon = defaultClearIcon$2(theme),
+      containerStyle,
+      searchIcon = defaultSearchIcon$2(theme),
+      leftIconContainerStyle,
+      rightIconContainerStyle,
+      inputContainerStyle,
+      inputStyle,
+      showLoading,
+      loadingProps,
+      placeholderTextColor = theme.colors.grey3,
+      ...attributes
+    } = rest;
+    const {
+      isEmpty
+    } = this.state;
+    const {
+      style: loadingStyle,
+      ...otherLoadingProps
+    } = loadingProps;
+    return React__default.createElement(reactNative.View, {
+      style: reactNative.StyleSheet.flatten([styles$e.container(theme), lightTheme && styles$e.containerLight(theme), containerStyle])
+    }, React__default.createElement(Input$1, _extends$g({
+      testID: "searchInput"
+    }, attributes, {
+      onFocus: this.onFocus,
+      onBlur: this.onBlur,
+      onChangeText: this.onChangeText,
+      ref: input => {
+        this.input = input;
+      },
+      placeholderTextColor: placeholderTextColor,
+      inputStyle: reactNative.StyleSheet.flatten([styles$e.inputStyle(theme), inputStyle]),
+      inputContainerStyle: reactNative.StyleSheet.flatten([styles$e.inputContentContainer(theme), lightTheme && styles$e.inputContentContainerLight(theme), round && styles$e.round, inputContainerStyle]),
+      containerStyle: styles$e.inputContainer,
+      leftIcon: renderNode(Icon$1, searchIcon, defaultSearchIcon$2(theme)),
+      leftIconContainerStyle: reactNative.StyleSheet.flatten([styles$e.leftIconContainerStyle, leftIconContainerStyle]),
+      rightIcon: React__default.createElement(reactNative.View, {
+        style: {
+          flexDirection: 'row'
+        }
+      }, showLoading && React__default.createElement(reactNative.ActivityIndicator, _extends$g({
+        key: "loading",
+        style: reactNative.StyleSheet.flatten([{
+          marginRight: 5
+        }, loadingStyle])
+      }, otherLoadingProps)), !isEmpty && renderNode(Icon$1, clearIcon, { ...defaultClearIcon$2(theme),
+        key: 'cancel',
+        onPress: this.clear
+      })),
+      rightIconContainerStyle: reactNative.StyleSheet.flatten([styles$e.rightIconContainerStyle, rightIconContainerStyle])
+    })));
+  }
+
+}
+
+SearchBar$2.propTypes = {
+  value: propTypes.string,
+  clearIcon: nodeType,
+  searchIcon: nodeType,
+  loadingProps: propTypes.object,
+  showLoading: propTypes.bool,
+  containerStyle: ViewPropTypes.style,
+  leftIconContainerStyle: ViewPropTypes.style,
+  rightIconContainerStyle: ViewPropTypes.style,
+  inputContainerStyle: ViewPropTypes.style,
+  inputStyle: reactNative.Text.propTypes.style,
+  onClear: propTypes.func,
+  onFocus: propTypes.func,
+  onBlur: propTypes.func,
+  onChangeText: propTypes.func,
+  placeholderTextColor: propTypes.string,
+  lightTheme: propTypes.bool,
+  round: propTypes.bool,
+  theme: propTypes.object
+};
+SearchBar$2.defaultProps = {
+  value: '',
+  loadingProps: {},
+  showLoading: false,
+  lightTheme: false,
+  round: false,
+  onClear: () => null,
+  onFocus: () => null,
+  onBlur: () => null,
+  onChangeText: () => null
+};
+const styles$e = {
+  container: theme => ({
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderBottomColor: '#000',
+    borderTopColor: '#000',
+    padding: 8,
+    backgroundColor: theme.colors.grey0
+  }),
+  rightIconContainerStyle: {
+    marginRight: 8
+  },
+  leftIconContainerStyle: {
+    marginLeft: 8
+  },
+  containerLight: theme => ({
+    borderTopColor: '#e1e1e1',
+    borderBottomColor: '#e1e1e1',
+    backgroundColor: theme.colors.grey5
+  }),
+  inputContainer: {
+    paddingHorizontal: 0
+  },
+  inputStyle: theme => ({
+    color: theme.colors.grey3,
+    marginLeft: 10
+  }),
+  inputContentContainer: theme => ({
+    borderBottomWidth: 0,
+    borderRadius: 3,
+    overflow: 'hidden',
+    minHeight: 30,
+    backgroundColor: theme.colors.searchBg
+  }),
+  inputContentContainerLight: theme => ({
+    backgroundColor: theme.colors.grey4
+  }),
+  round: {
+    borderRadius: 15
+  }
+};
+
+function _extends$h() { _extends$h = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$h.apply(this, arguments); }
+
+function _defineProperty$7(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+const SEARCHBAR_COMPONENTS = {
+  ios: SearchBar,
+  android: SearchBar$1,
+  default: SearchBar$2
+};
+
+class SearchBar$3 extends React__default.Component {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty$7(this, "focus", () => {
+      this.searchbar.focus();
+    });
+
+    _defineProperty$7(this, "blur", () => {
+      this.searchbar.blur();
+    });
+
+    _defineProperty$7(this, "clear", () => {
+      this.searchbar.clear();
+    });
+
+    _defineProperty$7(this, "cancel", () => {
+      this.searchbar.cancel && this.searchbar.cancel();
+    });
+  }
+
+  render() {
+    const Component = SEARCHBAR_COMPONENTS[this.props.platform] || SearchBar$2;
+    return React__default.createElement(Component, _extends$h({
+      ref: ref => {
+        this.searchbar = ref;
+      }
+    }, this.props));
+  }
+
+}
+
+SearchBar$3.propTypes = {
+  platform: propTypes.oneOf(['default', 'ios', 'android'])
+};
+SearchBar$3.defaultProps = {
+  platform: 'default'
+};
+var SearchBar$4 = withTheme(SearchBar$3, 'SearchBar');
+
+function _extends$i() { _extends$i = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$i.apply(this, arguments); }
+
+const withBadge = (value, options = {}) => WrappedComponent => {
+  const WithBadge = props => {
+    const {
+      bottom,
+      hidden = false,
+      left,
+      containerStyle,
+      ...badgeProps
+    } = options;
+    let {
+      right = -16,
+      top = -1
+    } = options;
+
+    if (!value) {
+      right = -3;
+      top = 3;
+    }
+
+    const badgeValue = typeof value === 'function' ? value(props) : value;
+    return React__default.createElement(reactNative.View, {
+      style: reactNative.StyleSheet.flatten([styles$f.container, containerStyle])
+    }, React__default.createElement(WrappedComponent, props), !hidden && React__default.createElement(Badge$1, _extends$i({
+      value: badgeValue,
+      status: "error",
+      containerStyle: reactNative.StyleSheet.flatten([styles$f.badgeContainer, {
+        bottom,
+        left,
+        right,
+        top
+      }])
+    }, badgeProps)));
+  };
+
+  WithBadge.displayName = `WithBadge(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+  return WithBadge;
+};
+
+const styles$f = reactNative.StyleSheet.create({
+  badgeContainer: {
+    position: 'absolute'
+  },
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative'
+  }
+});
+
+function _extends$j() { _extends$j = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$j.apply(this, arguments); }
+
+const Divider = ({
+  style,
+  theme,
+  ...rest
+}) => React__default.createElement(reactNative.View, _extends$j({
+  style: reactNative.StyleSheet.flatten([styles$g.container(theme), style])
+}, rest));
+
+Divider.propTypes = {
+  style: ViewPropTypes.style,
+  theme: propTypes.object
+};
+const styles$g = {
+  container: theme => ({
+    backgroundColor: theme.colors.divider,
+    height: reactNative.StyleSheet.hairlineWidth
+  })
+};
+var Divider$1 = withTheme(Divider, 'Divider');
+
+function _extends$k() { _extends$k = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$k.apply(this, arguments); }
+
+function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+const TRACK_SIZE = 4;
+const THUMB_SIZE = 20;
+const DEFAULT_ANIMATION_CONFIGS = {
+  spring: {
+    friction: 7,
+    tension: 100
+  },
+  timing: {
+    duration: 150,
+    easing: reactNative.Easing.inOut(reactNative.Easing.ease),
+    delay: 0
+  }
+};
+
+const getBoundedValue = ({
+  value,
+  maximumValue,
+  minimumValue
+}) => value > maximumValue ? maximumValue : value < minimumValue ? minimumValue : value;
+
+class Rect {
+  constructor(x, y, width, height) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+  }
+
+  containsPoint(x, y) {
+    return x >= this.x && y >= this.y && x <= this.x + this.width && y <= this.y + this.height;
+  }
+
+}
+
+class Slider extends React.Component {
+  constructor(props) {
+    super(props);
+
+    _defineProperty$8(this, "measureContainer", x => {
+      this.handleMeasure('containerSize', x);
+    });
+
+    _defineProperty$8(this, "measureTrack", x => {
+      this.handleMeasure('trackSize', x);
+    });
+
+    _defineProperty$8(this, "measureThumb", x => {
+      this.handleMeasure('thumbSize', x);
+    });
+
+    this.state = {
+      containerSize: {
+        width: 0,
+        height: 0
+      },
+      trackSize: {
+        width: 0,
+        height: 0
+      },
+      thumbSize: {
+        width: 0,
+        height: 0
+      },
+      allMeasured: false,
+      value: new reactNative.Animated.Value(getBoundedValue(props))
+    };
+    this.panResponder = reactNative.PanResponder.create({
+      onStartShouldSetPanResponder: this.handleStartShouldSetPanResponder.bind(this),
+      onMoveShouldSetPanResponder: this.handleMoveShouldSetPanResponder.bind(this),
+      onPanResponderGrant: this.handlePanResponderGrant.bind(this),
+      onPanResponderMove: this.handlePanResponderMove.bind(this),
+      onPanResponderRelease: this.handlePanResponderEnd.bind(this),
+      onPanResponderTerminationRequest: this.handlePanResponderRequestEnd.bind(this),
+      onPanResponderTerminate: this.handlePanResponderEnd.bind(this)
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    const newValue = getBoundedValue(this.props);
+
+    if (prevProps.value !== newValue) {
+      if (this.props.animateTransitions) {
+        this.setCurrentValueAnimated(newValue);
+      } else {
+        this.setCurrentValue(newValue);
+      }
+    }
+  }
+
+  setCurrentValue(value) {
+    this.state.value.setValue(value);
+  }
+
+  setCurrentValueAnimated(value) {
+    const {
+      animationType
+    } = this.props;
+    const animationConfig = Object.assign({}, DEFAULT_ANIMATION_CONFIGS[animationType], this.props.animationConfig, {
+      toValue: value
+    });
+    reactNative.Animated[animationType](this.state.value, animationConfig).start();
+  }
+
+  handleMoveShouldSetPanResponder()
+  /* e: Object, gestureState: Object */
+  {
+    // Should we become active when the user moves a touch over the thumb?
+    return false;
+  }
+
+  handlePanResponderGrant()
+  /* e: Object, gestureState: Object */
+  {
+    this._previousLeft = this.getThumbLeft(this.getCurrentValue());
+    this.fireChangeEvent('onSlidingStart');
+  }
+
+  handlePanResponderMove(_, gestureState) {
+    if (this.props.disabled) {
+      return;
+    }
+
+    this.setCurrentValue(this.getValue(gestureState));
+    this.fireChangeEvent('onValueChange');
+  }
+
+  handlePanResponderRequestEnd() {
+    // Should we allow another component to take over this pan?
+    return false;
+  }
+
+  handlePanResponderEnd(_, gestureState) {
+    if (this.props.disabled) {
+      return;
+    }
+
+    this.setCurrentValue(this.getValue(gestureState));
+    this.fireChangeEvent('onSlidingComplete');
+  }
+
+  thumbHitTest({
+    nativeEvent
+  }) {
+    const thumbTouchRect = this.getThumbTouchRect();
+    return thumbTouchRect.containsPoint(nativeEvent.locationX, nativeEvent.locationY);
+  }
+
+  handleStartShouldSetPanResponder(e
+  /* gestureState: Object */
+  ) {
+    // Should we become active when the user presses down on the thumb?
+    return this.thumbHitTest(e);
+  }
+
+  fireChangeEvent(event) {
+    if (this.props[event]) {
+      this.props[event](this.getCurrentValue());
+    }
+  }
+
+  getTouchOverflowSize() {
+    const {
+      thumbSize,
+      allMeasured,
+      containerSize
+    } = this.state;
+    const {
+      thumbTouchSize
+    } = this.props;
+    const size = {};
+
+    if (allMeasured === true) {
+      size.width = Math.max(0, thumbTouchSize.width - thumbSize.width);
+      size.height = Math.max(0, thumbTouchSize.height - containerSize.height);
+    }
+
+    return size;
+  }
+
+  getTouchOverflowStyle() {
+    const {
+      width,
+      height
+    } = this.getTouchOverflowSize();
+    const touchOverflowStyle = {};
+
+    if (width !== undefined && height !== undefined) {
+      const verticalMargin = -height / 2;
+      touchOverflowStyle.marginTop = verticalMargin;
+      touchOverflowStyle.marginBottom = verticalMargin;
+      const horizontalMargin = -width / 2;
+      touchOverflowStyle.marginLeft = horizontalMargin;
+      touchOverflowStyle.marginRight = horizontalMargin;
+    }
+
+    if (this.props.debugTouchArea === true) {
+      touchOverflowStyle.backgroundColor = 'orange';
+      touchOverflowStyle.opacity = 0.5;
+    }
+
+    return touchOverflowStyle;
+  }
+
+  handleMeasure(name, x) {
+    const {
+      width: layoutWidth,
+      height: layoutHeight
+    } = x.nativeEvent.layout;
+    const width = this.props.orientation === 'vertical' ? layoutHeight : layoutWidth;
+    const height = this.props.orientation === 'vertical' ? layoutWidth : layoutHeight;
+    const size = {
+      width,
+      height
+    };
+    const storeName = `_${name}`;
+    const currentSize = this[storeName];
+
+    if (currentSize && width === currentSize.width && height === currentSize.height) {
+      return;
+    }
+
+    this[storeName] = size;
+
+    if (this._containerSize && this._trackSize && this._thumbSize) {
+      this.setState({
+        containerSize: this._containerSize,
+        trackSize: this._trackSize,
+        thumbSize: this._thumbSize,
+        allMeasured: true
+      });
+    }
+  }
+
+  getValue(gestureState) {
+    const length = this.state.containerSize.width - this.state.thumbSize.width;
+    const thumbLeft = this._previousLeft + (this.props.orientation === 'vertical' ? gestureState.dy : gestureState.dx);
+    const ratio = thumbLeft / length;
+
+    if (this.props.step) {
+      return Math.max(this.props.minimumValue, Math.min(this.props.maximumValue, this.props.minimumValue + Math.round(ratio * (this.props.maximumValue - this.props.minimumValue) / this.props.step) * this.props.step));
+    }
+
+    return Math.max(this.props.minimumValue, Math.min(this.props.maximumValue, ratio * (this.props.maximumValue - this.props.minimumValue) + this.props.minimumValue));
+  }
+
+  getCurrentValue() {
+    return this.state.value.__getValue();
+  }
+
+  getRatio(value) {
+    return (value - this.props.minimumValue) / (this.props.maximumValue - this.props.minimumValue);
+  }
+
+  getThumbLeft(value) {
+    const ratio = this.getRatio(value);
+    return ratio * (this.state.containerSize.width - this.state.thumbSize.width);
+  }
+
+  getThumbTouchRect() {
+    const {
+      thumbSize,
+      containerSize
+    } = this.state;
+    const {
+      thumbTouchSize
+    } = this.props;
+    const touchOverflowSize = this.getTouchOverflowSize();
+
+    if (this.props.orientation === 'vertical') {
+      return new Rect(touchOverflowSize.height / 2 + (containerSize.height - thumbTouchSize.height) / 2, touchOverflowSize.width / 2 + this.getThumbLeft(this.getCurrentValue()) + (thumbSize.width - thumbTouchSize.width) / 2, thumbTouchSize.width, thumbTouchSize.height);
+    }
+
+    return new Rect(touchOverflowSize.width / 2 + this.getThumbLeft(this.getCurrentValue()) + (thumbSize.width - thumbTouchSize.width) / 2, touchOverflowSize.height / 2 + (containerSize.height - thumbTouchSize.height) / 2, thumbTouchSize.width, thumbTouchSize.height);
+  }
+
+  renderDebugThumbTouchRect(thumbLeft) {
+    const thumbTouchRect = this.getThumbTouchRect();
+    const positionStyle = {
+      left: thumbLeft,
+      top: thumbTouchRect.y,
+      width: thumbTouchRect.width,
+      height: thumbTouchRect.height
+    };
+    return React__default.createElement(reactNative.Animated.View, {
+      style: positionStyle,
+      pointerEvents: "none"
+    });
+  }
+
+  getMinimumTrackStyles(thumbStart) {
+    const {
+      thumbSize,
+      trackSize
+    } = this.state;
+    const minimumTrackStyle = {
+      position: 'absolute'
+    };
+
+    if (this.props.orientation === 'vertical') {
+      minimumTrackStyle.height = reactNative.Animated.add(thumbStart, thumbSize.height / 2);
+      minimumTrackStyle.marginLeft = -trackSize.width;
+    } else {
+      minimumTrackStyle.width = reactNative.Animated.add(thumbStart, thumbSize.width / 2);
+      minimumTrackStyle.marginTop = -trackSize.height;
+    }
+
+    return minimumTrackStyle;
+  }
+
+  getThumbPositionStyles(thumbStart) {
+    if (this.props.orientation === 'vertical') {
+      return [{
+        translateX: -(this.state.trackSize.height + this.state.thumbSize.height) / 2
+      }, {
+        translateY: thumbStart
+      }];
+    }
+
+    return [{
+      translateX: thumbStart
+    }, {
+      translateY: -(this.state.trackSize.height + this.state.thumbSize.height) / 2
+    }];
+  }
+
+  render() {
+    const {
+      minimumValue,
+      maximumValue,
+      minimumTrackTintColor,
+      maximumTrackTintColor,
+      thumbTintColor,
+      containerStyle,
+      style,
+      trackStyle,
+      thumbStyle,
+      debugTouchArea,
+      orientation,
+      ...other
+    } = this.props;
+    const {
+      value,
+      containerSize,
+      thumbSize,
+      allMeasured
+    } = this.state;
+    const mainStyles = containerStyle || styles$h;
+    const thumbStart = value.interpolate({
+      inputRange: [minimumValue, maximumValue],
+      outputRange: [0, containerSize.width - thumbSize.width] // extrapolate: 'clamp',
+
+    });
+    const valueVisibleStyle = {};
+
+    if (!allMeasured) {
+      valueVisibleStyle.height = 0;
+      valueVisibleStyle.width = 0;
+    }
+
+    const minimumTrackStyle = { ...this.getMinimumTrackStyles(thumbStart),
+      backgroundColor: minimumTrackTintColor,
+      ...valueVisibleStyle
+    };
+    const thumbStyleTransform = thumbStyle && thumbStyle.transform || [];
+    const touchOverflowStyle = this.getTouchOverflowStyle();
+    return React__default.createElement(reactNative.View, _extends$k({}, other, {
+      style: reactNative.StyleSheet.flatten([orientation === 'vertical' ? mainStyles.containerVertical : mainStyles.containerHorizontal, style]),
+      onLayout: this.measureContainer
+    }), React__default.createElement(reactNative.View, {
+      style: reactNative.StyleSheet.flatten([mainStyles.track, orientation === 'vertical' ? mainStyles.trackVertical : mainStyles.trackHorizontal, trackStyle, {
+        backgroundColor: maximumTrackTintColor
+      }]),
+      onLayout: this.measureTrack
+    }), React__default.createElement(reactNative.Animated.View, {
+      style: reactNative.StyleSheet.flatten([mainStyles.track, orientation === 'vertical' ? mainStyles.trackVertical : mainStyles.trackHorizontal, trackStyle, minimumTrackStyle])
+    }), React__default.createElement(reactNative.Animated.View, {
+      testID: "sliderThumb",
+      onLayout: this.measureThumb,
+      style: reactNative.StyleSheet.flatten([{
+        backgroundColor: thumbTintColor
+      }, mainStyles.thumb, orientation === 'vertical' ? mainStyles.thumbVertical(trackStyle && trackStyle.width) : mainStyles.thumbHorizontal(trackStyle && trackStyle.height), thumbStyle, {
+        transform: [...this.getThumbPositionStyles(thumbStart), ...thumbStyleTransform],
+        ...valueVisibleStyle
+      }])
+    }), React__default.createElement(reactNative.View, _extends$k({
+      style: reactNative.StyleSheet.flatten([styles$h.touchArea, touchOverflowStyle])
+    }, this.panResponder.panHandlers), debugTouchArea === true && this.renderDebugThumbTouchRect(thumbStart)));
+  }
+
+}
+
+Slider.propTypes = {
+  /**
+   * Initial value of the slider. The value should be between minimumValue
+   * and maximumValue, which default to 0 and 1 respectively.
+   * Default value is 0.
+   *
+   * *This is not a controlled component*, e.g. if you don't update
+   * the value, the component won't be reset to its inital value.
+   */
+  value: propTypes.number,
+
+  /**
+   * If true the user won't be able to move the slider.
+   * Default value is false.
+   */
+  disabled: propTypes.bool,
+
+  /**
+   * Initial minimum value of the slider. Default value is 0.
+   */
+  minimumValue: propTypes.number,
+
+  /**
+   * Initial maximum value of the slider. Default value is 1.
+   */
+  maximumValue: propTypes.number,
+
+  /**
+   * Step value of the slider. The value should be between 0 and
+   * (maximumValue - minimumValue). Default value is 0.
+   */
+  step: propTypes.number,
+
+  /**
+   * The color used for the track to the left of the button. Overrides the
+   * default blue gradient image.
+   */
+  minimumTrackTintColor: propTypes.string,
+
+  /**
+   * The color used for the track to the right of the button. Overrides the
+   * default blue gradient image.
+   */
+  maximumTrackTintColor: propTypes.string,
+
+  /**
+   * The color used for the thumb.
+   */
+  thumbTintColor: propTypes.string,
+
+  /**
+   * The size of the touch area that allows moving the thumb.
+   * The touch area has the same center has the visible thumb.
+   * This allows to have a visually small thumb while still allowing the user
+   * to move it easily.
+   * The default is {width: 40, height: 40}.
+   */
+  thumbTouchSize: propTypes.shape({
+    width: propTypes.number,
+    height: propTypes.number
+  }),
+
+  /**
+   * Callback continuously called while the user is dragging the slider.
+   */
+  onValueChange: propTypes.func,
+
+  /**
+   * Callback called when the user starts changing the value (e.g. when
+   * the slider is pressed).
+   */
+  onSlidingStart: propTypes.func,
+
+  /**
+   * Callback called when the user finishes changing the value (e.g. when
+   * the slider is released).
+   */
+  onSlidingComplete: propTypes.func,
+
+  /**
+   * The style applied to the slider container.
+   */
+  style: ViewPropTypes.style,
+
+  /**
+   * The style applied to the track.
+   */
+  trackStyle: ViewPropTypes.style,
+
+  /**
+   * The style applied to the thumb.
+   */
+  thumbStyle: ViewPropTypes.style,
+
+  /**
+   * Set this to true to visually see the thumb touch rect in green.
+   */
+  debugTouchArea: propTypes.bool,
+
+  /**
+   * Set to true to animate values with default 'timing' animation type
+   */
+  animateTransitions: propTypes.bool,
+
+  /**
+   * Custom Animation type. 'spring' or 'timing'.
+   */
+  animationType: propTypes.oneOf(['spring', 'timing']),
+
+  /**
+   * Choose the orientation. 'horizontal' or 'vertical'.
+   */
+  orientation: propTypes.oneOf(['horizontal', 'vertical']),
+
+  /**
+   * Used to configure the animation parameters.  These are the same parameters in the Animated library.
+   */
+  animationConfig: propTypes.object,
+  containerStyle: ViewPropTypes.style
+};
+Slider.defaultProps = {
+  value: 0,
+  minimumValue: 0,
+  maximumValue: 1,
+  step: 0,
+  minimumTrackTintColor: '#3f3f3f',
+  maximumTrackTintColor: '#b3b3b3',
+  thumbTintColor: 'red',
+  thumbTouchSize: {
+    width: 40,
+    height: 40
+  },
+  debugTouchArea: false,
+  animationType: 'timing',
+  orientation: 'horizontal'
+};
+const styles$h = reactNative.StyleSheet.create({
+  containerHorizontal: {
+    height: 40,
+    justifyContent: 'center'
+  },
+  containerVertical: {
+    width: 40,
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  track: {
+    borderRadius: TRACK_SIZE / 2
+  },
+  trackHorizontal: {
+    height: TRACK_SIZE
+  },
+  trackVertical: {
+    flex: 1,
+    width: TRACK_SIZE
+  },
+  thumb: {
+    position: 'absolute',
+    width: THUMB_SIZE,
+    height: THUMB_SIZE,
+    borderRadius: THUMB_SIZE / 2
+  },
+  thumbHorizontal: height => ({
+    top: 22 + (height ? (height - 4) / 2 : 0)
+  }),
+  thumbVertical: width => ({
+    left: 22 + (width ? (width - 4) / 2 : 0)
+  }),
+  touchArea: {
+    position: 'absolute',
+    backgroundColor: 'transparent',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0
+  },
+  debugThumbTouchArea: {
+    position: 'absolute',
+    backgroundColor: 'green',
+    opacity: 0.5
+  }
+});
+var Slider$1 = withTheme(Slider, 'Slider');
+
+function _extends$l() { _extends$l = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$l.apply(this, arguments); }
+
+const Card = props => {
+  const {
+    children,
+    containerStyle,
+    wrapperStyle,
+    imageWrapperStyle,
+    title,
+    titleStyle,
+    titleNumberOfLines,
+    featuredTitle,
+    featuredTitleStyle,
+    featuredSubtitle,
+    featuredSubtitleStyle,
+    dividerStyle,
+    image,
+    imageStyle,
+    imageProps,
+    theme,
+    ...attributes
+  } = props;
+  return React__default.createElement(reactNative.View, _extends$l({}, attributes, {
+    style: reactNative.StyleSheet.flatten([styles$i.container(theme), image && {
+      padding: 0
+    }, containerStyle && containerStyle])
+  }), React__default.createElement(reactNative.View, {
+    style: reactNative.StyleSheet.flatten([styles$i.wrapper, wrapperStyle && wrapperStyle])
+  }, title === '' || React__default.isValidElement(title) ? title : title && title.length && React__default.createElement(reactNative.View, null, React__default.createElement(Text, {
+    testID: "cardTitle",
+    style: reactNative.StyleSheet.flatten([styles$i.cardTitle(theme), image && styles$i.imageCardTitle, titleStyle && titleStyle]),
+    numberOfLines: titleNumberOfLines
+  }, title), !image && React__default.createElement(Divider$1, {
+    style: reactNative.StyleSheet.flatten([styles$i.divider, dividerStyle && dividerStyle])
+  })), image && React__default.createElement(reactNative.View, {
+    style: imageWrapperStyle && imageWrapperStyle
+  }, React__default.createElement(Image$1, _extends$l({
+    style: [{
+      width: null,
+      height: 150
+    }, imageStyle && imageStyle],
+    source: image
+  }, imageProps), (featuredTitle || featuredSubtitle) && React__default.createElement(reactNative.View, {
+    style: styles$i.overlayContainer
+  }, featuredTitle && React__default.createElement(Text, {
+    style: reactNative.StyleSheet.flatten([styles$i.featuredTitle, featuredTitleStyle && featuredTitleStyle])
+  }, featuredTitle), featuredSubtitle && React__default.createElement(Text, {
+    style: reactNative.StyleSheet.flatten([styles$i.featuredSubtitle, featuredSubtitleStyle && featuredSubtitleStyle])
+  }, featuredSubtitle))), React__default.createElement(reactNative.View, {
+    style: reactNative.StyleSheet.flatten([{
+      padding: 10
+    }, wrapperStyle && wrapperStyle])
+  }, children)), !image && children));
+};
+
+Card.propTypes = {
+  children: propTypes.oneOfType([propTypes.element, propTypes.arrayOf(propTypes.element)]),
+  containerStyle: ViewPropTypes.style,
+  wrapperStyle: ViewPropTypes.style,
+  overlayStyle: ViewPropTypes.style,
+  title: propTypes.oneOfType([propTypes.string, propTypes.element]),
+  titleStyle: TextPropTypes.style,
+  featuredTitle: propTypes.string,
+  featuredTitleStyle: TextPropTypes.style,
+  featuredSubtitle: propTypes.string,
+  featuredSubtitleStyle: TextPropTypes.style,
+  dividerStyle: ViewPropTypes.style,
+  image: reactNative.Image.propTypes.source,
+  imageStyle: ViewPropTypes.style,
+  imageWrapperStyle: ViewPropTypes.style,
+  imageProps: propTypes.object,
+  titleNumberOfLines: propTypes.number,
+  theme: propTypes.object
+};
+const styles$i = {
+  container: theme => ({
+    backgroundColor: 'white',
+    borderWidth: 1,
+    padding: 15,
+    margin: 15,
+    marginBottom: 0,
+    borderColor: theme.colors.grey5,
+    ...reactNative.Platform.select({
+      android: {
+        elevation: 1
+      },
+      default: {
+        shadowColor: 'rgba(0,0,0, .2)',
+        shadowOffset: {
+          height: 0,
+          width: 0
+        },
+        shadowOpacity: 1,
+        shadowRadius: 1
+      }
+    })
+  }),
+  featuredTitle: {
+    fontSize: normalize(18),
+    marginBottom: 8,
+    color: 'white',
+    ...reactNative.Platform.select({
+      android: { ...fonts.android.black
+      },
+      default: {
+        fontWeight: '800'
+      }
+    })
+  },
+  featuredSubtitle: {
+    fontSize: normalize(13),
+    marginBottom: 8,
+    color: 'white',
+    ...reactNative.Platform.select({
+      android: { ...fonts.android.black
+      },
+      default: {
+        fontWeight: '400'
+      }
+    })
+  },
+  wrapper: {
+    backgroundColor: 'transparent'
+  },
+  divider: {
+    marginBottom: 15
+  },
+  cardTitle: theme => ({
+    fontSize: normalize(14),
+    color: theme.colors.grey1,
+    ...reactNative.Platform.select({
+      android: { ...fonts.android.black
+      },
+      default: {
+        fontWeight: 'bold'
+      }
+    }),
+    textAlign: 'center',
+    marginBottom: 15
+  }),
+  imageCardTitle: {
+    marginTop: 15
+  },
+  overlayContainer: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0
+  }
+};
+var Card$1 = withTheme(Card, 'Card');
+
+function _extends$m() { _extends$m = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$m.apply(this, arguments); }
+
+const renderText$2 = (content, defaultProps, style) => renderNode(Text, content, { ...defaultProps,
+  style: reactNative.StyleSheet.flatten([style, defaultProps && defaultProps.style])
+});
+
+const FeaturedTile = props => {
+  const {
+    title,
+    icon,
+    caption,
+    imageSrc,
+    containerStyle,
+    imageContainerStyle,
+    overlayContainerStyle,
+    iconContainerStyle,
+    titleStyle,
+    captionStyle,
+    ImageComponent,
+    imageProps,
+    ...attributes
+  } = props;
+  const {
+    width = reactNative.Dimensions.get('window').width,
+    height = width * 0.8
+  } = props;
+  const styles = reactNative.StyleSheet.create({
+    container: {
+      width,
+      height
+    },
+    imageContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      width,
+      height
+    },
+    overlayContainer: {
+      flex: 1,
+      alignItems: 'center',
+      alignSelf: 'stretch',
+      justifyContent: 'center',
+      paddingLeft: 25,
+      paddingRight: 25,
+      paddingTop: 45,
+      paddingBottom: 40,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0
+    },
+    text: {
+      color: '#ffffff',
+      backgroundColor: 'rgba(0,0,0,0)',
+      marginBottom: 15,
+      textAlign: 'center'
+    },
+    iconContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignSelf: 'center'
+    }
+  });
+  return React__default.createElement(reactNative.TouchableOpacity, _extends$m({}, attributes, {
+    style: reactNative.StyleSheet.flatten([styles.container, containerStyle && containerStyle])
+  }), React__default.createElement(ImageComponent, _extends$m({
+    resizeMode: "cover"
+  }, imageProps, {
+    source: imageSrc,
+    style: reactNative.StyleSheet.flatten([styles.imageContainer, imageContainerStyle && imageContainerStyle])
+  }), React__default.createElement(reactNative.View, {
+    style: reactNative.StyleSheet.flatten([styles.overlayContainer, overlayContainerStyle && overlayContainerStyle])
+  }, React__default.createElement(reactNative.View, {
+    style: reactNative.StyleSheet.flatten([styles.iconContainer, iconContainerStyle && iconContainerStyle])
+  }, icon && React__default.createElement(Icon$1, icon)), React__default.createElement(Text, {
+    testID: "featuredTileTitle",
+    h4: true,
+    style: reactNative.StyleSheet.flatten([styles.text, titleStyle && titleStyle])
+  }, title), renderText$2(caption, {
+    style: captionStyle
+  }, styles.text))));
+};
+
+FeaturedTile.propTypes = {
+  title: propTypes.string,
+  icon: propTypes.object,
+  caption: propTypes.node,
+  imageSrc: reactNative.Image.propTypes.source,
+  onPress: propTypes.func,
+  containerStyle: ViewPropTypes.style,
+  iconContainerStyle: ViewPropTypes.style,
+  imageContainerStyle: ViewPropTypes.style,
+  overlayContainerStyle: ViewPropTypes.style,
+  titleStyle: reactNative.Text.propTypes.style,
+  captionStyle: reactNative.Text.propTypes.style,
+  width: propTypes.number,
+  height: propTypes.number,
+  ImageComponent: propTypes.elementType,
+  imageProps: propTypes.object
+};
+FeaturedTile.defaultProps = {
+  ImageComponent: BackgroundImage,
+  imageProps: {}
+};
+var FeaturedTile$1 = withTheme(FeaturedTile, 'FeaturedTile');
+
+function _extends$n() { _extends$n = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$n.apply(this, arguments); }
+
+const Tile = props => {
+  const {
+    featured,
+    imageSrc,
+    icon,
+    title,
+    children,
+    caption,
+    titleStyle,
+    onPress,
+    activeOpacity,
+    overlayContainerStyle,
+    captionStyle,
+    iconContainerStyle,
+    imageContainerStyle,
+    containerStyle,
+    contentContainerStyle,
+    titleNumberOfLines,
+    ImageComponent,
+    imageProps,
+    ...attributes
+  } = props;
+  const {
+    width,
+    height = width * 0.8
+  } = props;
+
+  if (featured) {
+    const featuredProps = {
+      title,
+      icon,
+      caption,
+      imageSrc,
+      onPress,
+      activeOpacity,
+      containerStyle,
+      imageContainerStyle,
+      overlayContainerStyle,
+      titleStyle,
+      captionStyle,
+      width,
+      height,
+      imageProps,
+      ImageComponent
+    };
+    return React__default.createElement(FeaturedTile$1, featuredProps);
+  }
+
+  return React__default.createElement(reactNative.TouchableOpacity, _extends$n({}, attributes, {
+    onPress: onPress,
+    activeOpacity: activeOpacity,
+    style: reactNative.StyleSheet.flatten([{
+      width,
+      height
+    }, containerStyle && containerStyle])
+  }), React__default.createElement(ImageComponent, _extends$n({
+    resizeMode: "cover",
+    source: imageSrc,
+    containerStyle: reactNative.StyleSheet.flatten([styles$j.imageContainer, imageContainerStyle && imageContainerStyle]),
+    style: { ...reactNative.StyleSheet.absoluteFillObject,
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  }, imageProps), React__default.createElement(reactNative.View, {
+    style: reactNative.StyleSheet.flatten([styles$j.iconContainer, iconContainerStyle && iconContainerStyle])
+  }, icon && React__default.createElement(Icon$1, icon))), React__default.createElement(reactNative.View, {
+    style: reactNative.StyleSheet.flatten([styles$j.contentContainer, contentContainerStyle && contentContainerStyle])
+  }, React__default.createElement(Text, {
+    testID: "tileTitle",
+    h4: true,
+    style: reactNative.StyleSheet.flatten([styles$j.text, titleStyle && titleStyle]),
+    numberOfLines: titleNumberOfLines
+  }, title), children));
+};
+
+Tile.propTypes = {
+  title: propTypes.string,
+  icon: propTypes.object,
+  caption: propTypes.node,
+  imageSrc: reactNative.Image.propTypes.source,
+  onPress: propTypes.func,
+  activeOpacity: propTypes.number,
+  containerStyle: ViewPropTypes.style,
+  imageContainerStyle: ViewPropTypes.style,
+  iconContainerStyle: ViewPropTypes.style,
+  overlayContainerStyle: ViewPropTypes.style,
+  titleStyle: TextPropTypes.style,
+  captionStyle: TextPropTypes.style,
+  width: propTypes.number,
+  height: propTypes.number,
+  featured: propTypes.bool,
+  children: propTypes.node,
+  contentContainerStyle: ViewPropTypes.style,
+  titleNumberOfLines: propTypes.number,
+  imageProps: propTypes.object,
+  ImageComponent: propTypes.elementType
+};
+Tile.defaultProps = {
+  width: reactNative.Dimensions.get('window').width,
+  ImageComponent: Image$1,
+  imageProps: {}
+};
+const styles$j = reactNative.StyleSheet.create({
+  imageContainer: {
+    flex: 2
+  },
+  text: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    marginBottom: 5
+  },
+  contentContainer: {
+    paddingTop: 15,
+    paddingBottom: 5,
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  iconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center'
+  }
+});
+var Tile$1 = withTheme(Tile, 'Tile');
+
+function _extends$o() { _extends$o = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$o.apply(this, arguments); }
+const ALIGN_STYLE = {
+  left: 'flex-start',
+  right: 'flex-end',
+  center: 'center'
+};
+
+const Children = ({
+  style,
+  placement,
+  children
+}) => React__default.createElement(reactNative.View, {
+  style: reactNative.StyleSheet.flatten([{
+    alignItems: ALIGN_STYLE[placement]
+  }, style])
+}, children == null || children === false ? null : children.text ? renderNode(Text, children.text, {
+  numberOfLines: 1,
+  ...children
+}) : children.icon ? renderNode(Icon$1, { ...children,
+  name: children.icon,
+  containerStyle: reactNative.StyleSheet.flatten([{
+    alignItems: ALIGN_STYLE[placement]
+  }, children.containerStyle])
+}) : renderNode(Text, children));
+
+Children.propTypes = {
+  placement: propTypes.oneOf(['left', 'center', 'right']),
+  style: ViewPropTypes.style,
+  children: propTypes.oneOfType([nodeType, propTypes.node])
+};
+
+class Header extends React.Component {
+  componentDidMount() {
+    const {
+      linearGradientProps,
+      ViewComponent
+    } = this.props;
+
+    if (linearGradientProps && !global.Expo && !ViewComponent) {
+      console.error("You need to pass a ViewComponent to use linearGradientProps !\nExample: ViewComponent={require('react-native-linear-gradient')}");
+    }
+  }
+
+  render() {
+    const {
+      statusBarProps,
+      leftComponent,
+      centerComponent,
+      rightComponent,
+      leftContainerStyle,
+      centerContainerStyle,
+      rightContainerStyle,
+      backgroundColor,
+      backgroundImage,
+      backgroundImageStyle,
+      containerStyle,
+      placement,
+      barStyle,
+      children,
+      linearGradientProps,
+      ViewComponent = linearGradientProps && global.Expo ? global.Expo.LinearGradient : reactNative.ImageBackground,
+      theme,
+      ...attributes
+    } = this.props;
+    return React__default.createElement(ViewComponent, _extends$o({
+      testID: "headerContainer"
+    }, attributes, {
+      style: reactNative.StyleSheet.flatten([styles$k.container(theme), backgroundColor && {
+        backgroundColor
+      }, containerStyle]),
+      source: backgroundImage,
+      imageStyle: backgroundImageStyle
+    }, linearGradientProps), React__default.createElement(reactNative.StatusBar, _extends$o({
+      barStyle: barStyle
+    }, statusBarProps)), React__default.createElement(Children, {
+      style: reactNative.StyleSheet.flatten([placement === 'center' && styles$k.rightLeftContainer, leftContainerStyle]),
+      placement: "left"
+    }, React__default.isValidElement(children) && children || children[0] || leftComponent), React__default.createElement(Children, {
+      style: reactNative.StyleSheet.flatten([styles$k.centerContainer, placement !== 'center' && {
+        paddingHorizontal: reactNative.Platform.select({
+          android: 16,
+          default: 15
+        })
+      }, centerContainerStyle]),
+      placement: placement
+    }, children[1] || centerComponent), React__default.createElement(Children, {
+      style: reactNative.StyleSheet.flatten([placement === 'center' && styles$k.rightLeftContainer, rightContainerStyle]),
+      placement: "right"
+    }, children[2] || rightComponent));
+  }
+
+}
+
+Header.propTypes = {
+  placement: propTypes.oneOf(['left', 'center', 'right']),
+  leftComponent: nodeType,
+  centerComponent: nodeType,
+  rightComponent: nodeType,
+  leftContainerStyle: ViewPropTypes.style,
+  centerContainerStyle: ViewPropTypes.style,
+  rightContainerStyle: ViewPropTypes.style,
+  backgroundColor: propTypes.string,
+  backgroundImage: reactNative.Image.propTypes.source,
+  backgroundImageStyle: reactNative.Image.propTypes.style,
+  containerStyle: ViewPropTypes.style,
+  statusBarProps: propTypes.object,
+  barStyle: propTypes.oneOf(['default', 'light-content', 'dark-content']),
+  children: propTypes.oneOfType([propTypes.arrayOf(propTypes.node), propTypes.node]),
+  theme: propTypes.object,
+  linearGradientProps: propTypes.object,
+  ViewComponent: propTypes.elementType
+};
+Header.defaultProps = {
+  placement: 'center',
+  children: []
+};
+const styles$k = {
+  container: theme => ({
+    borderBottomColor: '#f2f2f2',
+    borderBottomWidth: reactNative.StyleSheet.hairlineWidth,
+    paddingHorizontal: 10,
+    backgroundColor: theme.colors.primary,
+    paddingTop: getStatusBarHeight(),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: reactNative.Platform.select({
+      android: 56,
+      default: 44
+    }) + getStatusBarHeight()
+  }),
+  centerContainer: {
+    flex: 3
+  },
+  rightLeftContainer: {
+    flex: 1
+  }
+};
+var Header$1 = withTheme(Header, 'Header');
+
+function _extends$p() { _extends$p = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$p.apply(this, arguments); }
+
+const PricingCard = props => {
+  const {
+    theme,
+    ...rest
+  } = props;
+  const {
+    containerStyle,
+    wrapperStyle,
+    title,
+    price,
+    info,
+    button,
+    color = theme.colors.primary,
+    titleStyle,
+    pricingStyle,
+    infoStyle,
+    onButtonPress,
+    ...attributes
+  } = rest;
+  return React__default.createElement(reactNative.View, _extends$p({}, attributes, {
+    style: reactNative.StyleSheet.flatten([styles$l.container(theme), containerStyle && containerStyle])
+  }), React__default.createElement(reactNative.View, {
+    style: reactNative.StyleSheet.flatten([styles$l.wrapper, wrapperStyle && wrapperStyle])
+  }, React__default.createElement(Text, {
+    testID: "pricingCardTitle",
+    style: reactNative.StyleSheet.flatten([styles$l.pricingTitle, titleStyle, {
+      color
+    }])
+  }, title), React__default.createElement(Text, {
+    style: reactNative.StyleSheet.flatten([styles$l.pricingPrice, pricingStyle])
+  }, price), info.map(item => React__default.createElement(Text, {
+    key: item,
+    style: reactNative.StyleSheet.flatten([styles$l.pricingInfo(theme), infoStyle])
+  }, item)), React__default.createElement(Button$1, {
+    title: button.title,
+    buttonStyle: reactNative.StyleSheet.flatten([styles$l.button, button.buttonStyle, {
+      backgroundColor: color
+    }]),
+    titleStyle: button.titleStyle,
+    onPress: onButtonPress,
+    icon: React__default.createElement(Icon$1, {
+      name: button.icon,
+      size: 15,
+      color: "white"
+    })
+  })));
+};
+
+PricingCard.propTypes = {
+  containerStyle: ViewPropTypes.style,
+  wrapperStyle: ViewPropTypes.style,
+  title: propTypes.string,
+  price: propTypes.oneOfType([propTypes.string, propTypes.number]),
+  info: propTypes.arrayOf(propTypes.string),
+  button: propTypes.object,
+  color: propTypes.string,
+  onButtonPress: propTypes.func,
+  titleStyle: reactNative.Text.propTypes.style,
+  pricingStyle: reactNative.Text.propTypes.style,
+  infoStyle: reactNative.Text.propTypes.style,
+  theme: propTypes.object
+};
+PricingCard.defaultProps = {
+  info: []
+};
+const styles$l = {
+  container: theme => ({
+    margin: 15,
+    marginBottom: 15,
+    backgroundColor: 'white',
+    borderWidth: 1,
+    padding: 15,
+    borderColor: theme.colors.grey5,
+    ...reactNative.Platform.select({
+      android: {
+        elevation: 1
+      },
+      default: {
+        shadowColor: 'rgba(0,0,0, .2)',
+        shadowOffset: {
+          height: 1,
+          width: 0
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 0.5
+      }
+    })
+  }),
+  wrapper: {
+    backgroundColor: 'transparent'
+  },
+  pricingTitle: {
+    textAlign: 'center',
+    fontSize: normalize(30),
+    ...reactNative.Platform.select({
+      android: { ...fonts.android.black
+      },
+      default: {
+        fontWeight: '800'
+      }
+    })
+  },
+  pricingPrice: {
+    textAlign: 'center',
+    marginTop: 10,
+    marginBottom: 10,
+    fontSize: normalize(40),
+    ...reactNative.Platform.select({
+      android: { ...fonts.android.bold
+      },
+      default: {
+        fontWeight: '700'
+      }
+    })
+  },
+  pricingInfo: theme => ({
+    textAlign: 'center',
+    marginTop: 5,
+    marginBottom: 5,
+    color: theme.colors.grey3,
+    ...reactNative.Platform.select({
+      android: { ...fonts.android.bold
+      },
+      default: {
+        fontWeight: '600'
+      }
+    })
+  }),
+  button: {
+    marginTop: 15,
+    marginBottom: 10
+  }
+};
+var PricingCard$1 = withTheme(PricingCard, 'PricingCard');
+
+const Triangle = ({
+  style,
+  isDown
+}) => React__default.createElement(reactNative.View, {
+  style: reactNative.StyleSheet.flatten([styles$m.triangle, style, isDown ? styles$m.down : {}])
+});
+
+Triangle.propTypes = {
+  style: ViewPropTypes.style,
+  isDown: propTypes.bool
+};
+const styles$m = reactNative.StyleSheet.create({
+  down: {
+    transform: [{
+      rotate: '180deg'
+    }]
+  },
+  triangle: {
+    width: 0,
+    height: 0,
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderLeftWidth: 8,
+    borderRightWidth: 8,
+    borderBottomWidth: 15,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'white'
+  }
+});
+
+const getArea = (a, b) => a * b;
+
+const getPointDistance = (a, b) => Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2));
+
+const getElementVisibleWidth = (elementWidth, xOffset, ScreenWidth) => {
+  // Element is fully visible OR scrolled right
+  if (xOffset >= 0) {
+    return xOffset + elementWidth <= ScreenWidth // is element fully visible?
+    ? elementWidth // element is fully visible;
+    : ScreenWidth - xOffset; // calculate visible width of scrolled element
+  } // Element is scrolled LEFT
+
+
+  return elementWidth - xOffset; // calculate visible width of scrolled element
+};
+/*
+type Coord = {
+  x: number,
+  y: number,
+};
+
+  ~Tooltip coordinate system:~
+  The tooltip coordinates are based on the element which it is wrapping.
+  We take the x and y coordinates of the element and find the best position
+  to place the tooltip. To find the best position we look for the side with the
+  most space. In order to find the side with the most space we divide the the
+  surroundings in four quadrants and check for the one with biggest area.
+  Once we know the quandrant with the biggest area it place the tooltip in that
+  direction.
+
+  To find the areas we first get 5 coordinate points. The center and the other 4 extreme points
+  which together make a perfect cross shape.
+
+  Once we know the coordincates we can get the length of the vertices which form each quadrant.
+  Since they are squares we only need two.
+*/
+
+const getTooltipCoordinate = (x, y, width, height, ScreenWidth, ScreenHeight, tooltipWidth, tooltipHeight, withPointer) => {
+  // The following are point coordinates: [x, y]
+  const center = [x + getElementVisibleWidth(width, x, ScreenWidth) / 2, y + height / 2];
+  const pOne = [center[0], 0];
+  const pTwo = [ScreenWidth, center[1]];
+  const pThree = [center[0], ScreenHeight];
+  const pFour = [0, center[1]]; // vertices
+
+  const vOne = getPointDistance(center, pOne);
+  const vTwo = getPointDistance(center, pTwo);
+  const vThree = getPointDistance(center, pThree);
+  const vFour = getPointDistance(center, pFour); // Quadrant areas.
+  // type Areas = {
+  //   area: number,
+  //   id: number,
+  // };
+
+  const areas = [getArea(vOne, vFour), getArea(vOne, vTwo), getArea(vTwo, vThree), getArea(vThree, vFour)].map((each, index) => ({
+    area: each,
+    id: index
+  }));
+  const sortedArea = areas.sort((a, b) => b.area - a.area); // deslocated points
+
+  const dX = 0.001;
+  const dY = height / 2; // Deslocate the coordinates in the direction of the quadrant.
+
+  const directionCorrection = [[-1, -1], [1, -1], [1, 1], [-1, 1]];
+  const deslocateReferencePoint = [[-tooltipWidth, -tooltipHeight], [0, -tooltipHeight], [0, 0], [-tooltipWidth, 0]]; // current quadrant index
+
+  const qIndex = sortedArea[0].id;
+
+  const getWithPointerOffsetY = () => withPointer ? 10 * directionCorrection[qIndex][1] : 0;
+
+  const getWithPointerOffsetX = () => withPointer ? center[0] - 18 * directionCorrection[qIndex][0] : center[0];
+
+  const newX = getWithPointerOffsetX() + (dX * directionCorrection[qIndex][0] + deslocateReferencePoint[qIndex][0]);
+  return {
+    x: constraintX(newX, qIndex, center[0], ScreenWidth, tooltipWidth),
+    y: center[1] + (dY * directionCorrection[qIndex][1] + deslocateReferencePoint[qIndex][1]) + getWithPointerOffsetY()
+  };
+};
+
+const constraintX = (newX, qIndex, x, ScreenWidth, tooltipWidth) => {
+  switch (qIndex) {
+    // 0 and 3 are the left side quadrants.
+    case 0:
+    case 3:
+      {
+        const maxWidth = newX > ScreenWidth ? ScreenWidth - 10 : newX;
+        return newX < 1 ? 10 : maxWidth;
+      }
+    // 1 and 2 are the right side quadrants
+
+    case 1:
+    case 2:
+      {
+        const leftOverSpace = ScreenWidth - newX;
+        return leftOverSpace >= tooltipWidth ? newX : newX - (tooltipWidth - leftOverSpace + 10);
+      }
+
+    default:
+      {
+        return 0;
+      }
+  }
+};
+
+function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class Tooltip extends React__default.PureComponent {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty$9(this, "state", {
+      isVisible: false,
+      yOffset: 0,
+      xOffset: 0,
+      elementWidth: 0,
+      elementHeight: 0
+    });
+
+    _defineProperty$9(this, "renderedElement", void 0);
+
+    _defineProperty$9(this, "toggleTooltip", () => {
+      const {
+        onClose
+      } = this.props;
+      this.getElementPosition();
+      this.setState(prevState => {
+        if (prevState.isVisible && !isIOS) {
+          onClose && onClose();
+        }
+
+        return {
+          isVisible: !prevState.isVisible
+        };
+      });
+    });
+
+    _defineProperty$9(this, "wrapWithPress", (toggleOnPress, children) => {
+      if (toggleOnPress) {
+        return React__default.createElement(reactNative.TouchableOpacity, {
+          onPress: this.toggleTooltip,
+          activeOpacity: 1
+        }, children);
+      }
+
+      return children;
+    });
+
+    _defineProperty$9(this, "getTooltipStyle", () => {
+      const {
+        yOffset,
+        xOffset,
+        elementHeight,
+        elementWidth
+      } = this.state;
+      const {
+        height,
+        backgroundColor,
+        width,
+        withPointer,
+        containerStyle
+      } = this.props;
+      const {
+        x,
+        y
+      } = getTooltipCoordinate(xOffset, yOffset, elementWidth, elementHeight, ScreenWidth, ScreenHeight, width, height, withPointer);
+      return {
+        position: 'absolute',
+        left: x,
+        top: y,
+        width,
+        height,
+        backgroundColor,
+        // default styles
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+        borderRadius: 10,
+        padding: 10,
+        ...containerStyle
+      };
+    });
+
+    _defineProperty$9(this, "renderPointer", tooltipY => {
+      const {
+        yOffset,
+        xOffset,
+        elementHeight,
+        elementWidth
+      } = this.state;
+      const {
+        backgroundColor,
+        pointerColor
+      } = this.props;
+      const pastMiddleLine = yOffset > tooltipY;
+      return React__default.createElement(reactNative.View, {
+        style: {
+          position: 'absolute',
+          top: pastMiddleLine ? yOffset - 13 : yOffset + elementHeight - 2,
+          left: xOffset + getElementVisibleWidth(elementWidth, xOffset, ScreenWidth) / 2 - 7.5
+        }
+      }, React__default.createElement(Triangle, {
+        style: {
+          borderBottomColor: pointerColor || backgroundColor
+        },
+        isDown: pastMiddleLine
+      }));
+    });
+
+    _defineProperty$9(this, "renderContent", withTooltip => {
+      const {
+        popover,
+        withPointer,
+        toggleOnPress,
+        highlightColor
+      } = this.props;
+
+      if (!withTooltip) {
+        return this.wrapWithPress(toggleOnPress, this.props.children);
+      }
+
+      const {
+        yOffset,
+        xOffset,
+        elementWidth,
+        elementHeight
+      } = this.state;
+      const tooltipStyle = this.getTooltipStyle();
+      return React__default.createElement(reactNative.View, null, React__default.createElement(reactNative.View, {
+        style: {
+          position: 'absolute',
+          top: yOffset,
+          left: xOffset,
+          backgroundColor: highlightColor,
+          overflow: 'visible',
+          width: elementWidth,
+          height: elementHeight
+        }
+      }, this.props.children), withPointer && this.renderPointer(tooltipStyle.top), React__default.createElement(reactNative.View, {
+        style: tooltipStyle,
+        testID: "tooltipPopoverContainer"
+      }, popover));
+    });
+
+    _defineProperty$9(this, "getElementPosition", () => {
+      this.renderedElement && this.renderedElement.measure((frameOffsetX, frameOffsetY, width, height, pageOffsetX, pageOffsetY) => {
+        this.setState({
+          xOffset: pageOffsetX,
+          yOffset: isIOS ? pageOffsetY : pageOffsetY - reactNative.StatusBar.currentHeight,
+          elementWidth: width,
+          elementHeight: height
+        });
+      });
+    });
+  }
+
+  componentDidMount() {
+    // wait to compute onLayout values.
+    setTimeout(this.getElementPosition, 500);
+  }
+
+  render() {
+    const {
+      isVisible
+    } = this.state;
+    const {
+      onClose,
+      withOverlay,
+      overlayColor,
+      onOpen
+    } = this.props;
+    return React__default.createElement(reactNative.View, {
+      collapsable: false,
+      ref: e => {
+        this.renderedElement = e;
+      }
+    }, this.renderContent(false), React__default.createElement(reactNative.Modal, {
+      animationType: "fade",
+      visible: isVisible,
+      transparent: true,
+      onDismiss: onClose,
+      onShow: onOpen,
+      onRequestClose: onClose
+    }, React__default.createElement(reactNative.TouchableOpacity, {
+      style: styles$n.container(withOverlay, overlayColor),
+      onPress: this.toggleTooltip,
+      activeOpacity: 1
+    }, this.renderContent(true))));
+  }
+
+}
+
+Tooltip.propTypes = {
+  children: propTypes.element,
+  withPointer: propTypes.bool,
+  popover: propTypes.element,
+  toggleOnPress: propTypes.bool,
+  height: propTypes.number,
+  width: propTypes.oneOfType([propTypes.number, propTypes.string]),
+  containerStyle: ViewPropTypes.style,
+  pointerColor: propTypes.string,
+  onClose: propTypes.func,
+  onOpen: propTypes.func,
+  overlayColor: propTypes.string,
+  withOverlay: propTypes.bool,
+  backgroundColor: propTypes.string,
+  highlightColor: propTypes.string
+};
+Tooltip.defaultProps = {
+  withOverlay: true,
+  overlayColor: 'rgba(250, 250, 250, 0.70)',
+  highlightColor: 'transparent',
+  withPointer: true,
+  toggleOnPress: true,
+  height: 40,
+  width: 150,
+  containerStyle: {},
+  backgroundColor: '#617080',
+  onClose: () => {},
+  onOpen: () => {}
+};
+const styles$n = {
+  container: (withOverlay, overlayColor) => ({
+    backgroundColor: withOverlay ? overlayColor : 'transparent',
+    flex: 1
+  })
+};
+var Tooltip$1 = withTheme(Tooltip, 'Tooltip');
+
+function _extends$q() { _extends$q = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$q.apply(this, arguments); }
+
+function _defineProperty$a(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const STAR_IMAGE = require('./images/star.png');
+
+const HEART_IMAGE = require('./images/heart.png');
+
+const ROCKET_IMAGE = require('./images/rocket.png');
+
+const BELL_IMAGE = require('./images/bell.png');
+
+const TYPES = {
+  star: {
+    source: STAR_IMAGE,
+    color: '#f1c40f',
+    backgroundColor: 'white'
+  },
+  heart: {
+    source: HEART_IMAGE,
+    color: '#e74c3c',
+    backgroundColor: 'white'
+  },
+  rocket: {
+    source: ROCKET_IMAGE,
+    color: '#2ecc71',
+    backgroundColor: 'white'
+  },
+  bell: {
+    source: BELL_IMAGE,
+    color: '#f39c12',
+    backgroundColor: 'white'
+  }
+};
+class SwipeRating extends React.Component {
+  constructor(props) {
+    super(props);
+    const {
+      onStartRating,
+      onFinishRating,
+      fractions
+    } = this.props;
+    const position = new reactNative.Animated.ValueXY();
+    const panResponder = reactNative.PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onPanResponderGrant: () => {
+        if (typeof onStartRating === 'function') {
+          onStartRating();
+        }
+      },
+      onPanResponderMove: (event, gesture) => {
+        const newPosition = new reactNative.Animated.ValueXY();
+        newPosition.setValue({
+          x: gesture.dx,
+          y: 0
+        });
+        this.setState({
+          position: newPosition,
+          value: gesture.dx
+        });
+      },
+      onPanResponderRelease: event => {
+        const rating = this.getCurrentRating(this.state.value);
+
+        if (rating >= this.props.minValue) {
+          if (!fractions) {
+            // 'round up' to the nearest rating image
+            this.setCurrentRating(rating);
+          }
+
+          onFinishRating(rating);
+        }
+      }
+    });
+    this.state = {
+      panResponder,
+      position,
+      display: false
+    };
+  }
+
+  async componentDidMount() {
+    try {
+      const STAR_IMAGE = await require('./images/star.png');
+      const HEART_IMAGE = await require('./images/heart.png');
+      const ROCKET_IMAGE = await require('./images/rocket.png');
+      const BELL_IMAGE = await require('./images/bell.png');
+      this.setState({
+        display: true
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
+    this.setCurrentRating(this.props.startingValue);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.startingValue !== prevProps.startingValue) {
+      this.setCurrentRating(this.props.startingValue);
+    }
+  }
+
+  getPrimaryViewStyle() {
+    const {
+      position
+    } = this.state;
+    const {
+      imageSize,
+      ratingCount,
+      type
+    } = this.props;
+    const color = TYPES[type].color;
+    const width = position.x.interpolate({
+      inputRange: [-ratingCount * (imageSize / 2), 0, ratingCount * (imageSize / 2)],
+      outputRange: [0, ratingCount * imageSize / 2, ratingCount * imageSize],
+      extrapolate: 'clamp'
+    }, {
+      useNativeDriver: true
+    });
+    return {
+      backgroundColor: color,
+      width,
+      height: width ? imageSize : 0
+    };
+  }
+
+  getSecondaryViewStyle() {
+    const {
+      position
+    } = this.state;
+    const {
+      imageSize,
+      ratingCount,
+      type
+    } = this.props;
+    const backgroundColor = TYPES[type].backgroundColor;
+    const width = position.x.interpolate({
+      inputRange: [-ratingCount * (imageSize / 2), 0, ratingCount * (imageSize / 2)],
+      outputRange: [ratingCount * imageSize, ratingCount * imageSize / 2, 0],
+      extrapolate: 'clamp'
+    }, {
+      useNativeDriver: true
+    });
+    return {
+      backgroundColor,
+      width,
+      height: width ? imageSize : 0
+    };
+  }
+
+  renderRatings() {
+    const {
+      imageSize,
+      ratingCount,
+      type,
+      tintColor
+    } = this.props;
+    const source = TYPES[type].source;
+    return times(ratingCount, index => React__default.createElement(reactNative.View, {
+      key: index,
+      style: styles$o.starContainer
+    }, React__default.createElement(reactNative.Image, {
+      source: source,
+      style: {
+        width: imageSize,
+        height: imageSize,
+        tintColor
+      }
+    })));
+  }
+
+  getCurrentRating(value) {
+    // const { value } = this.state;
+    const {
+      fractions,
+      imageSize,
+      ratingCount
+    } = this.props;
+    const startingValue = ratingCount / 2;
+    let currentRating = this.props.minValue ? this.props.minValue : 0;
+
+    if (value > ratingCount * imageSize / 2) {
+      currentRating = ratingCount;
+    } else if (value < -ratingCount * imageSize / 2) {
+      currentRating = this.props.minValue ? this.props.minValue : 0;
+    } else if (value <= imageSize || value > imageSize) {
+      currentRating = startingValue + value / imageSize;
+      currentRating = !fractions ? Math.ceil(currentRating) : +currentRating.toFixed(fractions);
+    } else {
+      currentRating = !fractions ? Math.ceil(startingValue) : +startingValue.toFixed(fractions);
+    }
+
+    return currentRating;
+  }
+
+  setCurrentRating(rating) {
+    const {
+      imageSize,
+      ratingCount
+    } = this.props; // `initialRating` corresponds to `startingValue` in the getter. Naming it
+    // differently here avoids confusion with `value` below.
+
+    const initialRating = ratingCount / 2;
+    let value = null;
+
+    if (rating > ratingCount) {
+      value = ratingCount * imageSize / 2;
+    } else if (rating < 0) {
+      value = -ratingCount * imageSize / 2;
+    } else if (rating < ratingCount / 2 || rating > ratingCount / 2) {
+      value = (rating - initialRating) * imageSize;
+    } else {
+      value = 0;
+    }
+
+    const newPosition = new reactNative.Animated.ValueXY();
+    newPosition.setValue({
+      x: value,
+      y: 0
+    });
+    this.setState({
+      position: newPosition,
+      value
+    });
+  }
+
+  displayCurrentRating() {
+    const {
+      ratingCount,
+      type,
+      readonly,
+      ratingTextColor
+    } = this.props;
+    const color = ratingTextColor || TYPES[type].color;
+    return React__default.createElement(reactNative.View, {
+      style: styles$o.showRatingView
+    }, React__default.createElement(reactNative.View, {
+      style: styles$o.ratingView
+    }, React__default.createElement(reactNative.Text, {
+      style: [styles$o.ratingText, {
+        color
+      }]
+    }, "Rating:", ' '), React__default.createElement(reactNative.Text, {
+      style: [styles$o.currentRatingText, {
+        color
+      }]
+    }, this.getCurrentRating(this.state.value)), React__default.createElement(reactNative.Text, {
+      style: [styles$o.maxRatingText, {
+        color
+      }]
+    }, "/", ratingCount)), React__default.createElement(reactNative.View, null, readonly && React__default.createElement(reactNative.Text, {
+      style: [styles$o.readonlyLabel, {
+        color
+      }]
+    }, "(readonly)")));
+  }
+
+  render() {
+    const {
+      readonly,
+      type,
+      ratingImage,
+      ratingColor,
+      ratingBackgroundColor,
+      style,
+      showRating
+    } = this.props;
+
+    if (type === 'custom') {
+      let custom = {
+        source: ratingImage,
+        color: ratingColor,
+        backgroundColor: ratingBackgroundColor
+      };
+      TYPES.custom = custom;
+    }
+
+    return this.state.display ? React__default.createElement(reactNative.View, {
+      pointerEvents: readonly ? 'none' : 'auto',
+      style: style
+    }, showRating && this.displayCurrentRating(), React__default.createElement(reactNative.View, _extends$q({
+      style: styles$o.starsWrapper
+    }, this.state.panResponder.panHandlers), React__default.createElement(reactNative.View, {
+      style: styles$o.starsInsideWrapper
+    }, React__default.createElement(reactNative.Animated.View, {
+      style: this.getPrimaryViewStyle()
+    }), React__default.createElement(reactNative.Animated.View, {
+      style: this.getSecondaryViewStyle()
+    })), this.renderRatings())) : null;
+  }
+
+}
+
+_defineProperty$a(SwipeRating, "defaultProps", {
+  type: 'star',
+  ratingImage: require('./images/star.png'),
+  ratingColor: '#f1c40f',
+  ratingBackgroundColor: 'white',
+  ratingCount: 5,
+  imageSize: 40,
+  onFinishRating: () => console.log('Attach a onFinishRating function here.'),
+  minValue: 0
+});
+
+const styles$o = reactNative.StyleSheet.create({
+  starsWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  starsInsideWrapper: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  showRatingView: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 5
+  },
+  ratingView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 5
+  },
+  ratingText: {
+    fontSize: 15,
+    textAlign: 'center',
+    fontFamily: reactNative.Platform.OS === 'ios' ? 'Trebuchet MS' : null,
+    color: '#34495e'
+  },
+  readonlyLabel: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 12,
+    textAlign: 'center',
+    fontFamily: reactNative.Platform.OS === 'ios' ? 'Trebuchet MS' : null,
+    color: '#34495a'
+  },
+  currentRatingText: {
+    fontSize: 30,
+    textAlign: 'center',
+    fontFamily: reactNative.Platform.OS === 'ios' ? 'Trebuchet MS' : null
+  },
+  maxRatingText: {
+    fontSize: 18,
+    textAlign: 'center',
+    fontFamily: reactNative.Platform.OS === 'ios' ? 'Trebuchet MS' : null,
+    color: '#34495e'
+  }
+});
+
+const fractionsType = (props, propName, componentName) => {
+  if (props[propName]) {
+    const value = props[propName];
+
+    if (typeof value === 'number') {
+      return value >= 0 && value <= 20 ? null : new Error(`\`${propName}\` in \`${componentName}\` must be between 0 and 20`);
+    }
+
+    return new Error(`\`${propName}\` in \`${componentName}\` must be a number`);
+  }
+};
+
+SwipeRating.propTypes = {
+  type: propTypes.string,
+  ratingImage: reactNative.Image.propTypes.source,
+  ratingColor: propTypes.string,
+  ratingBackgroundColor: propTypes.string,
+  ratingCount: propTypes.number,
+  ratingTextColor: propTypes.string,
+  imageSize: propTypes.number,
+  onStartRating: propTypes.func,
+  onFinishRating: propTypes.func,
+  showRating: propTypes.bool,
+  style: reactNative.ViewPropTypes.style,
+  readonly: propTypes.bool,
+  startingValue: propTypes.number,
+  fractions: fractionsType,
+  minValue: propTypes.number
+};
+
+function _defineProperty$b(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const STAR_IMAGE$1 = require('../images/airbnb-star.png');
+
+const STAR_SELECTED_IMAGE = require('../images/airbnb-star-selected.png');
+
+const STAR_SIZE = 40;
+class Star extends React.PureComponent {
+  constructor() {
+    super();
+    this.springValue = new reactNative.Animated.Value(1);
+    this.state = {
+      selected: false
+    };
+  }
+
+  spring() {
+    const {
+      position,
+      starSelectedInPosition
+    } = this.props;
+    this.springValue.setValue(1.2);
+    reactNative.Animated.spring(this.springValue, {
+      toValue: 1,
+      friction: 2,
+      tension: 1
+    }).start();
+    this.setState({
+      selected: !this.state.selected
+    });
+    starSelectedInPosition(position);
+  }
+
+  render() {
+    const {
+      fill,
+      size,
+      selectedColor,
+      isDisabled,
+      starStyle
+    } = this.props;
+    const starSource = fill && selectedColor === null ? STAR_SELECTED_IMAGE : STAR_IMAGE$1;
+    return React__default.createElement(reactNative.TouchableOpacity, {
+      activeOpacity: 1,
+      onPress: this.spring.bind(this),
+      disabled: isDisabled
+    }, React__default.createElement(reactNative.Animated.Image, {
+      source: starSource,
+      style: [styles$p.starStyle, {
+        tintColor: fill && selectedColor ? selectedColor : undefined,
+        width: size || STAR_SIZE,
+        height: size || STAR_SIZE,
+        transform: [{
+          scale: this.springValue
+        }]
+      }, starStyle]
+    }));
+  }
+
+}
+
+_defineProperty$b(Star, "defaultProps", {
+  selectedColor: '#f1c40f'
+});
+
+const styles$p = reactNative.StyleSheet.create({
+  starStyle: {
+    margin: 3
+  }
+});
+
+function _extends$r() { _extends$r = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$r.apply(this, arguments); }
+
+function _defineProperty$c(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class TapRating extends React.Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const {
+      defaultRating
+    } = nextProps;
+
+    if (defaultRating !== prevState.defaultRating) {
+      return {
+        position: defaultRating,
+        defaultRating
+      };
+    }
+
+    return null;
+  }
+
+  constructor() {
+    super();
+    this.state = {
+      position: 5
+    };
+  }
+
+  componentDidMount() {
+    const {
+      defaultRating
+    } = this.props;
+    this.setState({
+      position: defaultRating
+    });
+  }
+
+  renderStars(rating_array) {
+    return _.map(rating_array, (star, index) => {
+      return star;
+    });
+  }
+
+  starSelectedInPosition(position) {
+    const {
+      onFinishRating
+    } = this.props;
+    onFinishRating(position);
+    this.setState({
+      position: position
+    });
+  }
+
+  render() {
+    const {
+      position
+    } = this.state;
+    const {
+      count,
+      reviews,
+      showRating,
+      reviewColor,
+      reviewSize
+    } = this.props;
+    const rating_array = [];
+    const starContainerStyle = [styles$q.starContainer];
+
+    if (this.props.starContainerStyle) {
+      starContainerStyle.push(this.props.starContainerStyle);
+    }
+
+    _.times(count, index => {
+      rating_array.push(React__default.createElement(Star, _extends$r({
+        key: index,
+        position: index + 1,
+        starSelectedInPosition: this.starSelectedInPosition.bind(this),
+        fill: position >= index + 1
+      }, this.props)));
+    });
+
+    return React__default.createElement(reactNative.View, {
+      style: styles$q.ratingContainer
+    }, showRating && React__default.createElement(reactNative.Text, {
+      style: [styles$q.reviewText, {
+        fontSize: reviewSize,
+        color: reviewColor
+      }]
+    }, reviews[position - 1]), React__default.createElement(reactNative.View, {
+      style: starContainerStyle
+    }, this.renderStars(rating_array)));
+  }
+
+}
+
+_defineProperty$c(TapRating, "defaultProps", {
+  defaultRating: 3,
+  reviews: ["Terrible", "Bad", "Okay", "Good", "Great"],
+  count: 5,
+  onFinishRating: () => console.log('Rating selected. Attach a function here.'),
+  showRating: true,
+  reviewColor: 'rgba(230, 196, 46, 1)',
+  reviewSize: 25
+});
+
+const styles$q = reactNative.StyleSheet.create({
+  ratingContainer: {
+    backgroundColor: 'transparent',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  reviewText: {
+    fontWeight: 'bold',
+    margin: 10
+  },
+  starContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+});
+
+
+
+var index$1 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	Rating: SwipeRating,
+	AirbnbRating: TapRating
+});
+
+// UI references
+const AirbnbRating = withTheme(TapRating, 'AirbnbRating');
+const Rating = withTheme(SwipeRating, 'Rating');
+
+exports.$deepmerge = umd$1;
+exports.$ratings = index$1;
+exports.$statusBarHeight = index;
 exports.AirbnbRating = AirbnbRating;
 exports.Avatar = Avatar$1;
 exports.Badge = Badge$1;

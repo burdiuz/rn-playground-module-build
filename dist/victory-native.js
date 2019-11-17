@@ -1851,6 +1851,126 @@ function hsl2rgb(h, m1, m2) {
 var deg2rad = Math.PI / 180;
 var rad2deg = 180 / Math.PI;
 
+// https://observablehq.com/@mbostock/lab-and-rgb
+var K = 18,
+    Xn = 0.96422,
+    Yn = 1,
+    Zn = 0.82521,
+    t0 = 4 / 29,
+    t1 = 6 / 29,
+    t2 = 3 * t1 * t1,
+    t3 = t1 * t1 * t1;
+
+function labConvert(o) {
+  if (o instanceof Lab) return new Lab(o.l, o.a, o.b, o.opacity);
+  if (o instanceof Hcl) return hcl2lab(o);
+  if (!(o instanceof Rgb)) o = rgbConvert(o);
+  var r = rgb2lrgb(o.r),
+      g = rgb2lrgb(o.g),
+      b = rgb2lrgb(o.b),
+      y = xyz2lab((0.2225045 * r + 0.7168786 * g + 0.0606169 * b) / Yn), x, z;
+  if (r === g && g === b) x = z = y; else {
+    x = xyz2lab((0.4360747 * r + 0.3850649 * g + 0.1430804 * b) / Xn);
+    z = xyz2lab((0.0139322 * r + 0.0971045 * g + 0.7141733 * b) / Zn);
+  }
+  return new Lab(116 * y - 16, 500 * (x - y), 200 * (y - z), o.opacity);
+}
+
+function gray(l, opacity) {
+  return new Lab(l, 0, 0, opacity == null ? 1 : opacity);
+}
+
+function lab(l, a, b, opacity) {
+  return arguments.length === 1 ? labConvert(l) : new Lab(l, a, b, opacity == null ? 1 : opacity);
+}
+
+function Lab(l, a, b, opacity) {
+  this.l = +l;
+  this.a = +a;
+  this.b = +b;
+  this.opacity = +opacity;
+}
+
+define(Lab, lab, extend(Color, {
+  brighter: function(k) {
+    return new Lab(this.l + K * (k == null ? 1 : k), this.a, this.b, this.opacity);
+  },
+  darker: function(k) {
+    return new Lab(this.l - K * (k == null ? 1 : k), this.a, this.b, this.opacity);
+  },
+  rgb: function() {
+    var y = (this.l + 16) / 116,
+        x = isNaN(this.a) ? y : y + this.a / 500,
+        z = isNaN(this.b) ? y : y - this.b / 200;
+    x = Xn * lab2xyz(x);
+    y = Yn * lab2xyz(y);
+    z = Zn * lab2xyz(z);
+    return new Rgb(
+      lrgb2rgb( 3.1338561 * x - 1.6168667 * y - 0.4906146 * z),
+      lrgb2rgb(-0.9787684 * x + 1.9161415 * y + 0.0334540 * z),
+      lrgb2rgb( 0.0719453 * x - 0.2289914 * y + 1.4052427 * z),
+      this.opacity
+    );
+  }
+}));
+
+function xyz2lab(t) {
+  return t > t3 ? Math.pow(t, 1 / 3) : t / t2 + t0;
+}
+
+function lab2xyz(t) {
+  return t > t1 ? t * t * t : t2 * (t - t0);
+}
+
+function lrgb2rgb(x) {
+  return 255 * (x <= 0.0031308 ? 12.92 * x : 1.055 * Math.pow(x, 1 / 2.4) - 0.055);
+}
+
+function rgb2lrgb(x) {
+  return (x /= 255) <= 0.04045 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+}
+
+function hclConvert(o) {
+  if (o instanceof Hcl) return new Hcl(o.h, o.c, o.l, o.opacity);
+  if (!(o instanceof Lab)) o = labConvert(o);
+  if (o.a === 0 && o.b === 0) return new Hcl(NaN, 0 < o.l && o.l < 100 ? 0 : NaN, o.l, o.opacity);
+  var h = Math.atan2(o.b, o.a) * rad2deg;
+  return new Hcl(h < 0 ? h + 360 : h, Math.sqrt(o.a * o.a + o.b * o.b), o.l, o.opacity);
+}
+
+function lch(l, c, h, opacity) {
+  return arguments.length === 1 ? hclConvert(l) : new Hcl(h, c, l, opacity == null ? 1 : opacity);
+}
+
+function hcl(h, c, l, opacity) {
+  return arguments.length === 1 ? hclConvert(h) : new Hcl(h, c, l, opacity == null ? 1 : opacity);
+}
+
+function Hcl(h, c, l, opacity) {
+  this.h = +h;
+  this.c = +c;
+  this.l = +l;
+  this.opacity = +opacity;
+}
+
+function hcl2lab(o) {
+  if (isNaN(o.h)) return new Lab(o.l, 0, 0, o.opacity);
+  var h = o.h * deg2rad;
+  return new Lab(o.l, Math.cos(h) * o.c, Math.sin(h) * o.c, o.opacity);
+}
+
+define(Hcl, hcl, extend(Color, {
+  brighter: function(k) {
+    return new Hcl(this.h, this.c, this.l + K * (k == null ? 1 : k), this.opacity);
+  },
+  darker: function(k) {
+    return new Hcl(this.h, this.c, this.l - K * (k == null ? 1 : k), this.opacity);
+  },
+  rgb: function() {
+    return hcl2lab(this).rgb();
+  }
+}));
+
 var A = -0.14861,
     B = +1.78277,
     C = -0.29227,
@@ -1909,6 +2029,52 @@ define(Cubehelix, cubehelix, extend(Color, {
   }
 }));
 
+
+
+var index = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	color: color,
+	rgb: rgb,
+	hsl: hsl,
+	lab: lab,
+	hcl: hcl,
+	lch: lch,
+	gray: gray,
+	cubehelix: cubehelix
+});
+
+function basis(t1, v0, v1, v2, v3) {
+  var t2 = t1 * t1, t3 = t2 * t1;
+  return ((1 - 3 * t1 + 3 * t2 - t3) * v0
+      + (4 - 6 * t2 + 3 * t3) * v1
+      + (1 + 3 * t1 + 3 * t2 - 3 * t3) * v2
+      + t3 * v3) / 6;
+}
+
+function basis$1(values) {
+  var n = values.length - 1;
+  return function(t) {
+    var i = t <= 0 ? (t = 0) : t >= 1 ? (t = 1, n - 1) : Math.floor(t * n),
+        v1 = values[i],
+        v2 = values[i + 1],
+        v0 = i > 0 ? values[i - 1] : 2 * v1 - v2,
+        v3 = i < n - 1 ? values[i + 2] : 2 * v2 - v1;
+    return basis((t - i / n) * n, v0, v1, v2, v3);
+  };
+}
+
+function basisClosed(values) {
+  var n = values.length;
+  return function(t) {
+    var i = Math.floor(((t %= 1) < 0 ? ++t : t) * n),
+        v0 = values[(i + n - 1) % n],
+        v1 = values[i % n],
+        v2 = values[(i + 1) % n],
+        v3 = values[(i + 2) % n];
+    return basis((t - i / n) * n, v0, v1, v2, v3);
+  };
+}
+
 function constant(x) {
   return function() {
     return x;
@@ -1964,6 +2130,35 @@ var rgb$1 = (function rgbGamma(y) {
 
   return rgb$1;
 })(1);
+
+function rgbSpline(spline) {
+  return function(colors) {
+    var n = colors.length,
+        r = new Array(n),
+        g = new Array(n),
+        b = new Array(n),
+        i, color;
+    for (i = 0; i < n; ++i) {
+      color = rgb(colors[i]);
+      r[i] = color.r || 0;
+      g[i] = color.g || 0;
+      b[i] = color.b || 0;
+    }
+    r = spline(r);
+    g = spline(g);
+    b = spline(b);
+    color.opacity = 1;
+    return function(t) {
+      color.r = r(t);
+      color.g = g(t);
+      color.b = b(t);
+      return color + "";
+    };
+  };
+}
+
+var rgbBasis = rgbSpline(basis$1);
+var rgbBasisClosed = rgbSpline(basisClosed);
 
 function array(a, b) {
   var nb = b ? b.length : 0,
@@ -2091,11 +2286,255 @@ function interpolateValue(a, b) {
       : reinterpolate)(a, b);
 }
 
+function discrete(range) {
+  var n = range.length;
+  return function(t) {
+    return range[Math.max(0, Math.min(n - 1, Math.floor(t * n)))];
+  };
+}
+
+function hue$1(a, b) {
+  var i = hue(+a, +b);
+  return function(t) {
+    var x = i(t);
+    return x - 360 * Math.floor(x / 360);
+  };
+}
+
 function interpolateRound(a, b) {
   return a = +a, b -= a, function(t) {
     return Math.round(a + b * t);
   };
 }
+
+var degrees = 180 / Math.PI;
+
+var identity = {
+  translateX: 0,
+  translateY: 0,
+  rotate: 0,
+  skewX: 0,
+  scaleX: 1,
+  scaleY: 1
+};
+
+function decompose(a, b, c, d, e, f) {
+  var scaleX, scaleY, skewX;
+  if (scaleX = Math.sqrt(a * a + b * b)) a /= scaleX, b /= scaleX;
+  if (skewX = a * c + b * d) c -= a * skewX, d -= b * skewX;
+  if (scaleY = Math.sqrt(c * c + d * d)) c /= scaleY, d /= scaleY, skewX /= scaleY;
+  if (a * d < b * c) a = -a, b = -b, skewX = -skewX, scaleX = -scaleX;
+  return {
+    translateX: e,
+    translateY: f,
+    rotate: Math.atan2(b, a) * degrees,
+    skewX: Math.atan(skewX) * degrees,
+    scaleX: scaleX,
+    scaleY: scaleY
+  };
+}
+
+var cssNode,
+    cssRoot,
+    cssView,
+    svgNode;
+
+function parseCss(value) {
+  if (value === "none") return identity;
+  if (!cssNode) cssNode = document.createElement("DIV"), cssRoot = document.documentElement, cssView = document.defaultView;
+  cssNode.style.transform = value;
+  value = cssView.getComputedStyle(cssRoot.appendChild(cssNode), null).getPropertyValue("transform");
+  cssRoot.removeChild(cssNode);
+  value = value.slice(7, -1).split(",");
+  return decompose(+value[0], +value[1], +value[2], +value[3], +value[4], +value[5]);
+}
+
+function parseSvg(value) {
+  if (value == null) return identity;
+  if (!svgNode) svgNode = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  svgNode.setAttribute("transform", value);
+  if (!(value = svgNode.transform.baseVal.consolidate())) return identity;
+  value = value.matrix;
+  return decompose(value.a, value.b, value.c, value.d, value.e, value.f);
+}
+
+function interpolateTransform(parse, pxComma, pxParen, degParen) {
+
+  function pop(s) {
+    return s.length ? s.pop() + " " : "";
+  }
+
+  function translate(xa, ya, xb, yb, s, q) {
+    if (xa !== xb || ya !== yb) {
+      var i = s.push("translate(", null, pxComma, null, pxParen);
+      q.push({i: i - 4, x: reinterpolate(xa, xb)}, {i: i - 2, x: reinterpolate(ya, yb)});
+    } else if (xb || yb) {
+      s.push("translate(" + xb + pxComma + yb + pxParen);
+    }
+  }
+
+  function rotate(a, b, s, q) {
+    if (a !== b) {
+      if (a - b > 180) b += 360; else if (b - a > 180) a += 360; // shortest path
+      q.push({i: s.push(pop(s) + "rotate(", null, degParen) - 2, x: reinterpolate(a, b)});
+    } else if (b) {
+      s.push(pop(s) + "rotate(" + b + degParen);
+    }
+  }
+
+  function skewX(a, b, s, q) {
+    if (a !== b) {
+      q.push({i: s.push(pop(s) + "skewX(", null, degParen) - 2, x: reinterpolate(a, b)});
+    } else if (b) {
+      s.push(pop(s) + "skewX(" + b + degParen);
+    }
+  }
+
+  function scale(xa, ya, xb, yb, s, q) {
+    if (xa !== xb || ya !== yb) {
+      var i = s.push(pop(s) + "scale(", null, ",", null, ")");
+      q.push({i: i - 4, x: reinterpolate(xa, xb)}, {i: i - 2, x: reinterpolate(ya, yb)});
+    } else if (xb !== 1 || yb !== 1) {
+      s.push(pop(s) + "scale(" + xb + "," + yb + ")");
+    }
+  }
+
+  return function(a, b) {
+    var s = [], // string constants and placeholders
+        q = []; // number interpolators
+    a = parse(a), b = parse(b);
+    translate(a.translateX, a.translateY, b.translateX, b.translateY, s, q);
+    rotate(a.rotate, b.rotate, s, q);
+    skewX(a.skewX, b.skewX, s, q);
+    scale(a.scaleX, a.scaleY, b.scaleX, b.scaleY, s, q);
+    a = b = null; // gc
+    return function(t) {
+      var i = -1, n = q.length, o;
+      while (++i < n) s[(o = q[i]).i] = o.x(t);
+      return s.join("");
+    };
+  };
+}
+
+var interpolateTransformCss = interpolateTransform(parseCss, "px, ", "px)", "deg)");
+var interpolateTransformSvg = interpolateTransform(parseSvg, ", ", ")", ")");
+
+var rho = Math.SQRT2,
+    rho2 = 2,
+    rho4 = 4,
+    epsilon2 = 1e-12;
+
+function cosh(x) {
+  return ((x = Math.exp(x)) + 1 / x) / 2;
+}
+
+function sinh(x) {
+  return ((x = Math.exp(x)) - 1 / x) / 2;
+}
+
+function tanh(x) {
+  return ((x = Math.exp(2 * x)) - 1) / (x + 1);
+}
+
+// p0 = [ux0, uy0, w0]
+// p1 = [ux1, uy1, w1]
+function zoom(p0, p1) {
+  var ux0 = p0[0], uy0 = p0[1], w0 = p0[2],
+      ux1 = p1[0], uy1 = p1[1], w1 = p1[2],
+      dx = ux1 - ux0,
+      dy = uy1 - uy0,
+      d2 = dx * dx + dy * dy,
+      i,
+      S;
+
+  // Special case for u0 ≅ u1.
+  if (d2 < epsilon2) {
+    S = Math.log(w1 / w0) / rho;
+    i = function(t) {
+      return [
+        ux0 + t * dx,
+        uy0 + t * dy,
+        w0 * Math.exp(rho * t * S)
+      ];
+    };
+  }
+
+  // General case.
+  else {
+    var d1 = Math.sqrt(d2),
+        b0 = (w1 * w1 - w0 * w0 + rho4 * d2) / (2 * w0 * rho2 * d1),
+        b1 = (w1 * w1 - w0 * w0 - rho4 * d2) / (2 * w1 * rho2 * d1),
+        r0 = Math.log(Math.sqrt(b0 * b0 + 1) - b0),
+        r1 = Math.log(Math.sqrt(b1 * b1 + 1) - b1);
+    S = (r1 - r0) / rho;
+    i = function(t) {
+      var s = t * S,
+          coshr0 = cosh(r0),
+          u = w0 / (rho2 * d1) * (coshr0 * tanh(rho * s + r0) - sinh(r0));
+      return [
+        ux0 + u * dx,
+        uy0 + u * dy,
+        w0 * coshr0 / cosh(rho * s + r0)
+      ];
+    };
+  }
+
+  i.duration = S * 1000;
+
+  return i;
+}
+
+function hsl$1(hue) {
+  return function(start, end) {
+    var h = hue((start = hsl(start)).h, (end = hsl(end)).h),
+        s = nogamma(start.s, end.s),
+        l = nogamma(start.l, end.l),
+        opacity = nogamma(start.opacity, end.opacity);
+    return function(t) {
+      start.h = h(t);
+      start.s = s(t);
+      start.l = l(t);
+      start.opacity = opacity(t);
+      return start + "";
+    };
+  }
+}
+
+var hsl$2 = hsl$1(hue);
+var hslLong = hsl$1(nogamma);
+
+function lab$1(start, end) {
+  var l = nogamma((start = lab(start)).l, (end = lab(end)).l),
+      a = nogamma(start.a, end.a),
+      b = nogamma(start.b, end.b),
+      opacity = nogamma(start.opacity, end.opacity);
+  return function(t) {
+    start.l = l(t);
+    start.a = a(t);
+    start.b = b(t);
+    start.opacity = opacity(t);
+    return start + "";
+  };
+}
+
+function hcl$1(hue) {
+  return function(start, end) {
+    var h = hue((start = hcl(start)).h, (end = hcl(end)).h),
+        c = nogamma(start.c, end.c),
+        l = nogamma(start.l, end.l),
+        opacity = nogamma(start.opacity, end.opacity);
+    return function(t) {
+      start.h = h(t);
+      start.c = c(t);
+      start.l = l(t);
+      start.opacity = opacity(t);
+      return start + "";
+    };
+  }
+}
+
+var hcl$2 = hcl$1(hue);
+var hclLong = hcl$1(nogamma);
 
 function cubehelix$1(hue) {
   return (function cubehelixGamma(y) {
@@ -2121,8 +2560,55 @@ function cubehelix$1(hue) {
   })(1);
 }
 
-cubehelix$1(hue);
+var cubehelix$2 = cubehelix$1(hue);
 var cubehelixLong = cubehelix$1(nogamma);
+
+function piecewise(interpolate, values) {
+  var i = 0, n = values.length - 1, v = values[0], I = new Array(n < 0 ? 0 : n);
+  while (i < n) I[i] = interpolate(v, v = values[++i]);
+  return function(t) {
+    var i = Math.max(0, Math.min(n - 1, Math.floor(t *= n)));
+    return I[i](t - i);
+  };
+}
+
+function quantize(interpolator, n) {
+  var samples = new Array(n);
+  for (var i = 0; i < n; ++i) samples[i] = interpolator(i / (n - 1));
+  return samples;
+}
+
+
+
+var index$1 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	interpolate: interpolateValue,
+	interpolateArray: array,
+	interpolateBasis: basis$1,
+	interpolateBasisClosed: basisClosed,
+	interpolateDate: date,
+	interpolateDiscrete: discrete,
+	interpolateHue: hue$1,
+	interpolateNumber: reinterpolate,
+	interpolateObject: object,
+	interpolateRound: interpolateRound,
+	interpolateString: string,
+	interpolateTransformCss: interpolateTransformCss,
+	interpolateTransformSvg: interpolateTransformSvg,
+	interpolateZoom: zoom,
+	interpolateRgb: rgb$1,
+	interpolateRgbBasis: rgbBasis,
+	interpolateRgbBasisClosed: rgbBasisClosed,
+	interpolateHsl: hsl$2,
+	interpolateHslLong: hslLong,
+	interpolateLab: lab$1,
+	interpolateHcl: hcl$2,
+	interpolateHclLong: hclLong,
+	interpolateCubehelix: cubehelix$2,
+	interpolateCubehelixLong: cubehelixLong,
+	piecewise: piecewise,
+	quantize: quantize
+});
 
 var isInterpolatable = function (obj) {
   // d3 turns null into 0 and undefined into NaN, which we don't want.
@@ -2444,6 +2930,39 @@ function sleep(time) {
   }
 }
 
+function timeout$1(callback, delay, time) {
+  var t = new Timer;
+  delay = delay == null ? 0 : +delay;
+  t.restart(function(elapsed) {
+    t.stop();
+    callback(elapsed + delay);
+  }, delay, time);
+  return t;
+}
+
+function interval$1(callback, delay, time) {
+  var t = new Timer, total = delay;
+  if (delay == null) return t.restart(callback, delay, time), t;
+  delay = +delay, time = time == null ? now() : +time;
+  t.restart(function tick(elapsed) {
+    elapsed += total;
+    t.restart(tick, total += delay, time);
+    callback(elapsed);
+  }, delay, time);
+  return t;
+}
+
+
+
+var index$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	now: now,
+	timer: timer,
+	timerFlush: timerFlush,
+	timeout: timeout$1,
+	interval: interval$1
+});
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -2603,6 +3122,12 @@ var reactFastCompare = function exportedEqual(a, b) {
     throw error;
   }
 };
+
+var index$3 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': reactFastCompare,
+	__moduleExports: reactFastCompare
+});
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -7280,9 +7805,135 @@ function ascendingComparator(f) {
 
 var ascendingBisect = bisector(ascending);
 var bisectRight = ascendingBisect.right;
+var bisectLeft = ascendingBisect.left;
+
+function pairs(array, f) {
+  if (f == null) f = pair;
+  var i = 0, n = array.length - 1, p = array[0], pairs = new Array(n < 0 ? 0 : n);
+  while (i < n) pairs[i] = f(p, p = array[++i]);
+  return pairs;
+}
+
+function pair(a, b) {
+  return [a, b];
+}
+
+function cross(values0, values1, reduce) {
+  var n0 = values0.length,
+      n1 = values1.length,
+      values = new Array(n0 * n1),
+      i0,
+      i1,
+      i,
+      value0;
+
+  if (reduce == null) reduce = pair;
+
+  for (i0 = i = 0; i0 < n0; ++i0) {
+    for (value0 = values0[i0], i1 = 0; i1 < n1; ++i1, ++i) {
+      values[i] = reduce(value0, values1[i1]);
+    }
+  }
+
+  return values;
+}
+
+function descending(a, b) {
+  return b < a ? -1 : b > a ? 1 : b >= a ? 0 : NaN;
+}
 
 function number(x) {
   return x === null ? NaN : +x;
+}
+
+function variance(values, valueof) {
+  var n = values.length,
+      m = 0,
+      i = -1,
+      mean = 0,
+      value,
+      delta,
+      sum = 0;
+
+  if (valueof == null) {
+    while (++i < n) {
+      if (!isNaN(value = number(values[i]))) {
+        delta = value - mean;
+        mean += delta / ++m;
+        sum += delta * (value - mean);
+      }
+    }
+  }
+
+  else {
+    while (++i < n) {
+      if (!isNaN(value = number(valueof(values[i], i, values)))) {
+        delta = value - mean;
+        mean += delta / ++m;
+        sum += delta * (value - mean);
+      }
+    }
+  }
+
+  if (m > 1) return sum / (m - 1);
+}
+
+function deviation(array, f) {
+  var v = variance(array, f);
+  return v ? Math.sqrt(v) : v;
+}
+
+function extent(values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      min,
+      max;
+
+  if (valueof == null) {
+    while (++i < n) { // Find the first comparable value.
+      if ((value = values[i]) != null && value >= value) {
+        min = max = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = values[i]) != null) {
+            if (min > value) min = value;
+            if (max < value) max = value;
+          }
+        }
+      }
+    }
+  }
+
+  else {
+    while (++i < n) { // Find the first comparable value.
+      if ((value = valueof(values[i], i, values)) != null && value >= value) {
+        min = max = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = valueof(values[i], i, values)) != null) {
+            if (min > value) min = value;
+            if (max < value) max = value;
+          }
+        }
+      }
+    }
+  }
+
+  return [min, max];
+}
+
+var array$1 = Array.prototype;
+
+var slice = array$1.slice;
+var map = array$1.map;
+
+function constant$1(x) {
+  return function() {
+    return x;
+  };
+}
+
+function identity$1(x) {
+  return x;
 }
 
 function sequence(start, stop, step) {
@@ -7351,6 +8002,77 @@ function tickStep(start, stop, count) {
   return stop < start ? -step1 : step1;
 }
 
+function sturges(values) {
+  return Math.ceil(Math.log(values.length) / Math.LN2) + 1;
+}
+
+function histogram() {
+  var value = identity$1,
+      domain = extent,
+      threshold = sturges;
+
+  function histogram(data) {
+    var i,
+        n = data.length,
+        x,
+        values = new Array(n);
+
+    for (i = 0; i < n; ++i) {
+      values[i] = value(data[i], i, data);
+    }
+
+    var xz = domain(values),
+        x0 = xz[0],
+        x1 = xz[1],
+        tz = threshold(values, x0, x1);
+
+    // Convert number of thresholds into uniform thresholds.
+    if (!Array.isArray(tz)) {
+      tz = tickStep(x0, x1, tz);
+      tz = sequence(Math.ceil(x0 / tz) * tz, x1, tz); // exclusive
+    }
+
+    // Remove any thresholds outside the domain.
+    var m = tz.length;
+    while (tz[0] <= x0) tz.shift(), --m;
+    while (tz[m - 1] > x1) tz.pop(), --m;
+
+    var bins = new Array(m + 1),
+        bin;
+
+    // Initialize bins.
+    for (i = 0; i <= m; ++i) {
+      bin = bins[i] = [];
+      bin.x0 = i > 0 ? tz[i - 1] : x0;
+      bin.x1 = i < m ? tz[i] : x1;
+    }
+
+    // Assign data to bins by value, ignoring any outside the domain.
+    for (i = 0; i < n; ++i) {
+      x = values[i];
+      if (x0 <= x && x <= x1) {
+        bins[bisectRight(tz, x, 0, m)].push(data[i]);
+      }
+    }
+
+    return bins;
+  }
+
+  histogram.value = function(_) {
+    return arguments.length ? (value = typeof _ === "function" ? _ : constant$1(_), histogram) : value;
+  };
+
+  histogram.domain = function(_) {
+    return arguments.length ? (domain = typeof _ === "function" ? _ : constant$1([_[0], _[1]]), histogram) : domain;
+  };
+
+  histogram.thresholds = function(_) {
+    return arguments.length ? (threshold = typeof _ === "function" ? _ : Array.isArray(_) ? constant$1(slice.call(_)) : constant$1(_), histogram) : threshold;
+  };
+
+  return histogram;
+}
+
 function d3Quantile(values, p, valueof) {
   if (valueof == null) valueof = number;
   if (!(n = values.length)) return;
@@ -7362,6 +8084,15 @@ function d3Quantile(values, p, valueof) {
       value0 = +valueof(values[i0], i0, values),
       value1 = +valueof(values[i0 + 1], i0 + 1, values);
   return value0 + (value1 - value0) * (i - i0);
+}
+
+function freedmanDiaconis(values, min, max) {
+  values = map.call(values, number).sort(ascending);
+  return Math.ceil((max - min) / (2 * (d3Quantile(values, 0.75) - d3Quantile(values, 0.25)) * Math.pow(values.length, -1 / 3)));
+}
+
+function scott(values, min, max) {
+  return Math.ceil((max - min) / (3.5 * deviation(values) * Math.pow(values.length, -1 / 3)));
 }
 
 function d3Max(values, valueof) {
@@ -7399,6 +8130,77 @@ function d3Max(values, valueof) {
   return max;
 }
 
+function mean(values, valueof) {
+  var n = values.length,
+      m = n,
+      i = -1,
+      value,
+      sum = 0;
+
+  if (valueof == null) {
+    while (++i < n) {
+      if (!isNaN(value = number(values[i]))) sum += value;
+      else --m;
+    }
+  }
+
+  else {
+    while (++i < n) {
+      if (!isNaN(value = number(valueof(values[i], i, values)))) sum += value;
+      else --m;
+    }
+  }
+
+  if (m) return sum / m;
+}
+
+function median(values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      numbers = [];
+
+  if (valueof == null) {
+    while (++i < n) {
+      if (!isNaN(value = number(values[i]))) {
+        numbers.push(value);
+      }
+    }
+  }
+
+  else {
+    while (++i < n) {
+      if (!isNaN(value = number(valueof(values[i], i, values)))) {
+        numbers.push(value);
+      }
+    }
+  }
+
+  return d3Quantile(numbers.sort(ascending), 0.5);
+}
+
+function merge(arrays) {
+  var n = arrays.length,
+      m,
+      i = -1,
+      j = 0,
+      merged,
+      array;
+
+  while (++i < n) j += arrays[i].length;
+  merged = new Array(j);
+
+  while (--n >= 0) {
+    array = arrays[n];
+    m = array.length;
+    while (--m >= 0) {
+      merged[--j] = array[m];
+    }
+  }
+
+  return merged;
+}
+
 function d3Min(values, valueof) {
   var n = values.length,
       i = -1,
@@ -7434,11 +8236,127 @@ function d3Min(values, valueof) {
   return min;
 }
 
+function permute(array, indexes) {
+  var i = indexes.length, permutes = new Array(i);
+  while (i--) permutes[i] = array[indexes[i]];
+  return permutes;
+}
+
+function scan(values, compare) {
+  if (!(n = values.length)) return;
+  var n,
+      i = 0,
+      j = 0,
+      xi,
+      xj = values[j];
+
+  if (compare == null) compare = ascending;
+
+  while (++i < n) {
+    if (compare(xi = values[i], xj) < 0 || compare(xj, xj) !== 0) {
+      xj = xi, j = i;
+    }
+  }
+
+  if (compare(xj, xj) === 0) return j;
+}
+
+function shuffle(array, i0, i1) {
+  var m = (i1 == null ? array.length : i1) - (i0 = i0 == null ? 0 : +i0),
+      t,
+      i;
+
+  while (m) {
+    i = Math.random() * m-- | 0;
+    t = array[m + i0];
+    array[m + i0] = array[i + i0];
+    array[i + i0] = t;
+  }
+
+  return array;
+}
+
+function sum(values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      sum = 0;
+
+  if (valueof == null) {
+    while (++i < n) {
+      if (value = +values[i]) sum += value; // Note: zero and null are equivalent.
+    }
+  }
+
+  else {
+    while (++i < n) {
+      if (value = +valueof(values[i], i, values)) sum += value;
+    }
+  }
+
+  return sum;
+}
+
+function transpose(matrix) {
+  if (!(n = matrix.length)) return [];
+  for (var i = -1, m = d3Min(matrix, length), transpose = new Array(m); ++i < m;) {
+    for (var j = -1, n, row = transpose[i] = new Array(n); ++j < n;) {
+      row[j] = matrix[j][i];
+    }
+  }
+  return transpose;
+}
+
+function length(d) {
+  return d.length;
+}
+
+function zip() {
+  return transpose(arguments);
+}
+
+
+
+var index$4 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	bisect: bisectRight,
+	bisectRight: bisectRight,
+	bisectLeft: bisectLeft,
+	ascending: ascending,
+	bisector: bisector,
+	cross: cross,
+	descending: descending,
+	deviation: deviation,
+	extent: extent,
+	histogram: histogram,
+	thresholdFreedmanDiaconis: freedmanDiaconis,
+	thresholdScott: scott,
+	thresholdSturges: sturges,
+	max: d3Max,
+	mean: mean,
+	median: median,
+	merge: merge,
+	min: d3Min,
+	pairs: pairs,
+	permute: permute,
+	quantile: d3Quantile,
+	range: sequence,
+	scan: scan,
+	shuffle: shuffle,
+	sum: sum,
+	ticks: ticks,
+	tickIncrement: tickIncrement,
+	tickStep: tickStep,
+	transpose: transpose,
+	variance: variance,
+	zip: zip
+});
+
 var prefix = "$";
 
 function Map() {}
 
-Map.prototype = map.prototype = {
+Map.prototype = map$1.prototype = {
   constructor: Map,
   has: function(key) {
     return (prefix + key) in this;
@@ -7486,7 +8404,7 @@ Map.prototype = map.prototype = {
   }
 };
 
-function map(object, f) {
+function map$1(object, f) {
   var map = new Map;
 
   // Copy constructor.
@@ -7508,9 +8426,81 @@ function map(object, f) {
   return map;
 }
 
+function nest() {
+  var keys = [],
+      sortKeys = [],
+      sortValues,
+      rollup,
+      nest;
+
+  function apply(array, depth, createResult, setResult) {
+    if (depth >= keys.length) {
+      if (sortValues != null) array.sort(sortValues);
+      return rollup != null ? rollup(array) : array;
+    }
+
+    var i = -1,
+        n = array.length,
+        key = keys[depth++],
+        keyValue,
+        value,
+        valuesByKey = map$1(),
+        values,
+        result = createResult();
+
+    while (++i < n) {
+      if (values = valuesByKey.get(keyValue = key(value = array[i]) + "")) {
+        values.push(value);
+      } else {
+        valuesByKey.set(keyValue, [value]);
+      }
+    }
+
+    valuesByKey.each(function(values, key) {
+      setResult(result, key, apply(values, depth, createResult, setResult));
+    });
+
+    return result;
+  }
+
+  function entries(map, depth) {
+    if (++depth > keys.length) return map;
+    var array, sortKey = sortKeys[depth - 1];
+    if (rollup != null && depth >= keys.length) array = map.entries();
+    else array = [], map.each(function(v, k) { array.push({key: k, values: entries(v, depth)}); });
+    return sortKey != null ? array.sort(function(a, b) { return sortKey(a.key, b.key); }) : array;
+  }
+
+  return nest = {
+    object: function(array) { return apply(array, 0, createObject, setObject); },
+    map: function(array) { return apply(array, 0, createMap, setMap); },
+    entries: function(array) { return entries(apply(array, 0, createMap, setMap), 0); },
+    key: function(d) { keys.push(d); return nest; },
+    sortKeys: function(order) { sortKeys[keys.length - 1] = order; return nest; },
+    sortValues: function(order) { sortValues = order; return nest; },
+    rollup: function(f) { rollup = f; return nest; }
+  };
+}
+
+function createObject() {
+  return {};
+}
+
+function setObject(object, key, value) {
+  object[key] = value;
+}
+
+function createMap() {
+  return map$1();
+}
+
+function setMap(map, key, value) {
+  map.set(key, value);
+}
+
 function Set() {}
 
-var proto = map.prototype;
+var proto = map$1.prototype;
 
 Set.prototype = set.prototype = {
   constructor: Set,
@@ -7544,19 +8534,49 @@ function set(object, f) {
   return set;
 }
 
-var array$1 = Array.prototype;
+function keys(map) {
+  var keys = [];
+  for (var key in map) keys.push(key);
+  return keys;
+}
 
-var map$1 = array$1.map;
-var slice = array$1.slice;
+function values(map) {
+  var values = [];
+  for (var key in map) values.push(map[key]);
+  return values;
+}
+
+function entries(map) {
+  var entries = [];
+  for (var key in map) entries.push({key: key, value: map[key]});
+  return entries;
+}
+
+
+
+var index$5 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	nest: nest,
+	set: set,
+	map: map$1,
+	keys: keys,
+	values: values,
+	entries: entries
+});
+
+var array$2 = Array.prototype;
+
+var map$2 = array$2.map;
+var slice$1 = array$2.slice;
 
 var implicit = {name: "implicit"};
 
 function ordinal(range) {
-  var index = map(),
+  var index = map$1(),
       domain = [],
       unknown = implicit;
 
-  range = range == null ? [] : slice.call(range);
+  range = range == null ? [] : slice$1.call(range);
 
   function scale(d) {
     var key = d + "", i = index.get(key);
@@ -7569,14 +8589,14 @@ function ordinal(range) {
 
   scale.domain = function(_) {
     if (!arguments.length) return domain.slice();
-    domain = [], index = map();
+    domain = [], index = map$1();
     var i = -1, n = _.length, d, key;
     while (++i < n) if (!index.has(key = (d = _[i]) + "")) index.set(key, domain.push(d));
     return scale;
   };
 
   scale.range = function(_) {
-    return arguments.length ? (range = slice.call(_), scale) : range.slice();
+    return arguments.length ? (range = slice$1.call(_), scale) : range.slice();
   };
 
   scale.unknown = function(_) {
@@ -7692,7 +8712,7 @@ function point() {
   return pointish(band().paddingInner(1));
 }
 
-function constant$1(x) {
+function constant$2(x) {
   return function() {
     return x;
   };
@@ -7707,7 +8727,7 @@ var unit = [0, 1];
 function deinterpolateLinear(a, b) {
   return (b -= (a = +a))
       ? function(x) { return (x - a) / b; }
-      : constant$1(b);
+      : constant$2(b);
 }
 
 function deinterpolateClamp(deinterpolate) {
@@ -7788,15 +8808,15 @@ function continuous(deinterpolate, reinterpolate) {
   };
 
   scale.domain = function(_) {
-    return arguments.length ? (domain = map$1.call(_, number$1), rescale()) : domain.slice();
+    return arguments.length ? (domain = map$2.call(_, number$1), rescale()) : domain.slice();
   };
 
   scale.range = function(_) {
-    return arguments.length ? (range = slice.call(_), rescale()) : range.slice();
+    return arguments.length ? (range = slice$1.call(_), rescale()) : range.slice();
   };
 
   scale.rangeRound = function(_) {
-    return range = slice.call(_), interpolate = interpolateRound, rescale();
+    return range = slice$1.call(_), interpolate = interpolateRound, rescale();
   };
 
   scale.clamp = function(_) {
@@ -7957,19 +8977,19 @@ var formatTypes = {
   "x": function(x) { return Math.round(x).toString(16); }
 };
 
-function identity(x) {
+function identity$2(x) {
   return x;
 }
 
-var map$2 = Array.prototype.map,
+var map$3 = Array.prototype.map,
     prefixes = ["y","z","a","f","p","n","µ","m","","k","M","G","T","P","E","Z","Y"];
 
 function formatLocale(locale) {
-  var group = locale.grouping === undefined || locale.thousands === undefined ? identity : formatGroup(map$2.call(locale.grouping, Number), locale.thousands + ""),
+  var group = locale.grouping === undefined || locale.thousands === undefined ? identity$2 : formatGroup(map$3.call(locale.grouping, Number), locale.thousands + ""),
       currencyPrefix = locale.currency === undefined ? "" : locale.currency[0] + "",
       currencySuffix = locale.currency === undefined ? "" : locale.currency[1] + "",
       decimal = locale.decimal === undefined ? "." : locale.decimal + "",
-      numerals = locale.numerals === undefined ? identity : formatNumerals(map$2.call(locale.numerals, String)),
+      numerals = locale.numerals === undefined ? identity$2 : formatNumerals(map$3.call(locale.numerals, String)),
       percent = locale.percent === undefined ? "%" : locale.percent + "",
       minus = locale.minus === undefined ? "-" : locale.minus + "",
       nan = locale.nan === undefined ? "NaN" : locale.nan + "";
@@ -8132,6 +9152,21 @@ function precisionRound(step, max) {
   return Math.max(0, exponent$1(max) - exponent$1(step)) + 1;
 }
 
+
+
+var index$6 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	formatDefaultLocale: defaultLocale,
+	get format () { return format; },
+	get formatPrefix () { return formatPrefix; },
+	formatLocale: formatLocale,
+	formatSpecifier: formatSpecifier,
+	FormatSpecifier: FormatSpecifier,
+	precisionFixed: precisionFixed,
+	precisionPrefix: precisionPrefix,
+	precisionRound: precisionRound
+});
+
 function tickFormat(domain, count, specifier) {
   var start = domain[0],
       stop = domain[domain.length - 1],
@@ -8226,7 +9261,7 @@ function linear$2() {
   return linearish(scale);
 }
 
-function identity$1() {
+function identity$3() {
   var domain = [0, 1];
 
   function scale(x) {
@@ -8236,11 +9271,11 @@ function identity$1() {
   scale.invert = scale;
 
   scale.domain = scale.range = function(_) {
-    return arguments.length ? (domain = map$1.call(_, number$1), scale) : domain.slice();
+    return arguments.length ? (domain = map$2.call(_, number$1), scale) : domain.slice();
   };
 
   scale.copy = function() {
-    return identity$1().domain(domain);
+    return identity$3().domain(domain);
   };
 
   return linearish(scale);
@@ -8268,7 +9303,7 @@ function nice(domain, interval) {
 function deinterpolate(a, b) {
   return (b = Math.log(b / a))
       ? function(x) { return Math.log(x / a) / b; }
-      : constant$1(b);
+      : constant$2(b);
 }
 
 function reinterpolate$1(a, b) {
@@ -8400,7 +9435,7 @@ function pow() {
   function deinterpolate(a, b) {
     return (b = raise(b, exponent) - (a = raise(a, exponent)))
         ? function(x) { return (raise(x, exponent) - a) / b; }
-        : constant$1(b);
+        : constant$2(b);
   }
 
   function reinterpolate(a, b) {
@@ -8456,7 +9491,7 @@ function quantile() {
   };
 
   scale.range = function(_) {
-    return arguments.length ? (range = slice.call(_), rescale()) : range.slice();
+    return arguments.length ? (range = slice$1.call(_), rescale()) : range.slice();
   };
 
   scale.quantiles = function() {
@@ -8472,7 +9507,7 @@ function quantile() {
   return scale;
 }
 
-function quantize() {
+function quantize$1() {
   var x0 = 0,
       x1 = 1,
       n = 1,
@@ -8495,7 +9530,7 @@ function quantize() {
   };
 
   scale.range = function(_) {
-    return arguments.length ? (n = (range = slice.call(_)).length - 1, rescale()) : range.slice();
+    return arguments.length ? (n = (range = slice$1.call(_)).length - 1, rescale()) : range.slice();
   };
 
   scale.invertExtent = function(y) {
@@ -8507,7 +9542,7 @@ function quantize() {
   };
 
   scale.copy = function() {
-    return quantize()
+    return quantize$1()
         .domain([x0, x1])
         .range(range);
   };
@@ -8525,11 +9560,11 @@ function threshold() {
   }
 
   scale.domain = function(_) {
-    return arguments.length ? (domain = slice.call(_), n = Math.min(domain.length, range.length - 1), scale) : domain.slice();
+    return arguments.length ? (domain = slice$1.call(_), n = Math.min(domain.length, range.length - 1), scale) : domain.slice();
   };
 
   scale.range = function(_) {
-    return arguments.length ? (range = slice.call(_), n = Math.min(domain.length, range.length - 1), scale) : range.slice();
+    return arguments.length ? (range = slice$1.call(_), n = Math.min(domain.length, range.length - 1), scale) : range.slice();
   };
 
   scale.invertExtent = function(y) {
@@ -8546,8 +9581,8 @@ function threshold() {
   return scale;
 }
 
-var t0 = new Date,
-    t1 = new Date;
+var t0$1 = new Date,
+    t1$1 = new Date;
 
 function newInterval(floori, offseti, count, field) {
 
@@ -8599,9 +9634,9 @@ function newInterval(floori, offseti, count, field) {
 
   if (count) {
     interval.count = function(start, end) {
-      t0.setTime(+start), t1.setTime(+end);
-      floori(t0), floori(t1);
-      return Math.floor(count(t0, t1));
+      t0$1.setTime(+start), t1$1.setTime(+end);
+      floori(t0$1), floori(t1$1);
+      return Math.floor(count(t0$1, t1$1));
     };
 
     interval.every = function(step) {
@@ -9496,6 +10531,39 @@ function defaultLocale$1(definition) {
   return locale$1;
 }
 
+var isoSpecifier = "%Y-%m-%dT%H:%M:%S.%LZ";
+
+function formatIsoNative(date) {
+  return date.toISOString();
+}
+
+var formatIso = Date.prototype.toISOString
+    ? formatIsoNative
+    : utcFormat(isoSpecifier);
+
+function parseIsoNative(string) {
+  var date = new Date(string);
+  return isNaN(date) ? null : date;
+}
+
+var parseIso = +new Date("2000-01-01T00:00:00.000Z")
+    ? parseIsoNative
+    : utcParse(isoSpecifier);
+
+
+
+var index$7 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	timeFormatDefaultLocale: defaultLocale$1,
+	get timeFormat () { return timeFormat; },
+	get timeParse () { return timeParse; },
+	get utcFormat () { return utcFormat; },
+	get utcParse () { return utcParse; },
+	timeFormatLocale: formatLocale$1,
+	isoFormat: formatIso,
+	isoParse: parseIso
+});
+
 var durationSecond$1 = 1000,
     durationMinute$1 = durationSecond$1 * 60,
     durationHour$1 = durationMinute$1 * 60,
@@ -9587,7 +10655,7 @@ function calendar(year, month, week, day, hour, minute, second, millisecond, for
   };
 
   scale.domain = function(_) {
-    return arguments.length ? domain(map$1.call(_, number$2)) : domain().map(date$1);
+    return arguments.length ? domain(map$2.call(_, number$2)) : domain().map(date$1);
   };
 
   scale.ticks = function(interval, step) {
@@ -9642,7 +10710,7 @@ var category20c = colors$2("3182bd6baed69ecae1c6dbefe6550dfd8d3cfdae6bfdd0a231a3
 
 var category20 = colors$2("1f77b4aec7e8ff7f0effbb782ca02c98df8ad62728ff98969467bdc5b0d58c564bc49c94e377c2f7b6d27f7f7fc7c7c7bcbd22dbdb8d17becf9edae5");
 
-var cubehelix$2 = cubehelixLong(cubehelix(300, 0.5, 0.0), cubehelix(-240, 0.5, 1.0));
+var cubehelix$3 = cubehelixLong(cubehelix(300, 0.5, 0.0), cubehelix(-240, 0.5, 1.0));
 
 var warm = cubehelixLong(cubehelix(-100, 0.75, 0.35), cubehelix(80, 1.50, 0.8));
 
@@ -9709,7 +10777,7 @@ var d3Scale = /*#__PURE__*/Object.freeze({
 	__proto__: null,
 	scaleBand: band,
 	scalePoint: point,
-	scaleIdentity: identity$1,
+	scaleIdentity: identity$3,
 	scaleLinear: linear$2,
 	scaleLog: log,
 	scaleOrdinal: ordinal,
@@ -9717,7 +10785,7 @@ var d3Scale = /*#__PURE__*/Object.freeze({
 	scalePow: pow,
 	scaleSqrt: sqrt,
 	scaleQuantile: quantile,
-	scaleQuantize: quantize,
+	scaleQuantize: quantize$1,
 	scaleThreshold: threshold,
 	scaleTime: time,
 	scaleUtc: utcTime,
@@ -9725,7 +10793,7 @@ var d3Scale = /*#__PURE__*/Object.freeze({
 	schemeCategory20b: category20b,
 	schemeCategory20c: category20c,
 	schemeCategory20: category20,
-	interpolateCubehelixDefault: cubehelix$2,
+	interpolateCubehelixDefault: cubehelix$3,
 	interpolateRainbow: rainbow$1,
 	interpolateWarm: warm,
 	interpolateCool: cool,
@@ -11947,6 +13015,53 @@ var Wrapper = {
   }
 };
 
+
+
+var index$8 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryAnimation: VictoryAnimation,
+	VictoryContainer: VictoryContainer,
+	VictoryLabel: VictoryLabel,
+	VictoryTransition: VictoryTransition,
+	VictoryClipContainer: VictoryClipContainer,
+	VictoryTheme: VictoryTheme,
+	VictoryPortal: VictoryPortal,
+	Portal: Portal,
+	Arc: Arc,
+	Border: Border,
+	Box: Border,
+	ClipPath: ClipPath,
+	LineSegment: LineSegment,
+	Point: Point,
+	Whisker: Whisker,
+	addEvents: addEvents,
+	Collection: Collection,
+	Data: Data,
+	DefaultTransitions: DefaultTransitions,
+	Domain: Domain,
+	Events: Events,
+	Helpers: Helpers,
+	Immutable: Immutable,
+	LabelHelpers: LabelHelpers,
+	Log: Log,
+	PropTypes: CustomPropTypes,
+	Scale: Scale,
+	Selection: Selection,
+	Style: Style,
+	TextSize: TextSize,
+	Timer: Timer$1,
+	Transitions: Transitions,
+	Rect: Rect,
+	Path: Path,
+	Line: Line,
+	Circle: Circle,
+	TSpan: TSpan,
+	Text: Text,
+	CommonProps: CommonProps,
+	Wrapper: Wrapper,
+	Axis: Axis
+});
+
 function _toConsumableArray$a(arr) { return _arrayWithoutHoles$a(arr) || _iterableToArray$a(arr) || _nonIterableSpread$a(); }
 
 function _nonIterableSpread$a() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -12242,111 +13357,211 @@ Object.defineProperty(VictorySharedEvents, "childContextTypes", {
   }
 });
 
-var _extends_1 = createCommonjsModule(function (module) {
-function _extends() {
-  module.exports = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
 
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-module.exports = _extends;
+var index$9 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictorySharedEvents: VictorySharedEvents
 });
 
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
+/**
+ * creates an object with some keys excluded
+ * replacement for lodash.omit for performance. does not mimick the entire lodash.omit api
+ * @param {Object} originalObject: created object will be based on this object
+ * @param {Array<String>} keys: an array of keys to omit from the new object
+ * @returns {Object} new object with same properties as originalObject
+ */
 
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
+const omit$1 = (originalObject, keys = []) => {
+  // code based on babel's _objectWithoutProperties
+  const newObject = {};
 
-  return target;
-}
-
-var objectWithoutPropertiesLoose = _objectWithoutPropertiesLoose;
-
-function _objectWithoutProperties$5(source, excluded) {
-  if (source == null) return {};
-  var target = objectWithoutPropertiesLoose(source, excluded);
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
-var objectWithoutProperties = _objectWithoutProperties$5;
-
-function _arrayWithoutHoles$b(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
+  for (const key in originalObject) {
+    if (keys.indexOf(key) >= 0) {
+      continue;
     }
 
-    return arr2;
+    if (!Object.prototype.hasOwnProperty.call(originalObject, key)) {
+      continue;
+    }
+
+    newObject[key] = originalObject[key];
   }
-}
 
-var arrayWithoutHoles = _arrayWithoutHoles$b;
+  return newObject;
+};
+const unsupportedProps = ["pointerEvents", "x", "y", "_x", "_y", "userSelect"];
+const unsupportedAndStrokeProps = ["stroke", "strokeWidth", "strokeOpacity", "strokeDasharray", "strokeDashoffset", "strokeLinecap", "strokeLinejoin", ...unsupportedProps];
 
-function _iterableToArray$b(iter) {
-  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
-}
+const getStyle = (style, extraOmitProperties) => {
+  if (!style) {
+    return undefined;
+  } // TODO: more style fixes for Native?
 
-var iterableToArray = _iterableToArray$b;
 
-function _nonIterableSpread$b() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
+  const omitProperties = style.stroke === "none" || style.stroke === "transparent" ? unsupportedAndStrokeProps : unsupportedProps;
+  return extraOmitProperties ? omit$1(style, [...omitProperties, ...extraOmitProperties]) : omit$1(style, omitProperties);
+};
 
-var nonIterableSpread = _nonIterableSpread$b;
+var NativeHelpers = {
+  getStyle
+};
+const useGetNativeStyle = (style, extraOmitProperties) => {
+  return React.useMemo(() => getStyle(style, extraOmitProperties), [style, extraOmitProperties]);
+};
 
-function _toConsumableArray$b(arr) {
-  return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
-}
+function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
 
-var toConsumableArray = _toConsumableArray$b;
+const VCircle = props => {
+  const {
+    style,
+    ...rest
+  } = props;
+  const nativeStyle = useGetNativeStyle(style);
+  return React__default.createElement(Svg.Circle, _extends$5({
+    vectorEffect: "non-scaling-stroke"
+  }, rest, nativeStyle));
+};
+VCircle.propTypes = {
+  className: propTypes.string,
+  clipPath: propTypes.string,
+  cx: propTypes.number,
+  cy: propTypes.number,
+  events: propTypes.object,
+  r: propTypes.number,
+  role: propTypes.string,
+  shapeRendering: propTypes.string,
+  style: propTypes.object,
+  transform: propTypes.string
+};
 
-var omit$1=function omit(originalObject){var keys=arguments.length>1&&arguments[1]!==undefined?arguments[1]:[];var newObject={};for(var key in originalObject){if(keys.indexOf(key)>=0){continue;}if(!Object.prototype.hasOwnProperty.call(originalObject,key)){continue;}newObject[key]=originalObject[key];}return newObject;};var unsupportedProps=["pointerEvents","x","y","_x","_y","userSelect"];var unsupportedAndStrokeProps=["stroke","strokeWidth","strokeOpacity","strokeDasharray","strokeDashoffset","strokeLinecap","strokeLinejoin"].concat(unsupportedProps);var getStyle=function getStyle(style,extraOmitProperties){if(!style){return undefined;}var omitProperties=style.stroke==="none"||style.stroke==="transparent"?unsupportedAndStrokeProps:unsupportedProps;return extraOmitProperties?omit$1(style,[].concat(toConsumableArray(omitProperties),toConsumableArray(extraOmitProperties))):omit$1(style,omitProperties);};var NativeHelpers = {getStyle:getStyle};var useGetNativeStyle=function useGetNativeStyle(style,extraOmitProperties){return React.useMemo(function(){return getStyle(style,extraOmitProperties);},[style,extraOmitProperties]);};
+function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
 
-var _jsxFileName="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\circle.js";var VCircle=function VCircle(props){var style=props.style,rest=objectWithoutProperties(props,["style"]);var nativeStyle=useGetNativeStyle(style);return React__default.createElement(Svg.Circle,_extends_1({vectorEffect:"non-scaling-stroke"},rest,nativeStyle,{__source:{fileName:_jsxFileName,lineNumber:9}}));};VCircle.propTypes={className:propTypes.string,clipPath:propTypes.string,cx:propTypes.number,cy:propTypes.number,events:propTypes.object,r:propTypes.number,role:propTypes.string,shapeRendering:propTypes.string,style:propTypes.object,transform:propTypes.string};
+const VLine = props => {
+  const {
+    style,
+    ...rest
+  } = props;
+  const nativeStyle = useGetNativeStyle(style);
+  return React__default.createElement(Svg.Line, _extends$6({
+    vectorEffect: "non-scaling-stroke"
+  }, rest, nativeStyle));
+};
+VLine.propTypes = {
+  className: propTypes.string,
+  clipPath: propTypes.string,
+  events: propTypes.object,
+  role: propTypes.string,
+  shapeRendering: propTypes.string,
+  style: propTypes.object,
+  transform: propTypes.string,
+  x1: propTypes.number,
+  x2: propTypes.number,
+  y1: propTypes.number,
+  y2: propTypes.number
+};
 
-var _jsxFileName$1="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\line.js";var VLine=function VLine(props){var style=props.style,rest=objectWithoutProperties(props,["style"]);var nativeStyle=useGetNativeStyle(style);return React__default.createElement(Svg.Line,_extends_1({vectorEffect:"non-scaling-stroke"},rest,nativeStyle,{__source:{fileName:_jsxFileName$1,lineNumber:9}}));};VLine.propTypes={className:propTypes.string,clipPath:propTypes.string,events:propTypes.object,role:propTypes.string,shapeRendering:propTypes.string,style:propTypes.object,transform:propTypes.string,x1:propTypes.number,x2:propTypes.number,y1:propTypes.number,y2:propTypes.number};
+function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
 
-var _jsxFileName$2="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\path.js";var VPath=function VPath(props){var style=props.style,rest=objectWithoutProperties(props,["style"]);var nativeStyle=useGetNativeStyle(style);return React__default.createElement(Svg.Path,_extends_1({},rest,nativeStyle,{__source:{fileName:_jsxFileName$2,lineNumber:9}}));};VPath.propTypes={className:propTypes.string,clipPath:propTypes.string,d:propTypes.string,events:propTypes.object,role:propTypes.string,shapeRendering:propTypes.string,style:propTypes.object,transform:propTypes.string};
+const VPath = props => {
+  const {
+    style,
+    ...rest
+  } = props;
+  const nativeStyle = useGetNativeStyle(style);
+  return React__default.createElement(Svg.Path, _extends$7({}, rest, nativeStyle));
+};
+VPath.propTypes = {
+  className: propTypes.string,
+  clipPath: propTypes.string,
+  d: propTypes.string,
+  events: propTypes.object,
+  role: propTypes.string,
+  shapeRendering: propTypes.string,
+  style: propTypes.object,
+  transform: propTypes.string
+};
 
-var _jsxFileName$3="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\rect.js";var VRect=function VRect(props){var style=props.style,rest=objectWithoutProperties(props,["style"]);var nativeStyle=useGetNativeStyle(style);return React__default.createElement(Svg.Rect,_extends_1({vectorEffect:"non-scaling-stroke"},rest,nativeStyle,{__source:{fileName:_jsxFileName$3,lineNumber:9}}));};VRect.propTypes={className:propTypes.string,clipPath:propTypes.string,events:propTypes.object,height:propTypes.number,role:propTypes.string,rx:propTypes.number,ry:propTypes.number,shapeRendering:propTypes.string,style:propTypes.object,transform:propTypes.string,width:propTypes.number,x:propTypes.number,y:propTypes.number};
+function _extends$8() { _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
 
-var _jsxFileName$4="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\text.js";var VText=function VText(props){var style=props.style,rest=objectWithoutProperties(props,["style"]);var nativeStyle=useGetNativeStyle(style);return React__default.createElement(Svg.Text,_extends_1({},rest,nativeStyle,{__source:{fileName:_jsxFileName$4,lineNumber:10}}),props.children);};VText.propTypes={children:propTypes.node,className:propTypes.string,direction:propTypes.oneOf(["ltr","rtl","inherit"]),dx:propTypes.number,dy:propTypes.number,events:propTypes.object,style:propTypes.object,transform:propTypes.string,x:propTypes.number,y:propTypes.number};
+const VRect = props => {
+  const {
+    style,
+    ...rest
+  } = props;
+  const nativeStyle = useGetNativeStyle(style);
+  return React__default.createElement(Svg.Rect, _extends$8({
+    vectorEffect: "non-scaling-stroke"
+  }, rest, nativeStyle));
+};
+VRect.propTypes = {
+  className: propTypes.string,
+  clipPath: propTypes.string,
+  events: propTypes.object,
+  height: propTypes.number,
+  role: propTypes.string,
+  rx: propTypes.number,
+  ry: propTypes.number,
+  shapeRendering: propTypes.string,
+  style: propTypes.object,
+  transform: propTypes.string,
+  width: propTypes.number,
+  x: propTypes.number,
+  y: propTypes.number
+};
 
-var _jsxFileName$5="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\tspan.js";var VTSpan=function VTSpan(props){var style=props.style,rest=objectWithoutProperties(props,["style"]);var nativeStyle=useGetNativeStyle(style);return React__default.createElement(Svg.TSpan,_extends_1({},rest,nativeStyle,{__source:{fileName:_jsxFileName$5,lineNumber:9}}));};VTSpan.propTypes={children:propTypes.oneOfType([propTypes.string,propTypes.number]),className:propTypes.string,dx:propTypes.number,dy:propTypes.number,events:propTypes.object,style:propTypes.object,textAnchor:propTypes.oneOf(["start","middle","end","inherit"]),x:propTypes.number,y:propTypes.number};
+function _extends$9() { _extends$9 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$9.apply(this, arguments); }
 
-var _jsxFileName$6="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\arc.js";var NativeArc=function NativeArc(props){return React__default.createElement(Arc,_extends_1({pathComponent:React__default.createElement(VPath,{__source:{fileName:_jsxFileName$6,lineNumber:5}})},props,{__source:{fileName:_jsxFileName$6,lineNumber:5}}));};
+const VText = props => {
+  const {
+    style,
+    ...rest
+  } = props;
+  const nativeStyle = useGetNativeStyle(style);
+  return React__default.createElement(Svg.Text, _extends$9({}, rest, nativeStyle), props.children);
+};
+
+VText.propTypes = {
+  children: propTypes.node,
+  className: propTypes.string,
+  direction: propTypes.oneOf(["ltr", "rtl", "inherit"]),
+  dx: propTypes.number,
+  dy: propTypes.number,
+  events: propTypes.object,
+  style: propTypes.object,
+  transform: propTypes.string,
+  x: propTypes.number,
+  y: propTypes.number
+};
+
+function _extends$a() { _extends$a = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a.apply(this, arguments); }
+
+const VTSpan = props => {
+  const {
+    style,
+    ...rest
+  } = props;
+  const nativeStyle = useGetNativeStyle(style);
+  return React__default.createElement(Svg.TSpan, _extends$a({}, rest, nativeStyle));
+};
+
+VTSpan.propTypes = {
+  children: propTypes.oneOfType([propTypes.string, propTypes.number]),
+  className: propTypes.string,
+  dx: propTypes.number,
+  dy: propTypes.number,
+  events: propTypes.object,
+  style: propTypes.object,
+  textAnchor: propTypes.oneOf(["start", "middle", "end", "inherit"]),
+  x: propTypes.number,
+  y: propTypes.number
+};
+
+function _extends$b() { _extends$b = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
+
+const NativeArc = props => React__default.createElement(Arc, _extends$b({
+  pathComponent: React__default.createElement(VPath, null)
+}, props));
 
 var getDataWithBaseline = function (props, scale) {
   var data = Data.getData(props);
@@ -12611,7 +13826,14 @@ Path$1.prototype = path.prototype = {
   }
 };
 
-function constant$2(x) {
+
+
+var index$a = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	path: path
+});
+
+function constant$3(x) {
   return function constant() {
     return x;
   };
@@ -12713,7 +13935,7 @@ function cornerTangents(x0, y0, x1, y1, r1, rc, cw) {
 function arc() {
   var innerRadius = arcInnerRadius,
       outerRadius = arcOuterRadius,
-      cornerRadius = constant$2(0),
+      cornerRadius = constant$3(0),
       padRadius = null,
       startAngle = arcStartAngle,
       endAngle = arcEndAngle,
@@ -12862,31 +14084,31 @@ function arc() {
   };
 
   arc.innerRadius = function(_) {
-    return arguments.length ? (innerRadius = typeof _ === "function" ? _ : constant$2(+_), arc) : innerRadius;
+    return arguments.length ? (innerRadius = typeof _ === "function" ? _ : constant$3(+_), arc) : innerRadius;
   };
 
   arc.outerRadius = function(_) {
-    return arguments.length ? (outerRadius = typeof _ === "function" ? _ : constant$2(+_), arc) : outerRadius;
+    return arguments.length ? (outerRadius = typeof _ === "function" ? _ : constant$3(+_), arc) : outerRadius;
   };
 
   arc.cornerRadius = function(_) {
-    return arguments.length ? (cornerRadius = typeof _ === "function" ? _ : constant$2(+_), arc) : cornerRadius;
+    return arguments.length ? (cornerRadius = typeof _ === "function" ? _ : constant$3(+_), arc) : cornerRadius;
   };
 
   arc.padRadius = function(_) {
-    return arguments.length ? (padRadius = _ == null ? null : typeof _ === "function" ? _ : constant$2(+_), arc) : padRadius;
+    return arguments.length ? (padRadius = _ == null ? null : typeof _ === "function" ? _ : constant$3(+_), arc) : padRadius;
   };
 
   arc.startAngle = function(_) {
-    return arguments.length ? (startAngle = typeof _ === "function" ? _ : constant$2(+_), arc) : startAngle;
+    return arguments.length ? (startAngle = typeof _ === "function" ? _ : constant$3(+_), arc) : startAngle;
   };
 
   arc.endAngle = function(_) {
-    return arguments.length ? (endAngle = typeof _ === "function" ? _ : constant$2(+_), arc) : endAngle;
+    return arguments.length ? (endAngle = typeof _ === "function" ? _ : constant$3(+_), arc) : endAngle;
   };
 
   arc.padAngle = function(_) {
-    return arguments.length ? (padAngle = typeof _ === "function" ? _ : constant$2(+_), arc) : padAngle;
+    return arguments.length ? (padAngle = typeof _ === "function" ? _ : constant$3(+_), arc) : padAngle;
   };
 
   arc.context = function(_) {
@@ -12939,7 +14161,7 @@ function y(p) {
 function line() {
   var x$1 = x,
       y$1 = y,
-      defined = constant$2(true),
+      defined = constant$3(true),
       context = null,
       curve = curveLinear,
       output = null;
@@ -12965,15 +14187,15 @@ function line() {
   }
 
   line.x = function(_) {
-    return arguments.length ? (x$1 = typeof _ === "function" ? _ : constant$2(+_), line) : x$1;
+    return arguments.length ? (x$1 = typeof _ === "function" ? _ : constant$3(+_), line) : x$1;
   };
 
   line.y = function(_) {
-    return arguments.length ? (y$1 = typeof _ === "function" ? _ : constant$2(+_), line) : y$1;
+    return arguments.length ? (y$1 = typeof _ === "function" ? _ : constant$3(+_), line) : y$1;
   };
 
   line.defined = function(_) {
-    return arguments.length ? (defined = typeof _ === "function" ? _ : constant$2(!!_), line) : defined;
+    return arguments.length ? (defined = typeof _ === "function" ? _ : constant$3(!!_), line) : defined;
   };
 
   line.curve = function(_) {
@@ -12990,9 +14212,9 @@ function line() {
 function area() {
   var x0 = x,
       x1 = null,
-      y0 = constant$2(0),
+      y0 = constant$3(0),
       y1 = y,
-      defined = constant$2(true),
+      defined = constant$3(true),
       context = null,
       curve = curveLinear,
       output = null;
@@ -13040,27 +14262,27 @@ function area() {
   }
 
   area.x = function(_) {
-    return arguments.length ? (x0 = typeof _ === "function" ? _ : constant$2(+_), x1 = null, area) : x0;
+    return arguments.length ? (x0 = typeof _ === "function" ? _ : constant$3(+_), x1 = null, area) : x0;
   };
 
   area.x0 = function(_) {
-    return arguments.length ? (x0 = typeof _ === "function" ? _ : constant$2(+_), area) : x0;
+    return arguments.length ? (x0 = typeof _ === "function" ? _ : constant$3(+_), area) : x0;
   };
 
   area.x1 = function(_) {
-    return arguments.length ? (x1 = _ == null ? null : typeof _ === "function" ? _ : constant$2(+_), area) : x1;
+    return arguments.length ? (x1 = _ == null ? null : typeof _ === "function" ? _ : constant$3(+_), area) : x1;
   };
 
   area.y = function(_) {
-    return arguments.length ? (y0 = typeof _ === "function" ? _ : constant$2(+_), y1 = null, area) : y0;
+    return arguments.length ? (y0 = typeof _ === "function" ? _ : constant$3(+_), y1 = null, area) : y0;
   };
 
   area.y0 = function(_) {
-    return arguments.length ? (y0 = typeof _ === "function" ? _ : constant$2(+_), area) : y0;
+    return arguments.length ? (y0 = typeof _ === "function" ? _ : constant$3(+_), area) : y0;
   };
 
   area.y1 = function(_) {
-    return arguments.length ? (y1 = _ == null ? null : typeof _ === "function" ? _ : constant$2(+_), area) : y1;
+    return arguments.length ? (y1 = _ == null ? null : typeof _ === "function" ? _ : constant$3(+_), area) : y1;
   };
 
   area.lineX0 =
@@ -13077,7 +14299,7 @@ function area() {
   };
 
   area.defined = function(_) {
-    return arguments.length ? (defined = typeof _ === "function" ? _ : constant$2(!!_), area) : defined;
+    return arguments.length ? (defined = typeof _ === "function" ? _ : constant$3(!!_), area) : defined;
   };
 
   area.curve = function(_) {
@@ -13091,21 +14313,21 @@ function area() {
   return area;
 }
 
-function descending(a, b) {
+function descending$1(a, b) {
   return b < a ? -1 : b > a ? 1 : b >= a ? 0 : NaN;
 }
 
-function identity$2(d) {
+function identity$4(d) {
   return d;
 }
 
 function pie() {
-  var value = identity$2,
-      sortValues = descending,
+  var value = identity$4,
+      sortValues = descending$1,
       sort = null,
-      startAngle = constant$2(0),
-      endAngle = constant$2(tau$2),
-      padAngle = constant$2(0);
+      startAngle = constant$3(0),
+      endAngle = constant$3(tau$2),
+      padAngle = constant$3(0);
 
   function pie(data) {
     var i,
@@ -13148,7 +14370,7 @@ function pie() {
   }
 
   pie.value = function(_) {
-    return arguments.length ? (value = typeof _ === "function" ? _ : constant$2(+_), pie) : value;
+    return arguments.length ? (value = typeof _ === "function" ? _ : constant$3(+_), pie) : value;
   };
 
   pie.sortValues = function(_) {
@@ -13160,15 +14382,15 @@ function pie() {
   };
 
   pie.startAngle = function(_) {
-    return arguments.length ? (startAngle = typeof _ === "function" ? _ : constant$2(+_), pie) : startAngle;
+    return arguments.length ? (startAngle = typeof _ === "function" ? _ : constant$3(+_), pie) : startAngle;
   };
 
   pie.endAngle = function(_) {
-    return arguments.length ? (endAngle = typeof _ === "function" ? _ : constant$2(+_), pie) : endAngle;
+    return arguments.length ? (endAngle = typeof _ === "function" ? _ : constant$3(+_), pie) : endAngle;
   };
 
   pie.padAngle = function(_) {
-    return arguments.length ? (padAngle = typeof _ === "function" ? _ : constant$2(+_), pie) : padAngle;
+    return arguments.length ? (padAngle = typeof _ === "function" ? _ : constant$3(+_), pie) : padAngle;
   };
 
   return pie;
@@ -13256,7 +14478,7 @@ function pointRadial(x, y) {
   return [(y = +y) * Math.cos(x -= Math.PI / 2), y * Math.sin(x)];
 }
 
-var slice$1 = Array.prototype.slice;
+var slice$2 = Array.prototype.slice;
 
 function linkSource(d) {
   return d.source;
@@ -13274,7 +14496,7 @@ function link(curve) {
       context = null;
 
   function link() {
-    var buffer, argv = slice$1.call(arguments), s = source.apply(this, argv), t = target.apply(this, argv);
+    var buffer, argv = slice$2.call(arguments), s = source.apply(this, argv), t = target.apply(this, argv);
     if (!context) context = buffer = path();
     curve(context, +x$1.apply(this, (argv[0] = s, argv)), +y$1.apply(this, argv), +x$1.apply(this, (argv[0] = t, argv)), +y$1.apply(this, argv));
     if (buffer) return context = null, buffer + "" || null;
@@ -13289,11 +14511,11 @@ function link(curve) {
   };
 
   link.x = function(_) {
-    return arguments.length ? (x$1 = typeof _ === "function" ? _ : constant$2(+_), link) : x$1;
+    return arguments.length ? (x$1 = typeof _ === "function" ? _ : constant$3(+_), link) : x$1;
   };
 
   link.y = function(_) {
-    return arguments.length ? (y$1 = typeof _ === "function" ? _ : constant$2(+_), link) : y$1;
+    return arguments.length ? (y$1 = typeof _ === "function" ? _ : constant$3(+_), link) : y$1;
   };
 
   link.context = function(_) {
@@ -13345,7 +14567,7 @@ var circle = {
   }
 };
 
-var cross = {
+var cross$1 = {
   draw: function(context, size) {
     var r = Math.sqrt(size / 5) / 2;
     context.moveTo(-3 * r, -r);
@@ -13451,7 +14673,7 @@ var wye = {
 
 var symbols = [
   circle,
-  cross,
+  cross$1,
   diamond,
   square,
   star,
@@ -13460,8 +14682,8 @@ var symbols = [
 ];
 
 function symbol() {
-  var type = constant$2(circle),
-      size = constant$2(64),
+  var type = constant$3(circle),
+      size = constant$3(64),
       context = null;
 
   function symbol() {
@@ -13472,11 +14694,11 @@ function symbol() {
   }
 
   symbol.type = function(_) {
-    return arguments.length ? (type = typeof _ === "function" ? _ : constant$2(_), symbol) : type;
+    return arguments.length ? (type = typeof _ === "function" ? _ : constant$3(_), symbol) : type;
   };
 
   symbol.size = function(_) {
-    return arguments.length ? (size = typeof _ === "function" ? _ : constant$2(+_), symbol) : size;
+    return arguments.length ? (size = typeof _ === "function" ? _ : constant$3(+_), symbol) : size;
   };
 
   symbol.context = function(_) {
@@ -13536,7 +14758,7 @@ Basis.prototype = {
   }
 };
 
-function basis(context) {
+function basis$2(context) {
   return new Basis(context);
 }
 
@@ -13586,7 +14808,7 @@ BasisClosed.prototype = {
   }
 };
 
-function basisClosed(context) {
+function basisClosed$1(context) {
   return new BasisClosed(context);
 }
 
@@ -14339,7 +15561,7 @@ function stackValue(d, key) {
 }
 
 function stack() {
-  var keys = constant$2([]),
+  var keys = constant$3([]),
       order = none$1,
       offset = none,
       value = stackValue;
@@ -14369,15 +15591,15 @@ function stack() {
   }
 
   stack.keys = function(_) {
-    return arguments.length ? (keys = typeof _ === "function" ? _ : constant$2(slice$1.call(_)), stack) : keys;
+    return arguments.length ? (keys = typeof _ === "function" ? _ : constant$3(slice$2.call(_)), stack) : keys;
   };
 
   stack.value = function(_) {
-    return arguments.length ? (value = typeof _ === "function" ? _ : constant$2(+_), stack) : value;
+    return arguments.length ? (value = typeof _ === "function" ? _ : constant$3(+_), stack) : value;
   };
 
   stack.order = function(_) {
-    return arguments.length ? (order = _ == null ? none$1 : typeof _ === "function" ? _ : constant$2(slice$1.call(_)), stack) : order;
+    return arguments.length ? (order = _ == null ? none$1 : typeof _ === "function" ? _ : constant$3(slice$2.call(_)), stack) : order;
   };
 
   stack.offset = function(_) {
@@ -14455,17 +15677,17 @@ function peak(series) {
 }
 
 function ascending$1(series) {
-  var sums = series.map(sum);
+  var sums = series.map(sum$1);
   return none$1(series).sort(function(a, b) { return sums[a] - sums[b]; });
 }
 
-function sum(series) {
+function sum$1(series) {
   var s = 0, i = -1, n = series.length, v;
   while (++i < n) if (v = +series[i][1]) s += v;
   return s;
 }
 
-function descending$1(series) {
+function descending$2(series) {
   return ascending$1(series).reverse();
 }
 
@@ -14473,7 +15695,7 @@ function insideOut(series) {
   var n = series.length,
       i,
       j,
-      sums = series.map(sum),
+      sums = series.map(sum$1),
       order = appearance(series),
       top = 0,
       bottom = 0,
@@ -14517,15 +15739,15 @@ var d3Shape = /*#__PURE__*/Object.freeze({
 	symbol: symbol,
 	symbols: symbols,
 	symbolCircle: circle,
-	symbolCross: cross,
+	symbolCross: cross$1,
 	symbolDiamond: diamond,
 	symbolSquare: square,
 	symbolStar: star,
 	symbolTriangle: triangle,
 	symbolWye: wye,
-	curveBasisClosed: basisClosed,
+	curveBasisClosed: basisClosed$1,
 	curveBasisOpen: basisOpen,
-	curveBasis: basis,
+	curveBasis: basis$2,
 	curveBundle: bundle,
 	curveCardinalClosed: cardinalClosed,
 	curveCardinalOpen: cardinalOpen,
@@ -14549,7 +15771,7 @@ var d3Shape = /*#__PURE__*/Object.freeze({
 	stackOffsetWiggle: wiggle,
 	stackOrderAppearance: appearance,
 	stackOrderAscending: ascending$1,
-	stackOrderDescending: descending$1,
+	stackOrderDescending: descending$2,
 	stackOrderInsideOut: insideOut,
 	stackOrderNone: none$1,
 	stackOrderReverse: reverse
@@ -14846,7 +16068,20 @@ Object.defineProperty(VictoryArea, "expectedComponents", {
 });
 var VictoryArea$1 = addEvents(VictoryArea, options);
 
-var _jsxFileName$7="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\area.js";var NativeArea=function NativeArea(props){return React__default.createElement(Area,_extends_1({pathComponent:React__default.createElement(VPath,{__source:{fileName:_jsxFileName$7,lineNumber:6}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$7,lineNumber:6}})},props,{__source:{fileName:_jsxFileName$7,lineNumber:6}}));};
+
+
+var index$b = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryArea: VictoryArea$1,
+	Area: Area
+});
+
+function _extends$c() { _extends$c = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$c.apply(this, arguments); }
+
+const NativeArea = props => React__default.createElement(Area, _extends$c({
+  pathComponent: React__default.createElement(VPath, null),
+  groupComponent: React__default.createElement(Svg.G, null)
+}, props));
 
 var getBarPosition = function (props, datum) {
   var getDefaultMin = function (axis) {
@@ -15107,13 +16342,13 @@ function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { 
 
 function _defineProperty$b(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray$c(arr) { return _arrayWithoutHoles$c(arr) || _iterableToArray$c(arr) || _nonIterableSpread$c(); }
+function _toConsumableArray$b(arr) { return _arrayWithoutHoles$b(arr) || _iterableToArray$b(arr) || _nonIterableSpread$b(); }
 
-function _nonIterableSpread$c() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$b() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$c(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$b(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$c(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$b(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 var getPosition$2 = function (props, width) {
   var x = props.x,
@@ -15152,7 +16387,7 @@ var getAngle$1 = function (props, index) {
 var getAngularWidth = function (props, width) {
   var scale = props.scale;
   var range = scale.y.range();
-  var r = Math.max.apply(Math, _toConsumableArray$c(range));
+  var r = Math.max.apply(Math, _toConsumableArray$b(range));
   var angularRange = Math.abs(scale.x.range()[1] - scale.x.range()[0]);
   return width / (2 * Math.PI * r) * angularRange;
 };
@@ -15392,7 +16627,7 @@ var getHorizontalBarPoints = function (position, sign, cr) {
   var topPoints = getHalfPoints("top");
   var bottomPoints = getHalfPoints("bottom"); // eslint-disable-next-line no-magic-numbers
 
-  return [bottomPoints[1], bottomPoints[0]].concat(_toConsumableArray$c(topPoints), [bottomPoints[3], bottomPoints[2]]);
+  return [bottomPoints[1], bottomPoints[0]].concat(_toConsumableArray$b(topPoints), [bottomPoints[3], bottomPoints[2]]);
 };
 
 var getVerticalBarPath = function (props, width, cornerRadius) {
@@ -15499,8 +16734,8 @@ var getVerticalPolarBarPath = function (props, cornerRadius) {
         leftOffset = isShort(rightMiddle) ? _defaultOffset : leftMiddle - 2;
       }
 
-      moves = _toConsumableArray$c(rightMoves.slice(0, rightOffset)).concat(_toConsumableArray$c(leftMoves.slice(leftOffset)));
-      coords = _toConsumableArray$c(rightCoords.slice(0, rightOffset)).concat(_toConsumableArray$c(leftCoords.slice(leftOffset)));
+      moves = _toConsumableArray$b(rightMoves.slice(0, rightOffset)).concat(_toConsumableArray$b(leftMoves.slice(leftOffset)));
+      coords = _toConsumableArray$b(rightCoords.slice(0, rightOffset)).concat(_toConsumableArray$b(leftCoords.slice(leftOffset)));
     }
 
     var middle = moves.indexOf("L");
@@ -15543,8 +16778,8 @@ var getVerticalPolarBarPath = function (props, cornerRadius) {
       var shortPath = bottomRight > bottomLeft ? isShort(rightMoves, rightMiddle) : isShort(leftMoves, leftMiddle); // eslint-disable-next-line no-magic-numbers
 
       var rightOffset = shortPath ? -1 : -3;
-      moves = _toConsumableArray$c(leftMoves.slice(0, leftMiddle + 2)).concat(_toConsumableArray$c(rightMoves.slice(rightOffset)));
-      coords = _toConsumableArray$c(leftCoords.slice(0, leftMiddle + 2)).concat(_toConsumableArray$c(rightCoords.slice(rightOffset)));
+      moves = _toConsumableArray$b(leftMoves.slice(0, leftMiddle + 2)).concat(_toConsumableArray$b(rightMoves.slice(rightOffset)));
+      coords = _toConsumableArray$b(leftCoords.slice(0, leftMiddle + 2)).concat(_toConsumableArray$b(rightCoords.slice(rightOffset)));
     }
 
     var middle = moves.indexOf("L");
@@ -15561,7 +16796,7 @@ var getVerticalPolarBarPath = function (props, cornerRadius) {
   var topPath = getTopPath();
   var bottomPath = getBottomPath();
 
-  var moves = _toConsumableArray$c(topPath).concat(_toConsumableArray$c(bottomPath));
+  var moves = _toConsumableArray$b(topPath).concat(_toConsumableArray$b(bottomPath));
 
   var path = moves.reduce(function (memo, move) {
     memo += "".concat(move.command, " ").concat(move.coords.join());
@@ -15934,9 +17169,28 @@ Object.defineProperty(VictoryBar, "expectedComponents", {
 });
 var VictoryBar$1 = addEvents(VictoryBar);
 
-var _jsxFileName$8="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\bar.js";var NativeBar=function NativeBar(props){return React__default.createElement(Bar,_extends_1({pathComponent:React__default.createElement(VPath,{__source:{fileName:_jsxFileName$8,lineNumber:5}})},props,{__source:{fileName:_jsxFileName$8,lineNumber:5}}));};
 
-var _jsxFileName$9="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\border.js";var NativeBorder=function NativeBorder(props){return React__default.createElement(Border,_extends_1({rectComponent:React__default.createElement(VRect,{__source:{fileName:_jsxFileName$9,lineNumber:5}})},props,{__source:{fileName:_jsxFileName$9,lineNumber:5}}));};
+
+var index$c = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryBar: VictoryBar$1,
+	Bar: Bar,
+	getVerticalBarPath: getVerticalBarPath,
+	getHorizontalBarPath: getHorizontalBarPath,
+	getVerticalPolarBarPath: getVerticalPolarBarPath
+});
+
+function _extends$d() { _extends$d = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$d.apply(this, arguments); }
+
+const NativeBar = props => React__default.createElement(Bar, _extends$d({
+  pathComponent: React__default.createElement(VPath, null)
+}, props));
+
+function _extends$e() { _extends$e = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$e.apply(this, arguments); }
+
+const NativeBorder = props => React__default.createElement(Border, _extends$e({
+  rectComponent: React__default.createElement(VRect, null)
+}, props));
 
 function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$e(target, key, source[key]); }); } return target; }
 
@@ -16467,13 +17721,13 @@ function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { 
 
 function _defineProperty$f(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray$d(arr) { return _arrayWithoutHoles$d(arr) || _iterableToArray$d(arr) || _nonIterableSpread$d(); }
+function _toConsumableArray$c(arr) { return _arrayWithoutHoles$c(arr) || _iterableToArray$c(arr) || _nonIterableSpread$c(); }
 
-function _nonIterableSpread$d() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$c() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$d(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$c(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$d(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$c(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck$b(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -16639,7 +17893,7 @@ function (_React$Component) {
         return undefined;
       }).filter(Boolean);
 
-      var children = _toConsumableArray$d(dataComponents).concat(_toConsumableArray$d(labelComponents), _toConsumableArray$d(labelsComponents));
+      var children = _toConsumableArray$c(dataComponents).concat(_toConsumableArray$c(labelComponents), _toConsumableArray$c(labelsComponents));
 
       return this.renderContainer(groupComponent, children);
     }
@@ -16786,116 +18040,42 @@ Object.defineProperty(VictoryCandlestick, "expectedComponents", {
 });
 var VictoryCandlestick$1 = addEvents(VictoryCandlestick, options$1);
 
-var _jsxFileName$a="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\candle.js";var NativeCandle=function NativeCandle(props){return React__default.createElement(Candle,_extends_1({lineComponent:React__default.createElement(VLine,{__source:{fileName:_jsxFileName$a,lineNumber:8}}),rectComponent:React__default.createElement(VRect,{__source:{fileName:_jsxFileName$a,lineNumber:8}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$a,lineNumber:8}})},props,{__source:{fileName:_jsxFileName$a,lineNumber:8}}));};
 
-function _classCallCheck$c(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
 
-var classCallCheck = _classCallCheck$c;
-
-function _defineProperties$c(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass$c(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties$c(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties$c(Constructor, staticProps);
-  return Constructor;
-}
-
-var createClass = _createClass$c;
-
-var _typeof_1 = createCommonjsModule(function (module) {
-function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return _typeof2(obj);
-    };
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
-    };
-  }
-
-  return _typeof(obj);
-}
-
-module.exports = _typeof;
+var index$d = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryCandlestick: VictoryCandlestick$1,
+	Candle: Candle
 });
 
-function _assertThisInitialized$b(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+function _extends$f() { _extends$f = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$f.apply(this, arguments); }
+
+const NativeCandle = props => React__default.createElement(Candle, _extends$f({
+  lineComponent: React__default.createElement(VLine, null),
+  rectComponent: React__default.createElement(VRect, null),
+  groupComponent: React__default.createElement(Svg.G, null)
+}, props));
+
+function _defineProperty$g(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class VClipPath extends React__default.Component {
+  render() {
+    const {
+      children,
+      clipId
+    } = this.props; // Wrap in G not to cause exceptions in old react-native-svg
+    // https://github.com/FormidableLabs/victory-native/issues/432#issuecomment-475927581
+
+    return React__default.createElement(Svg.G, null, React__default.createElement(Svg.Defs, null, React__default.createElement(Svg.ClipPath, {
+      id: clipId
+    }, children)));
   }
 
-  return self;
 }
 
-var assertThisInitialized = _assertThisInitialized$b;
-
-function _possibleConstructorReturn$b(self, call) {
-  if (call && (_typeof_1(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return assertThisInitialized(self);
-}
-
-var possibleConstructorReturn = _possibleConstructorReturn$b;
-
-var getPrototypeOf = createCommonjsModule(function (module) {
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-module.exports = _getPrototypeOf;
+_defineProperty$g(VClipPath, "propTypes", {
+  children: propTypes.oneOfType([propTypes.arrayOf(propTypes.node), propTypes.node]),
+  clipId: propTypes.oneOfType([propTypes.number, propTypes.string])
 });
-
-var setPrototypeOf = createCommonjsModule(function (module) {
-function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-module.exports = _setPrototypeOf;
-});
-
-function _inherits$b(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) setPrototypeOf(subClass, superClass);
-}
-
-var inherits = _inherits$b;
-
-var _jsxFileName$b="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\clip-path.js";var VClipPath=function(_React$Component){inherits(VClipPath,_React$Component);function VClipPath(){classCallCheck(this,VClipPath);return possibleConstructorReturn(this,getPrototypeOf(VClipPath).apply(this,arguments));}createClass(VClipPath,[{key:"render",value:function render(){var _this$props=this.props,children=_this$props.children,clipId=_this$props.clipId;return React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$b,lineNumber:19}},React__default.createElement(Svg.Defs,{__source:{fileName:_jsxFileName$b,lineNumber:20}},React__default.createElement(Svg.ClipPath,{id:clipId,__source:{fileName:_jsxFileName$b,lineNumber:21}},children)));}}]);return VClipPath;}(React__default.Component);VClipPath.propTypes={children:propTypes.oneOfType([propTypes.arrayOf(propTypes.node),propTypes.node]),clipId:propTypes.oneOfType([propTypes.number,propTypes.string])};
 
 var getCalculatedValues$3 = function (props) {
   var data = Data.getData(props);
@@ -16993,9 +18173,9 @@ var getBaseProps$3 = function (props, fallbackProps) {
   }, initialChildProps);
 };
 
-function _objectSpread$e(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$g(target, key, source[key]); }); } return target; }
+function _objectSpread$e(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$h(target, key, source[key]); }); } return target; }
 
-function _defineProperty$g(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$h(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var defined$1 = function (d) {
   var y = d._y1 !== undefined ? d._y1 : d._y;
@@ -17073,21 +18253,21 @@ Curve.defaultProps = {
   shapeRendering: "auto"
 };
 
-function _objectSpread$f(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$h(target, key, source[key]); }); } return target; }
+function _objectSpread$f(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$i(target, key, source[key]); }); } return target; }
 
-function _defineProperty$h(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$i(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck$d(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$c(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$d(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$c(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$d(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$d(Constructor.prototype, protoProps); if (staticProps) _defineProperties$d(Constructor, staticProps); return Constructor; }
+function _createClass$c(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$c(Constructor.prototype, protoProps); if (staticProps) _defineProperties$c(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$c(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$c(self); }
+function _possibleConstructorReturn$b(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$b(self); }
 
-function _assertThisInitialized$c(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$b(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$c(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$b(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var fallbackProps$3 = {
   width: 450,
   height: 300,
@@ -17109,15 +18289,15 @@ var options$2 = {
 var VictoryLine =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$c(VictoryLine, _React$Component);
+  _inherits$b(VictoryLine, _React$Component);
 
   function VictoryLine() {
-    _classCallCheck$d(this, VictoryLine);
+    _classCallCheck$c(this, VictoryLine);
 
-    return _possibleConstructorReturn$c(this, (VictoryLine.__proto__ || Object.getPrototypeOf(VictoryLine)).apply(this, arguments));
+    return _possibleConstructorReturn$b(this, (VictoryLine.__proto__ || Object.getPrototypeOf(VictoryLine)).apply(this, arguments));
   }
 
-  _createClass$d(VictoryLine, [{
+  _createClass$c(VictoryLine, [{
     key: "shouldAnimate",
     // Overridden in native versions
     value: function shouldAnimate() {
@@ -17233,11 +18413,23 @@ Object.defineProperty(VictoryLine, "expectedComponents", {
 });
 var VictoryLine$1 = addEvents(VictoryLine, options$2);
 
-var _jsxFileName$c="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\curve.js";var NativeCurve=function NativeCurve(props){return React__default.createElement(Curve,_extends_1({pathComponent:React__default.createElement(VPath,{__source:{fileName:_jsxFileName$c,lineNumber:5}})},props,{__source:{fileName:_jsxFileName$c,lineNumber:5}}));};
 
-function _objectSpread$g(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$i(target, key, source[key]); }); } return target; }
 
-function _defineProperty$i(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var index$e = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryLine: VictoryLine$1,
+	Curve: Curve
+});
+
+function _extends$g() { _extends$g = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$g.apply(this, arguments); }
+
+const NativeCurve = props => React__default.createElement(Curve, _extends$g({
+  pathComponent: React__default.createElement(VPath, null)
+}, props));
+
+function _objectSpread$g(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$j(target, key, source[key]); }); } return target; }
+
+function _defineProperty$j(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var renderBorder = function (props, error, type) {
   var vertical = type === "right" || type === "left";
@@ -17540,21 +18732,21 @@ var getBaseProps$4 = function (props, fallbackProps) {
   }, initialChildProps);
 };
 
-function _objectSpread$h(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$j(target, key, source[key]); }); } return target; }
+function _objectSpread$h(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$k(target, key, source[key]); }); } return target; }
 
-function _defineProperty$j(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$k(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck$e(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$d(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$e(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$d(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$e(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$e(Constructor.prototype, protoProps); if (staticProps) _defineProperties$e(Constructor, staticProps); return Constructor; }
+function _createClass$d(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$d(Constructor.prototype, protoProps); if (staticProps) _defineProperties$d(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$d(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$d(self); }
+function _possibleConstructorReturn$c(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$c(self); }
 
-function _assertThisInitialized$d(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$c(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$d(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$c(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var fallbackProps$4 = {
   width: 450,
   height: 300,
@@ -17585,15 +18777,15 @@ var defaultData$2 = [{
 var VictoryErrorBar =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$d(VictoryErrorBar, _React$Component);
+  _inherits$c(VictoryErrorBar, _React$Component);
 
   function VictoryErrorBar() {
-    _classCallCheck$e(this, VictoryErrorBar);
+    _classCallCheck$d(this, VictoryErrorBar);
 
-    return _possibleConstructorReturn$d(this, (VictoryErrorBar.__proto__ || Object.getPrototypeOf(VictoryErrorBar)).apply(this, arguments));
+    return _possibleConstructorReturn$c(this, (VictoryErrorBar.__proto__ || Object.getPrototypeOf(VictoryErrorBar)).apply(this, arguments));
   }
 
-  _createClass$e(VictoryErrorBar, [{
+  _createClass$d(VictoryErrorBar, [{
     key: "shouldAnimate",
     // Overridden in native versions
     value: function shouldAnimate() {
@@ -17699,15 +18891,36 @@ Object.defineProperty(VictoryErrorBar, "expectedComponents", {
 });
 var VictoryErrorBar$1 = addEvents(VictoryErrorBar);
 
-var _jsxFileName$d="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\error-bar.js";var NativeErrorBar=function NativeErrorBar(props){return React__default.createElement(ErrorBar,_extends_1({lineComponent:React__default.createElement(VLine,{__source:{fileName:_jsxFileName$d,lineNumber:7}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$d,lineNumber:7}})},props,{__source:{fileName:_jsxFileName$d,lineNumber:7}}));};
 
-var _jsxFileName$e="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\line-segment.js";var NativeLineSegment=function NativeLineSegment(props){return React__default.createElement(LineSegment,_extends_1({lineComponent:React__default.createElement(VLine,{__source:{fileName:_jsxFileName$e,lineNumber:5}})},props,{__source:{fileName:_jsxFileName$e,lineNumber:5}}));};
 
-var _jsxFileName$f="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\point.js";var NativePoint=function NativePoint(props){return React__default.createElement(Point,_extends_1({pathComponent:React__default.createElement(VPath,{__source:{fileName:_jsxFileName$f,lineNumber:5}})},props,{__source:{fileName:_jsxFileName$f,lineNumber:5}}));};
+var index$f = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryErrorBar: VictoryErrorBar$1,
+	ErrorBar: ErrorBar
+});
 
-function _objectSpread$i(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$k(target, key, source[key]); }); } return target; }
+function _extends$h() { _extends$h = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$h.apply(this, arguments); }
 
-function _defineProperty$k(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+const NativeErrorBar = props => React__default.createElement(ErrorBar, _extends$h({
+  lineComponent: React__default.createElement(VLine, null),
+  groupComponent: React__default.createElement(Svg.G, null)
+}, props));
+
+function _extends$i() { _extends$i = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$i.apply(this, arguments); }
+
+const NativeLineSegment = props => React__default.createElement(LineSegment, _extends$i({
+  lineComponent: React__default.createElement(VLine, null)
+}, props));
+
+function _extends$j() { _extends$j = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$j.apply(this, arguments); }
+
+const NativePoint = props => React__default.createElement(Point, _extends$j({
+  pathComponent: React__default.createElement(VPath, null)
+}, props));
+
+function _objectSpread$i(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$l(target, key, source[key]); }); } return target; }
+
+function _defineProperty$l(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var getPath$1 = function (props) {
   var slice = props.slice,
@@ -18031,17 +19244,17 @@ var getBaseProps$5 = function (props, fallbackProps) {
   }, initialChildProps);
 };
 
-function _classCallCheck$f(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$e(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$f(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$e(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$f(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$f(Constructor.prototype, protoProps); if (staticProps) _defineProperties$f(Constructor, staticProps); return Constructor; }
+function _createClass$e(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$e(Constructor.prototype, protoProps); if (staticProps) _defineProperties$e(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$e(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$e(self); }
+function _possibleConstructorReturn$d(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$d(self); }
 
-function _assertThisInitialized$e(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$d(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$e(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$d(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var fallbackProps$5 = {
   endAngle: 360,
   height: 400,
@@ -18058,15 +19271,15 @@ var fallbackProps$5 = {
 var VictoryPie =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$e(VictoryPie, _React$Component);
+  _inherits$d(VictoryPie, _React$Component);
 
   function VictoryPie() {
-    _classCallCheck$f(this, VictoryPie);
+    _classCallCheck$e(this, VictoryPie);
 
-    return _possibleConstructorReturn$e(this, (VictoryPie.__proto__ || Object.getPrototypeOf(VictoryPie)).apply(this, arguments));
+    return _possibleConstructorReturn$d(this, (VictoryPie.__proto__ || Object.getPrototypeOf(VictoryPie)).apply(this, arguments));
   }
 
-  _createClass$f(VictoryPie, [{
+  _createClass$e(VictoryPie, [{
     key: "shouldAnimate",
     // Overridden in victory-native
     value: function shouldAnimate() {
@@ -18256,11 +19469,23 @@ Object.defineProperty(VictoryPie, "expectedComponents", {
 });
 var VictoryPie$1 = addEvents(VictoryPie);
 
-var _jsxFileName$g="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\slice.js";var NativeSlice=function NativeSlice(props){return React__default.createElement(Slice,_extends_1({pathComponent:React__default.createElement(VPath,{__source:{fileName:_jsxFileName$g,lineNumber:5}})},props,{__source:{fileName:_jsxFileName$g,lineNumber:5}}));};
 
-function _objectSpread$j(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$l(target, key, source[key]); }); } return target; }
 
-function _defineProperty$l(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var index$g = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryPie: VictoryPie$1,
+	Slice: Slice
+});
+
+function _extends$k() { _extends$k = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$k.apply(this, arguments); }
+
+const NativeSlice = props => React__default.createElement(Slice, _extends$k({
+  pathComponent: React__default.createElement(VPath, null)
+}, props));
+
+function _objectSpread$j(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$m(target, key, source[key]); }); } return target; }
+
+function _defineProperty$m(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var getVoronoiPath = function (props) {
   var polygon = props.polygon;
@@ -18329,7 +19554,7 @@ Voronoi.defaultProps = {
   shapeRendering: "auto"
 };
 
-function constant$3(x) {
+function constant$4(x) {
   return function() {
     return x;
   };
@@ -18903,7 +20128,7 @@ function attachCircle(arc) {
       cy = rSite[1] - by;
 
   var d = 2 * (ax * cy - ay * cx);
-  if (d >= -epsilon2) return;
+  if (d >= -epsilon2$1) return;
 
   var ha = ax * ax + ay * ay,
       hc = cx * cx + cy * cy,
@@ -19135,7 +20360,7 @@ function rightBreakPoint(arc, directrix) {
 }
 
 var epsilon$2 = 1e-6;
-var epsilon2 = 1e-12;
+var epsilon2$1 = 1e-12;
 var beaches;
 var cells;
 var circles;
@@ -19298,11 +20523,11 @@ function d3Voronoi() {
   };
 
   voronoi.x = function(_) {
-    return arguments.length ? (x = typeof _ === "function" ? _ : constant$3(+_), voronoi) : x;
+    return arguments.length ? (x = typeof _ === "function" ? _ : constant$4(+_), voronoi) : x;
   };
 
   voronoi.y = function(_) {
-    return arguments.length ? (y = typeof _ === "function" ? _ : constant$3(+_), voronoi) : y;
+    return arguments.length ? (y = typeof _ === "function" ? _ : constant$4(+_), voronoi) : y;
   };
 
   voronoi.extent = function(_) {
@@ -19316,17 +20541,24 @@ function d3Voronoi() {
   return voronoi;
 }
 
-function _toConsumableArray$e(arr) { return _arrayWithoutHoles$e(arr) || _iterableToArray$e(arr) || _nonIterableSpread$e(); }
 
-function _nonIterableSpread$e() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$e(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+var index$h = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	voronoi: d3Voronoi
+});
 
-function _arrayWithoutHoles$e(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _toConsumableArray$d(arr) { return _arrayWithoutHoles$d(arr) || _iterableToArray$d(arr) || _nonIterableSpread$d(); }
+
+function _nonIterableSpread$d() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray$d(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles$d(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 var getVoronoi = function (props, range, scale) {
-  var minRange = [Math.min.apply(Math, _toConsumableArray$e(range.x)), Math.min.apply(Math, _toConsumableArray$e(range.y))];
-  var maxRange = [Math.max.apply(Math, _toConsumableArray$e(range.x)), Math.max.apply(Math, _toConsumableArray$e(range.y))];
+  var minRange = [Math.min.apply(Math, _toConsumableArray$d(range.x)), Math.min.apply(Math, _toConsumableArray$d(range.y))];
+  var maxRange = [Math.max.apply(Math, _toConsumableArray$d(range.x)), Math.max.apply(Math, _toConsumableArray$d(range.y))];
 
   var angleAccessor = function (d) {
     var x = scale.x(d._x1 !== undefined ? d._x1 : d._x);
@@ -19447,21 +20679,21 @@ var getBaseProps$6 = function (props, fallbackProps) {
   }, initialChildProps);
 };
 
-function _objectSpread$k(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$m(target, key, source[key]); }); } return target; }
+function _objectSpread$k(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$n(target, key, source[key]); }); } return target; }
 
-function _defineProperty$m(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$n(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck$g(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$f(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$g(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$f(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$g(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$g(Constructor.prototype, protoProps); if (staticProps) _defineProperties$g(Constructor, staticProps); return Constructor; }
+function _createClass$f(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$f(Constructor.prototype, protoProps); if (staticProps) _defineProperties$f(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$f(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$f(self); }
+function _possibleConstructorReturn$e(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$e(self); }
 
-function _assertThisInitialized$f(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$e(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$f(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$e(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var fallbackProps$6 = {
   width: 450,
   height: 300,
@@ -19471,15 +20703,15 @@ var fallbackProps$6 = {
 var VictoryVoronoi =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$f(VictoryVoronoi, _React$Component);
+  _inherits$e(VictoryVoronoi, _React$Component);
 
   function VictoryVoronoi() {
-    _classCallCheck$g(this, VictoryVoronoi);
+    _classCallCheck$f(this, VictoryVoronoi);
 
-    return _possibleConstructorReturn$f(this, (VictoryVoronoi.__proto__ || Object.getPrototypeOf(VictoryVoronoi)).apply(this, arguments));
+    return _possibleConstructorReturn$e(this, (VictoryVoronoi.__proto__ || Object.getPrototypeOf(VictoryVoronoi)).apply(this, arguments));
   }
 
-  _createClass$g(VictoryVoronoi, [{
+  _createClass$f(VictoryVoronoi, [{
     key: "shouldAnimate",
     // Overridden in native versions
     value: function shouldAnimate() {
@@ -19581,11 +20813,26 @@ Object.defineProperty(VictoryVoronoi, "expectedComponents", {
 });
 var VictoryVoronoi$1 = addEvents(VictoryVoronoi);
 
-var _jsxFileName$h="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\voronoi.js";var NativeVoronoi=function NativeVoronoi(props){return React__default.createElement(Voronoi,_extends_1({pathComponent:React__default.createElement(VPath,{__source:{fileName:_jsxFileName$h,lineNumber:10}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$h,lineNumber:11}}),clipPathComponent:React__default.createElement(VClipPath,{__source:{fileName:_jsxFileName$h,lineNumber:12}}),circleComponent:React__default.createElement(VCircle,{__source:{fileName:_jsxFileName$h,lineNumber:13}})},props,{__source:{fileName:_jsxFileName$h,lineNumber:9}}));};
 
-function _objectSpread$l(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$n(target, key, source[key]); }); } return target; }
 
-function _defineProperty$n(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var index$i = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryVoronoi: VictoryVoronoi$1,
+	Voronoi: Voronoi
+});
+
+function _extends$l() { _extends$l = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$l.apply(this, arguments); }
+
+const NativeVoronoi = props => React__default.createElement(Voronoi, _extends$l({
+  pathComponent: React__default.createElement(VPath, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  clipPathComponent: React__default.createElement(VClipPath, null),
+  circleComponent: React__default.createElement(VCircle, null)
+}, props));
+
+function _objectSpread$l(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$o(target, key, source[key]); }); } return target; }
+
+function _defineProperty$o(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var getVerticalPath = function (props) {
   var pointerWidth = props.pointerWidth,
@@ -19672,25 +20919,25 @@ Flyout.defaultProps = {
   shapeRendering: "auto"
 };
 
-function _toConsumableArray$f(arr) { return _arrayWithoutHoles$f(arr) || _iterableToArray$f(arr) || _nonIterableSpread$f(); }
+function _toConsumableArray$e(arr) { return _arrayWithoutHoles$e(arr) || _iterableToArray$e(arr) || _nonIterableSpread$e(); }
 
-function _nonIterableSpread$f() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$e() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$f(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$e(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$f(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$e(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _classCallCheck$h(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$g(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$h(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$g(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$h(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$h(Constructor.prototype, protoProps); if (staticProps) _defineProperties$h(Constructor, staticProps); return Constructor; }
+function _createClass$g(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$g(Constructor.prototype, protoProps); if (staticProps) _defineProperties$g(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$g(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$g(self); }
+function _possibleConstructorReturn$f(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$f(self); }
 
-function _assertThisInitialized$g(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$f(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$g(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$f(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var fallbackProps$7 = {
   cornerRadius: 5,
   pointerLength: 10,
@@ -19700,19 +20947,19 @@ var fallbackProps$7 = {
 var VictoryTooltip =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$g(VictoryTooltip, _React$Component);
+  _inherits$f(VictoryTooltip, _React$Component);
 
   function VictoryTooltip(props) {
     var _this;
 
-    _classCallCheck$h(this, VictoryTooltip);
+    _classCallCheck$g(this, VictoryTooltip);
 
-    _this = _possibleConstructorReturn$g(this, (VictoryTooltip.__proto__ || Object.getPrototypeOf(VictoryTooltip)).call(this, props));
+    _this = _possibleConstructorReturn$f(this, (VictoryTooltip.__proto__ || Object.getPrototypeOf(VictoryTooltip)).call(this, props));
     _this.id = props.id === undefined ? _uniqueId("tooltip-") : props.id;
     return _this;
   }
 
-  _createClass$h(VictoryTooltip, [{
+  _createClass$g(VictoryTooltip, [{
     key: "getDefaultOrientation",
     value: function getDefaultOrientation(props) {
       var datum = props.datum,
@@ -19976,7 +21223,7 @@ function (_React$Component) {
       var paddings = Array.isArray(style) ? style.map(function (s) {
         return s.padding;
       }) : [style.padding];
-      return Math.max.apply(Math, _toConsumableArray$f(paddings).concat([0]));
+      return Math.max.apply(Math, _toConsumableArray$e(paddings).concat([0]));
     }
   }, {
     key: "getDimensions",
@@ -20316,33 +21563,300 @@ Object.defineProperty(VictoryTooltip, "defaultEvents", {
   }
 });
 
-var _jsxFileName$i="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\flyout.js";var NativeFlyout=function NativeFlyout(props){return React__default.createElement(Flyout,_extends_1({pathComponent:React__default.createElement(VPath,{__source:{fileName:_jsxFileName$i,lineNumber:5}})},props,{__source:{fileName:_jsxFileName$i,lineNumber:5}}));};
 
-var _jsxFileName$j="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-primitives\\whisker.js";var NativeWhisker=function NativeWhisker(props){return React__default.createElement(Whisker,_extends_1({lineComponent:React__default.createElement(VLine,{__source:{fileName:_jsxFileName$j,lineNumber:7}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$j,lineNumber:7}})},props,{__source:{fileName:_jsxFileName$j,lineNumber:7}}));};
 
-var _jsxFileName$k="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-label.js";var NativeVictoryLabel=function NativeVictoryLabel(props){return React__default.createElement(VictoryLabel,_extends_1({textComponent:React__default.createElement(VText,{__source:{fileName:_jsxFileName$k,lineNumber:8}}),tspanComponent:React__default.createElement(VTSpan,{__source:{fileName:_jsxFileName$k,lineNumber:9}})},props,{__source:{fileName:_jsxFileName$k,lineNumber:7}}));};
+var index$j = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryTooltip: VictoryTooltip,
+	Flyout: Flyout
+});
 
-var _jsxFileName$l="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-portal\\victory-portal.js";var _default=function(_VictoryPortal){inherits(_default,_VictoryPortal);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}createClass(_default,[{key:"renderPortal",value:function renderPortal(child){if(this.renderInPlace){return child||React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$l,lineNumber:8}});}this.element=child;return React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$l,lineNumber:11}});}}]);return _default;}(VictoryPortal);
+function _extends$m() { _extends$m = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$m.apply(this, arguments); }
 
-var _jsxFileName$m="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-tooltip.js";var _default$1=function(_VictoryTooltip){inherits(_default$1,_VictoryTooltip);function _default$1(){classCallCheck(this,_default$1);return possibleConstructorReturn(this,getPrototypeOf(_default$1).apply(this,arguments));}createClass(_default$1,[{key:"renderTooltip",value:function renderTooltip(props){var evaluatedProps=this.getEvaluatedProps(props);var flyoutComponent=evaluatedProps.flyoutComponent,labelComponent=evaluatedProps.labelComponent,groupComponent=evaluatedProps.groupComponent,active=evaluatedProps.active,renderInPortal=evaluatedProps.renderInPortal;if(!active){return renderInPortal?React__default.createElement(_default,{__source:{fileName:_jsxFileName$m,lineNumber:49}},React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$m,lineNumber:49}})):React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$m,lineNumber:49}});}var calculatedValues=this.getCalculatedValues(evaluatedProps);var children=[React__default.cloneElement(flyoutComponent,this.getFlyoutProps(evaluatedProps,calculatedValues)),React__default.cloneElement(labelComponent,this.getLabelProps(evaluatedProps,calculatedValues))];var tooltip=React__default.cloneElement(groupComponent,{role:"presentation"},children);return renderInPortal?React__default.createElement(_default,{__source:{fileName:_jsxFileName$m,lineNumber:57}},tooltip):tooltip;}}]);return _default$1;}(VictoryTooltip);_default$1.defaultProps=_extends_1({},VictoryTooltip.defaultProps,{labelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$m,lineNumber:10}}),flyoutComponent:React__default.createElement(NativeFlyout,{__source:{fileName:_jsxFileName$m,lineNumber:11}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$m,lineNumber:12}})});_default$1.defaultEvents=[{target:"data",eventHandlers:{onPressIn:function onPressIn(targetProps){return [{target:"labels",mutation:function mutation(){return {active:true};}},{target:"data",mutation:function mutation(){return targetProps.activateData?{active:true}:{active:undefined};}}];},onPressOut:function onPressOut(){return [{target:"labels",mutation:function mutation(){return {active:undefined};}},{target:"data",mutation:function mutation(){return {active:undefined};}}];}}}];
+const NativeFlyout = props => React__default.createElement(Flyout, _extends$m({
+  pathComponent: React__default.createElement(VPath, null)
+}, props));
 
-var _jsxFileName$n="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-portal\\portal.js";var _default$2=function(_Portal){inherits(_default,_Portal);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}createClass(_default,[{key:"render",value:function render(){return React__default.createElement(Svg__default,_extends_1({},this.props,{__source:{fileName:_jsxFileName$n,lineNumber:8}}),this.getChildren());}}]);return _default;}(Portal);
+function _extends$n() { _extends$n = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$n.apply(this, arguments); }
 
-var _jsxFileName$o="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-container.js";var yes=function yes(){return true;};var no=function no(){return false;};var _default$3=function(_VictoryContainer){inherits(_default,_VictoryContainer);function _default(props){var _this;classCallCheck(this,_default);_this=possibleConstructorReturn(this,getPrototypeOf(_default).call(this,props));_this.panResponder=_this.getResponder();return _this;}createClass(_default,[{key:"getResponder",value:function getResponder(){var shouldBlockNativeResponder=no;if(this.props&&(this.props.allowDrag||this.props.allowDraw||this.props.allowResize||this.props.allowSelection||this.props.allowPan||this.props.allowZoom)){shouldBlockNativeResponder=yes;}return reactNative.PanResponder.create({onStartShouldSetPanResponder:yes,onStartShouldSetPanResponderCapture:no,onMoveShouldSetPanResponder:yes,onMoveShouldSetPanResponderCapture:yes,onShouldBlockNativeResponder:shouldBlockNativeResponder,onPanResponderTerminationRequest:yes,onPanResponderGrant:this.handleResponderGrant.bind(this),onPanResponderMove:this.handleResponderMove.bind(this),onPanResponderRelease:this.handleResponderEnd.bind(this),onPanResponderTerminate:this.handleResponderEnd.bind(this)});}},{key:"callOptionalEventCallback",value:function callOptionalEventCallback(eventName,evt){var callback=lodash.get(this.props.events,eventName);if(callback){evt.persist();callback(evt,this.props,"__unknownEventKey__",eventName);}}},{key:"handleResponderGrant",value:function handleResponderGrant(evt){if(this.props.onTouchStart){this.props.onTouchStart(evt);}this.callOptionalEventCallback("onTouchStart",evt);}},{key:"handleResponderMove",value:function handleResponderMove(evt){var touches=evt.nativeEvent.touches;if(touches&&touches.length===2){this.callOptionalEventCallback("onTouchPinch",evt);}else{this.callOptionalEventCallback("onTouchMove",evt);}}},{key:"handleResponderEnd",value:function handleResponderEnd(evt){if(this.props.onTouchEnd){this.props.onTouchEnd(evt);}this.callOptionalEventCallback("onTouchEnd",evt);}},{key:"renderContainer",value:function renderContainer(props,svgProps,style){var title=props.title,desc=props.desc,className=props.className,width=props.width,height=props.height,portalZIndex=props.portalZIndex,responsive=props.responsive,disableContainerEvents=props.disableContainerEvents;var children=this.getChildren(props);var dimensions=responsive?{width:"100%",height:"100%"}:{width:width,height:height};var baseStyle=NativeHelpers.getStyle(style,["width","height"]);var divStyle=lodash.assign({},baseStyle,{position:"relative"});var portalDivStyle={zIndex:portalZIndex,position:"absolute",top:0,left:0};var portalSvgStyle=lodash.assign({overflow:"visible"},dimensions);var portalProps={width:width,height:height,viewBox:svgProps.viewBox,style:portalSvgStyle};var handlers=disableContainerEvents?{}:this.panResponder.panHandlers;return React__default.createElement(reactNative.View,_extends_1({},handlers,{style:divStyle,pointerEvents:"box-none",className:className,ref:props.containerRef,__source:{fileName:_jsxFileName$o,lineNumber:128}}),React__default.createElement(Svg__default,_extends_1({},svgProps,{style:dimensions,__source:{fileName:_jsxFileName$o,lineNumber:135}}),title?React__default.createElement("title",{id:"title",__source:{fileName:_jsxFileName$o,lineNumber:136}},title):null,desc?React__default.createElement("desc",{id:"desc",__source:{fileName:_jsxFileName$o,lineNumber:137}},desc):null,children),React__default.createElement(reactNative.View,{style:portalDivStyle,pointerEvents:"box-none",__source:{fileName:_jsxFileName$o,lineNumber:140}},React__default.createElement(_default$2,_extends_1({},portalProps,{ref:this.savePortalRef,__source:{fileName:_jsxFileName$o,lineNumber:141}}))));}}]);return _default;}(VictoryContainer);_default$3.propTypes=lodash.assign({},VictoryContainer.propTypes,{disableContainerEvents:propTypes.bool,onTouchEnd:propTypes.func,onTouchStart:propTypes.func});
+const NativeWhisker = props => React__default.createElement(Whisker, _extends$n({
+  lineComponent: React__default.createElement(VLine, null),
+  groupComponent: React__default.createElement(Svg.G, null)
+}, props));
 
-var _jsxFileName$p="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-clip-container.js";var _default$4=function(_VictoryClipContainer){inherits(_default,_VictoryClipContainer);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}createClass(_default,[{key:"componentDidUpdate",value:function componentDidUpdate(){this.clipId=lodash.uniqueId("victory-clip-");}}]);return _default;}(VictoryClipContainer);_default$4.defaultProps=_extends_1({},VictoryClipContainer.defaultProps,{groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$p,lineNumber:12}}),rectComponent:React__default.createElement(VRect,{__source:{fileName:_jsxFileName$p,lineNumber:13}}),clipPathComponent:React__default.createElement(VClipPath,{__source:{fileName:_jsxFileName$p,lineNumber:14}}),circleComponent:React__default.createElement(VCircle,{__source:{fileName:_jsxFileName$p,lineNumber:15}})});
+function _extends$o() { _extends$o = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$o.apply(this, arguments); }
 
-var _jsxFileName$q="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-area.js";var _default$5=function(_VictoryArea){inherits(_default,_VictoryArea);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryArea$1);_default$5.defaultProps=_extends_1({},VictoryArea$1.defaultProps,{dataComponent:React__default.createElement(NativeArea,{__source:{fileName:_jsxFileName$q,lineNumber:12}}),labelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$q,lineNumber:13}}),containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$q,lineNumber:14}}),groupComponent:React__default.createElement(_default$4,{__source:{fileName:_jsxFileName$q,lineNumber:15}}),width:reactNative.Dimensions.get("window").width});
+const NativeVictoryLabel = props => React__default.createElement(VictoryLabel, _extends$o({
+  textComponent: React__default.createElement(VText, null),
+  tspanComponent: React__default.createElement(VTSpan, null)
+}, props));
 
-function _toConsumableArray$g(arr) { return _arrayWithoutHoles$g(arr) || _iterableToArray$g(arr) || _nonIterableSpread$g(); }
+class VictoryPortal$1 extends VictoryPortal {
+  renderPortal(child) {
+    if (this.renderInPlace) {
+      return child || React__default.createElement(Svg.G, null);
+    }
 
-function _nonIterableSpread$g() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+    this.element = child;
+    return React__default.createElement(Svg.G, null);
+  }
 
-function _iterableToArray$g(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+}
 
-function _arrayWithoutHoles$g(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _defineProperty$p(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class extends VictoryTooltip {
+  renderTooltip(props) {
+    const evaluatedProps = this.getEvaluatedProps(props);
+    const {
+      flyoutComponent,
+      labelComponent,
+      groupComponent,
+      active,
+      renderInPortal
+    } = evaluatedProps;
 
-function _defineProperty$o(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+    if (!active) {
+      return renderInPortal ? React__default.createElement(VictoryPortal$1, null, React__default.createElement(Svg.G, null)) : React__default.createElement(Svg.G, null);
+    }
+
+    const calculatedValues = this.getCalculatedValues(evaluatedProps);
+    const children = [React__default.cloneElement(flyoutComponent, this.getFlyoutProps(evaluatedProps, calculatedValues)), React__default.cloneElement(labelComponent, this.getLabelProps(evaluatedProps, calculatedValues))];
+    const tooltip = React__default.cloneElement(groupComponent, {
+      role: "presentation"
+    }, children);
+    return renderInPortal ? React__default.createElement(VictoryPortal$1, null, tooltip) : tooltip;
+  }
+
+}
+
+_defineProperty$p(_class, "defaultProps", Object.assign({}, VictoryTooltip.defaultProps, {
+  labelComponent: React__default.createElement(NativeVictoryLabel, null),
+  flyoutComponent: React__default.createElement(NativeFlyout, null),
+  groupComponent: React__default.createElement(Svg.G, null)
+}));
+
+_defineProperty$p(_class, "defaultEvents", [{
+  target: "data",
+  eventHandlers: {
+    onPressIn: targetProps => {
+      return [{
+        target: "labels",
+        mutation: () => ({
+          active: true
+        })
+      }, {
+        target: "data",
+        mutation: () => targetProps.activateData ? {
+          active: true
+        } : {
+          active: undefined
+        }
+      }];
+    },
+    onPressOut: () => {
+      return [{
+        target: "labels",
+        mutation: () => ({
+          active: undefined
+        })
+      }, {
+        target: "data",
+        mutation: () => ({
+          active: undefined
+        })
+      }];
+    }
+  }
+}]);
+
+class Portal$1 extends Portal {
+  render() {
+    return React__default.createElement(Svg__default, this.props, this.getChildren());
+  }
+
+}
+
+function _extends$p() { _extends$p = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$p.apply(this, arguments); }
+
+function _defineProperty$q(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const yes = () => true;
+
+const no = () => false;
+
+class _class$1 extends VictoryContainer {
+  constructor(props) {
+    super(props);
+    this.panResponder = this.getResponder();
+  }
+
+  getResponder() {
+    let shouldBlockNativeResponder = no;
+
+    if (this.props && (this.props.allowDrag || this.props.allowDraw || this.props.allowResize || this.props.allowSelection || this.props.allowPan || this.props.allowZoom)) {
+      shouldBlockNativeResponder = yes;
+    }
+
+    return reactNative.PanResponder.create({
+      onStartShouldSetPanResponder: yes,
+      onStartShouldSetPanResponderCapture: no,
+      onMoveShouldSetPanResponder: yes,
+      onMoveShouldSetPanResponderCapture: yes,
+      onShouldBlockNativeResponder: shouldBlockNativeResponder,
+      onPanResponderTerminationRequest: yes,
+      // User has started a touch move
+      onPanResponderGrant: this.handleResponderGrant.bind(this),
+      // Active touch or touches have moved
+      onPanResponderMove: this.handleResponderMove.bind(this),
+      // The user has released all touches
+      onPanResponderRelease: this.handleResponderEnd.bind(this),
+      // Another component has become the responder
+      onPanResponderTerminate: this.handleResponderEnd.bind(this)
+    });
+  }
+
+  callOptionalEventCallback(eventName, evt) {
+    const callback = lodash.get(this.props.events, eventName);
+
+    if (callback) {
+      evt.persist(); // RN nativeEvent is reused. see https://fb.me/react-event-pooling
+
+      callback(evt, this.props, "__unknownEventKey__", eventName);
+    }
+  }
+
+  handleResponderGrant(evt) {
+    if (this.props.onTouchStart) {
+      this.props.onTouchStart(evt);
+    }
+
+    this.callOptionalEventCallback("onTouchStart", evt);
+  }
+
+  handleResponderMove(evt) {
+    const {
+      touches
+    } = evt.nativeEvent;
+
+    if (touches && touches.length === 2) {
+      this.callOptionalEventCallback("onTouchPinch", evt);
+    } else {
+      this.callOptionalEventCallback("onTouchMove", evt);
+    }
+  }
+
+  handleResponderEnd(evt) {
+    if (this.props.onTouchEnd) {
+      this.props.onTouchEnd(evt);
+    }
+
+    this.callOptionalEventCallback("onTouchEnd", evt);
+  } // Overrides method in victory-core
+
+
+  renderContainer(props, svgProps, style) {
+    const {
+      title,
+      desc,
+      className,
+      width,
+      height,
+      portalZIndex,
+      responsive,
+      disableContainerEvents
+    } = props;
+    const children = this.getChildren(props);
+    const dimensions = responsive ? {
+      width: "100%",
+      height: "100%"
+    } : {
+      width,
+      height
+    };
+    const baseStyle = NativeHelpers.getStyle(style, ["width", "height"]);
+    const divStyle = lodash.assign({}, baseStyle, {
+      position: "relative"
+    });
+    const portalDivStyle = {
+      zIndex: portalZIndex,
+      position: "absolute",
+      top: 0,
+      left: 0
+    };
+    const portalSvgStyle = lodash.assign({
+      overflow: "visible"
+    }, dimensions);
+    const portalProps = {
+      width,
+      height,
+      viewBox: svgProps.viewBox,
+      style: portalSvgStyle
+    };
+    const handlers = disableContainerEvents ? {} : this.panResponder.panHandlers;
+    return React__default.createElement(reactNative.View, _extends$p({}, handlers, {
+      style: divStyle,
+      pointerEvents: "box-none",
+      className: className,
+      ref: props.containerRef
+    }), React__default.createElement(Svg__default, _extends$p({}, svgProps, {
+      style: dimensions
+    }), title ? React__default.createElement("title", {
+      id: "title"
+    }, title) : null, desc ? React__default.createElement("desc", {
+      id: "desc"
+    }, desc) : null, children), React__default.createElement(reactNative.View, {
+      style: portalDivStyle,
+      pointerEvents: "box-none"
+    }, React__default.createElement(Portal$1, _extends$p({}, portalProps, {
+      ref: this.savePortalRef
+    }))));
+  }
+
+}
+
+_defineProperty$q(_class$1, "propTypes", lodash.assign({}, VictoryContainer.propTypes, {
+  disableContainerEvents: propTypes.bool,
+  onTouchEnd: propTypes.func,
+  onTouchStart: propTypes.func
+}));
+
+function _defineProperty$r(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$2 extends VictoryClipContainer {
+  // There seems to be a caching issue with clip paths.
+  // This is required to make clip paths update when animating
+  componentDidUpdate() {
+    this.clipId = lodash.uniqueId("victory-clip-");
+  }
+
+}
+
+_defineProperty$r(_class$2, "defaultProps", Object.assign({}, VictoryClipContainer.defaultProps, {
+  groupComponent: React__default.createElement(Svg.G, null),
+  rectComponent: React__default.createElement(VRect, null),
+  clipPathComponent: React__default.createElement(VClipPath, null),
+  circleComponent: React__default.createElement(VCircle, null)
+}));
+
+function _defineProperty$s(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$3 extends VictoryArea$1 {}
+
+_defineProperty$s(_class$3, "defaultProps", Object.assign({}, VictoryArea$1.defaultProps, {
+  dataComponent: React__default.createElement(NativeArea, null),
+  labelComponent: React__default.createElement(NativeVictoryLabel, null),
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(_class$2, null),
+  width: reactNative.Dimensions.get("window").width
+}));
+
+function _toConsumableArray$f(arr) { return _arrayWithoutHoles$f(arr) || _iterableToArray$f(arr) || _nonIterableSpread$f(); }
+
+function _nonIterableSpread$f() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray$f(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles$f(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _defineProperty$t(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var orientationSign = {
   top: -1,
   left: -1,
@@ -20550,7 +22064,7 @@ var getOffset$1 = function (props, calculatedValues) {
   var polar = props.polar,
       horizontal = props.horizontal;
   var sharedProps = {
-    scale: _defineProperty$o({}, axis, scale),
+    scale: _defineProperty$t({}, axis, scale),
     polar: polar,
     horizontal: horizontal,
     ticks: ticks,
@@ -20570,7 +22084,7 @@ var getOffset$1 = function (props, calculatedValues) {
     }));
     return tickStyle.size || 0;
   });
-  var totalPadding = fontSize + 2 * Math.max.apply(Math, _toConsumableArray$g(tickSizes)) + labelPadding;
+  var totalPadding = fontSize + 2 * Math.max.apply(Math, _toConsumableArray$f(tickSizes)) + labelPadding;
   var minimumPadding = 1.2 * fontSize; // eslint-disable-line no-magic-numbers
 
   var x = isVertical ? totalPadding : minimumPadding;
@@ -20734,7 +22248,7 @@ var getBaseProps$7 = function (props, fallbackProps) {
       gridEdge = _getLayoutProps.gridEdge;
 
   var sharedProps = {
-    scale: _defineProperty$o({}, axis, scale),
+    scale: _defineProperty$t({}, axis, scale),
     polar: polar,
     horizontal: horizontal,
     ticks: ticks,
@@ -20757,8 +22271,8 @@ var getBaseProps$7 = function (props, fallbackProps) {
   };
   var gridProps = {
     dimension: otherAxis,
-    range: _defineProperty$o({}, otherAxis, Helpers.getRange(props, otherAxis)),
-    scale: props.scale && props.scale[otherAxis] ? _defineProperty$o({}, otherAxis, props.scale[otherAxis]) : undefined
+    range: _defineProperty$t({}, otherAxis, Helpers.getRange(props, otherAxis)),
+    scale: props.scale && props.scale[otherAxis] ? _defineProperty$t({}, otherAxis, props.scale[otherAxis]) : undefined
   };
   return ticks.reduce(function (childProps, tickValue, index) {
     var tick = stringTicks ? stringTicks[index] : tickValue;
@@ -20793,29 +22307,29 @@ var getBaseProps$7 = function (props, fallbackProps) {
   }, initialChildProps);
 };
 
-function _objectSpread$m(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$p(target, key, source[key]); }); } return target; }
+function _objectSpread$m(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$u(target, key, source[key]); }); } return target; }
 
-function _defineProperty$p(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$u(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray$h(arr) { return _arrayWithoutHoles$h(arr) || _iterableToArray$h(arr) || _nonIterableSpread$h(); }
+function _toConsumableArray$g(arr) { return _arrayWithoutHoles$g(arr) || _iterableToArray$g(arr) || _nonIterableSpread$g(); }
 
-function _nonIterableSpread$h() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$g() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$h(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$g(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$h(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$g(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _classCallCheck$i(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$h(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$i(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$h(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$i(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$i(Constructor.prototype, protoProps); if (staticProps) _defineProperties$i(Constructor, staticProps); return Constructor; }
+function _createClass$h(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$h(Constructor.prototype, protoProps); if (staticProps) _defineProperties$h(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$h(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$h(self); }
+function _possibleConstructorReturn$g(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$g(self); }
 
-function _assertThisInitialized$h(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$g(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$h(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$g(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var fallbackProps$8 = {
   width: 450,
   height: 300,
@@ -20843,15 +22357,15 @@ var options$3 = {
 var VictoryAxis =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$h(VictoryAxis, _React$Component);
+  _inherits$g(VictoryAxis, _React$Component);
 
   function VictoryAxis() {
-    _classCallCheck$i(this, VictoryAxis);
+    _classCallCheck$h(this, VictoryAxis);
 
-    return _possibleConstructorReturn$h(this, (VictoryAxis.__proto__ || Object.getPrototypeOf(VictoryAxis)).apply(this, arguments));
+    return _possibleConstructorReturn$g(this, (VictoryAxis.__proto__ || Object.getPrototypeOf(VictoryAxis)).apply(this, arguments));
   }
 
-  _createClass$i(VictoryAxis, [{
+  _createClass$h(VictoryAxis, [{
     key: "renderLine",
     value: function renderLine(props) {
       var axisComponent = props.axisComponent;
@@ -20988,7 +22502,7 @@ function (_React$Component) {
 
       var gridAndTicks = this.renderGridAndTicks(props);
       var modifiedGridAndTicks = props.fixLabelOverlap ? this.fixLabelOverlap(gridAndTicks, props) : gridAndTicks;
-      var children = [this.renderLine(props), this.renderLabel(props)].concat(_toConsumableArray$h(modifiedGridAndTicks));
+      var children = [this.renderLine(props), this.renderLabel(props)].concat(_toConsumableArray$g(modifiedGridAndTicks));
       return props.standalone ? this.renderContainer(props.containerComponent, children) : React__default.cloneElement(props.groupComponent, {}, children);
     }
   }]);
@@ -21135,7 +22649,26 @@ Object.defineProperty(VictoryAxis, "expectedComponents", {
 });
 var VictoryAxis$1 = addEvents(VictoryAxis, options$3);
 
-var _jsxFileName$r="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-axis.js";var _default$6=function(_VictoryAxis){inherits(_default,_VictoryAxis);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryAxis$1);_default$6.defaultProps=_extends_1({},VictoryAxis$1.defaultProps,{axisComponent:React__default.createElement(NativeLineSegment,{__source:{fileName:_jsxFileName$r,lineNumber:11}}),axisLabelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$r,lineNumber:12}}),tickLabelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$r,lineNumber:13}}),tickComponent:React__default.createElement(NativeLineSegment,{__source:{fileName:_jsxFileName$r,lineNumber:14}}),gridComponent:React__default.createElement(NativeLineSegment,{__source:{fileName:_jsxFileName$r,lineNumber:15}}),containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$r,lineNumber:16}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$r,lineNumber:17}}),width:reactNative.Dimensions.get("window").width});
+
+
+var index$k = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryAxis: VictoryAxis$1
+});
+
+function _defineProperty$v(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$4 extends VictoryAxis$1 {}
+
+_defineProperty$v(_class$4, "defaultProps", Object.assign({}, VictoryAxis$1.defaultProps, {
+  axisComponent: React__default.createElement(NativeLineSegment, null),
+  axisLabelComponent: React__default.createElement(NativeVictoryLabel, null),
+  tickLabelComponent: React__default.createElement(NativeVictoryLabel, null),
+  tickComponent: React__default.createElement(NativeLineSegment, null),
+  gridComponent: React__default.createElement(NativeLineSegment, null),
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  width: reactNative.Dimensions.get("window").width
+}));
 
 var getPosition$3 = function (r, angle, axis) {
   return axis === "x" ? r * Math.cos(angle) : -r * Math.sin(angle);
@@ -21537,29 +23070,29 @@ var getBaseProps$8 = function (props, fallbackProps) {
   }, initialChildProps);
 };
 
-function _objectSpread$n(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$q(target, key, source[key]); }); } return target; }
+function _objectSpread$n(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$w(target, key, source[key]); }); } return target; }
 
-function _defineProperty$q(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$w(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray$i(arr) { return _arrayWithoutHoles$i(arr) || _iterableToArray$i(arr) || _nonIterableSpread$i(); }
+function _toConsumableArray$h(arr) { return _arrayWithoutHoles$h(arr) || _iterableToArray$h(arr) || _nonIterableSpread$h(); }
 
-function _nonIterableSpread$i() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$h() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$i(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$h(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$i(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$h(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _classCallCheck$j(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$i(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$j(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$i(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$j(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$j(Constructor.prototype, protoProps); if (staticProps) _defineProperties$j(Constructor, staticProps); return Constructor; }
+function _createClass$i(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$i(Constructor.prototype, protoProps); if (staticProps) _defineProperties$i(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$i(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$i(self); }
+function _possibleConstructorReturn$h(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$h(self); }
 
-function _assertThisInitialized$i(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$h(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$i(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$h(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var fallbackProps$9 = {
   width: 450,
   height: 300,
@@ -21587,15 +23120,15 @@ var options$4 = {
 var VictoryPolarAxis =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$i(VictoryPolarAxis, _React$Component);
+  _inherits$h(VictoryPolarAxis, _React$Component);
 
   function VictoryPolarAxis() {
-    _classCallCheck$j(this, VictoryPolarAxis);
+    _classCallCheck$i(this, VictoryPolarAxis);
 
-    return _possibleConstructorReturn$i(this, (VictoryPolarAxis.__proto__ || Object.getPrototypeOf(VictoryPolarAxis)).apply(this, arguments));
+    return _possibleConstructorReturn$h(this, (VictoryPolarAxis.__proto__ || Object.getPrototypeOf(VictoryPolarAxis)).apply(this, arguments));
   }
 
-  _createClass$j(VictoryPolarAxis, [{
+  _createClass$i(VictoryPolarAxis, [{
     key: "renderAxisLine",
     value: function renderAxisLine(props) {
       var dependentAxis = props.dependentAxis;
@@ -21662,7 +23195,7 @@ function (_React$Component) {
       });
       var axis = this.renderAxisLine(props);
       var axisLabel = this.renderLabel(props);
-      var children = [axis, axisLabel].concat(_toConsumableArray$i(tickComponents), _toConsumableArray$i(gridComponents), _toConsumableArray$i(tickLabelComponents));
+      var children = [axis, axisLabel].concat(_toConsumableArray$h(tickComponents), _toConsumableArray$h(gridComponents), _toConsumableArray$h(tickLabelComponents));
       return this.renderGroup(props, children);
     } // Overridden in victory-native
 
@@ -21849,11 +23382,45 @@ Object.defineProperty(VictoryPolarAxis, "expectedComponents", {
 });
 var VictoryPolarAxis$1 = addEvents(VictoryPolarAxis, options$4);
 
-var _jsxFileName$s="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-polar-axis.js";var _default$7=function(_VictoryPolarAxis){inherits(_default,_VictoryPolarAxis);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryPolarAxis$1);_default$7.defaultProps=_extends_1({},VictoryPolarAxis$1.defaultProps,{axisComponent:React__default.createElement(NativeLineSegment,{__source:{fileName:_jsxFileName$s,lineNumber:12}}),axisLabelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$s,lineNumber:13}}),circularAxisComponent:React__default.createElement(NativeArc,{type:"axis",__source:{fileName:_jsxFileName$s,lineNumber:14}}),circularGridComponent:React__default.createElement(NativeArc,{type:"grid",__source:{fileName:_jsxFileName$s,lineNumber:15}}),tickLabelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$s,lineNumber:16}}),tickComponent:React__default.createElement(NativeLineSegment,{__source:{fileName:_jsxFileName$s,lineNumber:17}}),gridComponent:React__default.createElement(NativeLineSegment,{__source:{fileName:_jsxFileName$s,lineNumber:18}}),containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$s,lineNumber:19}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$s,lineNumber:20}}),width:reactNative.Dimensions.get("window").width});
 
-var _jsxFileName$t="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-bar.js";var _default$8=function(_VictoryBar){inherits(_default,_VictoryBar);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryBar$1);_default$8.defaultProps=_extends_1({},VictoryBar$1.defaultProps,{dataComponent:React__default.createElement(NativeBar,{__source:{fileName:_jsxFileName$t,lineNumber:11}}),labelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$t,lineNumber:12}}),containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$t,lineNumber:13}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$t,lineNumber:14}}),width:reactNative.Dimensions.get("window").width});
 
-function _defineProperty$r(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var index$l = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryPolarAxis: VictoryPolarAxis$1
+});
+
+function _defineProperty$x(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$5 extends VictoryPolarAxis$1 {}
+
+_defineProperty$x(_class$5, "defaultProps", Object.assign({}, VictoryPolarAxis$1.defaultProps, {
+  axisComponent: React__default.createElement(NativeLineSegment, null),
+  axisLabelComponent: React__default.createElement(NativeVictoryLabel, null),
+  circularAxisComponent: React__default.createElement(NativeArc, {
+    type: "axis"
+  }),
+  circularGridComponent: React__default.createElement(NativeArc, {
+    type: "grid"
+  }),
+  tickLabelComponent: React__default.createElement(NativeVictoryLabel, null),
+  tickComponent: React__default.createElement(NativeLineSegment, null),
+  gridComponent: React__default.createElement(NativeLineSegment, null),
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  width: reactNative.Dimensions.get("window").width
+}));
+
+function _defineProperty$y(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$6 extends VictoryBar$1 {}
+
+_defineProperty$y(_class$6, "defaultProps", Object.assign({}, VictoryBar$1.defaultProps, {
+  dataComponent: React__default.createElement(NativeBar, null),
+  labelComponent: React__default.createElement(NativeVictoryLabel, null),
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  width: reactNative.Dimensions.get("window").width
+}));
+
+function _defineProperty$z(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var TYPES$1 = ["max", "min", "median", "q1", "q3"];
 
 var checkProcessedData = function (data) {
@@ -21926,7 +23493,7 @@ var processData = function (data) {
       the depedentVarArray and process each datum separately */
       return data.map(function (datum) {
         var dataArray = datum[sortKey].map(function (d) {
-          return _assign({}, datum, _defineProperty$r({}, sortKey, d));
+          return _assign({}, datum, _defineProperty$z({}, sortKey, d));
         });
 
         var sortedData = _orderBy(dataArray, sortKey);
@@ -22304,29 +23871,29 @@ var getBaseProps$9 = function (props, fallbackProps) {
   }, initialChildProps);
 };
 
-function _objectSpread$o(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$s(target, key, source[key]); }); } return target; }
+function _objectSpread$o(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$A(target, key, source[key]); }); } return target; }
 
-function _defineProperty$s(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$A(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray$j(arr) { return _arrayWithoutHoles$j(arr) || _iterableToArray$j(arr) || _nonIterableSpread$j(); }
+function _toConsumableArray$i(arr) { return _arrayWithoutHoles$i(arr) || _iterableToArray$i(arr) || _nonIterableSpread$i(); }
 
-function _nonIterableSpread$j() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$i() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$j(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$i(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$j(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$i(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _classCallCheck$k(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$j(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$k(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$j(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$k(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$k(Constructor.prototype, protoProps); if (staticProps) _defineProperties$k(Constructor, staticProps); return Constructor; }
+function _createClass$j(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$j(Constructor.prototype, protoProps); if (staticProps) _defineProperties$j(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$j(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$j(self); }
+function _possibleConstructorReturn$i(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$i(self); }
 
-function _assertThisInitialized$j(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$i(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$j(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$i(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var fallbackProps$a = {
   width: 450,
   height: 300,
@@ -22382,15 +23949,15 @@ var options$5 = {
 var VictoryBoxPlot =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$j(VictoryBoxPlot, _React$Component);
+  _inherits$i(VictoryBoxPlot, _React$Component);
 
   function VictoryBoxPlot() {
-    _classCallCheck$k(this, VictoryBoxPlot);
+    _classCallCheck$j(this, VictoryBoxPlot);
 
-    return _possibleConstructorReturn$j(this, (VictoryBoxPlot.__proto__ || Object.getPrototypeOf(VictoryBoxPlot)).apply(this, arguments));
+    return _possibleConstructorReturn$i(this, (VictoryBoxPlot.__proto__ || Object.getPrototypeOf(VictoryBoxPlot)).apply(this, arguments));
   }
 
-  _createClass$k(VictoryBoxPlot, [{
+  _createClass$j(VictoryBoxPlot, [{
     key: "renderBoxPlot",
     value: function renderBoxPlot(props) {
       var _this = this;
@@ -22428,7 +23995,7 @@ function (_React$Component) {
         return components.filter(Boolean);
       }));
 
-      var children = _toConsumableArray$j(dataComponents).concat(_toConsumableArray$j(labelComponents));
+      var children = _toConsumableArray$i(dataComponents).concat(_toConsumableArray$i(labelComponents));
 
       return this.renderContainer(props.groupComponent, children);
     } // Overridden in native versions
@@ -22604,15 +24171,39 @@ Object.defineProperty(VictoryBoxPlot, "expectedComponents", {
 });
 var VictoryBoxPlot$1 = addEvents(VictoryBoxPlot, options$5);
 
-var _jsxFileName$u="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-boxplot.js";var _default$9=function(_VictoryBoxPlot){inherits(_default,_VictoryBoxPlot);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryBoxPlot$1);_default$9.defaultProps=_extends_1({},VictoryBoxPlot$1.defaultProps,{maxComponent:React__default.createElement(NativeWhisker,{__source:{fileName:_jsxFileName$u,lineNumber:13}}),maxLabelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$u,lineNumber:14}}),medianComponent:React__default.createElement(NativeLineSegment,{__source:{fileName:_jsxFileName$u,lineNumber:15}}),medianLabelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$u,lineNumber:16}}),minComponent:React__default.createElement(NativeWhisker,{__source:{fileName:_jsxFileName$u,lineNumber:17}}),minLabelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$u,lineNumber:18}}),q1Component:React__default.createElement(NativeBorder,{__source:{fileName:_jsxFileName$u,lineNumber:19}}),q1LabelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$u,lineNumber:20}}),q3Component:React__default.createElement(NativeBorder,{__source:{fileName:_jsxFileName$u,lineNumber:21}}),q3LabelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$u,lineNumber:22}}),containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$u,lineNumber:23}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$u,lineNumber:24}}),width:reactNative.Dimensions.get("window").width});
 
-function _toConsumableArray$k(arr) { return _arrayWithoutHoles$k(arr) || _iterableToArray$k(arr) || _nonIterableSpread$k(); }
 
-function _nonIterableSpread$k() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+var index$m = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryBoxPlot: VictoryBoxPlot$1
+});
 
-function _iterableToArray$k(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _defineProperty$B(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$7 extends VictoryBoxPlot$1 {}
 
-function _arrayWithoutHoles$k(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+_defineProperty$B(_class$7, "defaultProps", Object.assign({}, VictoryBoxPlot$1.defaultProps, {
+  maxComponent: React__default.createElement(NativeWhisker, null),
+  maxLabelComponent: React__default.createElement(NativeVictoryLabel, null),
+  medianComponent: React__default.createElement(NativeLineSegment, null),
+  medianLabelComponent: React__default.createElement(NativeVictoryLabel, null),
+  minComponent: React__default.createElement(NativeWhisker, null),
+  minLabelComponent: React__default.createElement(NativeVictoryLabel, null),
+  q1Component: React__default.createElement(NativeBorder, null),
+  q1LabelComponent: React__default.createElement(NativeVictoryLabel, null),
+  q3Component: React__default.createElement(NativeBorder, null),
+  q3LabelComponent: React__default.createElement(NativeVictoryLabel, null),
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  width: reactNative.Dimensions.get("window").width
+}));
+
+function _toConsumableArray$j(arr) { return _arrayWithoutHoles$j(arr) || _iterableToArray$j(arr) || _nonIterableSpread$j(); }
+
+function _nonIterableSpread$j() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray$j(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles$j(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 var fallbackProps$b = {
   width: 450,
   height: 300,
@@ -22678,8 +24269,8 @@ function pixelsToValue(props, axis, calculatedProps) {
   var currentAxis = Helpers.getCurrentAxis(axis, props.horizontal);
   var domain = calculatedProps.domain[axis];
   var range = calculatedProps.range[currentAxis];
-  var domainExtent = Math.max.apply(Math, _toConsumableArray$k(domain)) - Math.min.apply(Math, _toConsumableArray$k(domain));
-  var rangeExtent = Math.max.apply(Math, _toConsumableArray$k(range)) - Math.min.apply(Math, _toConsumableArray$k(range));
+  var domainExtent = Math.max.apply(Math, _toConsumableArray$j(domain)) - Math.min.apply(Math, _toConsumableArray$j(domain));
+  var rangeExtent = Math.max.apply(Math, _toConsumableArray$j(range)) - Math.min.apply(Math, _toConsumableArray$j(range));
   return domainExtent / rangeExtent * props.offset;
 }
 
@@ -22698,7 +24289,7 @@ function getPolarX0(props, calculatedProps, index) {
 function getAngularWidth$1(props, calculatedProps) {
   var range = calculatedProps.range;
   var angularRange = Math.abs(range.x[1] - range.x[0]);
-  var r = Math.max.apply(Math, _toConsumableArray$k(range.y));
+  var r = Math.max.apply(Math, _toConsumableArray$j(range.y));
   return props.offset / (2 * Math.PI * r) * angularRange;
 }
 
@@ -22793,21 +24384,21 @@ function getChildren(props, childComponents, calculatedProps) {
   });
 }
 
-function _objectSpread$p(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$t(target, key, source[key]); }); } return target; }
+function _objectSpread$p(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$C(target, key, source[key]); }); } return target; }
 
-function _defineProperty$t(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$C(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck$l(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$k(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$l(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$k(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$l(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$l(Constructor.prototype, protoProps); if (staticProps) _defineProperties$l(Constructor, staticProps); return Constructor; }
+function _createClass$k(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$k(Constructor.prototype, protoProps); if (staticProps) _defineProperties$k(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$k(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$k(self); }
+function _possibleConstructorReturn$j(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$j(self); }
 
-function _inherits$k(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$j(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function _assertThisInitialized$k(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$j(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 var fallbackProps$c = {
   width: 450,
   height: 300,
@@ -22818,14 +24409,14 @@ var fallbackProps$c = {
 var VictoryGroup =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$k(VictoryGroup, _React$Component);
+  _inherits$j(VictoryGroup, _React$Component);
 
   function VictoryGroup(props) {
     var _this;
 
-    _classCallCheck$l(this, VictoryGroup);
+    _classCallCheck$k(this, VictoryGroup);
 
-    _this = _possibleConstructorReturn$k(this, (VictoryGroup.__proto__ || Object.getPrototypeOf(VictoryGroup)).call(this, props));
+    _this = _possibleConstructorReturn$j(this, (VictoryGroup.__proto__ || Object.getPrototypeOf(VictoryGroup)).call(this, props));
 
     if (props.animate) {
       _this.state = {
@@ -22833,13 +24424,13 @@ function (_React$Component) {
         nodesDoneLoad: false,
         animating: true
       };
-      _this.setAnimationState = Wrapper.setAnimationState.bind(_assertThisInitialized$k(_this));
+      _this.setAnimationState = Wrapper.setAnimationState.bind(_assertThisInitialized$j(_this));
     }
 
     return _this;
   }
 
-  _createClass$l(VictoryGroup, [{
+  _createClass$k(VictoryGroup, [{
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate(nextProps) {
       if (this.props.animate) {
@@ -22983,17 +24574,40 @@ Object.defineProperty(VictoryGroup, "getChildren", {
   value: getChildren
 });
 
-var _jsxFileName$v="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-group.js";var _default$a=function(_VictoryGroup){inherits(_default,_VictoryGroup);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryGroup);_default$a.defaultProps=_extends_1({},VictoryGroup.defaultProps,{containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$v,lineNumber:9}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$v,lineNumber:10}}),width:reactNative.Dimensions.get("window").width});
 
-var _jsxFileName$w="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-line.js";var _default$b=function(_VictoryLine){inherits(_default,_VictoryLine);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryLine$1);_default$b.defaultProps=_extends_1({},VictoryLine$1.defaultProps,{dataComponent:React__default.createElement(NativeCurve,{__source:{fileName:_jsxFileName$w,lineNumber:11}}),labelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$w,lineNumber:12}}),containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$w,lineNumber:13}}),groupComponent:React__default.createElement(_default$4,{__source:{fileName:_jsxFileName$w,lineNumber:14}}),width:reactNative.Dimensions.get("window").width});
 
-function _toConsumableArray$l(arr) { return _arrayWithoutHoles$l(arr) || _iterableToArray$l(arr) || _nonIterableSpread$l(); }
+var index$n = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryGroup: VictoryGroup
+});
 
-function _nonIterableSpread$l() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _defineProperty$D(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$8 extends VictoryGroup {}
 
-function _iterableToArray$l(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+_defineProperty$D(_class$8, "defaultProps", Object.assign({}, VictoryGroup.defaultProps, {
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  width: reactNative.Dimensions.get("window").width
+}));
 
-function _arrayWithoutHoles$l(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _defineProperty$E(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$9 extends VictoryLine$1 {}
+
+_defineProperty$E(_class$9, "defaultProps", Object.assign({}, VictoryLine$1.defaultProps, {
+  dataComponent: React__default.createElement(NativeCurve, null),
+  labelComponent: React__default.createElement(NativeVictoryLabel, null),
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(_class$2, null),
+  width: reactNative.Dimensions.get("window").width
+}));
+
+function _toConsumableArray$k(arr) { return _arrayWithoutHoles$k(arr) || _iterableToArray$k(arr) || _nonIterableSpread$k(); }
+
+function _nonIterableSpread$k() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray$k(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles$k(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 var getSymbol = function (data, props) {
   if (props.bubbleProperty) {
@@ -23011,11 +24625,11 @@ var getBubbleSize = function (datum, props) {
   var zData = data.map(function (point) {
     return point[z];
   });
-  var zMin = Math.min.apply(Math, _toConsumableArray$l(zData));
-  var zMax = Math.max.apply(Math, _toConsumableArray$l(zData));
+  var zMin = Math.min.apply(Math, _toConsumableArray$k(zData));
+  var zMax = Math.max.apply(Math, _toConsumableArray$k(zData));
 
   var getMaxRadius = function () {
-    var minPadding = Math.min.apply(Math, _toConsumableArray$l(_values(Helpers.getPadding(props))));
+    var minPadding = Math.min.apply(Math, _toConsumableArray$k(_values(Helpers.getPadding(props))));
     return Math.max(minPadding, 5); // eslint-disable-line no-magic-numbers
   };
 
@@ -23148,21 +24762,21 @@ var getBaseProps$a = function (props, fallbackProps) {
   }, initialChildProps);
 };
 
-function _objectSpread$q(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$u(target, key, source[key]); }); } return target; }
+function _objectSpread$q(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$F(target, key, source[key]); }); } return target; }
 
-function _defineProperty$u(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$F(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck$m(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$l(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$m(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$l(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$m(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$m(Constructor.prototype, protoProps); if (staticProps) _defineProperties$m(Constructor, staticProps); return Constructor; }
+function _createClass$l(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$l(Constructor.prototype, protoProps); if (staticProps) _defineProperties$l(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$l(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$l(self); }
+function _possibleConstructorReturn$k(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$k(self); }
 
-function _assertThisInitialized$l(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$k(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$l(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$k(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var fallbackProps$d = {
   width: 450,
   height: 300,
@@ -23174,15 +24788,15 @@ var fallbackProps$d = {
 var VictoryScatter =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$l(VictoryScatter, _React$Component);
+  _inherits$k(VictoryScatter, _React$Component);
 
   function VictoryScatter() {
-    _classCallCheck$m(this, VictoryScatter);
+    _classCallCheck$l(this, VictoryScatter);
 
-    return _possibleConstructorReturn$l(this, (VictoryScatter.__proto__ || Object.getPrototypeOf(VictoryScatter)).apply(this, arguments));
+    return _possibleConstructorReturn$k(this, (VictoryScatter.__proto__ || Object.getPrototypeOf(VictoryScatter)).apply(this, arguments));
   }
 
-  _createClass$m(VictoryScatter, [{
+  _createClass$l(VictoryScatter, [{
     key: "shouldAnimate",
     // Overridden in native versions
     value: function shouldAnimate() {
@@ -23286,7 +24900,23 @@ Object.defineProperty(VictoryScatter, "expectedComponents", {
 });
 var VictoryScatter$1 = addEvents(VictoryScatter);
 
-var _jsxFileName$x="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-scatter.js";var _default$c=function(_VictoryScatter){inherits(_default,_VictoryScatter);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryScatter$1);_default$c.defaultProps=_extends_1({},VictoryScatter$1.defaultProps,{dataComponent:React__default.createElement(NativePoint,{__source:{fileName:_jsxFileName$x,lineNumber:11}}),labelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$x,lineNumber:12}}),containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$x,lineNumber:13}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$x,lineNumber:14}}),width:reactNative.Dimensions.get("window").width});
+
+
+var index$o = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryScatter: VictoryScatter$1
+});
+
+function _defineProperty$G(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$a extends VictoryScatter$1 {}
+
+_defineProperty$G(_class$a, "defaultProps", Object.assign({}, VictoryScatter$1.defaultProps, {
+  dataComponent: React__default.createElement(NativePoint, null),
+  labelComponent: React__default.createElement(NativeVictoryLabel, null),
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  width: reactNative.Dimensions.get("window").width
+}));
 
 var fallbackProps$e = {
   width: 450,
@@ -23511,21 +25141,21 @@ function getChildren$1(props, childComponents, calculatedProps) {
   });
 }
 
-function _objectSpread$r(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$v(target, key, source[key]); }); } return target; }
+function _objectSpread$r(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$H(target, key, source[key]); }); } return target; }
 
-function _defineProperty$v(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$H(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck$n(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$m(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$n(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$m(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$n(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$n(Constructor.prototype, protoProps); if (staticProps) _defineProperties$n(Constructor, staticProps); return Constructor; }
+function _createClass$m(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$m(Constructor.prototype, protoProps); if (staticProps) _defineProperties$m(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$m(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$m(self); }
+function _possibleConstructorReturn$l(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$l(self); }
 
-function _inherits$m(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$l(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function _assertThisInitialized$m(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$l(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 var fallbackProps$f = {
   width: 450,
   height: 300,
@@ -23535,14 +25165,14 @@ var fallbackProps$f = {
 var VictoryStack =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$m(VictoryStack, _React$Component);
+  _inherits$l(VictoryStack, _React$Component);
 
   function VictoryStack(props) {
     var _this;
 
-    _classCallCheck$n(this, VictoryStack);
+    _classCallCheck$m(this, VictoryStack);
 
-    _this = _possibleConstructorReturn$m(this, (VictoryStack.__proto__ || Object.getPrototypeOf(VictoryStack)).call(this, props));
+    _this = _possibleConstructorReturn$l(this, (VictoryStack.__proto__ || Object.getPrototypeOf(VictoryStack)).call(this, props));
 
     if (props.animate) {
       _this.state = {
@@ -23550,13 +25180,13 @@ function (_React$Component) {
         nodesDoneLoad: false,
         animating: true
       };
-      _this.setAnimationState = Wrapper.setAnimationState.bind(_assertThisInitialized$m(_this));
+      _this.setAnimationState = Wrapper.setAnimationState.bind(_assertThisInitialized$l(_this));
     }
 
     return _this;
   }
 
-  _createClass$n(VictoryStack, [{
+  _createClass$m(VictoryStack, [{
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate(nextProps) {
       if (this.props.animate) {
@@ -23717,7 +25347,21 @@ Object.defineProperty(VictoryStack, "getChildren", {
   value: getChildren$1
 });
 
-var _jsxFileName$y="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-stack.js";var _default$d=function(_VictoryStack){inherits(_default,_VictoryStack);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryStack);_default$d.defaultProps=_extends_1({},VictoryStack.defaultProps,{containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$y,lineNumber:9}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$y,lineNumber:10}}),width:reactNative.Dimensions.get("window").width});
+
+
+var index$p = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryStack: VictoryStack
+});
+
+function _defineProperty$I(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$b extends VictoryStack {}
+
+_defineProperty$I(_class$b, "defaultProps", Object.assign({}, VictoryStack.defaultProps, {
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  width: reactNative.Dimensions.get("window").width
+}));
 
 var fallbackProps$g = {
   width: 450,
@@ -24006,21 +25650,21 @@ var createStringMap$1 = function (props, childComponents) {
   };
 };
 
-function _objectSpread$s(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$w(target, key, source[key]); }); } return target; }
+function _objectSpread$s(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$J(target, key, source[key]); }); } return target; }
 
-function _defineProperty$w(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$J(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck$o(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$n(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$o(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$n(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$o(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$o(Constructor.prototype, protoProps); if (staticProps) _defineProperties$o(Constructor, staticProps); return Constructor; }
+function _createClass$n(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$n(Constructor.prototype, protoProps); if (staticProps) _defineProperties$n(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$n(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$n(self); }
+function _possibleConstructorReturn$m(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$m(self); }
 
-function _inherits$n(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$m(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function _assertThisInitialized$n(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$m(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 var fallbackProps$h = {
   width: 450,
   height: 300,
@@ -24030,14 +25674,14 @@ var fallbackProps$h = {
 var VictoryChart =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$n(VictoryChart, _React$Component);
+  _inherits$m(VictoryChart, _React$Component);
 
   function VictoryChart(props) {
     var _this;
 
-    _classCallCheck$o(this, VictoryChart);
+    _classCallCheck$n(this, VictoryChart);
 
-    _this = _possibleConstructorReturn$n(this, (VictoryChart.__proto__ || Object.getPrototypeOf(VictoryChart)).call(this, props));
+    _this = _possibleConstructorReturn$m(this, (VictoryChart.__proto__ || Object.getPrototypeOf(VictoryChart)).call(this, props));
     _this.state = {};
 
     if (props.animate) {
@@ -24046,13 +25690,13 @@ function (_React$Component) {
         nodesDoneLoad: false,
         animating: true
       };
-      _this.setAnimationState = Wrapper.setAnimationState.bind(_assertThisInitialized$n(_this));
+      _this.setAnimationState = Wrapper.setAnimationState.bind(_assertThisInitialized$m(_this));
     }
 
     return _this;
   }
 
-  _createClass$o(VictoryChart, [{
+  _createClass$n(VictoryChart, [{
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate(nextProps) {
       if (this.props.animate) {
@@ -24204,27 +25848,90 @@ Object.defineProperty(VictoryChart, "expectedComponents", {
   value: ["groupComponent", "containerComponent"]
 });
 
-var _jsxFileName$z="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-chart.js";var _default$e=function(_VictoryChart){inherits(_default,_VictoryChart);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryChart);_default$e.defaultProps=_extends_1({},VictoryChart.defaultProps,{containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$z,lineNumber:11}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$z,lineNumber:12}}),defaultAxes:{independent:React__default.createElement(_default$6,{__source:{fileName:_jsxFileName$z,lineNumber:14}}),dependent:React__default.createElement(_default$6,{dependentAxis:true,__source:{fileName:_jsxFileName$z,lineNumber:15}})},defaultPolarAxes:{independent:React__default.createElement(_default$7,{__source:{fileName:_jsxFileName$z,lineNumber:18}}),dependent:React__default.createElement(_default$7,{dependentAxis:true,__source:{fileName:_jsxFileName$z,lineNumber:19}})},prependDefaultAxes:true,width:reactNative.Dimensions.get("window").width});
 
-var _jsxFileName$A="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-errorbar.js";var _default$f=function(_VictoryErrorBar){inherits(_default,_VictoryErrorBar);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryErrorBar$1);_default$f.defaultProps=_extends_1({},VictoryErrorBar$1.defaultProps,{dataComponent:React__default.createElement(NativeErrorBar,{__source:{fileName:_jsxFileName$A,lineNumber:10}}),containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$A,lineNumber:11}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$A,lineNumber:12}}),width:reactNative.Dimensions.get("window").width});
 
-var _jsxFileName$B="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-candlestick.js";var _default$g=function(_VictoryCandlestick){inherits(_default,_VictoryCandlestick);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryCandlestick$1);_default$g.defaultProps=_extends_1({},VictoryCandlestick$1.defaultProps,{dataComponent:React__default.createElement(NativeCandle,{__source:{fileName:_jsxFileName$B,lineNumber:11}}),labelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$B,lineNumber:12}}),containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$B,lineNumber:13}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$B,lineNumber:14}}),width:reactNative.Dimensions.get("window").width});
+var index$q = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryChart: VictoryChart
+});
 
-var _jsxFileName$C="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-voronoi.js";var _default$h=function(_VictoryVoronoi){inherits(_default,_VictoryVoronoi);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryVoronoi$1);_default$h.defaultProps=_extends_1({},VictoryVoronoi$1.defaultProps,{dataComponent:React__default.createElement(NativeVoronoi,{__source:{fileName:_jsxFileName$C,lineNumber:11}}),labelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$C,lineNumber:12}}),containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$C,lineNumber:13}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$C,lineNumber:14}}),width:reactNative.Dimensions.get("window").width});
+function _defineProperty$K(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$c extends VictoryChart {}
 
-var _jsxFileName$D="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-pie.js";var _default$i=function(_VictoryPie){inherits(_default,_VictoryPie);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryPie$1);_default$i.defaultProps=_extends_1({},VictoryPie$1.defaultProps,{dataComponent:React__default.createElement(NativeSlice,{__source:{fileName:_jsxFileName$D,lineNumber:11}}),labelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$D,lineNumber:12}}),containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$D,lineNumber:13}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$D,lineNumber:14}}),height:reactNative.Dimensions.get("window").width,width:reactNative.Dimensions.get("window").width});
+_defineProperty$K(_class$c, "defaultProps", Object.assign({}, VictoryChart.defaultProps, {
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  defaultAxes: {
+    independent: React__default.createElement(_class$4, null),
+    dependent: React__default.createElement(_class$4, {
+      dependentAxis: true
+    })
+  },
+  defaultPolarAxes: {
+    independent: React__default.createElement(_class$5, null),
+    dependent: React__default.createElement(_class$5, {
+      dependentAxis: true
+    })
+  },
+  prependDefaultAxes: true,
+  width: reactNative.Dimensions.get("window").width
+}));
 
-function _toConsumableArray$m(arr) { return _arrayWithoutHoles$m(arr) || _iterableToArray$m(arr) || _nonIterableSpread$m(); }
+function _defineProperty$L(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$d extends VictoryErrorBar$1 {}
 
-function _nonIterableSpread$m() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+_defineProperty$L(_class$d, "defaultProps", Object.assign({}, VictoryErrorBar$1.defaultProps, {
+  dataComponent: React__default.createElement(NativeErrorBar, null),
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  width: reactNative.Dimensions.get("window").width
+}));
 
-function _iterableToArray$m(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _defineProperty$M(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$e extends VictoryCandlestick$1 {}
 
-function _arrayWithoutHoles$m(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+_defineProperty$M(_class$e, "defaultProps", Object.assign({}, VictoryCandlestick$1.defaultProps, {
+  dataComponent: React__default.createElement(NativeCandle, null),
+  labelComponent: React__default.createElement(NativeVictoryLabel, null),
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  width: reactNative.Dimensions.get("window").width
+}));
 
-function _objectSpread$t(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$x(target, key, source[key]); }); } return target; }
+function _defineProperty$N(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$f extends VictoryVoronoi$1 {}
 
-function _defineProperty$x(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+_defineProperty$N(_class$f, "defaultProps", Object.assign({}, VictoryVoronoi$1.defaultProps, {
+  dataComponent: React__default.createElement(NativeVoronoi, null),
+  labelComponent: React__default.createElement(NativeVictoryLabel, null),
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  width: reactNative.Dimensions.get("window").width
+}));
+
+function _defineProperty$O(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$g extends VictoryPie$1 {}
+
+_defineProperty$O(_class$g, "defaultProps", Object.assign({}, VictoryPie$1.defaultProps, {
+  dataComponent: React__default.createElement(NativeSlice, null),
+  labelComponent: React__default.createElement(NativeVictoryLabel, null),
+  containerComponent: React__default.createElement(_class$1, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  height: reactNative.Dimensions.get("window").width,
+  width: reactNative.Dimensions.get("window").width
+}));
+
+function _toConsumableArray$l(arr) { return _arrayWithoutHoles$l(arr) || _iterableToArray$l(arr) || _nonIterableSpread$l(); }
+
+function _nonIterableSpread$l() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray$l(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles$l(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _objectSpread$t(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$P(target, key, source[key]); }); } return target; }
+
+function _defineProperty$P(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var getColorScale$2 = function (props) {
   var colorScale = props.colorScale;
@@ -24334,7 +26041,7 @@ var getColumnWidths = function (props, data) {
     var lengths = dataByColumn[curr].map(function (d) {
       return d.textSize.width + d.size + d.symbolSpacer + gutterWidth;
     });
-    memo[index] = Math.max.apply(Math, _toConsumableArray$m(lengths));
+    memo[index] = Math.max.apply(Math, _toConsumableArray$l(lengths));
     return memo;
   }, []);
 };
@@ -24350,7 +26057,7 @@ var getRowHeights = function (props, data) {
     var lengths = rows.map(function (d) {
       return d.textSize.height + d.symbolSpacer + gutterHeight;
     });
-    memo[index] = Math.max.apply(Math, _toConsumableArray$m(lengths));
+    memo[index] = Math.max.apply(Math, _toConsumableArray$l(lengths));
     return memo;
   }, []);
 };
@@ -24574,25 +26281,25 @@ var getBaseProps$b = function (props, fallbackProps) {
   }, initialProps);
 };
 
-function _toConsumableArray$n(arr) { return _arrayWithoutHoles$n(arr) || _iterableToArray$n(arr) || _nonIterableSpread$n(); }
+function _toConsumableArray$m(arr) { return _arrayWithoutHoles$m(arr) || _iterableToArray$m(arr) || _nonIterableSpread$m(); }
 
-function _nonIterableSpread$n() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$m() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$n(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$m(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$n(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$m(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _classCallCheck$p(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$o(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$p(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$o(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$p(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$p(Constructor.prototype, protoProps); if (staticProps) _defineProperties$p(Constructor, staticProps); return Constructor; }
+function _createClass$o(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$o(Constructor.prototype, protoProps); if (staticProps) _defineProperties$o(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$o(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$o(self); }
+function _possibleConstructorReturn$n(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$n(self); }
 
-function _assertThisInitialized$o(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$n(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$o(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$n(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var fallbackProps$i = {
   orientation: "vertical",
   titleOrientation: "top",
@@ -24610,15 +26317,15 @@ var defaultLegendData = [{
 var VictoryLegend =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits$o(VictoryLegend, _React$Component);
+  _inherits$n(VictoryLegend, _React$Component);
 
   function VictoryLegend() {
-    _classCallCheck$p(this, VictoryLegend);
+    _classCallCheck$o(this, VictoryLegend);
 
-    return _possibleConstructorReturn$o(this, (VictoryLegend.__proto__ || Object.getPrototypeOf(VictoryLegend)).apply(this, arguments));
+    return _possibleConstructorReturn$n(this, (VictoryLegend.__proto__ || Object.getPrototypeOf(VictoryLegend)).apply(this, arguments));
   }
 
-  _createClass$p(VictoryLegend, [{
+  _createClass$o(VictoryLegend, [{
     key: "renderChildren",
     value: function renderChildren(props) {
       var _this = this;
@@ -24654,10 +26361,10 @@ function (_React$Component) {
       if (title) {
         var titleProps = this.getComponentProps(props.title, "title", "all");
         var titleComponent = React__default.cloneElement(props.titleComponent, titleProps);
-        return [borderComponent].concat(_toConsumableArray$n(dataComponents), [titleComponent], _toConsumableArray$n(labelComponents));
+        return [borderComponent].concat(_toConsumableArray$m(dataComponents), [titleComponent], _toConsumableArray$m(labelComponents));
       }
 
-      return [borderComponent].concat(_toConsumableArray$n(dataComponents), _toConsumableArray$n(labelComponents));
+      return [borderComponent].concat(_toConsumableArray$m(dataComponents), _toConsumableArray$m(labelComponents));
     }
   }, {
     key: "render",
@@ -24800,84 +26507,35 @@ Object.defineProperty(VictoryLegend, "expectedComponents", {
 });
 var VictoryLegend$1 = addEvents(VictoryLegend);
 
-var _jsxFileName$E="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-legend.js";var _default$j=function(_VictoryLegend){inherits(_default,_VictoryLegend);function _default(){classCallCheck(this,_default);return possibleConstructorReturn(this,getPrototypeOf(_default).apply(this,arguments));}return _default;}(VictoryLegend$1);_default$j.defaultProps=_extends_1({},VictoryLegend$1.defaultProps,{borderComponent:React__default.createElement(NativeBorder,{__source:{fileName:_jsxFileName$E,lineNumber:12}}),containerComponent:React__default.createElement(_default$3,{__source:{fileName:_jsxFileName$E,lineNumber:13}}),dataComponent:React__default.createElement(NativePoint,{__source:{fileName:_jsxFileName$E,lineNumber:14}}),groupComponent:React__default.createElement(Svg.G,{__source:{fileName:_jsxFileName$E,lineNumber:15}}),labelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$E,lineNumber:16}}),titleComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$E,lineNumber:17}}),width:reactNative.Dimensions.get("window").width});
 
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
 
-var arrayWithHoles = _arrayWithHoles;
+var index$r = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryLegend: VictoryLegend$1
+});
 
-function _iterableToArrayLimit(arr, i) {
-  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
-    return;
-  }
+function _defineProperty$Q(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+class _class$h extends VictoryLegend$1 {}
 
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
+_defineProperty$Q(_class$h, "defaultProps", Object.assign({}, VictoryLegend$1.defaultProps, {
+  borderComponent: React__default.createElement(NativeBorder, null),
+  containerComponent: React__default.createElement(_class$1, null),
+  dataComponent: React__default.createElement(NativePoint, null),
+  groupComponent: React__default.createElement(Svg.G, null),
+  labelComponent: React__default.createElement(NativeVictoryLabel, null),
+  titleComponent: React__default.createElement(NativeVictoryLabel, null),
+  width: reactNative.Dimensions.get("window").width
+}));
 
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
+function _defineProperty$R(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-  return _arr;
-}
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-var iterableToArrayLimit = _iterableToArrayLimit;
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
-}
-
-var nonIterableRest = _nonIterableRest;
-
-function _slicedToArray(arr, i) {
-  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || nonIterableRest();
-}
-
-var slicedToArray = _slicedToArray;
-
-function _defineProperty$y(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-var defineProperty = _defineProperty$y;
-
-function _defineProperty$z(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray$1(arr, i) { return _arrayWithHoles$1(arr) || _iterableToArrayLimit$1(arr, i) || _nonIterableRest$1(); }
-
-function _nonIterableRest$1() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit$1(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles$1(arr) { if (Array.isArray(arr)) return arr; }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var RawZoomHelpers = {
   checkDomainEquality: function (a, b) {
     var checkDimension = function (dim) {
@@ -24906,7 +26564,7 @@ var RawZoomHelpers = {
    */
   // eslint-disable-next-line max-params
   scale: function (currentDomain, evt, props, axis) {
-    var _currentDomain = _slicedToArray$1(currentDomain, 2),
+    var _currentDomain = _slicedToArray(currentDomain, 2),
         from = _currentDomain[0],
         to = _currentDomain[1];
 
@@ -24918,7 +26576,7 @@ var RawZoomHelpers = {
       return currentDomain;
     }
 
-    var _getDomain$axis = _slicedToArray$1(this.getDomain(props)[axis], 2),
+    var _getDomain$axis = _slicedToArray(this.getDomain(props)[axis], 2),
         fromBound = _getDomain$axis[0],
         toBound = _getDomain$axis[1];
 
@@ -24927,7 +26585,7 @@ var RawZoomHelpers = {
     var minDomain = this.getMinimumDomain(point, props, axis);
 
     var _getScaledDomain = this.getScaledDomain(currentDomain, factor, percent),
-        _getScaledDomain2 = _slicedToArray$1(_getScaledDomain, 2),
+        _getScaledDomain2 = _slicedToArray(_getScaledDomain, 2),
         newMin = _getScaledDomain2[0],
         newMax = _getScaledDomain2[1];
 
@@ -24936,7 +26594,7 @@ var RawZoomHelpers = {
     return Collection.containsDates([fromBound, toBound]) ? [new Date(domain[0]), new Date(domain[1])] : domain;
   },
   getScaledDomain: function (currentDomain, factor, percent) {
-    var _currentDomain2 = _slicedToArray$1(currentDomain, 2),
+    var _currentDomain2 = _slicedToArray(currentDomain, 2),
         from = _currentDomain2[0],
         to = _currentDomain2[1];
 
@@ -24950,7 +26608,7 @@ var RawZoomHelpers = {
     var minimumZoom = props.minimumZoom;
     var originalDomain = this.getDomain(props)[axis];
 
-    var _originalDomain = _slicedToArray$1(originalDomain, 2),
+    var _originalDomain = _slicedToArray(originalDomain, 2),
         from = _originalDomain[0],
         to = _originalDomain[1];
 
@@ -24973,7 +26631,7 @@ var RawZoomHelpers = {
   getScalePercent: function (evt, props, axis) {
     var originalDomain = this.getDomain(props);
 
-    var _originalDomain$axis = _slicedToArray$1(originalDomain[axis], 2),
+    var _originalDomain$axis = _slicedToArray(originalDomain[axis], 2),
         from = _originalDomain$axis[0],
         to = _originalDomain$axis[1];
 
@@ -25003,14 +26661,14 @@ var RawZoomHelpers = {
     var _currentDomain$map = currentDomain.map(function (val) {
       return +val;
     }),
-        _currentDomain$map2 = _slicedToArray$1(_currentDomain$map, 2),
+        _currentDomain$map2 = _slicedToArray(_currentDomain$map, 2),
         fromCurrent = _currentDomain$map2[0],
         toCurrent = _currentDomain$map2[1];
 
     var _originalDomain$map = originalDomain.map(function (val) {
       return +val;
     }),
-        _originalDomain$map2 = _slicedToArray$1(_originalDomain$map, 2),
+        _originalDomain$map2 = _slicedToArray(_originalDomain$map, 2),
         fromOriginal = _originalDomain$map2[0],
         toOriginal = _originalDomain$map2[1];
 
@@ -25041,7 +26699,7 @@ var RawZoomHelpers = {
   getDomainScale: function (domain, scale, axis, horizontal) {
     var axisDomain = Array.isArray(domain) ? domain : domain[axis];
 
-    var _axisDomain = _slicedToArray$1(axisDomain, 2),
+    var _axisDomain = _slicedToArray(axisDomain, 2),
         from = _axisDomain[0],
         to = _axisDomain[1];
 
@@ -25083,7 +26741,7 @@ var RawZoomHelpers = {
     var childrenDomain = {};
 
     if (childComponents.length) {
-      childrenDomain = zoomDimension ? _defineProperty$z({}, zoomDimension, Wrapper.getDomainFromChildren(props, zoomDimension, childComponents)) : {
+      childrenDomain = zoomDimension ? _defineProperty$R({}, zoomDimension, Wrapper.getDomainFromChildren(props, zoomDimension, childComponents)) : {
         x: Wrapper.getDomainFromChildren(props, "x", childComponents),
         y: Wrapper.getDomainFromChildren(props, "y", childComponents)
       };
@@ -25262,29 +26920,29 @@ var ZoomHelpers = {
   })
 };
 
-function _objectSpread$u(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$A(target, key, source[key]); }); } return target; }
+function _objectSpread$u(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$S(target, key, source[key]); }); } return target; }
 
-function _defineProperty$A(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$S(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray$o(arr) { return _arrayWithoutHoles$o(arr) || _iterableToArray$o(arr) || _nonIterableSpread$o(); }
+function _toConsumableArray$n(arr) { return _arrayWithoutHoles$n(arr) || _iterableToArray$n(arr) || _nonIterableSpread$n(); }
 
-function _nonIterableSpread$o() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$n() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$o(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$n(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$o(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$n(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _classCallCheck$q(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$p(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$q(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$p(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$q(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$q(Constructor.prototype, protoProps); if (staticProps) _defineProperties$q(Constructor, staticProps); return Constructor; }
+function _createClass$p(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$p(Constructor.prototype, protoProps); if (staticProps) _defineProperties$p(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$p(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$p(self); }
+function _possibleConstructorReturn$o(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$o(self); }
 
-function _assertThisInitialized$p(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$o(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$p(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$o(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var DEFAULT_DOWNSAMPLE = 150;
 var zoomContainerMixin = function (base) {
   var _class, _temp;
@@ -25292,15 +26950,15 @@ var zoomContainerMixin = function (base) {
   return _temp = _class =
   /*#__PURE__*/
   function (_base) {
-    _inherits$p(VictoryZoomContainer, _base);
+    _inherits$o(VictoryZoomContainer, _base);
 
     function VictoryZoomContainer() {
-      _classCallCheck$q(this, VictoryZoomContainer);
+      _classCallCheck$p(this, VictoryZoomContainer);
 
-      return _possibleConstructorReturn$p(this, (VictoryZoomContainer.__proto__ || Object.getPrototypeOf(VictoryZoomContainer)).apply(this, arguments));
+      return _possibleConstructorReturn$o(this, (VictoryZoomContainer.__proto__ || Object.getPrototypeOf(VictoryZoomContainer)).apply(this, arguments));
     }
 
-    _createClass$q(VictoryZoomContainer, [{
+    _createClass$p(VictoryZoomContainer, [{
       key: "clipDataComponents",
       value: function clipDataComponents(children, props) {
         var scale = props.scale,
@@ -25312,12 +26970,12 @@ var zoomContainerMixin = function (base) {
         var rangeY = horizontal ? scale.x.range() : scale.y.range();
         var plottableWidth = Math.abs(rangeX[0] - rangeX[1]);
         var plottableHeight = Math.abs(rangeY[0] - rangeY[1]);
-        var radius = Math.max.apply(Math, _toConsumableArray$o(rangeY));
+        var radius = Math.max.apply(Math, _toConsumableArray$n(rangeY));
         var groupComponent = React__default.cloneElement(clipContainerComponent, _objectSpread$u({
           clipWidth: plottableWidth,
           clipHeight: plottableHeight,
-          translateX: Math.min.apply(Math, _toConsumableArray$o(rangeX)),
-          translateY: Math.min.apply(Math, _toConsumableArray$o(rangeY)),
+          translateX: Math.min.apply(Math, _toConsumableArray$n(rangeX)),
+          translateY: Math.min.apply(Math, _toConsumableArray$n(rangeY)),
           polar: polar,
           origin: polar ? origin : undefined,
           radius: polar ? radius : undefined
@@ -25422,7 +27080,7 @@ var zoomContainerMixin = function (base) {
 
           if (newDomain && props.zoomDimension) {
             // if zooming is restricted to a dimension, don't squash changes to zoomDomain in other dim
-            newDomain = _objectSpread$u({}, zoomDomain, _defineProperty$A({}, props.zoomDimension, newDomain[props.zoomDimension]));
+            newDomain = _objectSpread$u({}, zoomDomain, _defineProperty$S({}, props.zoomDimension, newDomain[props.zoomDimension]));
           } // don't downsample stacked data
 
 
@@ -25533,9 +27191,179 @@ var zoomContainerMixin = function (base) {
 };
 var VictoryZoomContainer = zoomContainerMixin(VictoryContainer);
 
-function ownKeys(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$v(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var hypotenuse=function hypotenuse(x,y){return Math.sqrt(Math.pow(x,2)+Math.pow(y,2));};var screenSize=hypotenuse(reactNative.Dimensions.get("window").width,reactNative.Dimensions.get("window").height);var Helpers$1=_objectSpread$v({},RawZoomHelpers,{onTouchEnd:function onTouchEnd(){return [{target:"parent",mutation:function mutation(){return {panning:false,originalPinchDistance:null};}}];},onTouchPinch:function onTouchPinch(evt,targetProps,eventKey,ctx){var onZoomDomainChange=targetProps.onZoomDomainChange,zoomDimension=targetProps.zoomDimension,domain=targetProps.domain,zoomDomain=targetProps.zoomDomain;var touches=evt.nativeEvent.touches;if(!targetProps.allowZoom){return {};}var originalDomain=this.getDomain(targetProps);var lastDomain=lodash.defaults({},targetProps.currentDomain||zoomDomain||originalDomain,domain);var x=lastDomain.x,y=lastDomain.y;var currentDomain={x:zoomDimension==="y"?lastDomain.x:this.scaleNative(x,evt,targetProps,"x"),y:zoomDimension==="x"?lastDomain.y:this.scaleNative(y,evt,targetProps,"y")};var resumeAnimation=this.handleAnimation(ctx);var pinchDistance=this.getPinchDistance(touches);var originalPinchDistance=targetProps.originalPinchDistance||pinchDistance;var zoomActive=pinchDistance!==originalPinchDistance||targetProps.zoomActive&&!reactFastCompare(originalDomain,lastDomain);if(lodash.isFunction(onZoomDomainChange)){onZoomDomainChange(currentDomain);}return [{target:"parent",callback:resumeAnimation,mutation:function mutation(){return {domain:currentDomain,currentDomain:currentDomain,originalDomain:originalDomain,cachedZoomDomain:zoomDomain,parentControlledProps:["domain"],panning:false,originalPinchDistance:originalPinchDistance,zoomActive:zoomActive};}}];},getPinchDistance:function getPinchDistance(_ref){var _ref2=slicedToArray(_ref,2),a=_ref2[0],b=_ref2[1];return hypotenuse(b.locationX-a.locationX,b.locationY-a.locationY);},getScaleFactorNative:function getScaleFactorNative(evt,props){var touches=evt.nativeEvent.touches;var originalPinchDistance=props.originalPinchDistance||0;var currentPinchDistance=this.getPinchDistance(touches);var scaledPinchChange=(currentPinchDistance-originalPinchDistance)/screenSize;return 1-scaledPinchChange;},scaleNative:function scaleNative(currentDomain,evt,props,axis){var _currentDomain=slicedToArray(currentDomain,2),from=_currentDomain[0],to=_currentDomain[1];var range=Math.abs(to-from);var minimumZoom=props.minimumZoom&&props.minimumZoom[axis];var factor=this.getScaleFactorNative(evt,props);if(minimumZoom&&range<=minimumZoom&&factor<1){return currentDomain;}var _this$getDomain$axis=slicedToArray(this.getDomain(props)[axis],2),fromBound=_this$getDomain$axis[0],toBound=_this$getDomain$axis[1];var percent=this.getScalePercent(evt,props,axis);var point=factor*from+percent*(factor*range);var minDomain=this.getMinimumDomain(point,props,axis);var _this$getScaledDomain=this.getScaledDomain(currentDomain,factor,percent),_this$getScaledDomain2=slicedToArray(_this$getScaledDomain,2),newMin=_this$getScaledDomain2[0],newMax=_this$getScaledDomain2[1];var newDomain=[newMin>fromBound&&newMin<toBound?newMin:fromBound,newMax<toBound&&newMax>fromBound?newMax:toBound];var domain=Math.abs(minDomain[1]-minDomain[0])>Math.abs(newDomain[1]-newDomain[0])?minDomain:newDomain;return Collection.containsDates([fromBound,toBound])?[new Date(domain[0]),new Date(domain[1])]:domain;}});var makeThrottledHandler=function makeThrottledHandler(handler){var throttledHandler=lodash.throttle(handler,16,{leading:true});return function(evt){evt.persist();for(var _len=arguments.length,otherParams=new Array(_len>1?_len-1:0),_key=1;_key<_len;_key++){otherParams[_key-1]=arguments[_key];}return throttledHandler.apply(void 0,[evt].concat(otherParams));};};var NativeZoomHelpers = {onTouchStart:Helpers$1.onMouseDown.bind(Helpers$1),onTouchEnd:Helpers$1.onTouchEnd.bind(Helpers$1),onTouchMove:makeThrottledHandler(Helpers$1.onMouseMove.bind(Helpers$1)),onTouchPinch:makeThrottledHandler(Helpers$1.onTouchPinch.bind(Helpers$1))};
 
-var _jsxFileName$F="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-zoom-container.js";function ownKeys$1(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$w(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$1(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$1(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var nativeZoomMixin=function nativeZoomMixin(base){var _class,_temp;return _temp=_class=function(_base){inherits(VictoryNativeZoomContainer,_base);function VictoryNativeZoomContainer(){classCallCheck(this,VictoryNativeZoomContainer);return possibleConstructorReturn(this,getPrototypeOf(VictoryNativeZoomContainer).apply(this,arguments));}return VictoryNativeZoomContainer;}(base),_class.defaultProps=_objectSpread$w({},VictoryZoomContainer.defaultProps,{clipContainerComponent:React__default.createElement(_default$4,{__source:{fileName:_jsxFileName$F,lineNumber:14}})}),_class.defaultEvents=function(props){var disable=props.disable;return [{target:"parent",eventHandlers:{onTouchStart:function onTouchStart(evt,targetProps,eventKey,ctx){return disable?{}:NativeZoomHelpers.onTouchStart(evt,targetProps,eventKey,ctx);},onTouchMove:function onTouchMove(evt,targetProps,eventKey,ctx){return disable?{}:NativeZoomHelpers.onTouchMove(evt,targetProps,eventKey,ctx);},onTouchEnd:function onTouchEnd(evt,targetProps,eventKey,ctx){return disable?{}:NativeZoomHelpers.onTouchEnd(evt,targetProps,eventKey,ctx);},onTouchPinch:function onTouchPinch(evt,targetProps,eventKey,ctx){return disable?{}:NativeZoomHelpers.onTouchPinch(evt,targetProps,eventKey,ctx);}}}];},_temp;};var combinedMixin=lodash.flow(zoomContainerMixin,nativeZoomMixin);var zoomContainerMixin$1=function zoomContainerMixin(base){return combinedMixin(base);};var victoryZoomContainer = zoomContainerMixin$1(_default$3);
+
+var index$s = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	zoomContainerMixin: zoomContainerMixin,
+	VictoryZoomContainer: VictoryZoomContainer,
+	ZoomHelpers: ZoomHelpers,
+	RawZoomHelpers: RawZoomHelpers
+});
+
+const hypotenuse = (x, y) => Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+
+const screenSize = hypotenuse(reactNative.Dimensions.get("window").width, reactNative.Dimensions.get("window").height);
+const Helpers$1 = { ...RawZoomHelpers,
+
+  onTouchEnd() {
+    return [{
+      target: "parent",
+      mutation: () => {
+        return {
+          panning: false,
+          originalPinchDistance: null
+        };
+      }
+    }];
+  },
+
+  onTouchPinch(evt, targetProps, eventKey, ctx) {
+    // eslint-disable-line max-params
+    const {
+      onZoomDomainChange,
+      zoomDimension,
+      domain,
+      zoomDomain
+    } = targetProps;
+    const {
+      touches
+    } = evt.nativeEvent;
+
+    if (!targetProps.allowZoom) {
+      return {};
+    }
+
+    const originalDomain = this.getDomain(targetProps);
+    const lastDomain = lodash.defaults({}, targetProps.currentDomain || zoomDomain || originalDomain, domain);
+    const {
+      x,
+      y
+    } = lastDomain;
+    const currentDomain = {
+      x: zoomDimension === "y" ? lastDomain.x : this.scaleNative(x, evt, targetProps, "x"),
+      y: zoomDimension === "x" ? lastDomain.y : this.scaleNative(y, evt, targetProps, "y")
+    };
+    const resumeAnimation = this.handleAnimation(ctx);
+    const pinchDistance = this.getPinchDistance(touches);
+    const originalPinchDistance = targetProps.originalPinchDistance || pinchDistance;
+    const zoomActive = pinchDistance !== originalPinchDistance || // if zoomActive is already set AND user hasn't zoommed out all the way
+    targetProps.zoomActive && !reactFastCompare(originalDomain, lastDomain);
+
+    if (lodash.isFunction(onZoomDomainChange)) {
+      onZoomDomainChange(currentDomain);
+    }
+
+    return [{
+      target: "parent",
+      callback: resumeAnimation,
+      mutation: () => {
+        return {
+          domain: currentDomain,
+          currentDomain,
+          originalDomain,
+          cachedZoomDomain: zoomDomain,
+          parentControlledProps: ["domain"],
+          panning: false,
+          originalPinchDistance,
+          zoomActive
+        };
+      }
+    }];
+  },
+
+  getPinchDistance([a, b]) {
+    return hypotenuse(b.locationX - a.locationX, b.locationY - a.locationY);
+  },
+
+  getScaleFactorNative(evt, props) {
+    const {
+      touches
+    } = evt.nativeEvent;
+    const originalPinchDistance = props.originalPinchDistance || 0;
+    const currentPinchDistance = this.getPinchDistance(touches);
+    const scaledPinchChange = (currentPinchDistance - originalPinchDistance) / screenSize;
+    return 1 - scaledPinchChange;
+  },
+
+  scaleNative(currentDomain, evt, props, axis) {
+    // eslint-disable-line max-params
+    const [from, to] = currentDomain;
+    const range = Math.abs(to - from);
+    const minimumZoom = props.minimumZoom && props.minimumZoom[axis];
+    const factor = this.getScaleFactorNative(evt, props);
+
+    if (minimumZoom && range <= minimumZoom && factor < 1) {
+      return currentDomain;
+    }
+
+    const [fromBound, toBound] = this.getDomain(props)[axis];
+    const percent = this.getScalePercent(evt, props, axis);
+    const point = factor * from + percent * (factor * range);
+    const minDomain = this.getMinimumDomain(point, props, axis);
+    const [newMin, newMax] = this.getScaledDomain(currentDomain, factor, percent);
+    const newDomain = [newMin > fromBound && newMin < toBound ? newMin : fromBound, newMax < toBound && newMax > fromBound ? newMax : toBound];
+    const domain = Math.abs(minDomain[1] - minDomain[0]) > Math.abs(newDomain[1] - newDomain[0]) ? minDomain : newDomain;
+    return Collection.containsDates([fromBound, toBound]) ? [new Date(domain[0]), new Date(domain[1])] : domain;
+  }
+
+};
+
+const makeThrottledHandler = handler => {
+  const throttledHandler = lodash.throttle(handler, 16, {
+    leading: true
+  });
+  return (evt, ...otherParams) => {
+    evt.persist(); // ensure that the react native event is persisted!
+
+    return throttledHandler(evt, ...otherParams);
+  };
+};
+var NativeZoomHelpers = {
+  onTouchStart: Helpers$1.onMouseDown.bind(Helpers$1),
+  onTouchEnd: Helpers$1.onTouchEnd.bind(Helpers$1),
+  onTouchMove: makeThrottledHandler(Helpers$1.onMouseMove.bind(Helpers$1)),
+  onTouchPinch: makeThrottledHandler(Helpers$1.onTouchPinch.bind(Helpers$1))
+};
+
+function _defineProperty$T(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const nativeZoomMixin = base => {
+  var _class, _temp;
+
+  return _temp = _class = class VictoryNativeZoomContainer extends base {}, _defineProperty$T(_class, "defaultProps", { ...VictoryZoomContainer.defaultProps,
+    clipContainerComponent: React__default.createElement(_class$2, null)
+  }), _defineProperty$T(_class, "defaultEvents", props => {
+    const {
+      disable
+    } = props;
+    return [{
+      target: "parent",
+      eventHandlers: {
+        onTouchStart: (evt, targetProps, eventKey, ctx) => {
+          // eslint-disable-line max-params
+          return disable ? {} : NativeZoomHelpers.onTouchStart(evt, targetProps, eventKey, ctx);
+        },
+        onTouchMove: (evt, targetProps, eventKey, ctx) => {
+          // eslint-disable-line max-params
+          return disable ? {} : NativeZoomHelpers.onTouchMove(evt, targetProps, eventKey, ctx);
+        },
+        onTouchEnd: (evt, targetProps, eventKey, ctx) => {
+          // eslint-disable-line max-params
+          return disable ? {} : NativeZoomHelpers.onTouchEnd(evt, targetProps, eventKey, ctx);
+        },
+        onTouchPinch: (evt, targetProps, eventKey, ctx) => {
+          // eslint-disable-line max-params
+          return disable ? {} : NativeZoomHelpers.onTouchPinch(evt, targetProps, eventKey, ctx);
+        }
+      }
+    }];
+  }), _temp;
+};
+
+const combinedMixin = lodash.flow(zoomContainerMixin, nativeZoomMixin);
+const zoomContainerMixin$1 = base => combinedMixin(base);
+var victoryZoomContainer = zoomContainerMixin$1(_class$1);
 
 var delaunator = createCommonjsModule(function (module, exports) {
 (function (global, factory) {
@@ -26280,13 +28108,13 @@ Delaunay.from = function (points, fx, fy, that) {
 
 var Delaunay = unwrapExports(lib);
 
-function _toConsumableArray$p(arr) { return _arrayWithoutHoles$p(arr) || _iterableToArray$p(arr) || _nonIterableSpread$p(); }
+function _toConsumableArray$o(arr) { return _arrayWithoutHoles$o(arr) || _iterableToArray$o(arr) || _nonIterableSpread$o(); }
 
-function _nonIterableSpread$p() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$o() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$p(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$o(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$p(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$o(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 var VoronoiHelpers = {
   withinBounds: function (props, point) {
     var width = props.width,
@@ -26301,7 +28129,7 @@ var VoronoiHelpers = {
 
     if (polar) {
       var distanceSquared = Math.pow(x - origin.x, 2) + Math.pow(y - origin.y, 2);
-      var radius = Math.max.apply(Math, _toConsumableArray$p(scale.y.range()));
+      var radius = Math.max.apply(Math, _toConsumableArray$o(scale.y.range()));
       return distanceSquared < Math.pow(radius, 2);
     } else {
       return x >= padding && x <= width - padding && y >= padding && y <= height - padding;
@@ -26492,7 +28320,7 @@ var VoronoiHelpers = {
     var inactiveMutations = activePoints.length ? activePoints.map(function (point) {
       return _this.getInactiveMutations(targetProps, point);
     }) : [];
-    return (_getParentMutation = this.getParentMutation([])).concat.apply(_getParentMutation, _toConsumableArray$p(inactiveMutations));
+    return (_getParentMutation = this.getParentMutation([])).concat.apply(_getParentMutation, _toConsumableArray$o(inactiveMutations));
   },
   onMouseMove: function (evt, targetProps) {
     var _this2 = this;
@@ -26509,7 +28337,7 @@ var VoronoiHelpers = {
       var inactiveMutations = activePoints.length ? activePoints.map(function (point) {
         return _this2.getInactiveMutations(targetProps, point);
       }) : [];
-      return (_getParentMutation2 = this.getParentMutation([], mousePosition, parentSVG)).concat.apply(_getParentMutation2, _toConsumableArray$p(inactiveMutations));
+      return (_getParentMutation2 = this.getParentMutation([], mousePosition, parentSVG)).concat.apply(_getParentMutation2, _toConsumableArray$o(inactiveMutations));
     }
 
     var _getVoronoiPoints = this.getVoronoiPoints(targetProps, mousePosition),
@@ -26532,7 +28360,7 @@ var VoronoiHelpers = {
         return _this2.getInactiveMutations(targetProps, point);
       }) : [];
 
-      return parentMutations.concat.apply(parentMutations, _toConsumableArray$p(_inactiveMutations).concat(_toConsumableArray$p(activeMutations)));
+      return parentMutations.concat.apply(parentMutations, _toConsumableArray$o(_inactiveMutations).concat(_toConsumableArray$o(activeMutations)));
     }
   }
 };
@@ -26545,46 +28373,46 @@ var VoronoiHelpers$1 = {
   })
 };
 
-function _toConsumableArray$q(arr) { return _arrayWithoutHoles$q(arr) || _iterableToArray$q(arr) || _nonIterableSpread$q(); }
+function _toConsumableArray$p(arr) { return _arrayWithoutHoles$p(arr) || _iterableToArray$p(arr) || _nonIterableSpread$p(); }
 
-function _nonIterableSpread$q() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$p() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$q(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$p(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$q(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$p(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _objectWithoutProperties$6(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutProperties$5(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
-function _objectSpread$x(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$B(target, key, source[key]); }); } return target; }
+function _objectSpread$v(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$U(target, key, source[key]); }); } return target; }
 
-function _defineProperty$B(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$U(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck$r(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$q(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$r(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$q(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$r(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$r(Constructor.prototype, protoProps); if (staticProps) _defineProperties$r(Constructor, staticProps); return Constructor; }
+function _createClass$q(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$q(Constructor.prototype, protoProps); if (staticProps) _defineProperties$q(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$q(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$q(self); }
+function _possibleConstructorReturn$p(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$p(self); }
 
-function _assertThisInitialized$q(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$p(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$q(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$p(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var voronoiContainerMixin = function (base) {
   var _class, _temp;
 
   return _temp = _class =
   /*#__PURE__*/
   function (_base) {
-    _inherits$q(VictoryVoronoiContainer, _base);
+    _inherits$p(VictoryVoronoiContainer, _base);
 
     function VictoryVoronoiContainer() {
-      _classCallCheck$r(this, VictoryVoronoiContainer);
+      _classCallCheck$q(this, VictoryVoronoiContainer);
 
-      return _possibleConstructorReturn$q(this, (VictoryVoronoiContainer.__proto__ || Object.getPrototypeOf(VictoryVoronoiContainer)).apply(this, arguments));
+      return _possibleConstructorReturn$p(this, (VictoryVoronoiContainer.__proto__ || Object.getPrototypeOf(VictoryVoronoiContainer)).apply(this, arguments));
     }
 
-    _createClass$r(VictoryVoronoiContainer, [{
+    _createClass$q(VictoryVoronoiContainer, [{
       key: "getDimension",
       value: function getDimension(props) {
         var horizontal = props.horizontal,
@@ -26613,7 +28441,7 @@ var voronoiContainerMixin = function (base) {
         var center = mouseFollowTooltips ? mousePosition : undefined;
 
         if (!voronoiDimension || points.length < 2) {
-          return _objectSpread$x({}, basePosition, {
+          return _objectSpread$v({}, basePosition, {
             center: _defaults({}, labelProps.center, center)
           });
         }
@@ -26708,7 +28536,7 @@ var voronoiContainerMixin = function (base) {
             eventKey = _points$.eventKey,
             style = _points$.style,
             continuous = _points$.continuous,
-            datum = _objectWithoutProperties$6(_points$, ["childName", "eventKey", "style", "continuous"]);
+            datum = _objectWithoutProperties$5(_points$, ["childName", "eventKey", "style", "continuous"]);
 
         var name = props.name === childName ? childName : "".concat(props.name, "-").concat(childName);
 
@@ -26752,7 +28580,7 @@ var voronoiContainerMixin = function (base) {
     }, {
       key: "getChildren",
       value: function getChildren(props) {
-        return _toConsumableArray$q(React__default.Children.toArray(props.children)).concat([this.getTooltip(props)]);
+        return _toConsumableArray$p(React__default.Children.toArray(props.children)).concat([this.getTooltip(props)]);
       }
     }]);
 
@@ -26766,7 +28594,7 @@ var voronoiContainerMixin = function (base) {
     configurable: true,
     enumerable: true,
     writable: true,
-    value: _objectSpread$x({}, VictoryContainer.propTypes, {
+    value: _objectSpread$v({}, VictoryContainer.propTypes, {
       activateData: propTypes.bool,
       activateLabels: propTypes.bool,
       disable: propTypes.bool,
@@ -26784,7 +28612,7 @@ var voronoiContainerMixin = function (base) {
     configurable: true,
     enumerable: true,
     writable: true,
-    value: _objectSpread$x({}, VictoryContainer.defaultProps, {
+    value: _objectSpread$v({}, VictoryContainer.defaultProps, {
       activateData: true,
       activateLabels: true,
       labelComponent: React__default.createElement(VictoryTooltip, null),
@@ -26830,19 +28658,65 @@ var voronoiContainerMixin = function (base) {
 };
 var VictoryVoronoiContainer = voronoiContainerMixin(VictoryContainer);
 
-var _jsxFileName$G="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-voronoi-container.js";function ownKeys$2(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$y(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$2(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$2(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var nativeVoronoiMixin=function nativeVoronoiMixin(base){var _class,_temp;return _temp=_class=function(_base){inherits(VictoryNativeVoronoiContainer,_base);function VictoryNativeVoronoiContainer(){classCallCheck(this,VictoryNativeVoronoiContainer);return possibleConstructorReturn(this,getPrototypeOf(VictoryNativeVoronoiContainer).apply(this,arguments));}return VictoryNativeVoronoiContainer;}(base),_class.defaultProps=_objectSpread$y({},VictoryVoronoiContainer.defaultProps,{activateData:true,activateLabels:true,labelComponent:React__default.createElement(_default$1,{__source:{fileName:_jsxFileName$G,lineNumber:15}}),voronoiPadding:5}),_class.defaultEvents=function(props){return [{target:"parent",eventHandlers:{onTouchStart:function onTouchStart(evt,targetProps){return props.disable?{}:VoronoiHelpers$1.onMouseMove(evt,targetProps);},onTouchMove:function onTouchMove(evt,targetProps){return props.disable?{}:VoronoiHelpers$1.onMouseMove(evt,targetProps);},onTouchEnd:function onTouchEnd(evt,targetProps){return props.disable?{}:VoronoiHelpers$1.onMouseLeave(evt,targetProps);}}},{target:"data",eventHandlers:props.disable?{}:{onTouchStart:function onTouchStart(){return null;},onTouchMove:function onTouchMove(){return null;},onTouchEnd:function onTouchEnd(){return null;}}}];},_temp;};var combinedMixin$1=lodash.flow(voronoiContainerMixin,nativeVoronoiMixin);var voronoiContainerMixin$1=function voronoiContainerMixin(base){return combinedMixin$1(base);};var victoryVoronoiContainer = voronoiContainerMixin$1(_default$3);
 
-function _objectSpread$z(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$C(target, key, source[key]); }); } return target; }
 
-function _defineProperty$C(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var index$t = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	voronoiContainerMixin: voronoiContainerMixin,
+	VictoryVoronoiContainer: VictoryVoronoiContainer,
+	VoronoiHelpers: VoronoiHelpers$1
+});
 
-function _toConsumableArray$r(arr) { return _arrayWithoutHoles$r(arr) || _iterableToArray$r(arr) || _nonIterableSpread$r(); }
+function _defineProperty$V(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _nonIterableSpread$r() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+const nativeVoronoiMixin = base => {
+  var _class$1, _temp;
 
-function _iterableToArray$r(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+  return _temp = _class$1 = class VictoryNativeVoronoiContainer extends base {}, _defineProperty$V(_class$1, "defaultProps", { ...VictoryVoronoiContainer.defaultProps,
+    activateData: true,
+    activateLabels: true,
+    labelComponent: React__default.createElement(_class, null),
+    voronoiPadding: 5
+  }), _defineProperty$V(_class$1, "defaultEvents", props => {
+    return [{
+      target: "parent",
+      eventHandlers: {
+        onTouchStart: (evt, targetProps) => {
+          return props.disable ? {} : VoronoiHelpers$1.onMouseMove(evt, targetProps);
+        },
+        onTouchMove: (evt, targetProps) => {
+          return props.disable ? {} : VoronoiHelpers$1.onMouseMove(evt, targetProps);
+        },
+        onTouchEnd: (evt, targetProps) => {
+          return props.disable ? {} : VoronoiHelpers$1.onMouseLeave(evt, targetProps);
+        }
+      }
+    }, {
+      target: "data",
+      eventHandlers: props.disable ? {} : {
+        onTouchStart: () => null,
+        onTouchMove: () => null,
+        onTouchEnd: () => null
+      }
+    }];
+  }), _temp;
+};
 
-function _arrayWithoutHoles$r(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+const combinedMixin$1 = lodash.flow(voronoiContainerMixin, nativeVoronoiMixin);
+const voronoiContainerMixin$1 = base => combinedMixin$1(base);
+var victoryVoronoiContainer = voronoiContainerMixin$1(_class$1);
+
+function _objectSpread$w(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$W(target, key, source[key]); }); } return target; }
+
+function _defineProperty$W(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray$q(arr) { return _arrayWithoutHoles$q(arr) || _iterableToArray$q(arr) || _nonIterableSpread$q(); }
+
+function _nonIterableSpread$q() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray$q(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles$q(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 var SelectionHelpers = {
   getDimension: function (props) {
     var horizontal = props.horizontal,
@@ -26987,7 +28861,7 @@ var SelectionHelpers = {
         }
       };
     }) : [];
-    return parentMutation.concat.apply(parentMutation, _toConsumableArray$r(dataMutation));
+    return parentMutation.concat.apply(parentMutation, _toConsumableArray$q(dataMutation));
   },
   onMouseMove: function (evt, targetProps) {
     var allowSelection = targetProps.allowSelection,
@@ -27077,7 +28951,7 @@ var SelectionHelpers = {
     return parentMutation.concat(dataMutation);
   }
 };
-var SelectionHelpers$1 = _objectSpread$z({}, SelectionHelpers, {
+var SelectionHelpers$1 = _objectSpread$w({}, SelectionHelpers, {
   onMouseDown: SelectionHelpers.onMouseDown.bind(SelectionHelpers),
   onMouseUp: SelectionHelpers.onMouseUp.bind(SelectionHelpers),
   onMouseMove: _throttle(SelectionHelpers.onMouseMove.bind(SelectionHelpers), 16, // eslint-disable-line no-magic-numbers
@@ -27087,44 +28961,44 @@ var SelectionHelpers$1 = _objectSpread$z({}, SelectionHelpers, {
   })
 });
 
-function _objectSpread$A(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$D(target, key, source[key]); }); } return target; }
+function _objectSpread$x(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$X(target, key, source[key]); }); } return target; }
 
-function _defineProperty$D(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$X(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray$s(arr) { return _arrayWithoutHoles$s(arr) || _iterableToArray$s(arr) || _nonIterableSpread$s(); }
+function _toConsumableArray$r(arr) { return _arrayWithoutHoles$r(arr) || _iterableToArray$r(arr) || _nonIterableSpread$r(); }
 
-function _nonIterableSpread$s() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$r() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$s(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$r(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$s(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$r(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _classCallCheck$s(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$r(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$s(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$r(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$s(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$s(Constructor.prototype, protoProps); if (staticProps) _defineProperties$s(Constructor, staticProps); return Constructor; }
+function _createClass$r(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$r(Constructor.prototype, protoProps); if (staticProps) _defineProperties$r(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$r(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$r(self); }
+function _possibleConstructorReturn$q(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$q(self); }
 
-function _assertThisInitialized$r(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$q(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$r(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$q(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var selectionContainerMixin = function (base) {
   var _class, _temp;
 
   return _temp = _class =
   /*#__PURE__*/
   function (_base) {
-    _inherits$r(VictorySelectionContainer, _base);
+    _inherits$q(VictorySelectionContainer, _base);
 
     function VictorySelectionContainer() {
-      _classCallCheck$s(this, VictorySelectionContainer);
+      _classCallCheck$r(this, VictorySelectionContainer);
 
-      return _possibleConstructorReturn$r(this, (VictorySelectionContainer.__proto__ || Object.getPrototypeOf(VictorySelectionContainer)).apply(this, arguments));
+      return _possibleConstructorReturn$q(this, (VictorySelectionContainer.__proto__ || Object.getPrototypeOf(VictorySelectionContainer)).apply(this, arguments));
     }
 
-    _createClass$s(VictorySelectionContainer, [{
+    _createClass$r(VictorySelectionContainer, [{
       key: "getRect",
       value: function getRect(props) {
         var x1 = props.x1,
@@ -27151,7 +29025,7 @@ var selectionContainerMixin = function (base) {
     }, {
       key: "getChildren",
       value: function getChildren(props) {
-        return _toConsumableArray$s(React__default.Children.toArray(props.children)).concat([this.getRect(props)]);
+        return _toConsumableArray$r(React__default.Children.toArray(props.children)).concat([this.getRect(props)]);
       }
     }]);
 
@@ -27165,7 +29039,7 @@ var selectionContainerMixin = function (base) {
     configurable: true,
     enumerable: true,
     writable: true,
-    value: _objectSpread$A({}, VictoryContainer.propTypes, {
+    value: _objectSpread$x({}, VictoryContainer.propTypes, {
       activateSelectedData: propTypes.bool,
       allowSelection: propTypes.bool,
       disable: propTypes.bool,
@@ -27180,7 +29054,7 @@ var selectionContainerMixin = function (base) {
     configurable: true,
     enumerable: true,
     writable: true,
-    value: _objectSpread$A({}, VictoryContainer.defaultProps, {
+    value: _objectSpread$x({}, VictoryContainer.defaultProps, {
       activateSelectedData: true,
       allowSelection: true,
       selectionComponent: React__default.createElement(Rect, null),
@@ -27223,11 +29097,69 @@ var selectionContainerMixin = function (base) {
 };
 var VictorySelectionContainer = selectionContainerMixin(VictoryContainer);
 
-var _jsxFileName$H="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-selection-container.js";function ownKeys$3(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$B(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$3(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$3(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var DefaultSelectionComponent=function DefaultSelectionComponent(_ref){var style=_ref.style,otherProps=objectWithoutProperties(_ref,["style"]);return React__default.createElement(Svg.Rect,_extends_1({},otherProps,NativeHelpers.getStyle(style),{__source:{fileName:_jsxFileName$H,lineNumber:13}}));};DefaultSelectionComponent.propTypes={style:propTypes.object};var nativeSelectionMixin=function nativeSelectionMixin(base){var _class,_temp;return _temp=_class=function(_base){inherits(VictoryNativeSelectionContainer,_base);function VictoryNativeSelectionContainer(){classCallCheck(this,VictoryNativeSelectionContainer);return possibleConstructorReturn(this,getPrototypeOf(VictoryNativeSelectionContainer).apply(this,arguments));}return VictoryNativeSelectionContainer;}(base),_class.defaultProps=_objectSpread$B({},VictorySelectionContainer.defaultProps,{standalone:true,selectionComponent:React__default.createElement(DefaultSelectionComponent,{__source:{fileName:_jsxFileName$H,lineNumber:24}})}),_class.defaultEvents=function(props){return [{target:"parent",eventHandlers:{onTouchStart:function onTouchStart(evt,targetProps){if(props.disable){return {};}SelectionHelpers$1.onMouseMove.cancel();return SelectionHelpers$1.onMouseDown(evt,targetProps);},onTouchMove:function onTouchMove(evt,targetProps){return props.disable?{}:SelectionHelpers$1.onMouseMove(evt,targetProps);},onTouchEnd:function onTouchEnd(evt,targetProps){if(props.disable){return {};}SelectionHelpers$1.onMouseMove.cancel();return SelectionHelpers$1.onMouseUp(evt,targetProps);}}}];},_temp;};var combinedMixin$2=lodash.flow(selectionContainerMixin,nativeSelectionMixin);var selectionContainerMixin$1=function selectionContainerMixin(base){return combinedMixin$2(base);};var victorySelectionContainer = selectionContainerMixin$1(_default$3);
 
-function _objectSpread$C(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$E(target, key, source[key]); }); } return target; }
 
-function _defineProperty$E(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var index$u = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	selectionContainerMixin: selectionContainerMixin,
+	VictorySelectionContainer: VictorySelectionContainer,
+	SelectionHelpers: SelectionHelpers$1
+});
+
+function _defineProperty$Y(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends$q() { _extends$q = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$q.apply(this, arguments); }
+
+const DefaultSelectionComponent = ({
+  style,
+  ...otherProps
+}) => React__default.createElement(Svg.Rect, _extends$q({}, otherProps, NativeHelpers.getStyle(style)));
+
+DefaultSelectionComponent.propTypes = {
+  style: propTypes.object
+};
+
+const nativeSelectionMixin = base => {
+  var _class, _temp;
+
+  return _temp = _class = class VictoryNativeSelectionContainer extends base {}, _defineProperty$Y(_class, "defaultProps", { ...VictorySelectionContainer.defaultProps,
+    standalone: true,
+    selectionComponent: React__default.createElement(DefaultSelectionComponent, null)
+  }), _defineProperty$Y(_class, "defaultEvents", props => {
+    return [{
+      target: "parent",
+      eventHandlers: {
+        onTouchStart: (evt, targetProps) => {
+          if (props.disable) {
+            return {};
+          }
+
+          SelectionHelpers$1.onMouseMove.cancel();
+          return SelectionHelpers$1.onMouseDown(evt, targetProps);
+        },
+        onTouchMove: (evt, targetProps) => {
+          return props.disable ? {} : SelectionHelpers$1.onMouseMove(evt, targetProps);
+        },
+        onTouchEnd: (evt, targetProps) => {
+          if (props.disable) {
+            return {};
+          }
+
+          SelectionHelpers$1.onMouseMove.cancel();
+          return SelectionHelpers$1.onMouseUp(evt, targetProps);
+        }
+      }
+    }];
+  }), _temp;
+};
+
+const combinedMixin$2 = lodash.flow(selectionContainerMixin, nativeSelectionMixin);
+const selectionContainerMixin$1 = base => combinedMixin$2(base);
+var victorySelectionContainer = selectionContainerMixin$1(_class$1);
+
+function _objectSpread$y(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$Z(target, key, source[key]); }); } return target; }
+
+function _defineProperty$Z(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 var CursorHelpers = {
   getDimension: function (props) {
     var horizontal = props.horizontal,
@@ -27308,7 +29240,7 @@ var CursorHelpers = {
     }];
   }
 };
-var CursorHelpers$1 = _objectSpread$C({}, CursorHelpers, {
+var CursorHelpers$1 = _objectSpread$y({}, CursorHelpers, {
   onMouseMove: _throttle(CursorHelpers.onMouseMove.bind(CursorHelpers), 32, // eslint-disable-line no-magic-numbers
   {
     leading: true,
@@ -27317,44 +29249,44 @@ var CursorHelpers$1 = _objectSpread$C({}, CursorHelpers, {
   onTouchEnd: CursorHelpers.onTouchEnd.bind(CursorHelpers)
 });
 
-function _objectSpread$D(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$F(target, key, source[key]); }); } return target; }
+function _objectSpread$z(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$_(target, key, source[key]); }); } return target; }
 
-function _toConsumableArray$t(arr) { return _arrayWithoutHoles$t(arr) || _iterableToArray$t(arr) || _nonIterableSpread$t(); }
+function _toConsumableArray$s(arr) { return _arrayWithoutHoles$s(arr) || _iterableToArray$s(arr) || _nonIterableSpread$s(); }
 
-function _nonIterableSpread$t() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$s() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$t(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$s(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$t(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$s(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _defineProperty$F(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$_(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classCallCheck$t(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$s(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$t(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$s(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$t(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$t(Constructor.prototype, protoProps); if (staticProps) _defineProperties$t(Constructor, staticProps); return Constructor; }
+function _createClass$s(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$s(Constructor.prototype, protoProps); if (staticProps) _defineProperties$s(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$s(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$s(self); }
+function _possibleConstructorReturn$r(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$r(self); }
 
-function _assertThisInitialized$s(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$r(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$s(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$r(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var cursorContainerMixin = function (base) {
   var _class, _temp;
 
   return _temp = _class =
   /*#__PURE__*/
   function (_base) {
-    _inherits$s(VictoryCursorContainer, _base);
+    _inherits$r(VictoryCursorContainer, _base);
 
     function VictoryCursorContainer() {
-      _classCallCheck$t(this, VictoryCursorContainer);
+      _classCallCheck$s(this, VictoryCursorContainer);
 
-      return _possibleConstructorReturn$s(this, (VictoryCursorContainer.__proto__ || Object.getPrototypeOf(VictoryCursorContainer)).apply(this, arguments));
+      return _possibleConstructorReturn$r(this, (VictoryCursorContainer.__proto__ || Object.getPrototypeOf(VictoryCursorContainer)).apply(this, arguments));
     }
 
-    _createClass$t(VictoryCursorContainer, [{
+    _createClass$s(VictoryCursorContainer, [{
       key: "getCursorPosition",
       value: function getCursorPosition(props) {
         var cursorValue = props.cursorValue,
@@ -27367,7 +29299,7 @@ var cursorContainerMixin = function (base) {
         }
 
         if (typeof defaultCursorValue === "number") {
-          return _defineProperty$F({
+          return _defineProperty$_({
             x: (domain.x[0] + domain.x[1]) / 2,
             y: (domain.y[0] + domain.y[1]) / 2
           }, cursorDimension, defaultCursorValue);
@@ -27476,7 +29408,7 @@ var cursorContainerMixin = function (base) {
     }, {
       key: "getChildren",
       value: function getChildren(props) {
-        return _toConsumableArray$t(React__default.Children.toArray(props.children)).concat(_toConsumableArray$t(this.getCursorElements(props)));
+        return _toConsumableArray$s(React__default.Children.toArray(props.children)).concat(_toConsumableArray$s(this.getCursorElements(props)));
       }
     }]);
 
@@ -27490,7 +29422,7 @@ var cursorContainerMixin = function (base) {
     configurable: true,
     enumerable: true,
     writable: true,
-    value: _objectSpread$D({}, VictoryContainer.propTypes, {
+    value: _objectSpread$z({}, VictoryContainer.propTypes, {
       cursorDimension: propTypes.oneOf(["x", "y"]),
       cursorLabel: propTypes.func,
       cursorLabelComponent: propTypes.element,
@@ -27509,7 +29441,7 @@ var cursorContainerMixin = function (base) {
     configurable: true,
     enumerable: true,
     writable: true,
-    value: _objectSpread$D({}, VictoryContainer.defaultProps, {
+    value: _objectSpread$z({}, VictoryContainer.defaultProps, {
       cursorLabelComponent: React__default.createElement(VictoryLabel, null),
       cursorLabelOffset: {
         x: 5,
@@ -27544,19 +29476,56 @@ var cursorContainerMixin = function (base) {
 };
 var VictoryCursorContainer = cursorContainerMixin(VictoryContainer);
 
-var _jsxFileName$I="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-cursor-container.js";function ownKeys$4(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$E(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$4(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$4(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var nativeCursorMixin=function nativeCursorMixin(base){var _class,_temp;return _temp=_class=function(_base){inherits(VictoryNativeCursorContainer,_base);function VictoryNativeCursorContainer(){classCallCheck(this,VictoryNativeCursorContainer);return possibleConstructorReturn(this,getPrototypeOf(VictoryNativeCursorContainer).apply(this,arguments));}return VictoryNativeCursorContainer;}(base),_class.displayName="VictoryCursorContainer",_class.defaultProps=_objectSpread$E({},VictoryCursorContainer.defaultProps,{cursorLabelComponent:React__default.createElement(NativeVictoryLabel,{__source:{fileName:_jsxFileName$I,lineNumber:15}}),cursorComponent:React__default.createElement(NativeLineSegment,{__source:{fileName:_jsxFileName$I,lineNumber:16}})}),_class.defaultEvents=function(props){return [{target:"parent",eventHandlers:{onTouchStart:function onTouchStart(evt,targetProps){return props.disable?{}:CursorHelpers$1.onMouseMove(evt,targetProps);},onTouchMove:function onTouchMove(evt,targetProps){return props.disable?{}:CursorHelpers$1.onMouseMove(evt,targetProps);},onTouchEnd:function onTouchEnd(evt,targetProps){return props.disable?{}:CursorHelpers$1.onTouchEnd(evt,targetProps);}}}];},_temp;};var combinedMixin$3=lodash.flow(cursorContainerMixin,nativeCursorMixin);var cursorContainerMixin$1=function cursorContainerMixin(base){return combinedMixin$3(base);};var victoryCursorContainer = cursorContainerMixin$1(_default$3);
 
-function _objectSpread$F(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$G(target, key, source[key]); }); } return target; }
 
-function _defineProperty$G(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var index$v = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	cursorContainerMixin: cursorContainerMixin,
+	VictoryCursorContainer: VictoryCursorContainer,
+	CursorHelpers: CursorHelpers$1
+});
 
-function _toConsumableArray$u(arr) { return _arrayWithoutHoles$u(arr) || _iterableToArray$u(arr) || _nonIterableSpread$u(); }
+function _defineProperty$$(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _nonIterableSpread$u() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+const nativeCursorMixin = base => {
+  var _class, _temp;
 
-function _iterableToArray$u(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+  return _temp = _class = class VictoryNativeCursorContainer extends base {}, _defineProperty$$(_class, "displayName", "VictoryCursorContainer"), _defineProperty$$(_class, "defaultProps", { ...VictoryCursorContainer.defaultProps,
+    cursorLabelComponent: React__default.createElement(NativeVictoryLabel, null),
+    cursorComponent: React__default.createElement(NativeLineSegment, null)
+  }), _defineProperty$$(_class, "defaultEvents", props => {
+    return [{
+      target: "parent",
+      eventHandlers: {
+        onTouchStart: (evt, targetProps) => {
+          return props.disable ? {} : CursorHelpers$1.onMouseMove(evt, targetProps);
+        },
+        onTouchMove: (evt, targetProps) => {
+          return props.disable ? {} : CursorHelpers$1.onMouseMove(evt, targetProps);
+        },
+        onTouchEnd: (evt, targetProps) => {
+          return props.disable ? {} : CursorHelpers$1.onTouchEnd(evt, targetProps);
+        }
+      }
+    }];
+  }), _temp;
+};
 
-function _arrayWithoutHoles$u(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+const combinedMixin$3 = lodash.flow(cursorContainerMixin, nativeCursorMixin);
+const cursorContainerMixin$1 = base => combinedMixin$3(base);
+var victoryCursorContainer = cursorContainerMixin$1(_class$1);
+
+function _objectSpread$A(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$10(target, key, source[key]); }); } return target; }
+
+function _defineProperty$10(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray$t(arr) { return _arrayWithoutHoles$t(arr) || _iterableToArray$t(arr) || _nonIterableSpread$t(); }
+
+function _nonIterableSpread$t() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray$t(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles$t(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 var Helpers$2 = {
   getDimension: function (props) {
     var horizontal = props.horizontal,
@@ -27589,10 +29558,10 @@ var Helpers$2 = {
     var fullCoords = Selection.getDomainCoordinates(props, fullDomain);
     var selectedCoords = Selection.getDomainCoordinates(props, selectedDomain);
     return {
-      x1: brushDimension !== "y" ? Math.min.apply(Math, _toConsumableArray$u(selectedCoords.x)) : Math.min.apply(Math, _toConsumableArray$u(fullCoords.x)),
-      x2: brushDimension !== "y" ? Math.max.apply(Math, _toConsumableArray$u(selectedCoords.x)) : Math.max.apply(Math, _toConsumableArray$u(fullCoords.x)),
-      y1: brushDimension !== "x" ? Math.min.apply(Math, _toConsumableArray$u(selectedCoords.y)) : Math.min.apply(Math, _toConsumableArray$u(fullCoords.y)),
-      y2: brushDimension !== "x" ? Math.max.apply(Math, _toConsumableArray$u(selectedCoords.y)) : Math.max.apply(Math, _toConsumableArray$u(fullCoords.y))
+      x1: brushDimension !== "y" ? Math.min.apply(Math, _toConsumableArray$t(selectedCoords.x)) : Math.min.apply(Math, _toConsumableArray$t(fullCoords.x)),
+      x2: brushDimension !== "y" ? Math.max.apply(Math, _toConsumableArray$t(selectedCoords.x)) : Math.max.apply(Math, _toConsumableArray$t(fullCoords.x)),
+      y1: brushDimension !== "x" ? Math.min.apply(Math, _toConsumableArray$t(selectedCoords.y)) : Math.min.apply(Math, _toConsumableArray$t(fullCoords.y)),
+      y2: brushDimension !== "x" ? Math.max.apply(Math, _toConsumableArray$t(selectedCoords.y)) : Math.max.apply(Math, _toConsumableArray$t(fullCoords.y))
     };
   },
   getHandles: function (props, domainBox) {
@@ -27698,14 +29667,14 @@ var Helpers$2 = {
     } else if (defaultBrushArea === "move") {
       var brushBox = this.getDomainBox(targetProps, fullDomain, cachedDomain);
       var parentSVG = targetProps.parentSVG || Selection.getParentSVG(evt);
-      var pannedBox = this.panBox(_objectSpread$F({}, targetProps, brushBox, {
+      var pannedBox = this.panBox(_objectSpread$A({}, targetProps, brushBox, {
         brushDomain: cachedDomain,
         startX: (brushBox.x1 + brushBox.x2) / 2,
         startY: (brushBox.y1 + brushBox.y2) / 2
       }), Selection.getSVGEventCoordinates(evt, parentSVG));
       var fullDomainBox = targetProps.fullDomainBox || this.getDomainBox(targetProps, fullDomain);
       var constrainedBox = this.constrainBox(pannedBox, fullDomainBox);
-      return Selection.getBounds(_objectSpread$F({}, constrainedBox, {
+      return Selection.getBounds(_objectSpread$A({}, constrainedBox, {
         scale: scale,
         horizontal: horizontal
       }));
@@ -27815,7 +29784,7 @@ var Helpers$2 = {
       return [{
         target: "parent",
         mutation: function () {
-          return _objectSpread$F({
+          return _objectSpread$A({
             isSelecting: true,
             domainBox: domainBox,
             fullDomainBox: fullDomainBox,
@@ -27834,7 +29803,7 @@ var Helpers$2 = {
       return [{
         target: "parent",
         mutation: function () {
-          return _objectSpread$F({
+          return _objectSpread$A({
             isPanning: allowDrag,
             startX: x,
             startY: y,
@@ -27852,7 +29821,7 @@ var Helpers$2 = {
       return allowDraw ? [{
         target: "parent",
         mutation: function () {
-          return _objectSpread$F({
+          return _objectSpread$A({
             isSelecting: allowResize,
             domainBox: domainBox,
             fullDomainBox: fullDomainBox,
@@ -27906,12 +29875,12 @@ var Helpers$2 = {
         y: y
       });
       var constrainedBox = this.constrainBox(pannedBox, fullDomainBox);
-      var currentDomain = Selection.getBounds(_objectSpread$F({}, constrainedBox, {
+      var currentDomain = Selection.getBounds(_objectSpread$A({}, constrainedBox, {
         scale: scale,
         horizontal: horizontal
       }));
 
-      var mutatedProps = _objectSpread$F({
+      var mutatedProps = _objectSpread$A({
         currentDomain: currentDomain,
         parentSVG: parentSVG,
         startX: pannedBox.x2 >= fullDomainBox.x2 || pannedBox.x1 <= fullDomainBox.x1 ? startX : x,
@@ -28028,7 +29997,7 @@ var Helpers$2 = {
     return [];
   }
 };
-var BrushHelpers = _objectSpread$F({}, Helpers$2, {
+var BrushHelpers = _objectSpread$A({}, Helpers$2, {
   onMouseDown: Helpers$2.onMouseDown.bind(Helpers$2),
   onMouseUp: Helpers$2.onMouseUp.bind(Helpers$2),
   onMouseLeave: Helpers$2.onMouseLeave.bind(Helpers$2),
@@ -28039,44 +30008,44 @@ var BrushHelpers = _objectSpread$F({}, Helpers$2, {
   })
 });
 
-function _objectSpread$G(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$H(target, key, source[key]); }); } return target; }
+function _objectSpread$B(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$11(target, key, source[key]); }); } return target; }
 
-function _defineProperty$H(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$11(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray$v(arr) { return _arrayWithoutHoles$v(arr) || _iterableToArray$v(arr) || _nonIterableSpread$v(); }
+function _toConsumableArray$u(arr) { return _arrayWithoutHoles$u(arr) || _iterableToArray$u(arr) || _nonIterableSpread$u(); }
 
-function _nonIterableSpread$v() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread$u() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _iterableToArray$v(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArray$u(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _arrayWithoutHoles$v(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithoutHoles$u(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _classCallCheck$u(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck$t(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties$u(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _defineProperties$t(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass$u(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$u(Constructor.prototype, protoProps); if (staticProps) _defineProperties$u(Constructor, staticProps); return Constructor; }
+function _createClass$t(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$t(Constructor.prototype, protoProps); if (staticProps) _defineProperties$t(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn$t(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$t(self); }
+function _possibleConstructorReturn$s(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$s(self); }
 
-function _assertThisInitialized$t(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized$s(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits$t(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits$s(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 var brushContainerMixin = function (base) {
   var _class, _temp;
 
   return _temp = _class =
   /*#__PURE__*/
   function (_base) {
-    _inherits$t(VictoryBrushContainer, _base);
+    _inherits$s(VictoryBrushContainer, _base);
 
     function VictoryBrushContainer() {
-      _classCallCheck$u(this, VictoryBrushContainer);
+      _classCallCheck$t(this, VictoryBrushContainer);
 
-      return _possibleConstructorReturn$t(this, (VictoryBrushContainer.__proto__ || Object.getPrototypeOf(VictoryBrushContainer)).apply(this, arguments));
+      return _possibleConstructorReturn$s(this, (VictoryBrushContainer.__proto__ || Object.getPrototypeOf(VictoryBrushContainer)).apply(this, arguments));
     }
 
-    _createClass$u(VictoryBrushContainer, [{
+    _createClass$t(VictoryBrushContainer, [{
       key: "getSelectBox",
       value: function getSelectBox(props, coordinates) {
         var x = coordinates.x,
@@ -28195,7 +30164,7 @@ var brushContainerMixin = function (base) {
     }, {
       key: "getChildren",
       value: function getChildren(props) {
-        return _toConsumableArray$v(React__default.Children.toArray(props.children)).concat(_toConsumableArray$v(this.getRect(props)));
+        return _toConsumableArray$u(React__default.Children.toArray(props.children)).concat(_toConsumableArray$u(this.getRect(props)));
       }
     }]);
 
@@ -28209,7 +30178,7 @@ var brushContainerMixin = function (base) {
     configurable: true,
     enumerable: true,
     writable: true,
-    value: _objectSpread$G({}, VictoryContainer.propTypes, {
+    value: _objectSpread$B({}, VictoryContainer.propTypes, {
       allowDrag: propTypes.bool,
       allowDraw: propTypes.bool,
       allowResize: propTypes.bool,
@@ -28233,7 +30202,7 @@ var brushContainerMixin = function (base) {
     configurable: true,
     enumerable: true,
     writable: true,
-    value: _objectSpread$G({}, VictoryContainer.defaultProps, {
+    value: _objectSpread$B({}, VictoryContainer.defaultProps, {
       allowDrag: true,
       allowDraw: true,
       allowResize: true,
@@ -28289,39 +30258,97 @@ var brushContainerMixin = function (base) {
 };
 var VictoryBrushContainer = brushContainerMixin(VictoryContainer);
 
-var _jsxFileName$J="d:\\www\\my\\playground\\rn-playground-module-build\\node_modules\\victory-native\\lib\\components\\victory-brush-container.js";function ownKeys$5(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable;});keys.push.apply(keys,symbols);}return keys;}function _objectSpread$H(target){for(var i=1;i<arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys$5(source,true).forEach(function(key){defineProperty(target,key,source[key]);});}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source));}else{ownKeys$5(source).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key));});}}return target;}var RectWithStyle=function RectWithStyle(_ref){var style=_ref.style,otherProps=objectWithoutProperties(_ref,["style"]);return React__default.createElement(Svg.Rect,_extends_1({},otherProps,NativeHelpers.getStyle(style),{__source:{fileName:_jsxFileName$J,lineNumber:13}}));};RectWithStyle.propTypes={style:propTypes.object};var nativeBrushMixin=function nativeBrushMixin(base){var _class,_temp;return _temp=_class=function(_base){inherits(VictoryNativeSelectionContainer,_base);function VictoryNativeSelectionContainer(){classCallCheck(this,VictoryNativeSelectionContainer);return possibleConstructorReturn(this,getPrototypeOf(VictoryNativeSelectionContainer).apply(this,arguments));}return VictoryNativeSelectionContainer;}(base),_class.defaultProps=_objectSpread$H({},VictoryBrushContainer.defaultProps,{brushComponent:React__default.createElement(RectWithStyle,{__source:{fileName:_jsxFileName$J,lineNumber:23}}),handleComponent:React__default.createElement(RectWithStyle,{__source:{fileName:_jsxFileName$J,lineNumber:24}})}),_class.defaultEvents=function(props){return [{target:"parent",eventHandlers:{onTouchStart:function onTouchStart(evt,targetProps){if(props.disable){return {};}BrushHelpers.onMouseMove.cancel();return BrushHelpers.onMouseDown(evt,targetProps);},onTouchMove:function onTouchMove(evt,targetProps){return props.disable?{}:BrushHelpers.onMouseMove(evt,targetProps);},onTouchEnd:function onTouchEnd(evt,targetProps){if(props.disable){return {};}BrushHelpers.onMouseMove.cancel();return BrushHelpers.onMouseUp(evt,targetProps);}}}];},_temp;};var combinedMixin$4=lodash.flow(brushContainerMixin,nativeBrushMixin);var brushContainerMixin$1=function brushContainerMixin(base){return combinedMixin$4(base);};var victoryBrushContainer = brushContainerMixin$1(_default$3);
 
-function _toConsumableArray$w(arr) { return _arrayWithoutHoles$w(arr) || _iterableToArray$w(arr) || _nonIterableSpread$w(); }
 
-function _nonIterableSpread$w() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+var index$w = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	brushContainerMixin: brushContainerMixin,
+	VictoryBrushContainer: VictoryBrushContainer,
+	BrushHelpers: BrushHelpers
+});
 
-function _iterableToArray$w(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _defineProperty$12(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _arrayWithoutHoles$w(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _extends$r() { _extends$r = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$r.apply(this, arguments); }
 
-function _objectSpread$I(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$I(target, key, source[key]); }); } return target; }
+const RectWithStyle = ({
+  style,
+  ...otherProps
+}) => React__default.createElement(Svg.Rect, _extends$r({}, otherProps, NativeHelpers.getStyle(style)));
 
-function _defineProperty$I(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+RectWithStyle.propTypes = {
+  style: propTypes.object
+};
 
-function _classCallCheck$v(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+const nativeBrushMixin = base => {
+  var _class, _temp;
 
-function _defineProperties$v(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  return _temp = _class = class VictoryNativeSelectionContainer extends base {}, _defineProperty$12(_class, "defaultProps", { ...VictoryBrushContainer.defaultProps,
+    brushComponent: React__default.createElement(RectWithStyle, null),
+    handleComponent: React__default.createElement(RectWithStyle, null)
+  }), _defineProperty$12(_class, "defaultEvents", props => {
+    return [{
+      target: "parent",
+      eventHandlers: {
+        onTouchStart: (evt, targetProps) => {
+          if (props.disable) {
+            return {};
+          }
 
-function _createClass$v(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$v(Constructor.prototype, protoProps); if (staticProps) _defineProperties$v(Constructor, staticProps); return Constructor; }
+          BrushHelpers.onMouseMove.cancel();
+          return BrushHelpers.onMouseDown(evt, targetProps);
+        },
+        onTouchMove: (evt, targetProps) => {
+          return props.disable ? {} : BrushHelpers.onMouseMove(evt, targetProps);
+        },
+        onTouchEnd: (evt, targetProps) => {
+          if (props.disable) {
+            return {};
+          }
 
-function _possibleConstructorReturn$u(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$u(self); }
+          BrushHelpers.onMouseMove.cancel();
+          return BrushHelpers.onMouseUp(evt, targetProps);
+        }
+      }
+    }];
+  }), _temp;
+};
 
-function _assertThisInitialized$u(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+const combinedMixin$4 = lodash.flow(brushContainerMixin, nativeBrushMixin);
+const brushContainerMixin$1 = base => combinedMixin$4(base);
+var victoryBrushContainer = brushContainerMixin$1(_class$1);
 
-function _inherits$u(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _toConsumableArray$v(arr) { return _arrayWithoutHoles$v(arr) || _iterableToArray$v(arr) || _nonIterableSpread$v(); }
 
-function _slicedToArray$2(arr, i) { return _arrayWithHoles$2(arr) || _iterableToArrayLimit$2(arr, i) || _nonIterableRest$2(); }
+function _nonIterableSpread$v() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _nonIterableRest$2() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+function _iterableToArray$v(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
-function _iterableToArrayLimit$2(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _arrayWithoutHoles$v(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _arrayWithHoles$2(arr) { if (Array.isArray(arr)) return arr; }
+function _objectSpread$C(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty$13(target, key, source[key]); }); } return target; }
+
+function _defineProperty$13(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck$u(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$u(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$u(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$u(Constructor.prototype, protoProps); if (staticProps) _defineProperties$u(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn$t(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$t(self); }
+
+function _assertThisInitialized$t(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits$t(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _slicedToArray$1(arr, i) { return _arrayWithHoles$1(arr) || _iterableToArrayLimit$1(arr, i) || _nonIterableRest$1(); }
+
+function _nonIterableRest$1() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit$1(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles$1(arr) { if (Array.isArray(arr)) return arr; }
 
 var ensureArray = function (thing) {
   if (!thing) {
@@ -28364,7 +30391,7 @@ var combineDefaultEvents = function (defaultEvents) {
   var eventsByTarget = _groupBy(defaultEvents, "target");
 
   var events = _toPairs(eventsByTarget).map(function (_ref) {
-    var _ref2 = _slicedToArray$2(_ref, 2),
+    var _ref2 = _slicedToArray$1(_ref, 2),
         target = _ref2[0],
         eventsArray = _ref2[1];
 
@@ -28404,19 +30431,19 @@ var combineContainerMixins = function (mixins, Container) {
   return _temp = _class =
   /*#__PURE__*/
   function (_NaiveCombinedContain) {
-    _inherits$u(VictoryCombinedContainer, _NaiveCombinedContain);
+    _inherits$t(VictoryCombinedContainer, _NaiveCombinedContain);
 
     function VictoryCombinedContainer() {
-      _classCallCheck$v(this, VictoryCombinedContainer);
+      _classCallCheck$u(this, VictoryCombinedContainer);
 
-      return _possibleConstructorReturn$u(this, (VictoryCombinedContainer.__proto__ || Object.getPrototypeOf(VictoryCombinedContainer)).apply(this, arguments));
+      return _possibleConstructorReturn$t(this, (VictoryCombinedContainer.__proto__ || Object.getPrototypeOf(VictoryCombinedContainer)).apply(this, arguments));
     }
 
-    _createClass$v(VictoryCombinedContainer, [{
+    _createClass$u(VictoryCombinedContainer, [{
       key: "getChildren",
       value: function getChildren(props) {
         return instances.reduce(function (children, instance) {
-          return instance.getChildren(_objectSpread$I({}, props, {
+          return instance.getChildren(_objectSpread$C({}, props, {
             children: children
           }));
         }, props.children);
@@ -28434,14 +30461,14 @@ var combineContainerMixins = function (mixins, Container) {
     enumerable: true,
     writable: true,
     value: Classes.reduce(function (propTypes, Class) {
-      return _objectSpread$I({}, propTypes, Class.propTypes);
+      return _objectSpread$C({}, propTypes, Class.propTypes);
     }, {})
   }), Object.defineProperty(_class, "defaultProps", {
     configurable: true,
     enumerable: true,
     writable: true,
     value: Classes.reduce(function (defaultProps, Class) {
-      return _objectSpread$I({}, defaultProps, Class.defaultProps);
+      return _objectSpread$C({}, defaultProps, Class.defaultProps);
     }, {})
   }), Object.defineProperty(_class, "defaultEvents", {
     configurable: true,
@@ -28450,7 +30477,7 @@ var combineContainerMixins = function (mixins, Container) {
     value: function (props) {
       return combineDefaultEvents(Classes.reduce(function (defaultEvents, Class) {
         var events = _isFunction(Class.defaultEvents) ? Class.defaultEvents(props) : Class.defaultEvents;
-        return _toConsumableArray$w(defaultEvents).concat(_toConsumableArray$w(events));
+        return _toConsumableArray$v(defaultEvents).concat(_toConsumableArray$v(events));
       }, []));
     }
   }), _temp;
@@ -28480,12 +30507,762 @@ var makeCreateContainerFunction = function (mixinMap, Container) {
       return Container;
     }
 
-    return combineContainerMixins(_toConsumableArray$w(firstMixins).concat(_toConsumableArray$w(secondMixins)), Container);
+    return combineContainerMixins(_toConsumableArray$v(firstMixins).concat(_toConsumableArray$v(secondMixins)), Container);
   };
 };
 
-var createContainer=makeCreateContainerFunction({zoom:[zoomContainerMixin$1],voronoi:[voronoiContainerMixin$1],selection:[selectionContainerMixin$1],brush:[brushContainerMixin$1],cursor:[cursorContainerMixin$1]},_default$3);
+var createContainer = makeCreateContainerFunction({
+  zoom: [zoomContainerMixin],
+  voronoi: [voronoiContainerMixin],
+  selection: [selectionContainerMixin],
+  cursor: [cursorContainerMixin],
+  brush: [brushContainerMixin]
+}, VictoryContainer);
 
+
+
+var index$x = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	combineContainerMixins: combineContainerMixins,
+	makeCreateContainerFunction: makeCreateContainerFunction,
+	createContainer: createContainer
+});
+
+const createContainer$1 = makeCreateContainerFunction({
+  zoom: [zoomContainerMixin$1],
+  voronoi: [voronoiContainerMixin$1],
+  selection: [selectionContainerMixin$1],
+  brush: [brushContainerMixin$1],
+  cursor: [cursorContainerMixin$1]
+}, _class$1);
+
+function _classCallCheck$v(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties$v(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass$v(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$v(Constructor.prototype, protoProps); if (staticProps) _defineProperties$v(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn$u(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized$u(self); }
+
+function _assertThisInitialized$u(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits$u(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _toConsumableArray$w(arr) { return _arrayWithoutHoles$w(arr) || _iterableToArray$w(arr) || _nonIterableSpread$w(); }
+
+function _nonIterableSpread$w() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray$w(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles$w(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+var SMALL_NUMBER = 1 / Number.MAX_SAFE_INTEGER;
+
+var getScale$2 = function (props) {
+  var _props$scale = props.scale,
+      scale = _props$scale === void 0 ? {} : _props$scale,
+      _props$dimension = props.dimension,
+      dimension = _props$dimension === void 0 ? "x" : _props$dimension;
+
+  if (scale[dimension]) {
+    return scale[dimension];
+  }
+
+  var fallbackScale = Scale.getBaseScale(props, dimension);
+  var range = Helpers.getRange(props, dimension);
+  var domain = Domain.getDomainFromProps(props, dimension) || [0, 1];
+  fallbackScale.range(range).domain(domain);
+  return fallbackScale;
+};
+
+var getDimension = function (props) {
+  var horizontal = props.horizontal,
+      _props$dimension2 = props.dimension,
+      dimension = _props$dimension2 === void 0 ? "x" : _props$dimension2;
+
+  if (!horizontal) {
+    return dimension;
+  }
+
+  return dimension === "x" ? "y" : "x";
+};
+
+var toRange = function (props, domain) {
+  var scale = getScale$2(props);
+  return [scale(Math.min.apply(Math, _toConsumableArray$w(domain))), scale(Math.max.apply(Math, _toConsumableArray$w(domain)))];
+};
+
+var toDomain = function (props, range) {
+  var scale = getScale$2(props);
+  return [scale.invert(Math.min.apply(Math, _toConsumableArray$w(range))), scale.invert(Math.max.apply(Math, _toConsumableArray$w(range)))];
+};
+
+var getFullRange = function (props) {
+  var scale = getScale$2(props);
+  return scale.range();
+};
+
+var getFullDomain = function (props) {
+  var scale = getScale$2(props);
+  return scale.domain();
+};
+
+var withinBound = function (value, bound) {
+  return value >= Collection.getMinValue(bound) && value <= Collection.getMaxValue(bound);
+};
+
+var getBrushDomain = function (brushDomain, fullDomain) {
+  if (brushDomain) {
+    var brushMin = Collection.getMinValue(brushDomain);
+    var brushMax = Collection.getMaxValue(brushDomain);
+    var domainMin = Collection.getMinValue(fullDomain);
+    var domainMax = Collection.getMaxValue(fullDomain);
+    var defaultMin = brushMin < domainMin ? domainMin : domainMax - SMALL_NUMBER;
+    var defaultMax = brushMax > domainMax ? domainMax : domainMin + SMALL_NUMBER;
+    var min = withinBound(brushMin, fullDomain) ? brushMin : defaultMin;
+    var max = withinBound(brushMax, fullDomain) ? brushMax : defaultMax;
+    return [min, max];
+  }
+
+  return fullDomain;
+};
+
+var getActiveHandle = function (props, position, range) {
+  var width = props.handleWidth / 2;
+  var dimension = getDimension(props);
+
+  var getHandle = function (type) {
+    var base = {
+      min: dimension === "x" ? Math.min.apply(Math, _toConsumableArray$w(range)) : Math.max.apply(Math, _toConsumableArray$w(range)),
+      max: dimension === "x" ? Math.max.apply(Math, _toConsumableArray$w(range)) : Math.min.apply(Math, _toConsumableArray$w(range))
+    };
+    return [base[type] - width, base[type] + width];
+  };
+
+  var active = ["min", "max"].reduce(function (memo, type) {
+    memo[type] = withinBound(position, getHandle(type)) ? type : undefined;
+    return memo;
+  }, {});
+  return active.min && active.max ? "both" : active.min || active.max;
+};
+
+var getMinimumDomain = function () {
+  return [0, SMALL_NUMBER];
+};
+
+var panBox = function (props, position) {
+  var brushDomain = props.brushDomain,
+      startPosition = props.startPosition;
+  var range = toRange(props, brushDomain);
+  var fullRange = getFullRange(props);
+  var size = Math.abs(range[1] - range[0]);
+  var globalMin = Math.min.apply(Math, _toConsumableArray$w(fullRange));
+  var globalMax = Math.max.apply(Math, _toConsumableArray$w(fullRange));
+  var delta = startPosition ? startPosition - position : 0;
+  var min = Math.min.apply(Math, _toConsumableArray$w(range)) - delta;
+  var max = Math.max.apply(Math, _toConsumableArray$w(range)) - delta;
+  var constrainedMin = min > globalMax - size ? globalMax - size : Math.max(min, globalMin);
+  var constrainedMax = max < globalMin + size ? globalMin + size : Math.min(max, globalMax);
+  return [constrainedMin, constrainedMax];
+};
+
+var fallbackProps$j = {
+  brushAreaStyle: {
+    stroke: "none",
+    fill: "black",
+    opacity: function (_ref) {
+      var active = _ref.active;
+      return active ? 0.2 : 0.1;
+    } // eslint-disable-line no-magic-numbers
+
+  },
+  brushStyle: {
+    pointerEvents: "none",
+    stroke: "none",
+    fill: "black",
+    opacity: function (_ref2) {
+      var active = _ref2.active;
+      return active ? 0.4 : 0.3;
+    } // eslint-disable-line no-magic-numbers
+
+  },
+  handleStyle: {
+    pointerEvents: "none",
+    stroke: "none",
+    fill: "none"
+  }
+};
+
+var VictoryBrushLine =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits$u(VictoryBrushLine, _React$Component);
+
+  function VictoryBrushLine() {
+    _classCallCheck$v(this, VictoryBrushLine);
+
+    return _possibleConstructorReturn$u(this, (VictoryBrushLine.__proto__ || Object.getPrototypeOf(VictoryBrushLine)).apply(this, arguments));
+  }
+
+  _createClass$v(VictoryBrushLine, [{
+    key: "getRectDimensions",
+    value: function getRectDimensions(props, brushWidth, domain) {
+      var brushDomain = props.brushDomain;
+      var dimension = getDimension(props);
+      domain = domain || getBrushDomain(brushDomain, getFullDomain(props));
+      var range = toRange(props, domain);
+      var coordinates = dimension === "x" ? {
+        y1: props.y1,
+        y2: props.y2,
+        x1: Math.min.apply(Math, _toConsumableArray$w(range)),
+        x2: Math.max.apply(Math, _toConsumableArray$w(range))
+      } : {
+        x1: props.x1,
+        x2: props.x2,
+        y1: Math.min.apply(Math, _toConsumableArray$w(range)),
+        y2: Math.max.apply(Math, _toConsumableArray$w(range))
+      };
+      var x1 = coordinates.x1,
+          x2 = coordinates.x2,
+          y1 = coordinates.y1,
+          y2 = coordinates.y2;
+      var offset = {
+        x: dimension === "x" ? 0 : brushWidth / 2,
+        y: dimension === "y" ? 0 : brushWidth / 2
+      };
+      var x = Math.min(x1, x2) - offset.x;
+      var y = Math.min(y1, y2) - offset.y;
+      var width = Math.max(x1, x2) + offset.x - x;
+      var height = Math.max(y1, y2) + offset.y - y;
+      return {
+        x: x,
+        y: y,
+        width: width,
+        height: height
+      };
+    }
+  }, {
+    key: "getHandleDimensions",
+    value: function getHandleDimensions(props) {
+      var handleWidth = props.handleWidth,
+          x1 = props.x1,
+          x2 = props.x2,
+          y1 = props.y1,
+          y2 = props.y2,
+          brushDomain = props.brushDomain;
+      var dimension = getDimension(props);
+      var brushWidth = props.brushWidth || props.width;
+      var domain = getBrushDomain(brushDomain, getFullDomain(props));
+      var range = toRange(props, domain);
+      var defaultX = Math.min(x1, x2) - brushWidth / 2;
+      var defaultY = Math.min(y1, y2) - brushWidth / 2;
+      var x = {
+        min: dimension === "x" ? Math.min.apply(Math, _toConsumableArray$w(range)) - handleWidth / 2 : defaultX,
+        max: dimension === "x" ? Math.max.apply(Math, _toConsumableArray$w(range)) - handleWidth / 2 : defaultX
+      };
+      var y = {
+        min: dimension === "y" ? Math.max.apply(Math, _toConsumableArray$w(range)) - handleWidth / 2 : defaultY,
+        max: dimension === "y" ? Math.min.apply(Math, _toConsumableArray$w(range)) - handleWidth / 2 : defaultY
+      };
+      var width = dimension === "x" ? handleWidth : brushWidth;
+      var height = dimension === "x" ? brushWidth : handleWidth;
+      return {
+        min: {
+          x: x.min,
+          y: y.min,
+          width: width,
+          height: height
+        },
+        max: {
+          x: x.max,
+          y: y.max,
+          width: width,
+          height: height
+        }
+      };
+    }
+  }, {
+    key: "getCursor",
+    value: function getCursor(props) {
+      var _props$activeBrushes = props.activeBrushes,
+          activeBrushes = _props$activeBrushes === void 0 ? {} : _props$activeBrushes;
+      var dimension = getDimension(props);
+
+      if (activeBrushes.minHandle || activeBrushes.maxHandle) {
+        return dimension === "x" ? "ew-resize" : "ns-resize";
+      } else if (activeBrushes.brush) {
+        return "move";
+      }
+
+      return "crosshair";
+    }
+  }, {
+    key: "renderHandles",
+    value: function renderHandles(props) {
+      var handleComponent = props.handleComponent,
+          handleStyle = props.handleStyle,
+          id = props.id,
+          brushDomain = props.brushDomain,
+          _props$datum = props.datum,
+          datum = _props$datum === void 0 ? {} : _props$datum,
+          _props$activeBrushes2 = props.activeBrushes,
+          activeBrushes = _props$activeBrushes2 === void 0 ? {} : _props$activeBrushes2;
+
+      if (!brushDomain) {
+        return null;
+      }
+
+      var handleDimensions = this.getHandleDimensions(props);
+
+      var style = _assign({}, fallbackProps$j.handleStyle, handleStyle);
+
+      var minDatum = _assign({
+        handleValue: Collection.getMinValue(brushDomain)
+      }, datum);
+
+      var maxDatum = _assign({
+        handleValue: Collection.getMaxValue(brushDomain)
+      }, datum);
+
+      var minHandleProps = _assign({
+        key: "".concat(id, "-min"),
+        style: Helpers.evaluateStyle(style, {
+          datum: minDatum,
+          active: activeBrushes.minHandle
+        })
+      }, handleDimensions.min);
+
+      var maxHandleProps = _assign({
+        key: "".concat(id, "-max"),
+        style: Helpers.evaluateStyle(style, {
+          datum: maxDatum,
+          active: activeBrushes.maxHandle
+        })
+      }, handleDimensions.max);
+
+      return [React__default.cloneElement(handleComponent, minHandleProps), React__default.cloneElement(handleComponent, maxHandleProps)];
+    }
+  }, {
+    key: "renderBrush",
+    value: function renderBrush(props) {
+      var brushComponent = props.brushComponent,
+          brushStyle = props.brushStyle,
+          _props$activeBrushes3 = props.activeBrushes,
+          activeBrushes = _props$activeBrushes3 === void 0 ? {} : _props$activeBrushes3,
+          _props$datum2 = props.datum,
+          datum = _props$datum2 === void 0 ? {} : _props$datum2,
+          brushDomain = props.brushDomain;
+
+      if (!brushDomain) {
+        return null;
+      }
+
+      var brushWidth = props.brushWidth || props.width;
+      var rectDimensions = this.getRectDimensions(props, brushWidth);
+
+      var baseStyle = _assign({}, fallbackProps$j.brushStyle, brushStyle);
+
+      var style = Helpers.evaluateStyle(baseStyle, {
+        datum: datum,
+        active: activeBrushes.brush
+      });
+
+      var brushProps = _assign({
+        style: style
+      }, rectDimensions);
+
+      return React__default.cloneElement(brushComponent, brushProps);
+    }
+  }, {
+    key: "renderBrushArea",
+    value: function renderBrushArea(props) {
+      var brushAreaComponent = props.brushAreaComponent,
+          brushAreaStyle = props.brushAreaStyle,
+          _props$activeBrushes4 = props.activeBrushes,
+          activeBrushes = _props$activeBrushes4 === void 0 ? {} : _props$activeBrushes4,
+          _props$datum3 = props.datum,
+          datum = _props$datum3 === void 0 ? {} : _props$datum3;
+      var brushAreaWidth = props.brushAreaWidth || props.width;
+      var cursor = this.getCursor(props);
+      var rectDimensions = this.getRectDimensions(props, brushAreaWidth, getFullDomain(props));
+
+      var baseStyle = _assign({
+        cursor: cursor
+      }, fallbackProps$j.brushAreaStyle, brushAreaStyle);
+
+      var style = Helpers.evaluateStyle(baseStyle, {
+        datum: datum,
+        active: activeBrushes.brushArea
+      });
+
+      var brushAreaProps = _assign({
+        style: style
+      }, rectDimensions);
+
+      return React__default.cloneElement(brushAreaComponent, brushAreaProps);
+    }
+  }, {
+    key: "renderLine",
+    value: function renderLine(props) {
+      var filteredProps = _pick(props, ["x1", "x2", "y1", "y2", "datum", "scale", "active", "style"]);
+
+      return React__default.cloneElement(props.lineComponent, filteredProps);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React__default.createElement("g", this.props.events, this.renderLine(this.props), this.renderBrushArea(this.props), this.renderBrush(this.props), this.renderHandles(this.props));
+    }
+  }]);
+
+  return VictoryBrushLine;
+}(React__default.Component);
+
+Object.defineProperty(VictoryBrushLine, "propTypes", {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  value: {
+    allowDrag: propTypes.bool,
+    allowDraw: propTypes.bool,
+    allowResize: propTypes.bool,
+    brushAreaComponent: propTypes.element,
+    brushAreaStyle: propTypes.object,
+    brushAreaWidth: propTypes.number,
+    brushComponent: propTypes.element,
+    brushDimension: propTypes.oneOf(["x", "y"]),
+    brushDomain: propTypes.array,
+    brushStyle: propTypes.object,
+    brushWidth: propTypes.number,
+    className: propTypes.string,
+    dimension: propTypes.oneOf(["x", "y"]),
+    disable: propTypes.bool,
+    events: propTypes.object,
+    groupComponent: propTypes.element,
+    handleComponent: propTypes.element,
+    handleStyle: propTypes.object,
+    handleWidth: propTypes.number,
+    id: propTypes.oneOfType([propTypes.number, propTypes.string]),
+    lineComponent: propTypes.element,
+    name: propTypes.string,
+    onBrushDomainChange: propTypes.func,
+    scale: propTypes.object,
+    style: propTypes.object,
+    type: propTypes.string,
+    width: propTypes.number
+  }
+});
+Object.defineProperty(VictoryBrushLine, "defaultProps", {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  value: {
+    allowDrag: true,
+    allowDraw: true,
+    allowResize: true,
+    brushAreaComponent: React__default.createElement(Border, null),
+    brushComponent: React__default.createElement(Border, null),
+    groupComponent: React__default.createElement("g", null),
+    handleComponent: React__default.createElement(Border, null),
+    handleWidth: 10,
+    lineComponent: React__default.createElement(LineSegment, null),
+    width: 10
+  }
+});
+Object.defineProperty(VictoryBrushLine, "defaultEvents", {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  value: function (props) {
+    return props.disable ? undefined : [{
+      target: props.type,
+      eventHandlers: {
+        onMouseEnter: function (evt, targetProps) {
+          evt.preventDefault();
+          var allowResize = targetProps.allowResize,
+              brushDomain = targetProps.brushDomain;
+          var dimension = getDimension(targetProps);
+          var parentSVG = targetProps.parentSVG || Selection.getParentSVG(evt);
+          var position = Selection.getSVGEventCoordinates(evt, parentSVG)[dimension];
+          var fullDomain = getFullDomain(targetProps);
+          var currentDomain = getBrushDomain(brushDomain, fullDomain);
+          var range = toRange(targetProps, currentDomain);
+          var activeHandle = allowResize && getActiveHandle(targetProps, position, range);
+          var activeBrushes = {
+            brushArea: !targetProps.brushDomain,
+            brush: withinBound(position, range) && !reactFastCompare(fullDomain, currentDomain),
+            minHandle: activeHandle === "min" || activeHandle === "both",
+            maxHandle: activeHandle === "min" || activeHandle === "both"
+          };
+          return [{
+            mutation: function () {
+              return {
+                activeBrushes: activeBrushes,
+                brushDomain: targetProps.brushDomain,
+                parentSVG: parentSVG
+              };
+            }
+          }];
+        },
+        onMouseDown: function (evt, targetProps) {
+          evt.preventDefault();
+          var allowResize = targetProps.allowResize,
+              allowDrag = targetProps.allowDrag,
+              allowDraw = targetProps.allowDraw,
+              activeBrushes = targetProps.activeBrushes,
+              brushDomain = targetProps.brushDomain;
+          var dimension = getDimension(targetProps); // Don't trigger events for static brushes
+
+          if (!allowResize && !allowDrag) {
+            return [];
+          }
+
+          var fullDomain = getFullDomain(targetProps);
+          var currentDomain = getBrushDomain(brushDomain, fullDomain);
+          var parentSVG = targetProps.parentSVG || Selection.getParentSVG(evt);
+          var position = Selection.getSVGEventCoordinates(evt, parentSVG)[dimension];
+          var range = toRange(targetProps, currentDomain);
+          var activeHandle = allowResize && getActiveHandle(targetProps, position, range); // If the event occurs in any of the handle regions, start a resize
+
+          if (activeHandle) {
+            return [{
+              mutation: function () {
+                return {
+                  parentSVG: parentSVG,
+                  isSelecting: true,
+                  activeHandle: activeHandle,
+                  brushDomain: currentDomain,
+                  startPosition: position,
+                  activeBrushes: activeBrushes
+                };
+              }
+            }];
+          } else if (withinBound(position, range) && !reactFastCompare(fullDomain, currentDomain)) {
+            // if the event occurs within a selected region start a panning event, unless the whole
+            // domain is selected
+            return [{
+              mutation: function () {
+                return {
+                  isPanning: allowDrag,
+                  startPosition: position,
+                  brushDomain: currentDomain,
+                  activeBrushes: activeBrushes,
+                  parentSVG: parentSVG
+                };
+              }
+            }];
+          } else {
+            // if the event occurs outside the region, or if the whole domain is selected,
+            // start a new selection
+            return allowDraw ? [{
+              mutation: function () {
+                return {
+                  isSelecting: allowResize,
+                  brushDomain: null,
+                  startPosition: position,
+                  activeBrushes: activeBrushes,
+                  parentSVG: parentSVG
+                };
+              }
+            }] : [];
+          }
+        },
+        // eslint-disable-next-line max-statements, complexity
+        onMouseMove: function (evt, targetProps) {
+          var isPanning = targetProps.isPanning,
+              isSelecting = targetProps.isSelecting,
+              allowResize = targetProps.allowResize,
+              allowDrag = targetProps.allowDrag,
+              onBrushDomainChange = targetProps.onBrushDomainChange,
+              brushDomain = targetProps.brushDomain;
+          var dimension = getDimension(targetProps);
+
+          if (isPanning || isSelecting) {
+            evt.preventDefault();
+            evt.stopPropagation();
+          }
+
+          var parentSVG = targetProps.parentSVG || Selection.getParentSVG(evt);
+          var position = Selection.getSVGEventCoordinates(evt, parentSVG)[dimension];
+          var fullDomain = getFullDomain(targetProps);
+          var domain = getBrushDomain(brushDomain, fullDomain);
+          var initialRange = toRange(targetProps, domain);
+          var activeHandle = getActiveHandle(targetProps, position, initialRange);
+          var activeBrushes = {
+            brushArea: !targetProps.brushDomain,
+            brush: withinBound(position, initialRange) && !reactFastCompare(fullDomain, domain),
+            minHandle: activeHandle === "min" || activeHandle === "both",
+            maxHandle: activeHandle === "max" || activeHandle === "both"
+          };
+
+          if (!targetProps.isPanning && !targetProps.isSelecting) {
+            return [{
+              mutation: function () {
+                return {
+                  activeBrushes: activeBrushes,
+                  brushDomain: targetProps.brushDomain,
+                  parentSVG: parentSVG
+                };
+              }
+            }];
+          }
+
+          if (allowDrag && isPanning) {
+            var fullRange = getFullRange(targetProps);
+            var range = panBox(targetProps, position);
+            var currentDomain = toDomain(targetProps, range);
+            var startPosition = Math.max.apply(Math, _toConsumableArray$w(range)) >= Math.max.apply(Math, _toConsumableArray$w(fullRange)) || Math.min.apply(Math, _toConsumableArray$w(range)) <= Math.min.apply(Math, _toConsumableArray$w(fullRange)) ? targetProps.startPosition : position;
+            var mutatedProps = {
+              startPosition: startPosition,
+              isPanning: true,
+              brushDomain: currentDomain,
+              activeBrushes: {
+                brush: true
+              },
+              parentSVG: parentSVG
+            };
+
+            if (_isFunction(onBrushDomainChange)) {
+              onBrushDomainChange(currentDomain, _defaults({}, mutatedProps, targetProps));
+            }
+
+            return [{
+              mutation: function () {
+                return mutatedProps;
+              }
+            }];
+          } else if (allowResize && isSelecting) {
+            var _currentDomain = brushDomain || getMinimumDomain();
+
+            var _range = toRange(targetProps, _currentDomain);
+
+            var oppositeHandle = targetProps.activeHandle === "min" ? "max" : "min";
+            var handle = targetProps.activeHandle && getActiveHandle(targetProps, position, _range) === "both" ? oppositeHandle : targetProps.activeHandle;
+
+            if (!handle) {
+              _currentDomain = toDomain(targetProps, [targetProps.startPosition, position]);
+            } else {
+              var rangeMax = dimension === "x" ? Math.max.apply(Math, _toConsumableArray$w(_range)) : Math.min.apply(Math, _toConsumableArray$w(_range));
+              var rangeMin = dimension === "x" ? Math.min.apply(Math, _toConsumableArray$w(_range)) : Math.max.apply(Math, _toConsumableArray$w(_range));
+              var min = handle === "max" ? rangeMin : position;
+              var max = handle === "min" ? rangeMax : position;
+              _currentDomain = toDomain(targetProps, [min, max]);
+            }
+
+            var _mutatedProps = {
+              brushDomain: _currentDomain,
+              startPosition: targetProps.startPosition,
+              isSelecting: isSelecting,
+              activeHandle: handle,
+              parentSVG: parentSVG,
+              activeBrushes: {
+                brush: true,
+                minHandle: activeHandle === "min",
+                maxHandle: activeHandle === "max"
+              }
+            };
+
+            if (_isFunction(onBrushDomainChange)) {
+              onBrushDomainChange(_currentDomain, _defaults({}, _mutatedProps, targetProps));
+            }
+
+            return [{
+              mutation: function () {
+                return _mutatedProps;
+              }
+            }];
+          }
+
+          return [];
+        },
+        onMouseUp: function (evt, targetProps) {
+          var onBrushDomainChange = targetProps.onBrushDomainChange,
+              brushDomain = targetProps.brushDomain,
+              allowResize = targetProps.allowResize,
+              activeBrushes = targetProps.activeBrushes; // if the mouse hasn't moved since a mouseDown event, select the whole domain region
+
+          var mutatedProps = {
+            isPanning: false,
+            isSelecting: false,
+            activeHandle: null,
+            startPosition: null,
+            brushDomain: brushDomain,
+            activeBrushes: activeBrushes
+          };
+
+          if (allowResize && _isFunction(onBrushDomainChange)) {
+            onBrushDomainChange(brushDomain, _defaults({}, mutatedProps, targetProps));
+          }
+
+          return [{
+            mutation: function () {
+              return mutatedProps;
+            }
+          }];
+        },
+        onMouseLeave: function (evt, targetProps) {
+          var brushDomain = targetProps.brushDomain;
+          return [{
+            mutation: function () {
+              return {
+                isPanning: false,
+                isSelecting: false,
+                activeHandle: null,
+                startPosition: null,
+                brushDomain: brushDomain,
+                activeBrushes: {}
+              };
+            }
+          }];
+        }
+      }
+    }];
+  }
+});
+
+
+
+var index$y = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	VictoryBrushLine: VictoryBrushLine
+});
+
+exports.$area = index$b;
+exports.$axis = index$k;
+exports.$bar = index$c;
+exports.$boxPlot = index$m;
+exports.$brushContainer = index$w;
+exports.$burshLine = index$y;
+exports.$candlestick = index$d;
+exports.$chart = index$q;
+exports.$core = index$8;
+exports.$createContainer = index$x;
+exports.$cursorContainer = index$v;
+exports.$d3Array = index$4;
+exports.$d3Collection = index$5;
+exports.$d3Color = index;
+exports.$d3Format = index$6;
+exports.$d3Interpolate = index$1;
+exports.$d3Path = index$a;
+exports.$d3Scale = d3Scale;
+exports.$d3Shape = d3Shape;
+exports.$d3TimeFormat = index$7;
+exports.$d3Timer = index$2;
+exports.$d3Voronoi = index$h;
+exports.$errorbar = index$f;
+exports.$fastCompare = index$3;
+exports.$group = index$n;
+exports.$legend = index$r;
+exports.$line = index$e;
+exports.$pie = index$g;
+exports.$polarAxis = index$l;
+exports.$scatter = index$o;
+exports.$selectionContainer = index$u;
+exports.$sharedEvents = index$9;
+exports.$stack = index$p;
+exports.$tooltip = index$j;
+exports.$voronoi = index$i;
+exports.$voronoiContainer = index$t;
+exports.$zoomContainer = index$s;
 exports.Arc = NativeArc;
 exports.Area = NativeArea;
 exports.Axis = Axis;
@@ -28512,7 +31289,7 @@ exports.NativeHelpers = NativeHelpers;
 exports.NativeZoomHelpers = NativeZoomHelpers;
 exports.Path = VPath;
 exports.Point = NativePoint;
-exports.Portal = _default$2;
+exports.Portal = Portal$1;
 exports.PropTypes = CustomPropTypes;
 exports.Rect = VRect;
 exports.Scale = Scale;
@@ -28524,32 +31301,32 @@ exports.Text = VText;
 exports.TextSize = TextSize;
 exports.Transitions = Transitions;
 exports.VictoryAnimation = VictoryAnimation;
-exports.VictoryArea = _default$5;
-exports.VictoryAxis = _default$6;
-exports.VictoryBar = _default$8;
-exports.VictoryBoxPlot = _default$9;
+exports.VictoryArea = _class$3;
+exports.VictoryAxis = _class$4;
+exports.VictoryBar = _class$6;
+exports.VictoryBoxPlot = _class$7;
 exports.VictoryBrushContainer = victoryBrushContainer;
-exports.VictoryCandlestick = _default$g;
-exports.VictoryChart = _default$e;
-exports.VictoryClipContainer = _default$4;
-exports.VictoryContainer = _default$3;
+exports.VictoryCandlestick = _class$e;
+exports.VictoryChart = _class$c;
+exports.VictoryClipContainer = _class$2;
+exports.VictoryContainer = _class$1;
 exports.VictoryCursorContainer = victoryCursorContainer;
-exports.VictoryErrorBar = _default$f;
-exports.VictoryGroup = _default$a;
+exports.VictoryErrorBar = _class$d;
+exports.VictoryGroup = _class$8;
 exports.VictoryLabel = NativeVictoryLabel;
-exports.VictoryLegend = _default$j;
-exports.VictoryLine = _default$b;
-exports.VictoryPie = _default$i;
-exports.VictoryPolarAxis = _default$7;
-exports.VictoryPortal = _default;
-exports.VictoryScatter = _default$c;
+exports.VictoryLegend = _class$h;
+exports.VictoryLine = _class$9;
+exports.VictoryPie = _class$g;
+exports.VictoryPolarAxis = _class$5;
+exports.VictoryPortal = VictoryPortal$1;
+exports.VictoryScatter = _class$a;
 exports.VictorySelectionContainer = victorySelectionContainer;
 exports.VictorySharedEvents = VictorySharedEvents;
-exports.VictoryStack = _default$d;
+exports.VictoryStack = _class$b;
 exports.VictoryTheme = VictoryTheme;
-exports.VictoryTooltip = _default$1;
+exports.VictoryTooltip = _class;
 exports.VictoryTransition = VictoryTransition;
-exports.VictoryVoronoi = _default$h;
+exports.VictoryVoronoi = _class$f;
 exports.VictoryVoronoiContainer = victoryVoronoiContainer;
 exports.VictoryZoomContainer = victoryZoomContainer;
 exports.Voronoi = NativeVoronoi;
@@ -28557,7 +31334,7 @@ exports.Whisker = NativeWhisker;
 exports.Wrapper = Wrapper;
 exports.addEvents = addEvents;
 exports.brushContainerMixin = brushContainerMixin$1;
-exports.createContainer = createContainer;
+exports.createContainer = createContainer$1;
 exports.cursorContainerMixin = cursorContainerMixin$1;
 exports.selectionContainerMixin = selectionContainerMixin$1;
 exports.voronoiContainerMixin = voronoiContainerMixin$1;

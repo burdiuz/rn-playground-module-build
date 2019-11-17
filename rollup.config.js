@@ -6,36 +6,36 @@ import image from 'rollup-plugin-image';
 
 const plugins = [
 	resolve({
-		mainFields: ['jsnext:main', 'module', 'main'], 
+		mainFields: ['jsnext:main', 'module', 'main'],
 		extensions: ['.mjs', '.js', '.jsx', '.android.mjs', '.android.js', '.android.jsx', '.json', '.node'],
 	}),
+	json(),
+	image(),
 	babel({
-		presets: [['module:metro-react-native-babel-preset', { disableImportExportTransform: true }]],
-		plugins: ['@babel/plugin-external-helpers'],
+		presets: ['@babel/preset-react'],
+		plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-transform-flow-strip-types'],
 		include: [
 			'source/**',
-			'node_modules/react-native-paper/**',
+			'node_modules/react-native-eva-icons/**',
+			'node_modules/react-native-safe-area-view/**',
 			'node_modules/react-native-elements/**',
-			'node_modules/react-native-ui-kitten/**',
-			'node_modules/react-native-material-ui/**',
 			'node_modules/react-native-ratings/**',
+			'node_modules/react-native-ui-kitten/**',
+			'node_modules/@ui-kitten/eva-icons/**',
+			'node_modules/react-native-material-ui/**',
 			'node_modules/victory-native/**',
-			'node_modules/react-native-material-ui/**',
-			'node_modules/react-native-material-ui/**',
-			'node_modules/react-native-material-ui/**',
 		],
 		runtimeHelpers: true,
 		externalHelpers: true,
 		babelrc: false,
 	}),
 	commonjs({
-		include: ['node_modules/**'],
+		// 'node_modules/**'
+		include: [],
 		namedExports: {
 			'node_modules/react-is/index.js': ['isElement', 'ForwardRef', 'isValidElementType'],
 		},
 	}),
-	json(),
-	image(),
 ];
 
 export const external = [
@@ -859,7 +859,7 @@ export const external = [
 	'lodash.zipWith',
 ];
 
-export const getEndpointConfig = (path, exludeModules = []) => ({
+export const getEndpointConfig = (path, exludeModules = [], { output = {}, ...config } = {}) => ({
 	input: `source/${path}.js`,
 	output: [
 		{
@@ -867,11 +867,14 @@ export const getEndpointConfig = (path, exludeModules = []) => ({
 			sourcemap: false,
 			exports: 'named',
 			format: 'cjs',
+			...output,
 		},
 	],
 	context: 'this',
+	// treeshake: false,
 	plugins: [...plugins],
 	external: [...external, ...exludeModules],
+	...config,
 });
 
 export default [
@@ -882,7 +885,18 @@ export default [
 	getEndpointConfig('lodash-fp'),
 	getEndpointConfig('react-native-paper'),
 	getEndpointConfig('react-native-elements'),
-	getEndpointConfig('react-native-ui-kitten'),
+	getEndpointConfig('react-native-ui-kitten', ['moment', '@ui-kitten/eva-icons', '@eva-design/eva', 'react-native-eva-icons', 'react-native-eva-icons/icons'], {
+		output: {
+			interop: false,
+		},
+	}),
+	getEndpointConfig('eva-design_eva'),
+	getEndpointConfig('ui-kitten_eva-icons', ['react-native-eva-icons', 'react-native-eva-icons/icons']),
+	getEndpointConfig('react-native-eva-icons', [], {
+		output: {
+			interop: false,
+		},
+	}),
 	getEndpointConfig('react-native-material-ui'),
 	getEndpointConfig('victory-native'),
 ];
