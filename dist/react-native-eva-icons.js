@@ -53,6 +53,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Activity$1 = unwrapExports(Activity);
 
+var Activity$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Activity$1,
+	__moduleExports: Activity
+});
+
 var ActivityOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -91,6 +97,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ActivityOutline$1 = unwrapExports(ActivityOutline);
 
+var ActivityOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ActivityOutline$1,
+	__moduleExports: ActivityOutline
+});
+
 var AlertCircle = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -127,6 +139,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var AlertCircle$1 = unwrapExports(AlertCircle);
+
+var AlertCircle$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': AlertCircle$1,
+	__moduleExports: AlertCircle
+});
 
 var AlertCircleOutline = createCommonjsModule(function (module, exports) {
 
@@ -171,6 +189,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var AlertCircleOutline$1 = unwrapExports(AlertCircleOutline);
 
+var AlertCircleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': AlertCircleOutline$1,
+	__moduleExports: AlertCircleOutline
+});
+
 var AlertTriangle = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -208,6 +232,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var AlertTriangle$1 = unwrapExports(AlertTriangle);
+
+var AlertTriangle$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': AlertTriangle$1,
+	__moduleExports: AlertTriangle
+});
 
 var AlertTriangleOutline = createCommonjsModule(function (module, exports) {
 
@@ -253,6 +283,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var AlertTriangleOutline$1 = unwrapExports(AlertTriangleOutline);
 
+var AlertTriangleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': AlertTriangleOutline$1,
+	__moduleExports: AlertTriangleOutline
+});
+
 var Archive = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -290,6 +326,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Archive$1 = unwrapExports(Archive);
+
+var Archive$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Archive$1,
+	__moduleExports: Archive
+});
 
 var ArchiveOutline = createCommonjsModule(function (module, exports) {
 
@@ -336,6 +378,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArchiveOutline$1 = unwrapExports(ArchiveOutline);
 
+var ArchiveOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArchiveOutline$1,
+	__moduleExports: ArchiveOutline
+});
+
 var ArrowBack = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -373,6 +421,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowBack$1 = unwrapExports(ArrowBack);
+
+var ArrowBack$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowBack$1,
+	__moduleExports: ArrowBack
+});
 
 var ArrowBackOutline = createCommonjsModule(function (module, exports) {
 
@@ -412,6 +466,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowBackOutline$1 = unwrapExports(ArrowBackOutline);
 
+var ArrowBackOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowBackOutline$1,
+	__moduleExports: ArrowBackOutline
+});
+
 var ArrowCircleDown = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -448,6 +508,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowCircleDown$1 = unwrapExports(ArrowCircleDown);
+
+var ArrowCircleDown$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowCircleDown$1,
+	__moduleExports: ArrowCircleDown
+});
 
 var ArrowCircleDownOutline = createCommonjsModule(function (module, exports) {
 
@@ -488,6 +554,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowCircleDownOutline$1 = unwrapExports(ArrowCircleDownOutline);
 
+var ArrowCircleDownOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowCircleDownOutline$1,
+	__moduleExports: ArrowCircleDownOutline
+});
+
 var ArrowCircleLeft = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -525,6 +597,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowCircleLeft$1 = unwrapExports(ArrowCircleLeft);
+
+var ArrowCircleLeft$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowCircleLeft$1,
+	__moduleExports: ArrowCircleLeft
+});
 
 var ArrowCircleLeftOutline = createCommonjsModule(function (module, exports) {
 
@@ -565,6 +643,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowCircleLeftOutline$1 = unwrapExports(ArrowCircleLeftOutline);
 
+var ArrowCircleLeftOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowCircleLeftOutline$1,
+	__moduleExports: ArrowCircleLeftOutline
+});
+
 var ArrowCircleRight = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -602,6 +686,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowCircleRight$1 = unwrapExports(ArrowCircleRight);
+
+var ArrowCircleRight$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowCircleRight$1,
+	__moduleExports: ArrowCircleRight
+});
 
 var ArrowCircleRightOutline = createCommonjsModule(function (module, exports) {
 
@@ -643,6 +733,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowCircleRightOutline$1 = unwrapExports(ArrowCircleRightOutline);
 
+var ArrowCircleRightOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowCircleRightOutline$1,
+	__moduleExports: ArrowCircleRightOutline
+});
+
 var ArrowCircleUp = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -680,6 +776,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowCircleUp$1 = unwrapExports(ArrowCircleUp);
+
+var ArrowCircleUp$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowCircleUp$1,
+	__moduleExports: ArrowCircleUp
+});
 
 var ArrowCircleUpOutline = createCommonjsModule(function (module, exports) {
 
@@ -720,6 +822,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowCircleUpOutline$1 = unwrapExports(ArrowCircleUpOutline);
 
+var ArrowCircleUpOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowCircleUpOutline$1,
+	__moduleExports: ArrowCircleUpOutline
+});
+
 var ArrowDown = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -757,6 +865,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowDown$1 = unwrapExports(ArrowDown);
+
+var ArrowDown$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowDown$1,
+	__moduleExports: ArrowDown
+});
 
 var ArrowDownOutline = createCommonjsModule(function (module, exports) {
 
@@ -796,6 +910,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowDownOutline$1 = unwrapExports(ArrowDownOutline);
 
+var ArrowDownOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowDownOutline$1,
+	__moduleExports: ArrowDownOutline
+});
+
 var ArrowDownward = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -833,6 +953,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowDownward$1 = unwrapExports(ArrowDownward);
 
+var ArrowDownward$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowDownward$1,
+	__moduleExports: ArrowDownward
+});
+
 var ArrowDownwardOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -869,6 +995,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowDownwardOutline$1 = unwrapExports(ArrowDownwardOutline);
+
+var ArrowDownwardOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowDownwardOutline$1,
+	__moduleExports: ArrowDownwardOutline
+});
 
 var ArrowForward = createCommonjsModule(function (module, exports) {
 
@@ -908,6 +1040,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowForward$1 = unwrapExports(ArrowForward);
 
+var ArrowForward$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowForward$1,
+	__moduleExports: ArrowForward
+});
+
 var ArrowForwardOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -945,6 +1083,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowForwardOutline$1 = unwrapExports(ArrowForwardOutline);
+
+var ArrowForwardOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowForwardOutline$1,
+	__moduleExports: ArrowForwardOutline
+});
 
 var ArrowIosBack = createCommonjsModule(function (module, exports) {
 
@@ -984,6 +1128,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowIosBack$1 = unwrapExports(ArrowIosBack);
 
+var ArrowIosBack$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowIosBack$1,
+	__moduleExports: ArrowIosBack
+});
+
 var ArrowIosBackOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1022,6 +1172,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowIosBackOutline$1 = unwrapExports(ArrowIosBackOutline);
 
+var ArrowIosBackOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowIosBackOutline$1,
+	__moduleExports: ArrowIosBackOutline
+});
+
 var ArrowIosDownward = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1059,6 +1215,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowIosDownward$1 = unwrapExports(ArrowIosDownward);
 
+var ArrowIosDownward$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowIosDownward$1,
+	__moduleExports: ArrowIosDownward
+});
+
 var ArrowIosDownwardOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1095,6 +1257,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowIosDownwardOutline$1 = unwrapExports(ArrowIosDownwardOutline);
+
+var ArrowIosDownwardOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowIosDownwardOutline$1,
+	__moduleExports: ArrowIosDownwardOutline
+});
 
 var ArrowIosForward = createCommonjsModule(function (module, exports) {
 
@@ -1134,6 +1302,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowIosForward$1 = unwrapExports(ArrowIosForward);
 
+var ArrowIosForward$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowIosForward$1,
+	__moduleExports: ArrowIosForward
+});
+
 var ArrowIosForwardOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1171,6 +1345,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowIosForwardOutline$1 = unwrapExports(ArrowIosForwardOutline);
+
+var ArrowIosForwardOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowIosForwardOutline$1,
+	__moduleExports: ArrowIosForwardOutline
+});
 
 var ArrowIosUpward = createCommonjsModule(function (module, exports) {
 
@@ -1210,6 +1390,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowIosUpward$1 = unwrapExports(ArrowIosUpward);
 
+var ArrowIosUpward$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowIosUpward$1,
+	__moduleExports: ArrowIosUpward
+});
+
 var ArrowIosUpwardOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1248,6 +1434,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowIosUpwardOutline$1 = unwrapExports(ArrowIosUpwardOutline);
 
+var ArrowIosUpwardOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowIosUpwardOutline$1,
+	__moduleExports: ArrowIosUpwardOutline
+});
+
 var ArrowLeft = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1285,6 +1477,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowLeft$1 = unwrapExports(ArrowLeft);
 
+var ArrowLeft$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowLeft$1,
+	__moduleExports: ArrowLeft
+});
+
 var ArrowLeftOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1321,6 +1519,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowLeftOutline$1 = unwrapExports(ArrowLeftOutline);
+
+var ArrowLeftOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowLeftOutline$1,
+	__moduleExports: ArrowLeftOutline
+});
 
 var ArrowRight = createCommonjsModule(function (module, exports) {
 
@@ -1360,6 +1564,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowRight$1 = unwrapExports(ArrowRight);
 
+var ArrowRight$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowRight$1,
+	__moduleExports: ArrowRight
+});
+
 var ArrowRightOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1397,6 +1607,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowRightOutline$1 = unwrapExports(ArrowRightOutline);
+
+var ArrowRightOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowRightOutline$1,
+	__moduleExports: ArrowRightOutline
+});
 
 var ArrowUp = createCommonjsModule(function (module, exports) {
 
@@ -1436,6 +1652,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowUp$1 = unwrapExports(ArrowUp);
 
+var ArrowUp$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowUp$1,
+	__moduleExports: ArrowUp
+});
+
 var ArrowUpOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1473,6 +1695,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowUpOutline$1 = unwrapExports(ArrowUpOutline);
+
+var ArrowUpOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowUpOutline$1,
+	__moduleExports: ArrowUpOutline
+});
 
 var ArrowUpward = createCommonjsModule(function (module, exports) {
 
@@ -1512,6 +1740,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowUpward$1 = unwrapExports(ArrowUpward);
 
+var ArrowUpward$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowUpward$1,
+	__moduleExports: ArrowUpward
+});
+
 var ArrowUpwardOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1549,6 +1783,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowUpwardOutline$1 = unwrapExports(ArrowUpwardOutline);
+
+var ArrowUpwardOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowUpwardOutline$1,
+	__moduleExports: ArrowUpwardOutline
+});
 
 var ArrowheadDown = createCommonjsModule(function (module, exports) {
 
@@ -1589,6 +1829,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowheadDown$1 = unwrapExports(ArrowheadDown);
 
+var ArrowheadDown$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowheadDown$1,
+	__moduleExports: ArrowheadDown
+});
+
 var ArrowheadDownOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1627,6 +1873,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowheadDownOutline$1 = unwrapExports(ArrowheadDownOutline);
+
+var ArrowheadDownOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowheadDownOutline$1,
+	__moduleExports: ArrowheadDownOutline
+});
 
 var ArrowheadLeft = createCommonjsModule(function (module, exports) {
 
@@ -1668,6 +1920,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowheadLeft$1 = unwrapExports(ArrowheadLeft);
 
+var ArrowheadLeft$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowheadLeft$1,
+	__moduleExports: ArrowheadLeft
+});
+
 var ArrowheadLeftOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1707,6 +1965,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowheadLeftOutline$1 = unwrapExports(ArrowheadLeftOutline);
+
+var ArrowheadLeftOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowheadLeftOutline$1,
+	__moduleExports: ArrowheadLeftOutline
+});
 
 var ArrowheadRight = createCommonjsModule(function (module, exports) {
 
@@ -1748,6 +2012,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowheadRight$1 = unwrapExports(ArrowheadRight);
 
+var ArrowheadRight$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowheadRight$1,
+	__moduleExports: ArrowheadRight
+});
+
 var ArrowheadRightOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1787,6 +2057,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ArrowheadRightOutline$1 = unwrapExports(ArrowheadRightOutline);
+
+var ArrowheadRightOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowheadRightOutline$1,
+	__moduleExports: ArrowheadRightOutline
+});
 
 var ArrowheadUp = createCommonjsModule(function (module, exports) {
 
@@ -1828,6 +2104,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowheadUp$1 = unwrapExports(ArrowheadUp);
 
+var ArrowheadUp$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowheadUp$1,
+	__moduleExports: ArrowheadUp
+});
+
 var ArrowheadUpOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1868,6 +2150,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ArrowheadUpOutline$1 = unwrapExports(ArrowheadUpOutline);
 
+var ArrowheadUpOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ArrowheadUpOutline$1,
+	__moduleExports: ArrowheadUpOutline
+});
+
 var At = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1904,6 +2192,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var At$1 = unwrapExports(At);
+
+var At$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': At$1,
+	__moduleExports: At
+});
 
 var AtOutline = createCommonjsModule(function (module, exports) {
 
@@ -1942,6 +2236,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var AtOutline$1 = unwrapExports(AtOutline);
 
+var AtOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': AtOutline$1,
+	__moduleExports: AtOutline
+});
+
 var Attach = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1978,6 +2278,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Attach$1 = unwrapExports(Attach);
+
+var Attach$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Attach$1,
+	__moduleExports: Attach
+});
 
 var AttachOutline = createCommonjsModule(function (module, exports) {
 
@@ -2016,6 +2322,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var AttachOutline$1 = unwrapExports(AttachOutline);
 
+var AttachOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': AttachOutline$1,
+	__moduleExports: AttachOutline
+});
+
 var Attach_2 = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2052,6 +2364,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Attach_2$1 = unwrapExports(Attach_2);
+
+var Attach_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Attach_2$1,
+	__moduleExports: Attach_2
+});
 
 var Attach_2Outline = createCommonjsModule(function (module, exports) {
 
@@ -2090,6 +2408,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Attach_2Outline$1 = unwrapExports(Attach_2Outline);
 
+var Attach_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Attach_2Outline$1,
+	__moduleExports: Attach_2Outline
+});
+
 var Award = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2126,6 +2450,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Award$1 = unwrapExports(Award);
+
+var Award$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Award$1,
+	__moduleExports: Award
+});
 
 var AwardOutline = createCommonjsModule(function (module, exports) {
 
@@ -2164,6 +2494,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var AwardOutline$1 = unwrapExports(AwardOutline);
 
+var AwardOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': AwardOutline$1,
+	__moduleExports: AwardOutline
+});
+
 var Backspace = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2200,6 +2536,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Backspace$1 = unwrapExports(Backspace);
+
+var Backspace$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Backspace$1,
+	__moduleExports: Backspace
+});
 
 var BackspaceOutline = createCommonjsModule(function (module, exports) {
 
@@ -2239,6 +2581,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var BackspaceOutline$1 = unwrapExports(BackspaceOutline);
+
+var BackspaceOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BackspaceOutline$1,
+	__moduleExports: BackspaceOutline
+});
 
 var BarChart = createCommonjsModule(function (module, exports) {
 
@@ -2282,6 +2630,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var BarChart$1 = unwrapExports(BarChart);
 
+var BarChart$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BarChart$1,
+	__moduleExports: BarChart
+});
+
 var BarChartOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2323,6 +2677,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var BarChartOutline$1 = unwrapExports(BarChartOutline);
+
+var BarChartOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BarChartOutline$1,
+	__moduleExports: BarChartOutline
+});
 
 var BarChart_2 = createCommonjsModule(function (module, exports) {
 
@@ -2366,6 +2726,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var BarChart_2$1 = unwrapExports(BarChart_2);
 
+var BarChart_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BarChart_2$1,
+	__moduleExports: BarChart_2
+});
+
 var BarChart_2Outline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2408,6 +2774,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var BarChart_2Outline$1 = unwrapExports(BarChart_2Outline);
 
+var BarChart_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BarChart_2Outline$1,
+	__moduleExports: BarChart_2Outline
+});
+
 var Battery = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2447,6 +2819,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Battery$1 = unwrapExports(Battery);
 
+var Battery$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Battery$1,
+	__moduleExports: Battery
+});
+
 var BatteryOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2485,6 +2863,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var BatteryOutline$1 = unwrapExports(BatteryOutline);
+
+var BatteryOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BatteryOutline$1,
+	__moduleExports: BatteryOutline
+});
 
 var Behance = createCommonjsModule(function (module, exports) {
 
@@ -2528,6 +2912,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Behance$1 = unwrapExports(Behance);
+
+var Behance$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Behance$1,
+	__moduleExports: Behance
+});
 
 var BehanceOutline = createCommonjsModule(function (module, exports) {
 
@@ -2575,6 +2965,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var BehanceOutline$1 = unwrapExports(BehanceOutline);
 
+var BehanceOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BehanceOutline$1,
+	__moduleExports: BehanceOutline
+});
+
 var Bell = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2611,6 +3007,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Bell$1 = unwrapExports(Bell);
+
+var Bell$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Bell$1,
+	__moduleExports: Bell
+});
 
 var BellOff = createCommonjsModule(function (module, exports) {
 
@@ -2653,6 +3055,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var BellOff$1 = unwrapExports(BellOff);
 
+var BellOff$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BellOff$1,
+	__moduleExports: BellOff
+});
+
 var BellOffOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2694,6 +3102,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var BellOffOutline$1 = unwrapExports(BellOffOutline);
 
+var BellOffOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BellOffOutline$1,
+	__moduleExports: BellOffOutline
+});
+
 var BellOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2730,6 +3144,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var BellOutline$1 = unwrapExports(BellOutline);
+
+var BellOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BellOutline$1,
+	__moduleExports: BellOutline
+});
 
 var Bluetooth = createCommonjsModule(function (module, exports) {
 
@@ -2769,6 +3189,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Bluetooth$1 = unwrapExports(Bluetooth);
 
+var Bluetooth$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Bluetooth$1,
+	__moduleExports: Bluetooth
+});
+
 var BluetoothOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2807,6 +3233,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var BluetoothOutline$1 = unwrapExports(BluetoothOutline);
 
+var BluetoothOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BluetoothOutline$1,
+	__moduleExports: BluetoothOutline
+});
+
 var Book = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2843,6 +3275,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Book$1 = unwrapExports(Book);
+
+var Book$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Book$1,
+	__moduleExports: Book
+});
 
 var BookOpen = createCommonjsModule(function (module, exports) {
 
@@ -2884,6 +3322,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var BookOpen$1 = unwrapExports(BookOpen);
 
+var BookOpen$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BookOpen$1,
+	__moduleExports: BookOpen
+});
+
 var BookOpenOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2922,6 +3366,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var BookOpenOutline$1 = unwrapExports(BookOpenOutline);
 
+var BookOpenOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BookOpenOutline$1,
+	__moduleExports: BookOpenOutline
+});
+
 var BookOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2958,6 +3408,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var BookOutline$1 = unwrapExports(BookOutline);
+
+var BookOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BookOutline$1,
+	__moduleExports: BookOutline
+});
 
 var Bookmark = createCommonjsModule(function (module, exports) {
 
@@ -2996,6 +3452,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Bookmark$1 = unwrapExports(Bookmark);
 
+var Bookmark$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Bookmark$1,
+	__moduleExports: Bookmark
+});
+
 var BookmarkOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3032,6 +3494,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var BookmarkOutline$1 = unwrapExports(BookmarkOutline);
+
+var BookmarkOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BookmarkOutline$1,
+	__moduleExports: BookmarkOutline
+});
 
 var Briefcase = createCommonjsModule(function (module, exports) {
 
@@ -3074,6 +3542,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Briefcase$1 = unwrapExports(Briefcase);
 
+var Briefcase$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Briefcase$1,
+	__moduleExports: Briefcase
+});
+
 var BriefcaseOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3111,6 +3585,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var BriefcaseOutline$1 = unwrapExports(BriefcaseOutline);
 
+var BriefcaseOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BriefcaseOutline$1,
+	__moduleExports: BriefcaseOutline
+});
+
 var Browser = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3147,6 +3627,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Browser$1 = unwrapExports(Browser);
+
+var Browser$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Browser$1,
+	__moduleExports: Browser
+});
 
 var BrowserOutline = createCommonjsModule(function (module, exports) {
 
@@ -3193,6 +3679,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var BrowserOutline$1 = unwrapExports(BrowserOutline);
 
+var BrowserOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BrowserOutline$1,
+	__moduleExports: BrowserOutline
+});
+
 var Brush = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3232,6 +3724,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Brush$1 = unwrapExports(Brush);
 
+var Brush$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Brush$1,
+	__moduleExports: Brush
+});
+
 var BrushOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3268,6 +3766,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var BrushOutline$1 = unwrapExports(BrushOutline);
+
+var BrushOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BrushOutline$1,
+	__moduleExports: BrushOutline
+});
 
 var Bulb = createCommonjsModule(function (module, exports) {
 
@@ -3317,6 +3821,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Bulb$1 = unwrapExports(Bulb);
 
+var Bulb$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Bulb$1,
+	__moduleExports: Bulb
+});
+
 var BulbOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3365,6 +3875,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var BulbOutline$1 = unwrapExports(BulbOutline);
 
+var BulbOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': BulbOutline$1,
+	__moduleExports: BulbOutline
+});
+
 var Calendar = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3401,6 +3917,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Calendar$1 = unwrapExports(Calendar);
+
+var Calendar$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Calendar$1,
+	__moduleExports: Calendar
+});
 
 var CalendarOutline = createCommonjsModule(function (module, exports) {
 
@@ -3445,6 +3967,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CalendarOutline$1 = unwrapExports(CalendarOutline);
 
+var CalendarOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CalendarOutline$1,
+	__moduleExports: CalendarOutline
+});
+
 var Camera = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3486,6 +4014,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Camera$1 = unwrapExports(Camera);
 
+var Camera$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Camera$1,
+	__moduleExports: Camera
+});
+
 var CameraOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3525,6 +4059,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CameraOutline$1 = unwrapExports(CameraOutline);
 
+var CameraOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CameraOutline$1,
+	__moduleExports: CameraOutline
+});
+
 var Car = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3562,6 +4102,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Car$1 = unwrapExports(Car);
 
+var Car$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Car$1,
+	__moduleExports: Car
+});
+
 var CarOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3598,6 +4144,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CarOutline$1 = unwrapExports(CarOutline);
+
+var CarOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CarOutline$1,
+	__moduleExports: CarOutline
+});
 
 var Cast = createCommonjsModule(function (module, exports) {
 
@@ -3643,6 +4195,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Cast$1 = unwrapExports(Cast);
 
+var Cast$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Cast$1,
+	__moduleExports: Cast
+});
+
 var CastOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3687,6 +4245,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CastOutline$1 = unwrapExports(CastOutline);
 
+var CastOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CastOutline$1,
+	__moduleExports: CastOutline
+});
+
 var Charging = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3727,6 +4291,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Charging$1 = unwrapExports(Charging);
+
+var Charging$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Charging$1,
+	__moduleExports: Charging
+});
 
 var ChargingOutline = createCommonjsModule(function (module, exports) {
 
@@ -3771,6 +4341,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ChargingOutline$1 = unwrapExports(ChargingOutline);
 
+var ChargingOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ChargingOutline$1,
+	__moduleExports: ChargingOutline
+});
+
 var Checkmark = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3807,6 +4383,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Checkmark$1 = unwrapExports(Checkmark);
+
+var Checkmark$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Checkmark$1,
+	__moduleExports: Checkmark
+});
 
 var CheckmarkCircle = createCommonjsModule(function (module, exports) {
 
@@ -3847,6 +4429,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CheckmarkCircle$1 = unwrapExports(CheckmarkCircle);
 
+var CheckmarkCircle$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CheckmarkCircle$1,
+	__moduleExports: CheckmarkCircle
+});
+
 var CheckmarkCircleOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3886,6 +4474,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CheckmarkCircleOutline$1 = unwrapExports(CheckmarkCircleOutline);
 
+var CheckmarkCircleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CheckmarkCircleOutline$1,
+	__moduleExports: CheckmarkCircleOutline
+});
+
 var CheckmarkCircle_2 = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3922,6 +4516,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CheckmarkCircle_2$1 = unwrapExports(CheckmarkCircle_2);
+
+var CheckmarkCircle_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CheckmarkCircle_2$1,
+	__moduleExports: CheckmarkCircle_2
+});
 
 var CheckmarkCircle_2Outline = createCommonjsModule(function (module, exports) {
 
@@ -3962,6 +4562,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CheckmarkCircle_2Outline$1 = unwrapExports(CheckmarkCircle_2Outline);
 
+var CheckmarkCircle_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CheckmarkCircle_2Outline$1,
+	__moduleExports: CheckmarkCircle_2Outline
+});
+
 var CheckmarkOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -3998,6 +4604,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CheckmarkOutline$1 = unwrapExports(CheckmarkOutline);
+
+var CheckmarkOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CheckmarkOutline$1,
+	__moduleExports: CheckmarkOutline
+});
 
 var CheckmarkSquare = createCommonjsModule(function (module, exports) {
 
@@ -4038,6 +4650,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CheckmarkSquare$1 = unwrapExports(CheckmarkSquare);
 
+var CheckmarkSquare$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CheckmarkSquare$1,
+	__moduleExports: CheckmarkSquare
+});
+
 var CheckmarkSquareOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4077,6 +4695,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CheckmarkSquareOutline$1 = unwrapExports(CheckmarkSquareOutline);
 
+var CheckmarkSquareOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CheckmarkSquareOutline$1,
+	__moduleExports: CheckmarkSquareOutline
+});
+
 var CheckmarkSquare_2 = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4114,6 +4738,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CheckmarkSquare_2$1 = unwrapExports(CheckmarkSquare_2);
+
+var CheckmarkSquare_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CheckmarkSquare_2$1,
+	__moduleExports: CheckmarkSquare_2
+});
 
 var CheckmarkSquare_2Outline = createCommonjsModule(function (module, exports) {
 
@@ -4155,6 +4785,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CheckmarkSquare_2Outline$1 = unwrapExports(CheckmarkSquare_2Outline);
 
+var CheckmarkSquare_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CheckmarkSquare_2Outline$1,
+	__moduleExports: CheckmarkSquare_2Outline
+});
+
 var ChevronDown = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4192,6 +4828,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ChevronDown$1 = unwrapExports(ChevronDown);
 
+var ChevronDown$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ChevronDown$1,
+	__moduleExports: ChevronDown
+});
+
 var ChevronDownOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4228,6 +4870,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ChevronDownOutline$1 = unwrapExports(ChevronDownOutline);
+
+var ChevronDownOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ChevronDownOutline$1,
+	__moduleExports: ChevronDownOutline
+});
 
 var ChevronLeft = createCommonjsModule(function (module, exports) {
 
@@ -4267,6 +4915,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ChevronLeft$1 = unwrapExports(ChevronLeft);
 
+var ChevronLeft$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ChevronLeft$1,
+	__moduleExports: ChevronLeft
+});
+
 var ChevronLeftOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4304,6 +4958,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ChevronLeftOutline$1 = unwrapExports(ChevronLeftOutline);
+
+var ChevronLeftOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ChevronLeftOutline$1,
+	__moduleExports: ChevronLeftOutline
+});
 
 var ChevronRight = createCommonjsModule(function (module, exports) {
 
@@ -4343,6 +5003,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ChevronRight$1 = unwrapExports(ChevronRight);
 
+var ChevronRight$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ChevronRight$1,
+	__moduleExports: ChevronRight
+});
+
 var ChevronRightOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4380,6 +5046,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ChevronRightOutline$1 = unwrapExports(ChevronRightOutline);
+
+var ChevronRightOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ChevronRightOutline$1,
+	__moduleExports: ChevronRightOutline
+});
 
 var ChevronUp = createCommonjsModule(function (module, exports) {
 
@@ -4419,6 +5091,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ChevronUp$1 = unwrapExports(ChevronUp);
 
+var ChevronUp$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ChevronUp$1,
+	__moduleExports: ChevronUp
+});
+
 var ChevronUpOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4456,6 +5134,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ChevronUpOutline$1 = unwrapExports(ChevronUpOutline);
+
+var ChevronUpOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ChevronUpOutline$1,
+	__moduleExports: ChevronUpOutline
+});
 
 var Clipboard = createCommonjsModule(function (module, exports) {
 
@@ -4501,6 +5185,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Clipboard$1 = unwrapExports(Clipboard);
 
+var Clipboard$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Clipboard$1,
+	__moduleExports: Clipboard
+});
+
 var ClipboardOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4537,6 +5227,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ClipboardOutline$1 = unwrapExports(ClipboardOutline);
+
+var ClipboardOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ClipboardOutline$1,
+	__moduleExports: ClipboardOutline
+});
 
 var Clock = createCommonjsModule(function (module, exports) {
 
@@ -4575,6 +5271,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Clock$1 = unwrapExports(Clock);
+
+var Clock$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Clock$1,
+	__moduleExports: Clock
+});
 
 var ClockOutline = createCommonjsModule(function (module, exports) {
 
@@ -4616,6 +5318,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ClockOutline$1 = unwrapExports(ClockOutline);
 
+var ClockOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ClockOutline$1,
+	__moduleExports: ClockOutline
+});
+
 var Close = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4654,6 +5362,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Close$1 = unwrapExports(Close);
 
+var Close$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Close$1,
+	__moduleExports: Close
+});
+
 var CloseCircle = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4690,6 +5404,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CloseCircle$1 = unwrapExports(CloseCircle);
+
+var CloseCircle$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CloseCircle$1,
+	__moduleExports: CloseCircle
+});
 
 var CloseCircleOutline = createCommonjsModule(function (module, exports) {
 
@@ -4730,6 +5450,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CloseCircleOutline$1 = unwrapExports(CloseCircleOutline);
 
+var CloseCircleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CloseCircleOutline$1,
+	__moduleExports: CloseCircleOutline
+});
+
 var CloseOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4768,6 +5494,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CloseOutline$1 = unwrapExports(CloseOutline);
 
+var CloseOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CloseOutline$1,
+	__moduleExports: CloseOutline
+});
+
 var CloseSquare = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4804,6 +5536,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CloseSquare$1 = unwrapExports(CloseSquare);
+
+var CloseSquare$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CloseSquare$1,
+	__moduleExports: CloseSquare
+});
 
 var CloseSquareOutline = createCommonjsModule(function (module, exports) {
 
@@ -4843,6 +5581,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CloseSquareOutline$1 = unwrapExports(CloseSquareOutline);
+
+var CloseSquareOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CloseSquareOutline$1,
+	__moduleExports: CloseSquareOutline
+});
 
 var CloudDownload = createCommonjsModule(function (module, exports) {
 
@@ -4891,6 +5635,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CloudDownload$1 = unwrapExports(CloudDownload);
 
+var CloudDownload$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CloudDownload$1,
+	__moduleExports: CloudDownload
+});
+
 var CloudDownloadOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4929,6 +5679,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CloudDownloadOutline$1 = unwrapExports(CloudDownloadOutline);
+
+var CloudDownloadOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CloudDownloadOutline$1,
+	__moduleExports: CloudDownloadOutline
+});
 
 var CloudUpload = createCommonjsModule(function (module, exports) {
 
@@ -4969,6 +5725,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CloudUpload$1 = unwrapExports(CloudUpload);
 
+var CloudUpload$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CloudUpload$1,
+	__moduleExports: CloudUpload
+});
+
 var CloudUploadOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5007,6 +5769,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CloudUploadOutline$1 = unwrapExports(CloudUploadOutline);
+
+var CloudUploadOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CloudUploadOutline$1,
+	__moduleExports: CloudUploadOutline
+});
 
 var Code = createCommonjsModule(function (module, exports) {
 
@@ -5047,6 +5815,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Code$1 = unwrapExports(Code);
+
+var Code$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Code$1,
+	__moduleExports: Code
+});
 
 var CodeDownload = createCommonjsModule(function (module, exports) {
 
@@ -5090,6 +5864,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CodeDownload$1 = unwrapExports(CodeDownload);
 
+var CodeDownload$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CodeDownload$1,
+	__moduleExports: CodeDownload
+});
+
 var CodeDownloadOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5132,6 +5912,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CodeDownloadOutline$1 = unwrapExports(CodeDownloadOutline);
 
+var CodeDownloadOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CodeDownloadOutline$1,
+	__moduleExports: CodeDownloadOutline
+});
+
 var CodeOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5171,6 +5957,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CodeOutline$1 = unwrapExports(CodeOutline);
+
+var CodeOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CodeOutline$1,
+	__moduleExports: CodeOutline
+});
 
 var Collapse = createCommonjsModule(function (module, exports) {
 
@@ -5212,6 +6004,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Collapse$1 = unwrapExports(Collapse);
 
+var Collapse$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Collapse$1,
+	__moduleExports: Collapse
+});
+
 var CollapseOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5252,6 +6050,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CollapseOutline$1 = unwrapExports(CollapseOutline);
 
+var CollapseOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CollapseOutline$1,
+	__moduleExports: CollapseOutline
+});
+
 var ColorPalette = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5288,6 +6092,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ColorPalette$1 = unwrapExports(ColorPalette);
+
+var ColorPalette$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ColorPalette$1,
+	__moduleExports: ColorPalette
+});
 
 var ColorPaletteOutline = createCommonjsModule(function (module, exports) {
 
@@ -5336,6 +6146,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ColorPaletteOutline$1 = unwrapExports(ColorPaletteOutline);
 
+var ColorPaletteOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ColorPaletteOutline$1,
+	__moduleExports: ColorPaletteOutline
+});
+
 var ColorPicker = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5373,6 +6189,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ColorPicker$1 = unwrapExports(ColorPicker);
 
+var ColorPicker$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ColorPicker$1,
+	__moduleExports: ColorPicker
+});
+
 var ColorPickerOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5409,6 +6231,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ColorPickerOutline$1 = unwrapExports(ColorPickerOutline);
+
+var ColorPickerOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ColorPickerOutline$1,
+	__moduleExports: ColorPickerOutline
+});
 
 var Compass = createCommonjsModule(function (module, exports) {
 
@@ -5449,6 +6277,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Compass$1 = unwrapExports(Compass);
 
+var Compass$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Compass$1,
+	__moduleExports: Compass
+});
+
 var CompassOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5488,6 +6322,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CompassOutline$1 = unwrapExports(CompassOutline);
 
+var CompassOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CompassOutline$1,
+	__moduleExports: CompassOutline
+});
+
 var Copy = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5524,6 +6364,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Copy$1 = unwrapExports(Copy);
+
+var Copy$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Copy$1,
+	__moduleExports: Copy
+});
 
 var CopyOutline = createCommonjsModule(function (module, exports) {
 
@@ -5563,6 +6409,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CopyOutline$1 = unwrapExports(CopyOutline);
+
+var CopyOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CopyOutline$1,
+	__moduleExports: CopyOutline
+});
 
 var CornerDownLeft = createCommonjsModule(function (module, exports) {
 
@@ -5604,6 +6456,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CornerDownLeft$1 = unwrapExports(CornerDownLeft);
 
+var CornerDownLeft$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerDownLeft$1,
+	__moduleExports: CornerDownLeft
+});
+
 var CornerDownLeftOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5644,6 +6502,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CornerDownLeftOutline$1 = unwrapExports(CornerDownLeftOutline);
 
+var CornerDownLeftOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerDownLeftOutline$1,
+	__moduleExports: CornerDownLeftOutline
+});
+
 var CornerDownRight = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5681,6 +6545,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CornerDownRight$1 = unwrapExports(CornerDownRight);
+
+var CornerDownRight$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerDownRight$1,
+	__moduleExports: CornerDownRight
+});
 
 var CornerDownRightOutline = createCommonjsModule(function (module, exports) {
 
@@ -5720,6 +6590,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CornerDownRightOutline$1 = unwrapExports(CornerDownRightOutline);
 
+var CornerDownRightOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerDownRightOutline$1,
+	__moduleExports: CornerDownRightOutline
+});
+
 var CornerLeftDown = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5757,6 +6633,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CornerLeftDown$1 = unwrapExports(CornerLeftDown);
 
+var CornerLeftDown$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerLeftDown$1,
+	__moduleExports: CornerLeftDown
+});
+
 var CornerLeftDownOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5793,6 +6675,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CornerLeftDownOutline$1 = unwrapExports(CornerLeftDownOutline);
+
+var CornerLeftDownOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerLeftDownOutline$1,
+	__moduleExports: CornerLeftDownOutline
+});
 
 var CornerLeftUp = createCommonjsModule(function (module, exports) {
 
@@ -5832,6 +6720,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CornerLeftUp$1 = unwrapExports(CornerLeftUp);
 
+var CornerLeftUp$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerLeftUp$1,
+	__moduleExports: CornerLeftUp
+});
+
 var CornerLeftUpOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5870,6 +6764,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CornerLeftUpOutline$1 = unwrapExports(CornerLeftUpOutline);
 
+var CornerLeftUpOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerLeftUpOutline$1,
+	__moduleExports: CornerLeftUpOutline
+});
+
 var CornerRightDown = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5907,6 +6807,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CornerRightDown$1 = unwrapExports(CornerRightDown);
 
+var CornerRightDown$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerRightDown$1,
+	__moduleExports: CornerRightDown
+});
+
 var CornerRightDownOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -5943,6 +6849,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CornerRightDownOutline$1 = unwrapExports(CornerRightDownOutline);
+
+var CornerRightDownOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerRightDownOutline$1,
+	__moduleExports: CornerRightDownOutline
+});
 
 var CornerRightUp = createCommonjsModule(function (module, exports) {
 
@@ -5982,6 +6894,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CornerRightUp$1 = unwrapExports(CornerRightUp);
 
+var CornerRightUp$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerRightUp$1,
+	__moduleExports: CornerRightUp
+});
+
 var CornerRightUpOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6019,6 +6937,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CornerRightUpOutline$1 = unwrapExports(CornerRightUpOutline);
+
+var CornerRightUpOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerRightUpOutline$1,
+	__moduleExports: CornerRightUpOutline
+});
 
 var CornerUpLeft = createCommonjsModule(function (module, exports) {
 
@@ -6058,6 +6982,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CornerUpLeft$1 = unwrapExports(CornerUpLeft);
 
+var CornerUpLeft$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerUpLeft$1,
+	__moduleExports: CornerUpLeft
+});
+
 var CornerUpLeftOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6095,6 +7025,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CornerUpLeftOutline$1 = unwrapExports(CornerUpLeftOutline);
+
+var CornerUpLeftOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerUpLeftOutline$1,
+	__moduleExports: CornerUpLeftOutline
+});
 
 var CornerUpRight = createCommonjsModule(function (module, exports) {
 
@@ -6134,6 +7070,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CornerUpRight$1 = unwrapExports(CornerUpRight);
 
+var CornerUpRight$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerUpRight$1,
+	__moduleExports: CornerUpRight
+});
+
 var CornerUpRightOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6172,6 +7114,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CornerUpRightOutline$1 = unwrapExports(CornerUpRightOutline);
 
+var CornerUpRightOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CornerUpRightOutline$1,
+	__moduleExports: CornerUpRightOutline
+});
+
 var CreditCard = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6208,6 +7156,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CreditCard$1 = unwrapExports(CreditCard);
+
+var CreditCard$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CreditCard$1,
+	__moduleExports: CreditCard
+});
 
 var CreditCardOutline = createCommonjsModule(function (module, exports) {
 
@@ -6250,6 +7204,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var CreditCardOutline$1 = unwrapExports(CreditCardOutline);
 
+var CreditCardOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CreditCardOutline$1,
+	__moduleExports: CreditCardOutline
+});
+
 var Crop = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6287,6 +7247,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Crop$1 = unwrapExports(Crop);
 
+var Crop$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Crop$1,
+	__moduleExports: Crop
+});
+
 var CropOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6323,6 +7289,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CropOutline$1 = unwrapExports(CropOutline);
+
+var CropOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CropOutline$1,
+	__moduleExports: CropOutline
+});
 
 var Cube = createCommonjsModule(function (module, exports) {
 
@@ -6365,6 +7337,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Cube$1 = unwrapExports(Cube);
 
+var Cube$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Cube$1,
+	__moduleExports: Cube
+});
+
 var CubeOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6401,6 +7379,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var CubeOutline$1 = unwrapExports(CubeOutline);
+
+var CubeOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': CubeOutline$1,
+	__moduleExports: CubeOutline
+});
 
 var DiagonalArrowLeftDown = createCommonjsModule(function (module, exports) {
 
@@ -6439,6 +7423,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var DiagonalArrowLeftDown$1 = unwrapExports(DiagonalArrowLeftDown);
 
+var DiagonalArrowLeftDown$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DiagonalArrowLeftDown$1,
+	__moduleExports: DiagonalArrowLeftDown
+});
+
 var DiagonalArrowLeftDownOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6475,6 +7465,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var DiagonalArrowLeftDownOutline$1 = unwrapExports(DiagonalArrowLeftDownOutline);
+
+var DiagonalArrowLeftDownOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DiagonalArrowLeftDownOutline$1,
+	__moduleExports: DiagonalArrowLeftDownOutline
+});
 
 var DiagonalArrowLeftUp = createCommonjsModule(function (module, exports) {
 
@@ -6514,6 +7510,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var DiagonalArrowLeftUp$1 = unwrapExports(DiagonalArrowLeftUp);
 
+var DiagonalArrowLeftUp$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DiagonalArrowLeftUp$1,
+	__moduleExports: DiagonalArrowLeftUp
+});
+
 var DiagonalArrowLeftUpOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6551,6 +7553,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var DiagonalArrowLeftUpOutline$1 = unwrapExports(DiagonalArrowLeftUpOutline);
+
+var DiagonalArrowLeftUpOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DiagonalArrowLeftUpOutline$1,
+	__moduleExports: DiagonalArrowLeftUpOutline
+});
 
 var DiagonalArrowRightDown = createCommonjsModule(function (module, exports) {
 
@@ -6590,6 +7598,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var DiagonalArrowRightDown$1 = unwrapExports(DiagonalArrowRightDown);
 
+var DiagonalArrowRightDown$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DiagonalArrowRightDown$1,
+	__moduleExports: DiagonalArrowRightDown
+});
+
 var DiagonalArrowRightDownOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6627,6 +7641,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var DiagonalArrowRightDownOutline$1 = unwrapExports(DiagonalArrowRightDownOutline);
+
+var DiagonalArrowRightDownOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DiagonalArrowRightDownOutline$1,
+	__moduleExports: DiagonalArrowRightDownOutline
+});
 
 var DiagonalArrowRightUp = createCommonjsModule(function (module, exports) {
 
@@ -6666,6 +7686,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var DiagonalArrowRightUp$1 = unwrapExports(DiagonalArrowRightUp);
 
+var DiagonalArrowRightUp$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DiagonalArrowRightUp$1,
+	__moduleExports: DiagonalArrowRightUp
+});
+
 var DiagonalArrowRightUpOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6703,6 +7729,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var DiagonalArrowRightUpOutline$1 = unwrapExports(DiagonalArrowRightUpOutline);
+
+var DiagonalArrowRightUpOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DiagonalArrowRightUpOutline$1,
+	__moduleExports: DiagonalArrowRightUpOutline
+});
 
 var DoneAll = createCommonjsModule(function (module, exports) {
 
@@ -6745,6 +7777,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var DoneAll$1 = unwrapExports(DoneAll);
 
+var DoneAll$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DoneAll$1,
+	__moduleExports: DoneAll
+});
+
 var DoneAllOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6785,6 +7823,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var DoneAllOutline$1 = unwrapExports(DoneAllOutline);
+
+var DoneAllOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DoneAllOutline$1,
+	__moduleExports: DoneAllOutline
+});
 
 var Download = createCommonjsModule(function (module, exports) {
 
@@ -6848,6 +7892,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Download$1 = unwrapExports(Download);
 
+var Download$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Download$1,
+	__moduleExports: Download
+});
+
 var DownloadOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6910,6 +7960,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var DownloadOutline$1 = unwrapExports(DownloadOutline);
 
+var DownloadOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DownloadOutline$1,
+	__moduleExports: DownloadOutline
+});
+
 var Droplet = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -6949,6 +8005,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Droplet$1 = unwrapExports(Droplet);
+
+var Droplet$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Droplet$1,
+	__moduleExports: Droplet
+});
 
 var DropletOff = createCommonjsModule(function (module, exports) {
 
@@ -6991,6 +8053,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var DropletOff$1 = unwrapExports(DropletOff);
 
+var DropletOff$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DropletOff$1,
+	__moduleExports: DropletOff
+});
+
 var DropletOffOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7032,6 +8100,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var DropletOffOutline$1 = unwrapExports(DropletOffOutline);
 
+var DropletOffOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DropletOffOutline$1,
+	__moduleExports: DropletOffOutline
+});
+
 var DropletOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7072,6 +8146,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var DropletOutline$1 = unwrapExports(DropletOutline);
 
+var DropletOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': DropletOutline$1,
+	__moduleExports: DropletOutline
+});
+
 var Edit = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7109,6 +8189,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Edit$1 = unwrapExports(Edit);
 
+var Edit$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Edit$1,
+	__moduleExports: Edit
+});
+
 var EditOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7145,6 +8231,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var EditOutline$1 = unwrapExports(EditOutline);
+
+var EditOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': EditOutline$1,
+	__moduleExports: EditOutline
+});
 
 var Edit_2 = createCommonjsModule(function (module, exports) {
 
@@ -7185,6 +8277,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Edit_2$1 = unwrapExports(Edit_2);
 
+var Edit_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Edit_2$1,
+	__moduleExports: Edit_2
+});
+
 var Edit_2Outline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7224,6 +8322,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Edit_2Outline$1 = unwrapExports(Edit_2Outline);
 
+var Edit_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Edit_2Outline$1,
+	__moduleExports: Edit_2Outline
+});
+
 var Email = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7261,6 +8365,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Email$1 = unwrapExports(Email);
 
+var Email$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Email$1,
+	__moduleExports: Email
+});
+
 var EmailOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7297,6 +8407,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var EmailOutline$1 = unwrapExports(EmailOutline);
+
+var EmailOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': EmailOutline$1,
+	__moduleExports: EmailOutline
+});
 
 var Expand = createCommonjsModule(function (module, exports) {
 
@@ -7338,6 +8454,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Expand$1 = unwrapExports(Expand);
 
+var Expand$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Expand$1,
+	__moduleExports: Expand
+});
+
 var ExpandOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7378,6 +8500,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ExpandOutline$1 = unwrapExports(ExpandOutline);
 
+var ExpandOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ExpandOutline$1,
+	__moduleExports: ExpandOutline
+});
+
 var ExternalLink = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7417,6 +8545,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ExternalLink$1 = unwrapExports(ExternalLink);
 
+var ExternalLink$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ExternalLink$1,
+	__moduleExports: ExternalLink
+});
+
 var ExternalLinkOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7455,6 +8589,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ExternalLinkOutline$1 = unwrapExports(ExternalLinkOutline);
+
+var ExternalLinkOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ExternalLinkOutline$1,
+	__moduleExports: ExternalLinkOutline
+});
 
 var Eye = createCommonjsModule(function (module, exports) {
 
@@ -7496,6 +8636,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Eye$1 = unwrapExports(Eye);
+
+var Eye$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Eye$1,
+	__moduleExports: Eye
+});
 
 var EyeOff = createCommonjsModule(function (module, exports) {
 
@@ -7542,6 +8688,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var EyeOff$1 = unwrapExports(EyeOff);
 
+var EyeOff$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': EyeOff$1,
+	__moduleExports: EyeOff
+});
+
 var EyeOffOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7583,6 +8735,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var EyeOffOutline$1 = unwrapExports(EyeOffOutline);
 
+var EyeOffOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': EyeOffOutline$1,
+	__moduleExports: EyeOffOutline
+});
+
 var EyeOff_2 = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7620,6 +8778,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var EyeOff_2$1 = unwrapExports(EyeOff_2);
 
+var EyeOff_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': EyeOff_2$1,
+	__moduleExports: EyeOff_2
+});
+
 var EyeOff_2Outline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7656,6 +8820,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var EyeOff_2Outline$1 = unwrapExports(EyeOff_2Outline);
+
+var EyeOff_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': EyeOff_2Outline$1,
+	__moduleExports: EyeOff_2Outline
+});
 
 var EyeOutline = createCommonjsModule(function (module, exports) {
 
@@ -7696,6 +8866,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var EyeOutline$1 = unwrapExports(EyeOutline);
 
+var EyeOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': EyeOutline$1,
+	__moduleExports: EyeOutline
+});
+
 var Facebook = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7733,6 +8909,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Facebook$1 = unwrapExports(Facebook);
+
+var Facebook$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Facebook$1,
+	__moduleExports: Facebook
+});
 
 var FacebookOutline = createCommonjsModule(function (module, exports) {
 
@@ -7777,6 +8959,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var FacebookOutline$1 = unwrapExports(FacebookOutline);
 
+var FacebookOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FacebookOutline$1,
+	__moduleExports: FacebookOutline
+});
+
 var File = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7814,6 +9002,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var File$1 = unwrapExports(File);
 
+var File$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': File$1,
+	__moduleExports: File
+});
+
 var FileAdd = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7850,6 +9044,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var FileAdd$1 = unwrapExports(FileAdd);
+
+var FileAdd$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FileAdd$1,
+	__moduleExports: FileAdd
+});
 
 var FileAddOutline = createCommonjsModule(function (module, exports) {
 
@@ -7890,6 +9090,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var FileAddOutline$1 = unwrapExports(FileAddOutline);
 
+var FileAddOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FileAddOutline$1,
+	__moduleExports: FileAddOutline
+});
+
 var FileOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7927,6 +9133,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var FileOutline$1 = unwrapExports(FileOutline);
 
+var FileOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FileOutline$1,
+	__moduleExports: FileOutline
+});
+
 var FileRemove = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -7963,6 +9175,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var FileRemove$1 = unwrapExports(FileRemove);
+
+var FileRemove$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FileRemove$1,
+	__moduleExports: FileRemove
+});
 
 var FileRemoveOutline = createCommonjsModule(function (module, exports) {
 
@@ -8003,6 +9221,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var FileRemoveOutline$1 = unwrapExports(FileRemoveOutline);
 
+var FileRemoveOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FileRemoveOutline$1,
+	__moduleExports: FileRemoveOutline
+});
+
 var FileText = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8039,6 +9263,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var FileText$1 = unwrapExports(FileText);
+
+var FileText$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FileText$1,
+	__moduleExports: FileText
+});
 
 var FileTextOutline = createCommonjsModule(function (module, exports) {
 
@@ -8081,6 +9311,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var FileTextOutline$1 = unwrapExports(FileTextOutline);
 
+var FileTextOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FileTextOutline$1,
+	__moduleExports: FileTextOutline
+});
+
 var Film = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8117,6 +9353,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Film$1 = unwrapExports(Film);
+
+var Film$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Film$1,
+	__moduleExports: Film
+});
 
 var FilmOutline = createCommonjsModule(function (module, exports) {
 
@@ -8155,6 +9397,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var FilmOutline$1 = unwrapExports(FilmOutline);
 
+var FilmOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FilmOutline$1,
+	__moduleExports: FilmOutline
+});
+
 var Flag = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8190,6 +9438,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Flag$1 = unwrapExports(Flag);
+
+var Flag$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Flag$1,
+	__moduleExports: Flag
+});
 
 var FlagOutline = createCommonjsModule(function (module, exports) {
 
@@ -8227,6 +9481,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var FlagOutline$1 = unwrapExports(FlagOutline);
 
+var FlagOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FlagOutline$1,
+	__moduleExports: FlagOutline
+});
+
 var Flash = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8263,6 +9523,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Flash$1 = unwrapExports(Flash);
+
+var Flash$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Flash$1,
+	__moduleExports: Flash
+});
 
 var FlashOff = createCommonjsModule(function (module, exports) {
 
@@ -8305,6 +9571,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var FlashOff$1 = unwrapExports(FlashOff);
 
+var FlashOff$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FlashOff$1,
+	__moduleExports: FlashOff
+});
+
 var FlashOffOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8346,6 +9618,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var FlashOffOutline$1 = unwrapExports(FlashOffOutline);
 
+var FlashOffOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FlashOffOutline$1,
+	__moduleExports: FlashOffOutline
+});
+
 var FlashOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8382,6 +9660,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var FlashOutline$1 = unwrapExports(FlashOutline);
+
+var FlashOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FlashOutline$1,
+	__moduleExports: FlashOutline
+});
 
 var Flip = createCommonjsModule(function (module, exports) {
 
@@ -8423,6 +9707,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Flip$1 = unwrapExports(Flip);
 
+var Flip$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Flip$1,
+	__moduleExports: Flip
+});
+
 var FlipOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8462,6 +9752,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var FlipOutline$1 = unwrapExports(FlipOutline);
+
+var FlipOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FlipOutline$1,
+	__moduleExports: FlipOutline
+});
 
 var Flip_2 = createCommonjsModule(function (module, exports) {
 
@@ -8503,6 +9799,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Flip_2$1 = unwrapExports(Flip_2);
 
+var Flip_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Flip_2$1,
+	__moduleExports: Flip_2
+});
+
 var Flip_2Outline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8543,6 +9845,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Flip_2Outline$1 = unwrapExports(Flip_2Outline);
 
+var Flip_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Flip_2Outline$1,
+	__moduleExports: Flip_2Outline
+});
+
 var Folder = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8580,6 +9888,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Folder$1 = unwrapExports(Folder);
 
+var Folder$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Folder$1,
+	__moduleExports: Folder
+});
+
 var FolderAdd = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8616,6 +9930,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var FolderAdd$1 = unwrapExports(FolderAdd);
+
+var FolderAdd$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FolderAdd$1,
+	__moduleExports: FolderAdd
+});
 
 var FolderAddOutline = createCommonjsModule(function (module, exports) {
 
@@ -8656,6 +9976,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var FolderAddOutline$1 = unwrapExports(FolderAddOutline);
 
+var FolderAddOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FolderAddOutline$1,
+	__moduleExports: FolderAddOutline
+});
+
 var FolderOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8693,6 +10019,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var FolderOutline$1 = unwrapExports(FolderOutline);
 
+var FolderOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FolderOutline$1,
+	__moduleExports: FolderOutline
+});
+
 var FolderRemove = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8729,6 +10061,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var FolderRemove$1 = unwrapExports(FolderRemove);
+
+var FolderRemove$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FolderRemove$1,
+	__moduleExports: FolderRemove
+});
 
 var FolderRemoveOutline = createCommonjsModule(function (module, exports) {
 
@@ -8769,6 +10107,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var FolderRemoveOutline$1 = unwrapExports(FolderRemoveOutline);
 
+var FolderRemoveOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FolderRemoveOutline$1,
+	__moduleExports: FolderRemoveOutline
+});
+
 var Funnel = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8806,6 +10150,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Funnel$1 = unwrapExports(Funnel);
 
+var Funnel$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Funnel$1,
+	__moduleExports: Funnel
+});
+
 var FunnelOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8842,6 +10192,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var FunnelOutline$1 = unwrapExports(FunnelOutline);
+
+var FunnelOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': FunnelOutline$1,
+	__moduleExports: FunnelOutline
+});
 
 var Gift = createCommonjsModule(function (module, exports) {
 
@@ -8885,6 +10241,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Gift$1 = unwrapExports(Gift);
 
+var Gift$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Gift$1,
+	__moduleExports: Gift
+});
+
 var GiftOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8923,6 +10285,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var GiftOutline$1 = unwrapExports(GiftOutline);
 
+var GiftOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': GiftOutline$1,
+	__moduleExports: GiftOutline
+});
+
 var Github = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8960,6 +10328,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Github$1 = unwrapExports(Github);
 
+var Github$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Github$1,
+	__moduleExports: Github
+});
+
 var GithubOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -8994,6 +10368,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var GithubOutline$1 = unwrapExports(GithubOutline);
+
+var GithubOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': GithubOutline$1,
+	__moduleExports: GithubOutline
+});
 
 var Globe = createCommonjsModule(function (module, exports) {
 
@@ -9033,6 +10413,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Globe$1 = unwrapExports(Globe);
 
+var Globe$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Globe$1,
+	__moduleExports: Globe
+});
+
 var GlobeOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9070,6 +10456,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var GlobeOutline$1 = unwrapExports(GlobeOutline);
+
+var GlobeOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': GlobeOutline$1,
+	__moduleExports: GlobeOutline
+});
 
 var Globe_2 = createCommonjsModule(function (module, exports) {
 
@@ -9112,6 +10504,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Globe_2$1 = unwrapExports(Globe_2);
 
+var Globe_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Globe_2$1,
+	__moduleExports: Globe_2
+});
+
 var Globe_2Outline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9152,6 +10550,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Globe_2Outline$1 = unwrapExports(Globe_2Outline);
+
+var Globe_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Globe_2Outline$1,
+	__moduleExports: Globe_2Outline
+});
 
 var Globe_3 = createCommonjsModule(function (module, exports) {
 
@@ -9194,6 +10598,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Globe_3$1 = unwrapExports(Globe_3);
 
+var Globe_3$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Globe_3$1,
+	__moduleExports: Globe_3
+});
+
 var Google = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9230,6 +10640,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Google$1 = unwrapExports(Google);
 
+var Google$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Google$1,
+	__moduleExports: Google
+});
+
 var GoogleOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9265,6 +10681,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var GoogleOutline$1 = unwrapExports(GoogleOutline);
+
+var GoogleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': GoogleOutline$1,
+	__moduleExports: GoogleOutline
+});
 
 var Grid = createCommonjsModule(function (module, exports) {
 
@@ -9309,6 +10731,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Grid$1 = unwrapExports(Grid);
 
+var Grid$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Grid$1,
+	__moduleExports: Grid
+});
+
 var GridOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9352,6 +10780,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var GridOutline$1 = unwrapExports(GridOutline);
 
+var GridOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': GridOutline$1,
+	__moduleExports: GridOutline
+});
+
 var HardDrive = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9388,6 +10822,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var HardDrive$1 = unwrapExports(HardDrive);
+
+var HardDrive$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': HardDrive$1,
+	__moduleExports: HardDrive
+});
 
 var HardDriveOutline = createCommonjsModule(function (module, exports) {
 
@@ -9432,6 +10872,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var HardDriveOutline$1 = unwrapExports(HardDriveOutline);
 
+var HardDriveOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': HardDriveOutline$1,
+	__moduleExports: HardDriveOutline
+});
+
 var Hash = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9469,6 +10915,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Hash$1 = unwrapExports(Hash);
+
+var Hash$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Hash$1,
+	__moduleExports: Hash
+});
 
 var HashOutline = createCommonjsModule(function (module, exports) {
 
@@ -9508,6 +10960,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var HashOutline$1 = unwrapExports(HashOutline);
 
+var HashOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': HashOutline$1,
+	__moduleExports: HashOutline
+});
+
 var Headphones = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9544,6 +11002,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Headphones$1 = unwrapExports(Headphones);
+
+var Headphones$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Headphones$1,
+	__moduleExports: Headphones
+});
 
 var HeadphonesOutline = createCommonjsModule(function (module, exports) {
 
@@ -9582,6 +11046,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var HeadphonesOutline$1 = unwrapExports(HeadphonesOutline);
 
+var HeadphonesOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': HeadphonesOutline$1,
+	__moduleExports: HeadphonesOutline
+});
+
 var Heart = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9619,6 +11089,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Heart$1 = unwrapExports(Heart);
 
+var Heart$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Heart$1,
+	__moduleExports: Heart
+});
+
 var HeartOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9655,6 +11131,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var HeartOutline$1 = unwrapExports(HeartOutline);
+
+var HeartOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': HeartOutline$1,
+	__moduleExports: HeartOutline
+});
 
 var Home = createCommonjsModule(function (module, exports) {
 
@@ -9698,6 +11180,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Home$1 = unwrapExports(Home);
 
+var Home$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Home$1,
+	__moduleExports: Home
+});
+
 var HomeOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9734,6 +11222,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var HomeOutline$1 = unwrapExports(HomeOutline);
+
+var HomeOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': HomeOutline$1,
+	__moduleExports: HomeOutline
+});
 
 var Image = createCommonjsModule(function (module, exports) {
 
@@ -9776,6 +11270,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Image$1 = unwrapExports(Image);
 
+var Image$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Image$1,
+	__moduleExports: Image
+});
+
 var ImageOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9817,6 +11317,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ImageOutline$1 = unwrapExports(ImageOutline);
 
+var ImageOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ImageOutline$1,
+	__moduleExports: ImageOutline
+});
+
 var Image_2 = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9853,6 +11359,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Image_2$1 = unwrapExports(Image_2);
+
+var Image_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Image_2$1,
+	__moduleExports: Image_2
+});
 
 var Inbox = createCommonjsModule(function (module, exports) {
 
@@ -9892,6 +11404,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Inbox$1 = unwrapExports(Inbox);
 
+var Inbox$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Inbox$1,
+	__moduleExports: Inbox
+});
+
 var InboxOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9930,6 +11448,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var InboxOutline$1 = unwrapExports(InboxOutline);
 
+var InboxOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': InboxOutline$1,
+	__moduleExports: InboxOutline
+});
+
 var Info = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -9967,6 +11491,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Info$1 = unwrapExports(Info);
+
+var Info$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Info$1,
+	__moduleExports: Info
+});
 
 var InfoOutline = createCommonjsModule(function (module, exports) {
 
@@ -10011,6 +11541,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var InfoOutline$1 = unwrapExports(InfoOutline);
+
+var InfoOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': InfoOutline$1,
+	__moduleExports: InfoOutline
+});
 
 var Keypad = createCommonjsModule(function (module, exports) {
 
@@ -10065,6 +11601,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Keypad$1 = unwrapExports(Keypad);
 
+var Keypad$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Keypad$1,
+	__moduleExports: Keypad
+});
+
 var KeypadOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10118,6 +11660,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var KeypadOutline$1 = unwrapExports(KeypadOutline);
 
+var KeypadOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': KeypadOutline$1,
+	__moduleExports: KeypadOutline
+});
+
 var Layers = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10160,6 +11708,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Layers$1 = unwrapExports(Layers);
 
+var Layers$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Layers$1,
+	__moduleExports: Layers
+});
+
 var LayersOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10197,6 +11751,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var LayersOutline$1 = unwrapExports(LayersOutline);
+
+var LayersOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': LayersOutline$1,
+	__moduleExports: LayersOutline
+});
 
 var Layout = createCommonjsModule(function (module, exports) {
 
@@ -10239,6 +11799,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Layout$1 = unwrapExports(Layout);
 
+var Layout$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Layout$1,
+	__moduleExports: Layout
+});
+
 var LayoutOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10275,6 +11841,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var LayoutOutline$1 = unwrapExports(LayoutOutline);
+
+var LayoutOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': LayoutOutline$1,
+	__moduleExports: LayoutOutline
+});
 
 var Link = createCommonjsModule(function (module, exports) {
 
@@ -10317,6 +11889,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Link$1 = unwrapExports(Link);
 
+var Link$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Link$1,
+	__moduleExports: Link
+});
+
 var LinkOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10357,6 +11935,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var LinkOutline$1 = unwrapExports(LinkOutline);
+
+var LinkOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': LinkOutline$1,
+	__moduleExports: LinkOutline
+});
 
 var Link_2 = createCommonjsModule(function (module, exports) {
 
@@ -10399,6 +11983,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Link_2$1 = unwrapExports(Link_2);
 
+var Link_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Link_2$1,
+	__moduleExports: Link_2
+});
+
 var Link_2Outline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10439,6 +12029,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Link_2Outline$1 = unwrapExports(Link_2Outline);
+
+var Link_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Link_2Outline$1,
+	__moduleExports: Link_2Outline
+});
 
 var Linkedin = createCommonjsModule(function (module, exports) {
 
@@ -10489,6 +12085,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Linkedin$1 = unwrapExports(Linkedin);
 
+var Linkedin$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Linkedin$1,
+	__moduleExports: Linkedin
+});
+
 var LinkedinOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10530,6 +12132,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var LinkedinOutline$1 = unwrapExports(LinkedinOutline);
+
+var LinkedinOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': LinkedinOutline$1,
+	__moduleExports: LinkedinOutline
+});
 
 var List = createCommonjsModule(function (module, exports) {
 
@@ -10600,6 +12208,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var List$1 = unwrapExports(List);
 
+var List$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': List$1,
+	__moduleExports: List
+});
+
 var ListOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10669,6 +12283,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ListOutline$1 = unwrapExports(ListOutline);
 
+var ListOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ListOutline$1,
+	__moduleExports: ListOutline
+});
+
 var LoaderOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10721,6 +12341,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var LoaderOutline$1 = unwrapExports(LoaderOutline);
 
+var LoaderOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': LoaderOutline$1,
+	__moduleExports: LoaderOutline
+});
+
 var Lock = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10762,6 +12388,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Lock$1 = unwrapExports(Lock);
 
+var Lock$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Lock$1,
+	__moduleExports: Lock
+});
+
 var LockOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10800,6 +12432,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var LockOutline$1 = unwrapExports(LockOutline);
+
+var LockOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': LockOutline$1,
+	__moduleExports: LockOutline
+});
 
 var LogIn = createCommonjsModule(function (module, exports) {
 
@@ -10841,6 +12479,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var LogIn$1 = unwrapExports(LogIn);
 
+var LogIn$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': LogIn$1,
+	__moduleExports: LogIn
+});
+
 var LogInOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10880,6 +12524,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var LogInOutline$1 = unwrapExports(LogInOutline);
+
+var LogInOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': LogInOutline$1,
+	__moduleExports: LogInOutline
+});
 
 var LogOut = createCommonjsModule(function (module, exports) {
 
@@ -10921,6 +12571,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var LogOut$1 = unwrapExports(LogOut);
 
+var LogOut$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': LogOut$1,
+	__moduleExports: LogOut
+});
+
 var LogOutOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10961,6 +12617,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var LogOutOutline$1 = unwrapExports(LogOutOutline);
 
+var LogOutOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': LogOutOutline$1,
+	__moduleExports: LogOutOutline
+});
+
 var _Map = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -10998,6 +12660,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var _Map$1 = unwrapExports(_Map);
+
+var _Map$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': _Map$1,
+	__moduleExports: _Map
+});
 
 var MapOutline = createCommonjsModule(function (module, exports) {
 
@@ -11037,6 +12705,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MapOutline$1 = unwrapExports(MapOutline);
 
+var MapOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MapOutline$1,
+	__moduleExports: MapOutline
+});
+
 var Maximize = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -11073,6 +12747,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Maximize$1 = unwrapExports(Maximize);
+
+var Maximize$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Maximize$1,
+	__moduleExports: Maximize
+});
 
 var MaximizeOutline = createCommonjsModule(function (module, exports) {
 
@@ -11112,6 +12792,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var MaximizeOutline$1 = unwrapExports(MaximizeOutline);
+
+var MaximizeOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MaximizeOutline$1,
+	__moduleExports: MaximizeOutline
+});
 
 var Menu = createCommonjsModule(function (module, exports) {
 
@@ -11170,6 +12856,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Menu$1 = unwrapExports(Menu);
 
+var Menu$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Menu$1,
+	__moduleExports: Menu
+});
+
 var MenuArrow = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -11222,6 +12914,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MenuArrow$1 = unwrapExports(MenuArrow);
 
+var MenuArrow$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MenuArrow$1,
+	__moduleExports: MenuArrow
+});
+
 var MenuArrowOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -11273,6 +12971,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var MenuArrowOutline$1 = unwrapExports(MenuArrowOutline);
+
+var MenuArrowOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MenuArrowOutline$1,
+	__moduleExports: MenuArrowOutline
+});
 
 var MenuOutline = createCommonjsModule(function (module, exports) {
 
@@ -11330,6 +13034,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var MenuOutline$1 = unwrapExports(MenuOutline);
+
+var MenuOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MenuOutline$1,
+	__moduleExports: MenuOutline
+});
 
 var Menu_2 = createCommonjsModule(function (module, exports) {
 
@@ -11392,6 +13102,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Menu_2$1 = unwrapExports(Menu_2);
 
+var Menu_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Menu_2$1,
+	__moduleExports: Menu_2
+});
+
 var Menu_2Outline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -11453,6 +13169,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Menu_2Outline$1 = unwrapExports(Menu_2Outline);
 
+var Menu_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Menu_2Outline$1,
+	__moduleExports: Menu_2Outline
+});
+
 var MessageCircle = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -11489,6 +13211,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var MessageCircle$1 = unwrapExports(MessageCircle);
+
+var MessageCircle$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MessageCircle$1,
+	__moduleExports: MessageCircle
+});
 
 var MessageCircleOutline = createCommonjsModule(function (module, exports) {
 
@@ -11539,6 +13267,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MessageCircleOutline$1 = unwrapExports(MessageCircleOutline);
 
+var MessageCircleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MessageCircleOutline$1,
+	__moduleExports: MessageCircleOutline
+});
+
 var MessageSquare = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -11575,6 +13309,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var MessageSquare$1 = unwrapExports(MessageSquare);
+
+var MessageSquare$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MessageSquare$1,
+	__moduleExports: MessageSquare
+});
 
 var MessageSquareOutline = createCommonjsModule(function (module, exports) {
 
@@ -11625,6 +13365,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MessageSquareOutline$1 = unwrapExports(MessageSquareOutline);
 
+var MessageSquareOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MessageSquareOutline$1,
+	__moduleExports: MessageSquareOutline
+});
+
 var Mic = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -11663,6 +13409,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Mic$1 = unwrapExports(Mic);
+
+var Mic$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Mic$1,
+	__moduleExports: Mic
+});
 
 var MicOff = createCommonjsModule(function (module, exports) {
 
@@ -11709,6 +13461,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MicOff$1 = unwrapExports(MicOff);
 
+var MicOff$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MicOff$1,
+	__moduleExports: MicOff
+});
+
 var MicOffOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -11754,6 +13512,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MicOffOutline$1 = unwrapExports(MicOffOutline);
 
+var MicOffOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MicOffOutline$1,
+	__moduleExports: MicOffOutline
+});
+
 var MicOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -11793,6 +13557,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MicOutline$1 = unwrapExports(MicOutline);
 
+var MicOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MicOutline$1,
+	__moduleExports: MicOutline
+});
+
 var Minimize = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -11829,6 +13599,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Minimize$1 = unwrapExports(Minimize);
+
+var Minimize$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Minimize$1,
+	__moduleExports: Minimize
+});
 
 var MinimizeOutline = createCommonjsModule(function (module, exports) {
 
@@ -11869,6 +13645,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MinimizeOutline$1 = unwrapExports(MinimizeOutline);
 
+var MinimizeOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MinimizeOutline$1,
+	__moduleExports: MinimizeOutline
+});
+
 var Minus = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -11907,6 +13689,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Minus$1 = unwrapExports(Minus);
 
+var Minus$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Minus$1,
+	__moduleExports: Minus
+});
+
 var MinusCircle = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -11943,6 +13731,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var MinusCircle$1 = unwrapExports(MinusCircle);
+
+var MinusCircle$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MinusCircle$1,
+	__moduleExports: MinusCircle
+});
 
 var MinusCircleOutline = createCommonjsModule(function (module, exports) {
 
@@ -11983,6 +13777,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MinusCircleOutline$1 = unwrapExports(MinusCircleOutline);
 
+var MinusCircleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MinusCircleOutline$1,
+	__moduleExports: MinusCircleOutline
+});
+
 var MinusOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12021,6 +13821,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MinusOutline$1 = unwrapExports(MinusOutline);
 
+var MinusOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MinusOutline$1,
+	__moduleExports: MinusOutline
+});
+
 var MinusSquare = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12057,6 +13863,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var MinusSquare$1 = unwrapExports(MinusSquare);
+
+var MinusSquare$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MinusSquare$1,
+	__moduleExports: MinusSquare
+});
 
 var MinusSquareOutline = createCommonjsModule(function (module, exports) {
 
@@ -12097,6 +13909,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MinusSquareOutline$1 = unwrapExports(MinusSquareOutline);
 
+var MinusSquareOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MinusSquareOutline$1,
+	__moduleExports: MinusSquareOutline
+});
+
 var Monitor = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12136,6 +13954,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Monitor$1 = unwrapExports(Monitor);
 
+var Monitor$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Monitor$1,
+	__moduleExports: Monitor
+});
+
 var MonitorOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12172,6 +13996,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var MonitorOutline$1 = unwrapExports(MonitorOutline);
+
+var MonitorOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MonitorOutline$1,
+	__moduleExports: MonitorOutline
+});
 
 var Moon = createCommonjsModule(function (module, exports) {
 
@@ -12210,6 +14040,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Moon$1 = unwrapExports(Moon);
 
+var Moon$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Moon$1,
+	__moduleExports: Moon
+});
+
 var MoonOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12246,6 +14082,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var MoonOutline$1 = unwrapExports(MoonOutline);
+
+var MoonOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MoonOutline$1,
+	__moduleExports: MoonOutline
+});
 
 var MoreHorizontal = createCommonjsModule(function (module, exports) {
 
@@ -12294,6 +14136,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MoreHorizontal$1 = unwrapExports(MoreHorizontal);
 
+var MoreHorizontal$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MoreHorizontal$1,
+	__moduleExports: MoreHorizontal
+});
+
 var MoreHorizontalOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12340,6 +14188,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var MoreHorizontalOutline$1 = unwrapExports(MoreHorizontalOutline);
+
+var MoreHorizontalOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MoreHorizontalOutline$1,
+	__moduleExports: MoreHorizontalOutline
+});
 
 var MoreVertical = createCommonjsModule(function (module, exports) {
 
@@ -12389,6 +14243,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MoreVertical$1 = unwrapExports(MoreVertical);
 
+var MoreVertical$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MoreVertical$1,
+	__moduleExports: MoreVertical
+});
+
 var MoreVerticalOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12437,6 +14297,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MoreVerticalOutline$1 = unwrapExports(MoreVerticalOutline);
 
+var MoreVerticalOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MoreVerticalOutline$1,
+	__moduleExports: MoreVerticalOutline
+});
+
 var Move = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12474,6 +14340,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Move$1 = unwrapExports(Move);
+
+var Move$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Move$1,
+	__moduleExports: Move
+});
 
 var MoveOutline = createCommonjsModule(function (module, exports) {
 
@@ -12513,6 +14385,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MoveOutline$1 = unwrapExports(MoveOutline);
 
+var MoveOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MoveOutline$1,
+	__moduleExports: MoveOutline
+});
+
 var Music = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12549,6 +14427,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Music$1 = unwrapExports(Music);
+
+var Music$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Music$1,
+	__moduleExports: Music
+});
 
 var MusicOutline = createCommonjsModule(function (module, exports) {
 
@@ -12587,6 +14471,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var MusicOutline$1 = unwrapExports(MusicOutline);
 
+var MusicOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': MusicOutline$1,
+	__moduleExports: MusicOutline
+});
+
 var Navigation = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12623,6 +14513,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Navigation$1 = unwrapExports(Navigation);
+
+var Navigation$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Navigation$1,
+	__moduleExports: Navigation
+});
 
 var NavigationOutline = createCommonjsModule(function (module, exports) {
 
@@ -12661,6 +14557,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var NavigationOutline$1 = unwrapExports(NavigationOutline);
 
+var NavigationOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': NavigationOutline$1,
+	__moduleExports: NavigationOutline
+});
+
 var Navigation_2 = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12697,6 +14599,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Navigation_2$1 = unwrapExports(Navigation_2);
+
+var Navigation_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Navigation_2$1,
+	__moduleExports: Navigation_2
+});
 
 var Navigation_2Outline = createCommonjsModule(function (module, exports) {
 
@@ -12735,6 +14643,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Navigation_2Outline$1 = unwrapExports(Navigation_2Outline);
 
+var Navigation_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Navigation_2Outline$1,
+	__moduleExports: Navigation_2Outline
+});
+
 var Npm = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12771,6 +14685,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Npm$1 = unwrapExports(Npm);
+
+var Npm$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Npm$1,
+	__moduleExports: Npm
+});
 
 var NpmOutline = createCommonjsModule(function (module, exports) {
 
@@ -12814,6 +14734,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var NpmOutline$1 = unwrapExports(NpmOutline);
 
+var NpmOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': NpmOutline$1,
+	__moduleExports: NpmOutline
+});
+
 var Options = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12855,6 +14781,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Options$1 = unwrapExports(Options);
 
+var Options$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Options$1,
+	__moduleExports: Options
+});
+
 var OptionsOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12895,6 +14827,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var OptionsOutline$1 = unwrapExports(OptionsOutline);
+
+var OptionsOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': OptionsOutline$1,
+	__moduleExports: OptionsOutline
+});
 
 var Options_2 = createCommonjsModule(function (module, exports) {
 
@@ -12938,6 +14876,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Options_2$1 = unwrapExports(Options_2);
 
+var Options_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Options_2$1,
+	__moduleExports: Options_2
+});
+
 var Options_2Outline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -12980,6 +14924,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Options_2Outline$1 = unwrapExports(Options_2Outline);
 
+var Options_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Options_2Outline$1,
+	__moduleExports: Options_2Outline
+});
+
 var Pantone = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13021,6 +14971,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Pantone$1 = unwrapExports(Pantone);
 
+var Pantone$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Pantone$1,
+	__moduleExports: Pantone
+});
+
 var PantoneOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13057,6 +15013,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var PantoneOutline$1 = unwrapExports(PantoneOutline);
+
+var PantoneOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PantoneOutline$1,
+	__moduleExports: PantoneOutline
+});
 
 var PaperPlane = createCommonjsModule(function (module, exports) {
 
@@ -13095,6 +15057,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PaperPlane$1 = unwrapExports(PaperPlane);
 
+var PaperPlane$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PaperPlane$1,
+	__moduleExports: PaperPlane
+});
+
 var PaperPlaneOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13132,6 +15100,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PaperPlaneOutline$1 = unwrapExports(PaperPlaneOutline);
 
+var PaperPlaneOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PaperPlaneOutline$1,
+	__moduleExports: PaperPlaneOutline
+});
+
 var PauseCircle = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13168,6 +15142,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var PauseCircle$1 = unwrapExports(PauseCircle);
+
+var PauseCircle$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PauseCircle$1,
+	__moduleExports: PauseCircle
+});
 
 var PauseCircleOutline = createCommonjsModule(function (module, exports) {
 
@@ -13210,6 +15190,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PauseCircleOutline$1 = unwrapExports(PauseCircleOutline);
 
+var PauseCircleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PauseCircleOutline$1,
+	__moduleExports: PauseCircleOutline
+});
+
 var People = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13250,6 +15236,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var People$1 = unwrapExports(People);
+
+var People$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': People$1,
+	__moduleExports: People
+});
 
 var PeopleOutline = createCommonjsModule(function (module, exports) {
 
@@ -13292,6 +15284,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PeopleOutline$1 = unwrapExports(PeopleOutline);
 
+var PeopleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PeopleOutline$1,
+	__moduleExports: PeopleOutline
+});
+
 var Percent = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13332,6 +15330,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Percent$1 = unwrapExports(Percent);
+
+var Percent$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Percent$1,
+	__moduleExports: Percent
+});
 
 var PercentOutline = createCommonjsModule(function (module, exports) {
 
@@ -13374,6 +15378,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PercentOutline$1 = unwrapExports(PercentOutline);
 
+var PercentOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PercentOutline$1,
+	__moduleExports: PercentOutline
+});
+
 var Person = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13412,6 +15422,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Person$1 = unwrapExports(Person);
+
+var Person$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Person$1,
+	__moduleExports: Person
+});
 
 var PersonAdd = createCommonjsModule(function (module, exports) {
 
@@ -13454,6 +15470,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PersonAdd$1 = unwrapExports(PersonAdd);
 
+var PersonAdd$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PersonAdd$1,
+	__moduleExports: PersonAdd
+});
+
 var PersonAddOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13494,6 +15516,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var PersonAddOutline$1 = unwrapExports(PersonAddOutline);
+
+var PersonAddOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PersonAddOutline$1,
+	__moduleExports: PersonAddOutline
+});
 
 var PersonDelete = createCommonjsModule(function (module, exports) {
 
@@ -13536,6 +15564,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PersonDelete$1 = unwrapExports(PersonDelete);
 
+var PersonDelete$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PersonDelete$1,
+	__moduleExports: PersonDelete
+});
+
 var PersonDeleteOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13576,6 +15610,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var PersonDeleteOutline$1 = unwrapExports(PersonDeleteOutline);
+
+var PersonDeleteOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PersonDeleteOutline$1,
+	__moduleExports: PersonDeleteOutline
+});
 
 var PersonDone = createCommonjsModule(function (module, exports) {
 
@@ -13618,6 +15658,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PersonDone$1 = unwrapExports(PersonDone);
 
+var PersonDone$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PersonDone$1,
+	__moduleExports: PersonDone
+});
+
 var PersonDoneOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13659,6 +15705,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PersonDoneOutline$1 = unwrapExports(PersonDoneOutline);
 
+var PersonDoneOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PersonDoneOutline$1,
+	__moduleExports: PersonDoneOutline
+});
+
 var PersonOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13697,6 +15749,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var PersonOutline$1 = unwrapExports(PersonOutline);
+
+var PersonOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PersonOutline$1,
+	__moduleExports: PersonOutline
+});
 
 var PersonRemove = createCommonjsModule(function (module, exports) {
 
@@ -13739,6 +15797,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PersonRemove$1 = unwrapExports(PersonRemove);
 
+var PersonRemove$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PersonRemove$1,
+	__moduleExports: PersonRemove
+});
+
 var PersonRemoveOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13780,6 +15844,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PersonRemoveOutline$1 = unwrapExports(PersonRemoveOutline);
 
+var PersonRemoveOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PersonRemoveOutline$1,
+	__moduleExports: PersonRemoveOutline
+});
+
 var Phone = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13816,6 +15886,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Phone$1 = unwrapExports(Phone);
+
+var Phone$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Phone$1,
+	__moduleExports: Phone
+});
 
 var PhoneCall = createCommonjsModule(function (module, exports) {
 
@@ -13858,6 +15934,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PhoneCall$1 = unwrapExports(PhoneCall);
 
+var PhoneCall$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PhoneCall$1,
+	__moduleExports: PhoneCall
+});
+
 var PhoneCallOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13899,6 +15981,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PhoneCallOutline$1 = unwrapExports(PhoneCallOutline);
 
+var PhoneCallOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PhoneCallOutline$1,
+	__moduleExports: PhoneCallOutline
+});
+
 var PhoneMissed = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13938,6 +16026,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PhoneMissed$1 = unwrapExports(PhoneMissed);
 
+var PhoneMissed$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PhoneMissed$1,
+	__moduleExports: PhoneMissed
+});
+
 var PhoneMissedOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13976,6 +16070,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var PhoneMissedOutline$1 = unwrapExports(PhoneMissedOutline);
+
+var PhoneMissedOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PhoneMissedOutline$1,
+	__moduleExports: PhoneMissedOutline
+});
 
 var PhoneOff = createCommonjsModule(function (module, exports) {
 
@@ -14018,6 +16118,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PhoneOff$1 = unwrapExports(PhoneOff);
 
+var PhoneOff$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PhoneOff$1,
+	__moduleExports: PhoneOff
+});
+
 var PhoneOffOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14059,6 +16165,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PhoneOffOutline$1 = unwrapExports(PhoneOffOutline);
 
+var PhoneOffOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PhoneOffOutline$1,
+	__moduleExports: PhoneOffOutline
+});
+
 var PhoneOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14095,6 +16207,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var PhoneOutline$1 = unwrapExports(PhoneOutline);
+
+var PhoneOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PhoneOutline$1,
+	__moduleExports: PhoneOutline
+});
 
 var PieChart = createCommonjsModule(function (module, exports) {
 
@@ -14135,6 +16253,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PieChart$1 = unwrapExports(PieChart);
 
+var PieChart$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PieChart$1,
+	__moduleExports: PieChart
+});
+
 var PieChartOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14174,6 +16298,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PieChartOutline$1 = unwrapExports(PieChartOutline);
 
+var PieChartOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PieChartOutline$1,
+	__moduleExports: PieChartOutline
+});
+
 var PieChart_2 = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14212,6 +16342,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var PieChart_2$1 = unwrapExports(PieChart_2);
+
+var PieChart_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PieChart_2$1,
+	__moduleExports: PieChart_2
+});
 
 var Pin = createCommonjsModule(function (module, exports) {
 
@@ -14254,6 +16390,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Pin$1 = unwrapExports(Pin);
 
+var Pin$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Pin$1,
+	__moduleExports: Pin
+});
+
 var PinOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14292,6 +16434,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var PinOutline$1 = unwrapExports(PinOutline);
+
+var PinOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PinOutline$1,
+	__moduleExports: PinOutline
+});
 
 var PlayCircle = createCommonjsModule(function (module, exports) {
 
@@ -14332,6 +16480,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PlayCircle$1 = unwrapExports(PlayCircle);
 
+var PlayCircle$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PlayCircle$1,
+	__moduleExports: PlayCircle
+});
+
 var PlayCircleOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14371,6 +16525,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PlayCircleOutline$1 = unwrapExports(PlayCircleOutline);
 
+var PlayCircleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PlayCircleOutline$1,
+	__moduleExports: PlayCircleOutline
+});
+
 var Plus = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14409,6 +16569,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Plus$1 = unwrapExports(Plus);
 
+var Plus$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Plus$1,
+	__moduleExports: Plus
+});
+
 var PlusCircle = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14445,6 +16611,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var PlusCircle$1 = unwrapExports(PlusCircle);
+
+var PlusCircle$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PlusCircle$1,
+	__moduleExports: PlusCircle
+});
 
 var PlusCircleOutline = createCommonjsModule(function (module, exports) {
 
@@ -14485,6 +16657,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PlusCircleOutline$1 = unwrapExports(PlusCircleOutline);
 
+var PlusCircleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PlusCircleOutline$1,
+	__moduleExports: PlusCircleOutline
+});
+
 var PlusOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14523,6 +16701,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PlusOutline$1 = unwrapExports(PlusOutline);
 
+var PlusOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PlusOutline$1,
+	__moduleExports: PlusOutline
+});
+
 var PlusSquare = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14559,6 +16743,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var PlusSquare$1 = unwrapExports(PlusSquare);
+
+var PlusSquare$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PlusSquare$1,
+	__moduleExports: PlusSquare
+});
 
 var PlusSquareOutline = createCommonjsModule(function (module, exports) {
 
@@ -14599,6 +16789,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PlusSquareOutline$1 = unwrapExports(PlusSquareOutline);
 
+var PlusSquareOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PlusSquareOutline$1,
+	__moduleExports: PlusSquareOutline
+});
+
 var Power = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14637,6 +16833,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Power$1 = unwrapExports(Power);
+
+var Power$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Power$1,
+	__moduleExports: Power
+});
 
 var PowerOutline = createCommonjsModule(function (module, exports) {
 
@@ -14677,6 +16879,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PowerOutline$1 = unwrapExports(PowerOutline);
 
+var PowerOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PowerOutline$1,
+	__moduleExports: PowerOutline
+});
+
 var Pricetags = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14713,6 +16921,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Pricetags$1 = unwrapExports(Pricetags);
+
+var Pricetags$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Pricetags$1,
+	__moduleExports: Pricetags
+});
 
 var PricetagsOutline = createCommonjsModule(function (module, exports) {
 
@@ -14755,6 +16969,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var PricetagsOutline$1 = unwrapExports(PricetagsOutline);
 
+var PricetagsOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PricetagsOutline$1,
+	__moduleExports: PricetagsOutline
+});
+
 var Printer = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14792,6 +17012,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Printer$1 = unwrapExports(Printer);
 
+var Printer$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Printer$1,
+	__moduleExports: Printer
+});
+
 var PrinterOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14828,6 +17054,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var PrinterOutline$1 = unwrapExports(PrinterOutline);
+
+var PrinterOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': PrinterOutline$1,
+	__moduleExports: PrinterOutline
+});
 
 var QuestionMark = createCommonjsModule(function (module, exports) {
 
@@ -14871,6 +17103,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var QuestionMark$1 = unwrapExports(QuestionMark);
 
+var QuestionMark$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': QuestionMark$1,
+	__moduleExports: QuestionMark
+});
+
 var QuestionMarkCircle = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14908,6 +17146,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var QuestionMarkCircle$1 = unwrapExports(QuestionMarkCircle);
+
+var QuestionMarkCircle$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': QuestionMarkCircle$1,
+	__moduleExports: QuestionMarkCircle
+});
 
 var QuestionMarkCircleOutline = createCommonjsModule(function (module, exports) {
 
@@ -14953,6 +17197,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var QuestionMarkCircleOutline$1 = unwrapExports(QuestionMarkCircleOutline);
 
+var QuestionMarkCircleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': QuestionMarkCircleOutline$1,
+	__moduleExports: QuestionMarkCircleOutline
+});
+
 var QuestionMarkOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -14994,6 +17244,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var QuestionMarkOutline$1 = unwrapExports(QuestionMarkOutline);
+
+var QuestionMarkOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': QuestionMarkOutline$1,
+	__moduleExports: QuestionMarkOutline
+});
 
 var Radio = createCommonjsModule(function (module, exports) {
 
@@ -15040,6 +17296,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Radio$1 = unwrapExports(Radio);
 
+var Radio$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Radio$1,
+	__moduleExports: Radio
+});
+
 var RadioButtonOff = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15077,6 +17339,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var RadioButtonOff$1 = unwrapExports(RadioButtonOff);
 
+var RadioButtonOff$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': RadioButtonOff$1,
+	__moduleExports: RadioButtonOff
+});
+
 var RadioButtonOffOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15113,6 +17381,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var RadioButtonOffOutline$1 = unwrapExports(RadioButtonOffOutline);
+
+var RadioButtonOffOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': RadioButtonOffOutline$1,
+	__moduleExports: RadioButtonOffOutline
+});
 
 var RadioButtonOn = createCommonjsModule(function (module, exports) {
 
@@ -15153,6 +17427,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var RadioButtonOn$1 = unwrapExports(RadioButtonOn);
 
+var RadioButtonOn$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': RadioButtonOn$1,
+	__moduleExports: RadioButtonOn
+});
+
 var RadioButtonOnOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15191,6 +17471,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var RadioButtonOnOutline$1 = unwrapExports(RadioButtonOnOutline);
+
+var RadioButtonOnOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': RadioButtonOnOutline$1,
+	__moduleExports: RadioButtonOnOutline
+});
 
 var RadioOutline = createCommonjsModule(function (module, exports) {
 
@@ -15237,6 +17523,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var RadioOutline$1 = unwrapExports(RadioOutline);
 
+var RadioOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': RadioOutline$1,
+	__moduleExports: RadioOutline
+});
+
 var Recording = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15273,6 +17565,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Recording$1 = unwrapExports(Recording);
+
+var Recording$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Recording$1,
+	__moduleExports: Recording
+});
 
 var RecordingOutline = createCommonjsModule(function (module, exports) {
 
@@ -15311,6 +17609,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var RecordingOutline$1 = unwrapExports(RecordingOutline);
 
+var RecordingOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': RecordingOutline$1,
+	__moduleExports: RecordingOutline
+});
+
 var Refresh = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15348,6 +17652,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Refresh$1 = unwrapExports(Refresh);
 
+var Refresh$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Refresh$1,
+	__moduleExports: Refresh
+});
+
 var RefreshOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15384,6 +17694,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var RefreshOutline$1 = unwrapExports(RefreshOutline);
+
+var RefreshOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': RefreshOutline$1,
+	__moduleExports: RefreshOutline
+});
 
 var Repeat = createCommonjsModule(function (module, exports) {
 
@@ -15424,6 +17740,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Repeat$1 = unwrapExports(Repeat);
 
+var Repeat$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Repeat$1,
+	__moduleExports: Repeat
+});
+
 var RepeatOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15463,6 +17785,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var RepeatOutline$1 = unwrapExports(RepeatOutline);
 
+var RepeatOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': RepeatOutline$1,
+	__moduleExports: RepeatOutline
+});
+
 var RewindLeft = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15500,6 +17828,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var RewindLeft$1 = unwrapExports(RewindLeft);
+
+var RewindLeft$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': RewindLeft$1,
+	__moduleExports: RewindLeft
+});
 
 var RewindLeftOutline = createCommonjsModule(function (module, exports) {
 
@@ -15539,6 +17873,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var RewindLeftOutline$1 = unwrapExports(RewindLeftOutline);
 
+var RewindLeftOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': RewindLeftOutline$1,
+	__moduleExports: RewindLeftOutline
+});
+
 var RewindRight = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15576,6 +17916,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var RewindRight$1 = unwrapExports(RewindRight);
 
+var RewindRight$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': RewindRight$1,
+	__moduleExports: RewindRight
+});
+
 var RewindRightOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15612,6 +17958,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var RewindRightOutline$1 = unwrapExports(RewindRightOutline);
+
+var RewindRightOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': RewindRightOutline$1,
+	__moduleExports: RewindRightOutline
+});
 
 var Save = createCommonjsModule(function (module, exports) {
 
@@ -15655,6 +18007,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Save$1 = unwrapExports(Save);
 
+var Save$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Save$1,
+	__moduleExports: Save
+});
+
 var SaveOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15691,6 +18049,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var SaveOutline$1 = unwrapExports(SaveOutline);
+
+var SaveOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SaveOutline$1,
+	__moduleExports: SaveOutline
+});
 
 var Scissors = createCommonjsModule(function (module, exports) {
 
@@ -15731,6 +18095,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Scissors$1 = unwrapExports(Scissors);
 
+var Scissors$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Scissors$1,
+	__moduleExports: Scissors
+});
+
 var ScissorsOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15770,6 +18140,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ScissorsOutline$1 = unwrapExports(ScissorsOutline);
 
+var ScissorsOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ScissorsOutline$1,
+	__moduleExports: ScissorsOutline
+});
+
 var Search = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15807,6 +18183,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Search$1 = unwrapExports(Search);
 
+var Search$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Search$1,
+	__moduleExports: Search
+});
+
 var SearchOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15843,6 +18225,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var SearchOutline$1 = unwrapExports(SearchOutline);
+
+var SearchOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SearchOutline$1,
+	__moduleExports: SearchOutline
+});
 
 var Settings = createCommonjsModule(function (module, exports) {
 
@@ -15885,6 +18273,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Settings$1 = unwrapExports(Settings);
 
+var Settings$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Settings$1,
+	__moduleExports: Settings
+});
+
 var SettingsOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -15924,6 +18318,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var SettingsOutline$1 = unwrapExports(SettingsOutline);
+
+var SettingsOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SettingsOutline$1,
+	__moduleExports: SettingsOutline
+});
 
 var Settings_2 = createCommonjsModule(function (module, exports) {
 
@@ -15967,6 +18367,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Settings_2$1 = unwrapExports(Settings_2);
 
+var Settings_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Settings_2$1,
+	__moduleExports: Settings_2
+});
+
 var Settings_2Outline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16007,6 +18413,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Settings_2Outline$1 = unwrapExports(Settings_2Outline);
+
+var Settings_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Settings_2Outline$1,
+	__moduleExports: Settings_2Outline
+});
 
 var Shake = createCommonjsModule(function (module, exports) {
 
@@ -16057,6 +18469,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Shake$1 = unwrapExports(Shake);
 
+var Shake$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Shake$1,
+	__moduleExports: Shake
+});
+
 var ShakeOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16106,6 +18524,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ShakeOutline$1 = unwrapExports(ShakeOutline);
 
+var ShakeOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ShakeOutline$1,
+	__moduleExports: ShakeOutline
+});
+
 var Share = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16142,6 +18566,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Share$1 = unwrapExports(Share);
+
+var Share$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Share$1,
+	__moduleExports: Share
+});
 
 var ShareOutline = createCommonjsModule(function (module, exports) {
 
@@ -16180,6 +18610,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ShareOutline$1 = unwrapExports(ShareOutline);
 
+var ShareOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ShareOutline$1,
+	__moduleExports: ShareOutline
+});
+
 var Shield = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16216,6 +18652,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Shield$1 = unwrapExports(Shield);
+
+var Shield$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Shield$1,
+	__moduleExports: Shield
+});
 
 var ShieldOff = createCommonjsModule(function (module, exports) {
 
@@ -16258,6 +18700,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ShieldOff$1 = unwrapExports(ShieldOff);
 
+var ShieldOff$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ShieldOff$1,
+	__moduleExports: ShieldOff
+});
+
 var ShieldOffOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16299,6 +18747,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ShieldOffOutline$1 = unwrapExports(ShieldOffOutline);
 
+var ShieldOffOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ShieldOffOutline$1,
+	__moduleExports: ShieldOffOutline
+});
+
 var ShieldOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16336,6 +18790,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ShieldOutline$1 = unwrapExports(ShieldOutline);
 
+var ShieldOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ShieldOutline$1,
+	__moduleExports: ShieldOutline
+});
+
 var ShoppingBag = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16372,6 +18832,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ShoppingBag$1 = unwrapExports(ShoppingBag);
+
+var ShoppingBag$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ShoppingBag$1,
+	__moduleExports: ShoppingBag
+});
 
 var ShoppingBagOutline = createCommonjsModule(function (module, exports) {
 
@@ -16411,6 +18877,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ShoppingBagOutline$1 = unwrapExports(ShoppingBagOutline);
+
+var ShoppingBagOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ShoppingBagOutline$1,
+	__moduleExports: ShoppingBagOutline
+});
 
 var ShoppingCart = createCommonjsModule(function (module, exports) {
 
@@ -16457,6 +18929,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ShoppingCart$1 = unwrapExports(ShoppingCart);
 
+var ShoppingCart$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ShoppingCart$1,
+	__moduleExports: ShoppingCart
+});
+
 var ShoppingCartOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16502,6 +18980,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ShoppingCartOutline$1 = unwrapExports(ShoppingCartOutline);
 
+var ShoppingCartOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ShoppingCartOutline$1,
+	__moduleExports: ShoppingCartOutline
+});
+
 var Shuffle = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16541,6 +19025,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Shuffle$1 = unwrapExports(Shuffle);
+
+var Shuffle$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Shuffle$1,
+	__moduleExports: Shuffle
+});
 
 var ShuffleOutline = createCommonjsModule(function (module, exports) {
 
@@ -16582,6 +19072,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ShuffleOutline$1 = unwrapExports(ShuffleOutline);
 
+var ShuffleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ShuffleOutline$1,
+	__moduleExports: ShuffleOutline
+});
+
 var Shuffle_2 = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16619,6 +19115,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Shuffle_2$1 = unwrapExports(Shuffle_2);
+
+var Shuffle_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Shuffle_2$1,
+	__moduleExports: Shuffle_2
+});
 
 var Shuffle_2Outline = createCommonjsModule(function (module, exports) {
 
@@ -16658,6 +19160,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Shuffle_2Outline$1 = unwrapExports(Shuffle_2Outline);
 
+var Shuffle_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Shuffle_2Outline$1,
+	__moduleExports: Shuffle_2Outline
+});
+
 var SkipBack = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16695,6 +19203,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var SkipBack$1 = unwrapExports(SkipBack);
+
+var SkipBack$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SkipBack$1,
+	__moduleExports: SkipBack
+});
 
 var SkipBackOutline = createCommonjsModule(function (module, exports) {
 
@@ -16734,6 +19248,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var SkipBackOutline$1 = unwrapExports(SkipBackOutline);
 
+var SkipBackOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SkipBackOutline$1,
+	__moduleExports: SkipBackOutline
+});
+
 var SkipForward = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16770,6 +19290,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var SkipForward$1 = unwrapExports(SkipForward);
+
+var SkipForward$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SkipForward$1,
+	__moduleExports: SkipForward
+});
 
 var SkipForwardOutline = createCommonjsModule(function (module, exports) {
 
@@ -16808,6 +19334,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var SkipForwardOutline$1 = unwrapExports(SkipForwardOutline);
 
+var SkipForwardOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SkipForwardOutline$1,
+	__moduleExports: SkipForwardOutline
+});
+
 var Slash = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16844,6 +19376,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Slash$1 = unwrapExports(Slash);
+
+var Slash$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Slash$1,
+	__moduleExports: Slash
+});
 
 var SlashOutline = createCommonjsModule(function (module, exports) {
 
@@ -16882,6 +19420,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var SlashOutline$1 = unwrapExports(SlashOutline);
 
+var SlashOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SlashOutline$1,
+	__moduleExports: SlashOutline
+});
+
 var Smartphone = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -16919,6 +19463,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Smartphone$1 = unwrapExports(Smartphone);
+
+var Smartphone$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Smartphone$1,
+	__moduleExports: Smartphone
+});
 
 var SmartphoneOutline = createCommonjsModule(function (module, exports) {
 
@@ -16963,6 +19513,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var SmartphoneOutline$1 = unwrapExports(SmartphoneOutline);
+
+var SmartphoneOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SmartphoneOutline$1,
+	__moduleExports: SmartphoneOutline
+});
 
 var Speaker = createCommonjsModule(function (module, exports) {
 
@@ -17010,6 +19566,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Speaker$1 = unwrapExports(Speaker);
 
+var Speaker$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Speaker$1,
+	__moduleExports: Speaker
+});
+
 var SpeakerOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17052,6 +19614,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var SpeakerOutline$1 = unwrapExports(SpeakerOutline);
 
+var SpeakerOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SpeakerOutline$1,
+	__moduleExports: SpeakerOutline
+});
+
 var Square = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17089,6 +19657,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Square$1 = unwrapExports(Square);
 
+var Square$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Square$1,
+	__moduleExports: Square
+});
+
 var SquareOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17125,6 +19699,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var SquareOutline$1 = unwrapExports(SquareOutline);
+
+var SquareOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SquareOutline$1,
+	__moduleExports: SquareOutline
+});
 
 var Star = createCommonjsModule(function (module, exports) {
 
@@ -17164,6 +19744,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Star$1 = unwrapExports(Star);
 
+var Star$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Star$1,
+	__moduleExports: Star
+});
+
 var StarOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17201,6 +19787,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var StarOutline$1 = unwrapExports(StarOutline);
+
+var StarOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': StarOutline$1,
+	__moduleExports: StarOutline
+});
 
 var StopCircle = createCommonjsModule(function (module, exports) {
 
@@ -17244,6 +19836,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var StopCircle$1 = unwrapExports(StopCircle);
 
+var StopCircle$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': StopCircle$1,
+	__moduleExports: StopCircle
+});
+
 var StopCircleOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17282,6 +19880,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var StopCircleOutline$1 = unwrapExports(StopCircleOutline);
+
+var StopCircleOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': StopCircleOutline$1,
+	__moduleExports: StopCircleOutline
+});
 
 var Sun = createCommonjsModule(function (module, exports) {
 
@@ -17337,6 +19941,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Sun$1 = unwrapExports(Sun);
 
+var Sun$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Sun$1,
+	__moduleExports: Sun
+});
+
 var SunOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17391,6 +20001,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var SunOutline$1 = unwrapExports(SunOutline);
 
+var SunOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SunOutline$1,
+	__moduleExports: SunOutline
+});
+
 var Swap = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17430,6 +20046,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Swap$1 = unwrapExports(Swap);
+
+var Swap$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Swap$1,
+	__moduleExports: Swap
+});
 
 var SwapOutline = createCommonjsModule(function (module, exports) {
 
@@ -17471,6 +20093,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var SwapOutline$1 = unwrapExports(SwapOutline);
 
+var SwapOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SwapOutline$1,
+	__moduleExports: SwapOutline
+});
+
 var Sync = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17509,6 +20137,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Sync$1 = unwrapExports(Sync);
+
+var Sync$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Sync$1,
+	__moduleExports: Sync
+});
 
 var SyncOutline = createCommonjsModule(function (module, exports) {
 
@@ -17549,6 +20183,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var SyncOutline$1 = unwrapExports(SyncOutline);
 
+var SyncOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': SyncOutline$1,
+	__moduleExports: SyncOutline
+});
+
 var Text = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17585,6 +20225,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Text$1 = unwrapExports(Text);
+
+var Text$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Text$1,
+	__moduleExports: Text
+});
 
 var TextOutline = createCommonjsModule(function (module, exports) {
 
@@ -17623,6 +20269,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var TextOutline$1 = unwrapExports(TextOutline);
 
+var TextOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': TextOutline$1,
+	__moduleExports: TextOutline
+});
+
 var Thermometer = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17659,6 +20311,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Thermometer$1 = unwrapExports(Thermometer);
+
+var Thermometer$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Thermometer$1,
+	__moduleExports: Thermometer
+});
 
 var ThermometerMinus = createCommonjsModule(function (module, exports) {
 
@@ -17704,6 +20362,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ThermometerMinus$1 = unwrapExports(ThermometerMinus);
 
+var ThermometerMinus$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ThermometerMinus$1,
+	__moduleExports: ThermometerMinus
+});
+
 var ThermometerMinusOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17748,6 +20412,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ThermometerMinusOutline$1 = unwrapExports(ThermometerMinusOutline);
 
+var ThermometerMinusOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ThermometerMinusOutline$1,
+	__moduleExports: ThermometerMinusOutline
+});
+
 var ThermometerOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17784,6 +20454,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ThermometerOutline$1 = unwrapExports(ThermometerOutline);
+
+var ThermometerOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ThermometerOutline$1,
+	__moduleExports: ThermometerOutline
+});
 
 var ThermometerPlus = createCommonjsModule(function (module, exports) {
 
@@ -17837,6 +20513,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ThermometerPlus$1 = unwrapExports(ThermometerPlus);
 
+var ThermometerPlus$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ThermometerPlus$1,
+	__moduleExports: ThermometerPlus
+});
+
 var ThermometerPlusOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17889,6 +20571,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ThermometerPlusOutline$1 = unwrapExports(ThermometerPlusOutline);
 
+var ThermometerPlusOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ThermometerPlusOutline$1,
+	__moduleExports: ThermometerPlusOutline
+});
+
 var ToggleLeft = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17931,6 +20619,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ToggleLeft$1 = unwrapExports(ToggleLeft);
 
+var ToggleLeft$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ToggleLeft$1,
+	__moduleExports: ToggleLeft
+});
+
 var ToggleLeftOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -17970,6 +20664,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var ToggleLeftOutline$1 = unwrapExports(ToggleLeftOutline);
+
+var ToggleLeftOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ToggleLeftOutline$1,
+	__moduleExports: ToggleLeftOutline
+});
 
 var ToggleRight = createCommonjsModule(function (module, exports) {
 
@@ -18012,6 +20712,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ToggleRight$1 = unwrapExports(ToggleRight);
 
+var ToggleRight$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ToggleRight$1,
+	__moduleExports: ToggleRight
+});
+
 var ToggleRightOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18051,6 +20757,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var ToggleRightOutline$1 = unwrapExports(ToggleRightOutline);
 
+var ToggleRightOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': ToggleRightOutline$1,
+	__moduleExports: ToggleRightOutline
+});
+
 var Trash = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18087,6 +20799,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Trash$1 = unwrapExports(Trash);
+
+var Trash$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Trash$1,
+	__moduleExports: Trash
+});
 
 var TrashOutline = createCommonjsModule(function (module, exports) {
 
@@ -18125,6 +20843,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var TrashOutline$1 = unwrapExports(TrashOutline);
 
+var TrashOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': TrashOutline$1,
+	__moduleExports: TrashOutline
+});
+
 var Trash_2 = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18161,6 +20885,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Trash_2$1 = unwrapExports(Trash_2);
+
+var Trash_2$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Trash_2$1,
+	__moduleExports: Trash_2
+});
 
 var Trash_2Outline = createCommonjsModule(function (module, exports) {
 
@@ -18203,6 +20933,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Trash_2Outline$1 = unwrapExports(Trash_2Outline);
 
+var Trash_2Outline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Trash_2Outline$1,
+	__moduleExports: Trash_2Outline
+});
+
 var TrendingDown = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18240,6 +20976,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var TrendingDown$1 = unwrapExports(TrendingDown);
+
+var TrendingDown$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': TrendingDown$1,
+	__moduleExports: TrendingDown
+});
 
 var TrendingDownOutline = createCommonjsModule(function (module, exports) {
 
@@ -18279,6 +21021,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var TrendingDownOutline$1 = unwrapExports(TrendingDownOutline);
 
+var TrendingDownOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': TrendingDownOutline$1,
+	__moduleExports: TrendingDownOutline
+});
+
 var TrendingUp = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18316,6 +21064,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var TrendingUp$1 = unwrapExports(TrendingUp);
+
+var TrendingUp$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': TrendingUp$1,
+	__moduleExports: TrendingUp
+});
 
 var TrendingUpOutline = createCommonjsModule(function (module, exports) {
 
@@ -18355,6 +21109,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var TrendingUpOutline$1 = unwrapExports(TrendingUpOutline);
 
+var TrendingUpOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': TrendingUpOutline$1,
+	__moduleExports: TrendingUpOutline
+});
+
 var Tv = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18391,6 +21151,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Tv$1 = unwrapExports(Tv);
+
+var Tv$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Tv$1,
+	__moduleExports: Tv
+});
 
 var TvOutline = createCommonjsModule(function (module, exports) {
 
@@ -18429,6 +21195,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var TvOutline$1 = unwrapExports(TvOutline);
 
+var TvOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': TvOutline$1,
+	__moduleExports: TvOutline
+});
+
 var Twitter = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18465,6 +21237,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Twitter$1 = unwrapExports(Twitter);
 
+var Twitter$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Twitter$1,
+	__moduleExports: Twitter
+});
+
 var TwitterOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18500,6 +21278,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var TwitterOutline$1 = unwrapExports(TwitterOutline);
+
+var TwitterOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': TwitterOutline$1,
+	__moduleExports: TwitterOutline
+});
 
 var Umbrella = createCommonjsModule(function (module, exports) {
 
@@ -18538,6 +21322,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Umbrella$1 = unwrapExports(Umbrella);
 
+var Umbrella$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Umbrella$1,
+	__moduleExports: Umbrella
+});
+
 var UmbrellaOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18574,6 +21364,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var UmbrellaOutline$1 = unwrapExports(UmbrellaOutline);
+
+var UmbrellaOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': UmbrellaOutline$1,
+	__moduleExports: UmbrellaOutline
+});
 
 var Undo = createCommonjsModule(function (module, exports) {
 
@@ -18613,6 +21409,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Undo$1 = unwrapExports(Undo);
 
+var Undo$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Undo$1,
+	__moduleExports: Undo
+});
+
 var UndoOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18650,6 +21452,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var UndoOutline$1 = unwrapExports(UndoOutline);
+
+var UndoOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': UndoOutline$1,
+	__moduleExports: UndoOutline
+});
 
 var Unlock = createCommonjsModule(function (module, exports) {
 
@@ -18692,6 +21500,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Unlock$1 = unwrapExports(Unlock);
 
+var Unlock$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Unlock$1,
+	__moduleExports: Unlock
+});
+
 var UnlockOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18730,6 +21544,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var UnlockOutline$1 = unwrapExports(UnlockOutline);
+
+var UnlockOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': UnlockOutline$1,
+	__moduleExports: UnlockOutline
+});
 
 var Upload = createCommonjsModule(function (module, exports) {
 
@@ -18795,6 +21615,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var Upload$1 = unwrapExports(Upload);
 
+var Upload$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Upload$1,
+	__moduleExports: Upload
+});
+
 var UploadOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18859,6 +21685,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var UploadOutline$1 = unwrapExports(UploadOutline);
 
+var UploadOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': UploadOutline$1,
+	__moduleExports: UploadOutline
+});
+
 var Video = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18895,6 +21727,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Video$1 = unwrapExports(Video);
+
+var Video$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Video$1,
+	__moduleExports: Video
+});
 
 var VideoOff = createCommonjsModule(function (module, exports) {
 
@@ -18937,6 +21775,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var VideoOff$1 = unwrapExports(VideoOff);
 
+var VideoOff$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': VideoOff$1,
+	__moduleExports: VideoOff
+});
+
 var VideoOffOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -18978,6 +21822,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var VideoOffOutline$1 = unwrapExports(VideoOffOutline);
 
+var VideoOffOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': VideoOffOutline$1,
+	__moduleExports: VideoOffOutline
+});
+
 var VideoOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -19014,6 +21864,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var VideoOutline$1 = unwrapExports(VideoOutline);
+
+var VideoOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': VideoOutline$1,
+	__moduleExports: VideoOutline
+});
 
 var VolumeDown = createCommonjsModule(function (module, exports) {
 
@@ -19054,6 +21910,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var VolumeDown$1 = unwrapExports(VolumeDown);
 
+var VolumeDown$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': VolumeDown$1,
+	__moduleExports: VolumeDown
+});
+
 var VolumeDownOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -19093,6 +21955,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var VolumeDownOutline$1 = unwrapExports(VolumeDownOutline);
 
+var VolumeDownOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': VolumeDownOutline$1,
+	__moduleExports: VolumeDownOutline
+});
+
 var VolumeMute = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -19130,6 +21998,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var VolumeMute$1 = unwrapExports(VolumeMute);
 
+var VolumeMute$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': VolumeMute$1,
+	__moduleExports: VolumeMute
+});
+
 var VolumeMuteOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -19166,6 +22040,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var VolumeMuteOutline$1 = unwrapExports(VolumeMuteOutline);
+
+var VolumeMuteOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': VolumeMuteOutline$1,
+	__moduleExports: VolumeMuteOutline
+});
 
 var VolumeOff = createCommonjsModule(function (module, exports) {
 
@@ -19212,6 +22092,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var VolumeOff$1 = unwrapExports(VolumeOff);
 
+var VolumeOff$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': VolumeOff$1,
+	__moduleExports: VolumeOff
+});
+
 var VolumeOffOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -19257,6 +22143,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var VolumeOffOutline$1 = unwrapExports(VolumeOffOutline);
 
+var VolumeOffOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': VolumeOffOutline$1,
+	__moduleExports: VolumeOffOutline
+});
+
 var VolumeUp = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -19298,6 +22190,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var VolumeUp$1 = unwrapExports(VolumeUp);
 
+var VolumeUp$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': VolumeUp$1,
+	__moduleExports: VolumeUp
+});
+
 var VolumeUpOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -19338,6 +22236,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var VolumeUpOutline$1 = unwrapExports(VolumeUpOutline);
+
+var VolumeUpOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': VolumeUpOutline$1,
+	__moduleExports: VolumeUpOutline
+});
 
 var Wifi = createCommonjsModule(function (module, exports) {
 
@@ -19383,6 +22287,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var Wifi$1 = unwrapExports(Wifi);
+
+var Wifi$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': Wifi$1,
+	__moduleExports: Wifi
+});
 
 var WifiOff = createCommonjsModule(function (module, exports) {
 
@@ -19435,6 +22345,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var WifiOff$1 = unwrapExports(WifiOff);
 
+var WifiOff$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': WifiOff$1,
+	__moduleExports: WifiOff
+});
+
 var WifiOffOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -19486,6 +22402,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 
 var WifiOffOutline$1 = unwrapExports(WifiOffOutline);
 
+var WifiOffOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': WifiOffOutline$1,
+	__moduleExports: WifiOffOutline
+});
+
 var WifiOutline = createCommonjsModule(function (module, exports) {
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -19530,6 +22452,12 @@ exports.default = props => React.createElement(Svg.Svg, _extends({}, props, {
 });
 
 var WifiOutline$1 = unwrapExports(WifiOutline);
+
+var WifiOutline$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	'default': WifiOutline$1,
+	__moduleExports: WifiOutline
+});
 
 var icons = createCommonjsModule(function (module, exports) {
 
@@ -21056,495 +23984,495 @@ exports.Icon = props => {
 unwrapExports(reactNativeEvaIcons);
 var reactNativeEvaIcons_1 = reactNativeEvaIcons.Icon;
 
-exports.$Activity = Activity$1;
-exports.$ActivityOutline = ActivityOutline$1;
-exports.$AlertCircle = AlertCircle$1;
-exports.$AlertCircleOutline = AlertCircleOutline$1;
-exports.$AlertTriangle = AlertTriangle$1;
-exports.$AlertTriangleOutline = AlertTriangleOutline$1;
-exports.$Archive = Archive$1;
-exports.$ArchiveOutline = ArchiveOutline$1;
-exports.$ArrowBack = ArrowBack$1;
-exports.$ArrowBackOutline = ArrowBackOutline$1;
-exports.$ArrowCircleDown = ArrowCircleDown$1;
-exports.$ArrowCircleDownOutline = ArrowCircleDownOutline$1;
-exports.$ArrowCircleLeft = ArrowCircleLeft$1;
-exports.$ArrowCircleLeftOutline = ArrowCircleLeftOutline$1;
-exports.$ArrowCircleRight = ArrowCircleRight$1;
-exports.$ArrowCircleRightOutline = ArrowCircleRightOutline$1;
-exports.$ArrowCircleUp = ArrowCircleUp$1;
-exports.$ArrowCircleUpOutline = ArrowCircleUpOutline$1;
-exports.$ArrowDown = ArrowDown$1;
-exports.$ArrowDownOutline = ArrowDownOutline$1;
-exports.$ArrowDownward = ArrowDownward$1;
-exports.$ArrowDownwardOutline = ArrowDownwardOutline$1;
-exports.$ArrowForward = ArrowForward$1;
-exports.$ArrowForwardOutline = ArrowForwardOutline$1;
-exports.$ArrowIosBack = ArrowIosBack$1;
-exports.$ArrowIosBackOutline = ArrowIosBackOutline$1;
-exports.$ArrowIosDownward = ArrowIosDownward$1;
-exports.$ArrowIosDownwardOutline = ArrowIosDownwardOutline$1;
-exports.$ArrowIosForward = ArrowIosForward$1;
-exports.$ArrowIosForwardOutline = ArrowIosForwardOutline$1;
-exports.$ArrowIosUpward = ArrowIosUpward$1;
-exports.$ArrowIosUpwardOutline = ArrowIosUpwardOutline$1;
-exports.$ArrowLeft = ArrowLeft$1;
-exports.$ArrowLeftOutline = ArrowLeftOutline$1;
-exports.$ArrowRight = ArrowRight$1;
-exports.$ArrowRightOutline = ArrowRightOutline$1;
-exports.$ArrowUp = ArrowUp$1;
-exports.$ArrowUpOutline = ArrowUpOutline$1;
-exports.$ArrowUpward = ArrowUpward$1;
-exports.$ArrowUpwardOutline = ArrowUpwardOutline$1;
-exports.$ArrowheadDown = ArrowheadDown$1;
-exports.$ArrowheadDownOutline = ArrowheadDownOutline$1;
-exports.$ArrowheadLeft = ArrowheadLeft$1;
-exports.$ArrowheadLeftOutline = ArrowheadLeftOutline$1;
-exports.$ArrowheadRight = ArrowheadRight$1;
-exports.$ArrowheadRightOutline = ArrowheadRightOutline$1;
-exports.$ArrowheadUp = ArrowheadUp$1;
-exports.$ArrowheadUpOutline = ArrowheadUpOutline$1;
-exports.$At = At$1;
-exports.$AtOutline = AtOutline$1;
-exports.$Attach = Attach$1;
-exports.$AttachOutline = AttachOutline$1;
-exports.$Attach_2 = Attach_2$1;
-exports.$Attach_2Outline = Attach_2Outline$1;
-exports.$Award = Award$1;
-exports.$AwardOutline = AwardOutline$1;
-exports.$Backspace = Backspace$1;
-exports.$BackspaceOutline = BackspaceOutline$1;
-exports.$BarChart = BarChart$1;
-exports.$BarChartOutline = BarChartOutline$1;
-exports.$BarChart_2 = BarChart_2$1;
-exports.$BarChart_2Outline = BarChart_2Outline$1;
-exports.$Battery = Battery$1;
-exports.$BatteryOutline = BatteryOutline$1;
-exports.$Behance = Behance$1;
-exports.$BehanceOutline = BehanceOutline$1;
-exports.$Bell = Bell$1;
-exports.$BellOff = BellOff$1;
-exports.$BellOffOutline = BellOffOutline$1;
-exports.$BellOutline = BellOutline$1;
-exports.$Bluetooth = Bluetooth$1;
-exports.$BluetoothOutline = BluetoothOutline$1;
-exports.$Book = Book$1;
-exports.$BookOpen = BookOpen$1;
-exports.$BookOpenOutline = BookOpenOutline$1;
-exports.$BookOutline = BookOutline$1;
-exports.$Bookmark = Bookmark$1;
-exports.$BookmarkOutline = BookmarkOutline$1;
-exports.$Briefcase = Briefcase$1;
-exports.$BriefcaseOutline = BriefcaseOutline$1;
-exports.$Browser = Browser$1;
-exports.$BrowserOutline = BrowserOutline$1;
-exports.$Brush = Brush$1;
-exports.$BrushOutline = BrushOutline$1;
-exports.$Bulb = Bulb$1;
-exports.$BulbOutline = BulbOutline$1;
-exports.$Calendar = Calendar$1;
-exports.$CalendarOutline = CalendarOutline$1;
-exports.$Camera = Camera$1;
-exports.$CameraOutline = CameraOutline$1;
-exports.$Car = Car$1;
-exports.$CarOutline = CarOutline$1;
-exports.$Cast = Cast$1;
-exports.$CastOutline = CastOutline$1;
-exports.$Charging = Charging$1;
-exports.$ChargingOutline = ChargingOutline$1;
-exports.$Checkmark = Checkmark$1;
-exports.$CheckmarkCircle = CheckmarkCircle$1;
-exports.$CheckmarkCircleOutline = CheckmarkCircleOutline$1;
-exports.$CheckmarkCircle_2 = CheckmarkCircle_2$1;
-exports.$CheckmarkCircle_2Outline = CheckmarkCircle_2Outline$1;
-exports.$CheckmarkOutline = CheckmarkOutline$1;
-exports.$CheckmarkSquare = CheckmarkSquare$1;
-exports.$CheckmarkSquareOutline = CheckmarkSquareOutline$1;
-exports.$CheckmarkSquare_2 = CheckmarkSquare_2$1;
-exports.$CheckmarkSquare_2Outline = CheckmarkSquare_2Outline$1;
-exports.$ChevronDown = ChevronDown$1;
-exports.$ChevronDownOutline = ChevronDownOutline$1;
-exports.$ChevronLeft = ChevronLeft$1;
-exports.$ChevronLeftOutline = ChevronLeftOutline$1;
-exports.$ChevronRight = ChevronRight$1;
-exports.$ChevronRightOutline = ChevronRightOutline$1;
-exports.$ChevronUp = ChevronUp$1;
-exports.$ChevronUpOutline = ChevronUpOutline$1;
-exports.$Clipboard = Clipboard$1;
-exports.$ClipboardOutline = ClipboardOutline$1;
-exports.$Clock = Clock$1;
-exports.$ClockOutline = ClockOutline$1;
-exports.$Close = Close$1;
-exports.$CloseCircle = CloseCircle$1;
-exports.$CloseCircleOutline = CloseCircleOutline$1;
-exports.$CloseOutline = CloseOutline$1;
-exports.$CloseSquare = CloseSquare$1;
-exports.$CloseSquareOutline = CloseSquareOutline$1;
-exports.$CloudDownload = CloudDownload$1;
-exports.$CloudDownloadOutline = CloudDownloadOutline$1;
-exports.$CloudUpload = CloudUpload$1;
-exports.$CloudUploadOutline = CloudUploadOutline$1;
-exports.$Code = Code$1;
-exports.$CodeDownload = CodeDownload$1;
-exports.$CodeDownloadOutline = CodeDownloadOutline$1;
-exports.$CodeOutline = CodeOutline$1;
-exports.$Collapse = Collapse$1;
-exports.$CollapseOutline = CollapseOutline$1;
-exports.$ColorPalette = ColorPalette$1;
-exports.$ColorPaletteOutline = ColorPaletteOutline$1;
-exports.$ColorPicker = ColorPicker$1;
-exports.$ColorPickerOutline = ColorPickerOutline$1;
-exports.$Compass = Compass$1;
-exports.$CompassOutline = CompassOutline$1;
-exports.$Copy = Copy$1;
-exports.$CopyOutline = CopyOutline$1;
-exports.$CornerDownLeft = CornerDownLeft$1;
-exports.$CornerDownLeftOutline = CornerDownLeftOutline$1;
-exports.$CornerDownRight = CornerDownRight$1;
-exports.$CornerDownRightOutline = CornerDownRightOutline$1;
-exports.$CornerLeftDown = CornerLeftDown$1;
-exports.$CornerLeftDownOutline = CornerLeftDownOutline$1;
-exports.$CornerLeftUp = CornerLeftUp$1;
-exports.$CornerLeftUpOutline = CornerLeftUpOutline$1;
-exports.$CornerRightDown = CornerRightDown$1;
-exports.$CornerRightDownOutline = CornerRightDownOutline$1;
-exports.$CornerRightUp = CornerRightUp$1;
-exports.$CornerRightUpOutline = CornerRightUpOutline$1;
-exports.$CornerUpLeft = CornerUpLeft$1;
-exports.$CornerUpLeftOutline = CornerUpLeftOutline$1;
-exports.$CornerUpRight = CornerUpRight$1;
-exports.$CornerUpRightOutline = CornerUpRightOutline$1;
-exports.$CreditCard = CreditCard$1;
-exports.$CreditCardOutline = CreditCardOutline$1;
-exports.$Crop = Crop$1;
-exports.$CropOutline = CropOutline$1;
-exports.$Cube = Cube$1;
-exports.$CubeOutline = CubeOutline$1;
-exports.$DiagonalArrowLeftDown = DiagonalArrowLeftDown$1;
-exports.$DiagonalArrowLeftDownOutline = DiagonalArrowLeftDownOutline$1;
-exports.$DiagonalArrowLeftUp = DiagonalArrowLeftUp$1;
-exports.$DiagonalArrowLeftUpOutline = DiagonalArrowLeftUpOutline$1;
-exports.$DiagonalArrowRightDown = DiagonalArrowRightDown$1;
-exports.$DiagonalArrowRightDownOutline = DiagonalArrowRightDownOutline$1;
-exports.$DiagonalArrowRightUp = DiagonalArrowRightUp$1;
-exports.$DiagonalArrowRightUpOutline = DiagonalArrowRightUpOutline$1;
-exports.$DoneAll = DoneAll$1;
-exports.$DoneAllOutline = DoneAllOutline$1;
-exports.$Download = Download$1;
-exports.$DownloadOutline = DownloadOutline$1;
-exports.$Droplet = Droplet$1;
-exports.$DropletOff = DropletOff$1;
-exports.$DropletOffOutline = DropletOffOutline$1;
-exports.$DropletOutline = DropletOutline$1;
-exports.$Edit = Edit$1;
-exports.$EditOutline = EditOutline$1;
-exports.$Edit_2 = Edit_2$1;
-exports.$Edit_2Outline = Edit_2Outline$1;
-exports.$Email = Email$1;
-exports.$EmailOutline = EmailOutline$1;
-exports.$Expand = Expand$1;
-exports.$ExpandOutline = ExpandOutline$1;
-exports.$ExternalLink = ExternalLink$1;
-exports.$ExternalLinkOutline = ExternalLinkOutline$1;
-exports.$Eye = Eye$1;
-exports.$EyeOff = EyeOff$1;
-exports.$EyeOffOutline = EyeOffOutline$1;
-exports.$EyeOff_2 = EyeOff_2$1;
-exports.$EyeOff_2Outline = EyeOff_2Outline$1;
-exports.$EyeOutline = EyeOutline$1;
-exports.$Facebook = Facebook$1;
-exports.$FacebookOutline = FacebookOutline$1;
-exports.$File = File$1;
-exports.$FileAdd = FileAdd$1;
-exports.$FileAddOutline = FileAddOutline$1;
-exports.$FileOutline = FileOutline$1;
-exports.$FileRemove = FileRemove$1;
-exports.$FileRemoveOutline = FileRemoveOutline$1;
-exports.$FileText = FileText$1;
-exports.$FileTextOutline = FileTextOutline$1;
-exports.$Film = Film$1;
-exports.$FilmOutline = FilmOutline$1;
-exports.$Flag = Flag$1;
-exports.$FlagOutline = FlagOutline$1;
-exports.$Flash = Flash$1;
-exports.$FlashOff = FlashOff$1;
-exports.$FlashOffOutline = FlashOffOutline$1;
-exports.$FlashOutline = FlashOutline$1;
-exports.$Flip = Flip$1;
-exports.$FlipOutline = FlipOutline$1;
-exports.$Flip_2 = Flip_2$1;
-exports.$Flip_2Outline = Flip_2Outline$1;
-exports.$Folder = Folder$1;
-exports.$FolderAdd = FolderAdd$1;
-exports.$FolderAddOutline = FolderAddOutline$1;
-exports.$FolderOutline = FolderOutline$1;
-exports.$FolderRemove = FolderRemove$1;
-exports.$FolderRemoveOutline = FolderRemoveOutline$1;
-exports.$Funnel = Funnel$1;
-exports.$FunnelOutline = FunnelOutline$1;
-exports.$Gift = Gift$1;
-exports.$GiftOutline = GiftOutline$1;
-exports.$Github = Github$1;
-exports.$GithubOutline = GithubOutline$1;
-exports.$Globe = Globe$1;
-exports.$GlobeOutline = GlobeOutline$1;
-exports.$Globe_2 = Globe_2$1;
-exports.$Globe_2Outline = Globe_2Outline$1;
-exports.$Globe_3 = Globe_3$1;
-exports.$Google = Google$1;
-exports.$GoogleOutline = GoogleOutline$1;
-exports.$Grid = Grid$1;
-exports.$GridOutline = GridOutline$1;
-exports.$HardDrive = HardDrive$1;
-exports.$HardDriveOutline = HardDriveOutline$1;
-exports.$Hash = Hash$1;
-exports.$HashOutline = HashOutline$1;
-exports.$Headphones = Headphones$1;
-exports.$HeadphonesOutline = HeadphonesOutline$1;
-exports.$Heart = Heart$1;
-exports.$HeartOutline = HeartOutline$1;
-exports.$Home = Home$1;
-exports.$HomeOutline = HomeOutline$1;
-exports.$Image = Image$1;
-exports.$ImageOutline = ImageOutline$1;
-exports.$Image_2 = Image_2$1;
-exports.$Inbox = Inbox$1;
-exports.$InboxOutline = InboxOutline$1;
-exports.$Info = Info$1;
-exports.$InfoOutline = InfoOutline$1;
-exports.$Keypad = Keypad$1;
-exports.$KeypadOutline = KeypadOutline$1;
-exports.$Layers = Layers$1;
-exports.$LayersOutline = LayersOutline$1;
-exports.$Layout = Layout$1;
-exports.$LayoutOutline = LayoutOutline$1;
-exports.$Link = Link$1;
-exports.$LinkOutline = LinkOutline$1;
-exports.$Link_2 = Link_2$1;
-exports.$Link_2Outline = Link_2Outline$1;
-exports.$Linkedin = Linkedin$1;
-exports.$LinkedinOutline = LinkedinOutline$1;
-exports.$List = List$1;
-exports.$ListOutline = ListOutline$1;
-exports.$LoaderOutline = LoaderOutline$1;
-exports.$Lock = Lock$1;
-exports.$LockOutline = LockOutline$1;
-exports.$LogIn = LogIn$1;
-exports.$LogInOutline = LogInOutline$1;
-exports.$LogOut = LogOut$1;
-exports.$LogOutOutline = LogOutOutline$1;
-exports.$Map = _Map$1;
-exports.$MapOutline = MapOutline$1;
-exports.$Maximize = Maximize$1;
-exports.$MaximizeOutline = MaximizeOutline$1;
-exports.$Menu = Menu$1;
-exports.$MenuArrow = MenuArrow$1;
-exports.$MenuArrowOutline = MenuArrowOutline$1;
-exports.$MenuOutline = MenuOutline$1;
-exports.$Menu_2 = Menu_2$1;
-exports.$Menu_2Outline = Menu_2Outline$1;
-exports.$MessageCircle = MessageCircle$1;
-exports.$MessageCircleOutline = MessageCircleOutline$1;
-exports.$MessageSquare = MessageSquare$1;
-exports.$MessageSquareOutline = MessageSquareOutline$1;
-exports.$Mic = Mic$1;
-exports.$MicOff = MicOff$1;
-exports.$MicOffOutline = MicOffOutline$1;
-exports.$MicOutline = MicOutline$1;
-exports.$Minimize = Minimize$1;
-exports.$MinimizeOutline = MinimizeOutline$1;
-exports.$Minus = Minus$1;
-exports.$MinusCircle = MinusCircle$1;
-exports.$MinusCircleOutline = MinusCircleOutline$1;
-exports.$MinusOutline = MinusOutline$1;
-exports.$MinusSquare = MinusSquare$1;
-exports.$MinusSquareOutline = MinusSquareOutline$1;
-exports.$Monitor = Monitor$1;
-exports.$MonitorOutline = MonitorOutline$1;
-exports.$Moon = Moon$1;
-exports.$MoonOutline = MoonOutline$1;
-exports.$MoreHorizontal = MoreHorizontal$1;
-exports.$MoreHorizontalOutline = MoreHorizontalOutline$1;
-exports.$MoreVertical = MoreVertical$1;
-exports.$MoreVerticalOutline = MoreVerticalOutline$1;
-exports.$Move = Move$1;
-exports.$MoveOutline = MoveOutline$1;
-exports.$Music = Music$1;
-exports.$MusicOutline = MusicOutline$1;
-exports.$Navigation = Navigation$1;
-exports.$NavigationOutline = NavigationOutline$1;
-exports.$Navigation_2 = Navigation_2$1;
-exports.$Navigation_2Outline = Navigation_2Outline$1;
-exports.$Npm = Npm$1;
-exports.$NpmOutline = NpmOutline$1;
-exports.$Options = Options$1;
-exports.$OptionsOutline = OptionsOutline$1;
-exports.$Options_2 = Options_2$1;
-exports.$Options_2Outline = Options_2Outline$1;
-exports.$Pantone = Pantone$1;
-exports.$PantoneOutline = PantoneOutline$1;
-exports.$PaperPlane = PaperPlane$1;
-exports.$PaperPlaneOutline = PaperPlaneOutline$1;
-exports.$PauseCircle = PauseCircle$1;
-exports.$PauseCircleOutline = PauseCircleOutline$1;
-exports.$People = People$1;
-exports.$PeopleOutline = PeopleOutline$1;
-exports.$Percent = Percent$1;
-exports.$PercentOutline = PercentOutline$1;
-exports.$Person = Person$1;
-exports.$PersonAdd = PersonAdd$1;
-exports.$PersonAddOutline = PersonAddOutline$1;
-exports.$PersonDelete = PersonDelete$1;
-exports.$PersonDeleteOutline = PersonDeleteOutline$1;
-exports.$PersonDone = PersonDone$1;
-exports.$PersonDoneOutline = PersonDoneOutline$1;
-exports.$PersonOutline = PersonOutline$1;
-exports.$PersonRemove = PersonRemove$1;
-exports.$PersonRemoveOutline = PersonRemoveOutline$1;
-exports.$Phone = Phone$1;
-exports.$PhoneCall = PhoneCall$1;
-exports.$PhoneCallOutline = PhoneCallOutline$1;
-exports.$PhoneMissed = PhoneMissed$1;
-exports.$PhoneMissedOutline = PhoneMissedOutline$1;
-exports.$PhoneOff = PhoneOff$1;
-exports.$PhoneOffOutline = PhoneOffOutline$1;
-exports.$PhoneOutline = PhoneOutline$1;
-exports.$PieChart = PieChart$1;
-exports.$PieChartOutline = PieChartOutline$1;
-exports.$PieChart_2 = PieChart_2$1;
-exports.$Pin = Pin$1;
-exports.$PinOutline = PinOutline$1;
-exports.$PlayCircle = PlayCircle$1;
-exports.$PlayCircleOutline = PlayCircleOutline$1;
-exports.$Plus = Plus$1;
-exports.$PlusCircle = PlusCircle$1;
-exports.$PlusCircleOutline = PlusCircleOutline$1;
-exports.$PlusOutline = PlusOutline$1;
-exports.$PlusSquare = PlusSquare$1;
-exports.$PlusSquareOutline = PlusSquareOutline$1;
-exports.$Power = Power$1;
-exports.$PowerOutline = PowerOutline$1;
-exports.$Pricetags = Pricetags$1;
-exports.$PricetagsOutline = PricetagsOutline$1;
-exports.$Printer = Printer$1;
-exports.$PrinterOutline = PrinterOutline$1;
-exports.$QuestionMark = QuestionMark$1;
-exports.$QuestionMarkCircle = QuestionMarkCircle$1;
-exports.$QuestionMarkCircleOutline = QuestionMarkCircleOutline$1;
-exports.$QuestionMarkOutline = QuestionMarkOutline$1;
-exports.$Radio = Radio$1;
-exports.$RadioButtonOff = RadioButtonOff$1;
-exports.$RadioButtonOffOutline = RadioButtonOffOutline$1;
-exports.$RadioButtonOn = RadioButtonOn$1;
-exports.$RadioButtonOnOutline = RadioButtonOnOutline$1;
-exports.$RadioOutline = RadioOutline$1;
-exports.$Recording = Recording$1;
-exports.$RecordingOutline = RecordingOutline$1;
-exports.$Refresh = Refresh$1;
-exports.$RefreshOutline = RefreshOutline$1;
-exports.$Repeat = Repeat$1;
-exports.$RepeatOutline = RepeatOutline$1;
-exports.$RewindLeft = RewindLeft$1;
-exports.$RewindLeftOutline = RewindLeftOutline$1;
-exports.$RewindRight = RewindRight$1;
-exports.$RewindRightOutline = RewindRightOutline$1;
-exports.$Save = Save$1;
-exports.$SaveOutline = SaveOutline$1;
-exports.$Scissors = Scissors$1;
-exports.$ScissorsOutline = ScissorsOutline$1;
-exports.$Search = Search$1;
-exports.$SearchOutline = SearchOutline$1;
-exports.$Settings = Settings$1;
-exports.$SettingsOutline = SettingsOutline$1;
-exports.$Settings_2 = Settings_2$1;
-exports.$Settings_2Outline = Settings_2Outline$1;
-exports.$Shake = Shake$1;
-exports.$ShakeOutline = ShakeOutline$1;
-exports.$Share = Share$1;
-exports.$ShareOutline = ShareOutline$1;
-exports.$Shield = Shield$1;
-exports.$ShieldOff = ShieldOff$1;
-exports.$ShieldOffOutline = ShieldOffOutline$1;
-exports.$ShieldOutline = ShieldOutline$1;
-exports.$ShoppingBag = ShoppingBag$1;
-exports.$ShoppingBagOutline = ShoppingBagOutline$1;
-exports.$ShoppingCart = ShoppingCart$1;
-exports.$ShoppingCartOutline = ShoppingCartOutline$1;
-exports.$Shuffle = Shuffle$1;
-exports.$ShuffleOutline = ShuffleOutline$1;
-exports.$Shuffle_2 = Shuffle_2$1;
-exports.$Shuffle_2Outline = Shuffle_2Outline$1;
-exports.$SkipBack = SkipBack$1;
-exports.$SkipBackOutline = SkipBackOutline$1;
-exports.$SkipForward = SkipForward$1;
-exports.$SkipForwardOutline = SkipForwardOutline$1;
-exports.$Slash = Slash$1;
-exports.$SlashOutline = SlashOutline$1;
-exports.$Smartphone = Smartphone$1;
-exports.$SmartphoneOutline = SmartphoneOutline$1;
-exports.$Speaker = Speaker$1;
-exports.$SpeakerOutline = SpeakerOutline$1;
-exports.$Square = Square$1;
-exports.$SquareOutline = SquareOutline$1;
-exports.$Star = Star$1;
-exports.$StarOutline = StarOutline$1;
-exports.$StopCircle = StopCircle$1;
-exports.$StopCircleOutline = StopCircleOutline$1;
-exports.$Sun = Sun$1;
-exports.$SunOutline = SunOutline$1;
-exports.$Swap = Swap$1;
-exports.$SwapOutline = SwapOutline$1;
-exports.$Sync = Sync$1;
-exports.$SyncOutline = SyncOutline$1;
-exports.$Text = Text$1;
-exports.$TextOutline = TextOutline$1;
-exports.$Thermometer = Thermometer$1;
-exports.$ThermometerMinus = ThermometerMinus$1;
-exports.$ThermometerMinusOutline = ThermometerMinusOutline$1;
-exports.$ThermometerOutline = ThermometerOutline$1;
-exports.$ThermometerPlus = ThermometerPlus$1;
-exports.$ThermometerPlusOutline = ThermometerPlusOutline$1;
-exports.$ToggleLeft = ToggleLeft$1;
-exports.$ToggleLeftOutline = ToggleLeftOutline$1;
-exports.$ToggleRight = ToggleRight$1;
-exports.$ToggleRightOutline = ToggleRightOutline$1;
-exports.$Trash = Trash$1;
-exports.$TrashOutline = TrashOutline$1;
-exports.$Trash_2 = Trash_2$1;
-exports.$Trash_2Outline = Trash_2Outline$1;
-exports.$TrendingDown = TrendingDown$1;
-exports.$TrendingDownOutline = TrendingDownOutline$1;
-exports.$TrendingUp = TrendingUp$1;
-exports.$TrendingUpOutline = TrendingUpOutline$1;
-exports.$Tv = Tv$1;
-exports.$TvOutline = TvOutline$1;
-exports.$Twitter = Twitter$1;
-exports.$TwitterOutline = TwitterOutline$1;
-exports.$Umbrella = Umbrella$1;
-exports.$UmbrellaOutline = UmbrellaOutline$1;
-exports.$Undo = Undo$1;
-exports.$UndoOutline = UndoOutline$1;
-exports.$Unlock = Unlock$1;
-exports.$UnlockOutline = UnlockOutline$1;
-exports.$Upload = Upload$1;
-exports.$UploadOutline = UploadOutline$1;
-exports.$Video = Video$1;
-exports.$VideoOff = VideoOff$1;
-exports.$VideoOffOutline = VideoOffOutline$1;
-exports.$VideoOutline = VideoOutline$1;
-exports.$VolumeDown = VolumeDown$1;
-exports.$VolumeDownOutline = VolumeDownOutline$1;
-exports.$VolumeMute = VolumeMute$1;
-exports.$VolumeMuteOutline = VolumeMuteOutline$1;
-exports.$VolumeOff = VolumeOff$1;
-exports.$VolumeOffOutline = VolumeOffOutline$1;
-exports.$VolumeUp = VolumeUp$1;
-exports.$VolumeUpOutline = VolumeUpOutline$1;
-exports.$Wifi = Wifi$1;
-exports.$WifiOff = WifiOff$1;
-exports.$WifiOffOutline = WifiOffOutline$1;
-exports.$WifiOutline = WifiOutline$1;
+exports.$Activity = Activity$2;
+exports.$ActivityOutline = ActivityOutline$2;
+exports.$AlertCircle = AlertCircle$2;
+exports.$AlertCircleOutline = AlertCircleOutline$2;
+exports.$AlertTriangle = AlertTriangle$2;
+exports.$AlertTriangleOutline = AlertTriangleOutline$2;
+exports.$Archive = Archive$2;
+exports.$ArchiveOutline = ArchiveOutline$2;
+exports.$ArrowBack = ArrowBack$2;
+exports.$ArrowBackOutline = ArrowBackOutline$2;
+exports.$ArrowCircleDown = ArrowCircleDown$2;
+exports.$ArrowCircleDownOutline = ArrowCircleDownOutline$2;
+exports.$ArrowCircleLeft = ArrowCircleLeft$2;
+exports.$ArrowCircleLeftOutline = ArrowCircleLeftOutline$2;
+exports.$ArrowCircleRight = ArrowCircleRight$2;
+exports.$ArrowCircleRightOutline = ArrowCircleRightOutline$2;
+exports.$ArrowCircleUp = ArrowCircleUp$2;
+exports.$ArrowCircleUpOutline = ArrowCircleUpOutline$2;
+exports.$ArrowDown = ArrowDown$2;
+exports.$ArrowDownOutline = ArrowDownOutline$2;
+exports.$ArrowDownward = ArrowDownward$2;
+exports.$ArrowDownwardOutline = ArrowDownwardOutline$2;
+exports.$ArrowForward = ArrowForward$2;
+exports.$ArrowForwardOutline = ArrowForwardOutline$2;
+exports.$ArrowIosBack = ArrowIosBack$2;
+exports.$ArrowIosBackOutline = ArrowIosBackOutline$2;
+exports.$ArrowIosDownward = ArrowIosDownward$2;
+exports.$ArrowIosDownwardOutline = ArrowIosDownwardOutline$2;
+exports.$ArrowIosForward = ArrowIosForward$2;
+exports.$ArrowIosForwardOutline = ArrowIosForwardOutline$2;
+exports.$ArrowIosUpward = ArrowIosUpward$2;
+exports.$ArrowIosUpwardOutline = ArrowIosUpwardOutline$2;
+exports.$ArrowLeft = ArrowLeft$2;
+exports.$ArrowLeftOutline = ArrowLeftOutline$2;
+exports.$ArrowRight = ArrowRight$2;
+exports.$ArrowRightOutline = ArrowRightOutline$2;
+exports.$ArrowUp = ArrowUp$2;
+exports.$ArrowUpOutline = ArrowUpOutline$2;
+exports.$ArrowUpward = ArrowUpward$2;
+exports.$ArrowUpwardOutline = ArrowUpwardOutline$2;
+exports.$ArrowheadDown = ArrowheadDown$2;
+exports.$ArrowheadDownOutline = ArrowheadDownOutline$2;
+exports.$ArrowheadLeft = ArrowheadLeft$2;
+exports.$ArrowheadLeftOutline = ArrowheadLeftOutline$2;
+exports.$ArrowheadRight = ArrowheadRight$2;
+exports.$ArrowheadRightOutline = ArrowheadRightOutline$2;
+exports.$ArrowheadUp = ArrowheadUp$2;
+exports.$ArrowheadUpOutline = ArrowheadUpOutline$2;
+exports.$At = At$2;
+exports.$AtOutline = AtOutline$2;
+exports.$Attach = Attach$2;
+exports.$AttachOutline = AttachOutline$2;
+exports.$Attach_2 = Attach_2$2;
+exports.$Attach_2Outline = Attach_2Outline$2;
+exports.$Award = Award$2;
+exports.$AwardOutline = AwardOutline$2;
+exports.$Backspace = Backspace$2;
+exports.$BackspaceOutline = BackspaceOutline$2;
+exports.$BarChart = BarChart$2;
+exports.$BarChartOutline = BarChartOutline$2;
+exports.$BarChart_2 = BarChart_2$2;
+exports.$BarChart_2Outline = BarChart_2Outline$2;
+exports.$Battery = Battery$2;
+exports.$BatteryOutline = BatteryOutline$2;
+exports.$Behance = Behance$2;
+exports.$BehanceOutline = BehanceOutline$2;
+exports.$Bell = Bell$2;
+exports.$BellOff = BellOff$2;
+exports.$BellOffOutline = BellOffOutline$2;
+exports.$BellOutline = BellOutline$2;
+exports.$Bluetooth = Bluetooth$2;
+exports.$BluetoothOutline = BluetoothOutline$2;
+exports.$Book = Book$2;
+exports.$BookOpen = BookOpen$2;
+exports.$BookOpenOutline = BookOpenOutline$2;
+exports.$BookOutline = BookOutline$2;
+exports.$Bookmark = Bookmark$2;
+exports.$BookmarkOutline = BookmarkOutline$2;
+exports.$Briefcase = Briefcase$2;
+exports.$BriefcaseOutline = BriefcaseOutline$2;
+exports.$Browser = Browser$2;
+exports.$BrowserOutline = BrowserOutline$2;
+exports.$Brush = Brush$2;
+exports.$BrushOutline = BrushOutline$2;
+exports.$Bulb = Bulb$2;
+exports.$BulbOutline = BulbOutline$2;
+exports.$Calendar = Calendar$2;
+exports.$CalendarOutline = CalendarOutline$2;
+exports.$Camera = Camera$2;
+exports.$CameraOutline = CameraOutline$2;
+exports.$Car = Car$2;
+exports.$CarOutline = CarOutline$2;
+exports.$Cast = Cast$2;
+exports.$CastOutline = CastOutline$2;
+exports.$Charging = Charging$2;
+exports.$ChargingOutline = ChargingOutline$2;
+exports.$Checkmark = Checkmark$2;
+exports.$CheckmarkCircle = CheckmarkCircle$2;
+exports.$CheckmarkCircleOutline = CheckmarkCircleOutline$2;
+exports.$CheckmarkCircle_2 = CheckmarkCircle_2$2;
+exports.$CheckmarkCircle_2Outline = CheckmarkCircle_2Outline$2;
+exports.$CheckmarkOutline = CheckmarkOutline$2;
+exports.$CheckmarkSquare = CheckmarkSquare$2;
+exports.$CheckmarkSquareOutline = CheckmarkSquareOutline$2;
+exports.$CheckmarkSquare_2 = CheckmarkSquare_2$2;
+exports.$CheckmarkSquare_2Outline = CheckmarkSquare_2Outline$2;
+exports.$ChevronDown = ChevronDown$2;
+exports.$ChevronDownOutline = ChevronDownOutline$2;
+exports.$ChevronLeft = ChevronLeft$2;
+exports.$ChevronLeftOutline = ChevronLeftOutline$2;
+exports.$ChevronRight = ChevronRight$2;
+exports.$ChevronRightOutline = ChevronRightOutline$2;
+exports.$ChevronUp = ChevronUp$2;
+exports.$ChevronUpOutline = ChevronUpOutline$2;
+exports.$Clipboard = Clipboard$2;
+exports.$ClipboardOutline = ClipboardOutline$2;
+exports.$Clock = Clock$2;
+exports.$ClockOutline = ClockOutline$2;
+exports.$Close = Close$2;
+exports.$CloseCircle = CloseCircle$2;
+exports.$CloseCircleOutline = CloseCircleOutline$2;
+exports.$CloseOutline = CloseOutline$2;
+exports.$CloseSquare = CloseSquare$2;
+exports.$CloseSquareOutline = CloseSquareOutline$2;
+exports.$CloudDownload = CloudDownload$2;
+exports.$CloudDownloadOutline = CloudDownloadOutline$2;
+exports.$CloudUpload = CloudUpload$2;
+exports.$CloudUploadOutline = CloudUploadOutline$2;
+exports.$Code = Code$2;
+exports.$CodeDownload = CodeDownload$2;
+exports.$CodeDownloadOutline = CodeDownloadOutline$2;
+exports.$CodeOutline = CodeOutline$2;
+exports.$Collapse = Collapse$2;
+exports.$CollapseOutline = CollapseOutline$2;
+exports.$ColorPalette = ColorPalette$2;
+exports.$ColorPaletteOutline = ColorPaletteOutline$2;
+exports.$ColorPicker = ColorPicker$2;
+exports.$ColorPickerOutline = ColorPickerOutline$2;
+exports.$Compass = Compass$2;
+exports.$CompassOutline = CompassOutline$2;
+exports.$Copy = Copy$2;
+exports.$CopyOutline = CopyOutline$2;
+exports.$CornerDownLeft = CornerDownLeft$2;
+exports.$CornerDownLeftOutline = CornerDownLeftOutline$2;
+exports.$CornerDownRight = CornerDownRight$2;
+exports.$CornerDownRightOutline = CornerDownRightOutline$2;
+exports.$CornerLeftDown = CornerLeftDown$2;
+exports.$CornerLeftDownOutline = CornerLeftDownOutline$2;
+exports.$CornerLeftUp = CornerLeftUp$2;
+exports.$CornerLeftUpOutline = CornerLeftUpOutline$2;
+exports.$CornerRightDown = CornerRightDown$2;
+exports.$CornerRightDownOutline = CornerRightDownOutline$2;
+exports.$CornerRightUp = CornerRightUp$2;
+exports.$CornerRightUpOutline = CornerRightUpOutline$2;
+exports.$CornerUpLeft = CornerUpLeft$2;
+exports.$CornerUpLeftOutline = CornerUpLeftOutline$2;
+exports.$CornerUpRight = CornerUpRight$2;
+exports.$CornerUpRightOutline = CornerUpRightOutline$2;
+exports.$CreditCard = CreditCard$2;
+exports.$CreditCardOutline = CreditCardOutline$2;
+exports.$Crop = Crop$2;
+exports.$CropOutline = CropOutline$2;
+exports.$Cube = Cube$2;
+exports.$CubeOutline = CubeOutline$2;
+exports.$DiagonalArrowLeftDown = DiagonalArrowLeftDown$2;
+exports.$DiagonalArrowLeftDownOutline = DiagonalArrowLeftDownOutline$2;
+exports.$DiagonalArrowLeftUp = DiagonalArrowLeftUp$2;
+exports.$DiagonalArrowLeftUpOutline = DiagonalArrowLeftUpOutline$2;
+exports.$DiagonalArrowRightDown = DiagonalArrowRightDown$2;
+exports.$DiagonalArrowRightDownOutline = DiagonalArrowRightDownOutline$2;
+exports.$DiagonalArrowRightUp = DiagonalArrowRightUp$2;
+exports.$DiagonalArrowRightUpOutline = DiagonalArrowRightUpOutline$2;
+exports.$DoneAll = DoneAll$2;
+exports.$DoneAllOutline = DoneAllOutline$2;
+exports.$Download = Download$2;
+exports.$DownloadOutline = DownloadOutline$2;
+exports.$Droplet = Droplet$2;
+exports.$DropletOff = DropletOff$2;
+exports.$DropletOffOutline = DropletOffOutline$2;
+exports.$DropletOutline = DropletOutline$2;
+exports.$Edit = Edit$2;
+exports.$EditOutline = EditOutline$2;
+exports.$Edit_2 = Edit_2$2;
+exports.$Edit_2Outline = Edit_2Outline$2;
+exports.$Email = Email$2;
+exports.$EmailOutline = EmailOutline$2;
+exports.$Expand = Expand$2;
+exports.$ExpandOutline = ExpandOutline$2;
+exports.$ExternalLink = ExternalLink$2;
+exports.$ExternalLinkOutline = ExternalLinkOutline$2;
+exports.$Eye = Eye$2;
+exports.$EyeOff = EyeOff$2;
+exports.$EyeOffOutline = EyeOffOutline$2;
+exports.$EyeOff_2 = EyeOff_2$2;
+exports.$EyeOff_2Outline = EyeOff_2Outline$2;
+exports.$EyeOutline = EyeOutline$2;
+exports.$Facebook = Facebook$2;
+exports.$FacebookOutline = FacebookOutline$2;
+exports.$File = File$2;
+exports.$FileAdd = FileAdd$2;
+exports.$FileAddOutline = FileAddOutline$2;
+exports.$FileOutline = FileOutline$2;
+exports.$FileRemove = FileRemove$2;
+exports.$FileRemoveOutline = FileRemoveOutline$2;
+exports.$FileText = FileText$2;
+exports.$FileTextOutline = FileTextOutline$2;
+exports.$Film = Film$2;
+exports.$FilmOutline = FilmOutline$2;
+exports.$Flag = Flag$2;
+exports.$FlagOutline = FlagOutline$2;
+exports.$Flash = Flash$2;
+exports.$FlashOff = FlashOff$2;
+exports.$FlashOffOutline = FlashOffOutline$2;
+exports.$FlashOutline = FlashOutline$2;
+exports.$Flip = Flip$2;
+exports.$FlipOutline = FlipOutline$2;
+exports.$Flip_2 = Flip_2$2;
+exports.$Flip_2Outline = Flip_2Outline$2;
+exports.$Folder = Folder$2;
+exports.$FolderAdd = FolderAdd$2;
+exports.$FolderAddOutline = FolderAddOutline$2;
+exports.$FolderOutline = FolderOutline$2;
+exports.$FolderRemove = FolderRemove$2;
+exports.$FolderRemoveOutline = FolderRemoveOutline$2;
+exports.$Funnel = Funnel$2;
+exports.$FunnelOutline = FunnelOutline$2;
+exports.$Gift = Gift$2;
+exports.$GiftOutline = GiftOutline$2;
+exports.$Github = Github$2;
+exports.$GithubOutline = GithubOutline$2;
+exports.$Globe = Globe$2;
+exports.$GlobeOutline = GlobeOutline$2;
+exports.$Globe_2 = Globe_2$2;
+exports.$Globe_2Outline = Globe_2Outline$2;
+exports.$Globe_3 = Globe_3$2;
+exports.$Google = Google$2;
+exports.$GoogleOutline = GoogleOutline$2;
+exports.$Grid = Grid$2;
+exports.$GridOutline = GridOutline$2;
+exports.$HardDrive = HardDrive$2;
+exports.$HardDriveOutline = HardDriveOutline$2;
+exports.$Hash = Hash$2;
+exports.$HashOutline = HashOutline$2;
+exports.$Headphones = Headphones$2;
+exports.$HeadphonesOutline = HeadphonesOutline$2;
+exports.$Heart = Heart$2;
+exports.$HeartOutline = HeartOutline$2;
+exports.$Home = Home$2;
+exports.$HomeOutline = HomeOutline$2;
+exports.$Image = Image$2;
+exports.$ImageOutline = ImageOutline$2;
+exports.$Image_2 = Image_2$2;
+exports.$Inbox = Inbox$2;
+exports.$InboxOutline = InboxOutline$2;
+exports.$Info = Info$2;
+exports.$InfoOutline = InfoOutline$2;
+exports.$Keypad = Keypad$2;
+exports.$KeypadOutline = KeypadOutline$2;
+exports.$Layers = Layers$2;
+exports.$LayersOutline = LayersOutline$2;
+exports.$Layout = Layout$2;
+exports.$LayoutOutline = LayoutOutline$2;
+exports.$Link = Link$2;
+exports.$LinkOutline = LinkOutline$2;
+exports.$Link_2 = Link_2$2;
+exports.$Link_2Outline = Link_2Outline$2;
+exports.$Linkedin = Linkedin$2;
+exports.$LinkedinOutline = LinkedinOutline$2;
+exports.$List = List$2;
+exports.$ListOutline = ListOutline$2;
+exports.$LoaderOutline = LoaderOutline$2;
+exports.$Lock = Lock$2;
+exports.$LockOutline = LockOutline$2;
+exports.$LogIn = LogIn$2;
+exports.$LogInOutline = LogInOutline$2;
+exports.$LogOut = LogOut$2;
+exports.$LogOutOutline = LogOutOutline$2;
+exports.$Map = _Map$2;
+exports.$MapOutline = MapOutline$2;
+exports.$Maximize = Maximize$2;
+exports.$MaximizeOutline = MaximizeOutline$2;
+exports.$Menu = Menu$2;
+exports.$MenuArrow = MenuArrow$2;
+exports.$MenuArrowOutline = MenuArrowOutline$2;
+exports.$MenuOutline = MenuOutline$2;
+exports.$Menu_2 = Menu_2$2;
+exports.$Menu_2Outline = Menu_2Outline$2;
+exports.$MessageCircle = MessageCircle$2;
+exports.$MessageCircleOutline = MessageCircleOutline$2;
+exports.$MessageSquare = MessageSquare$2;
+exports.$MessageSquareOutline = MessageSquareOutline$2;
+exports.$Mic = Mic$2;
+exports.$MicOff = MicOff$2;
+exports.$MicOffOutline = MicOffOutline$2;
+exports.$MicOutline = MicOutline$2;
+exports.$Minimize = Minimize$2;
+exports.$MinimizeOutline = MinimizeOutline$2;
+exports.$Minus = Minus$2;
+exports.$MinusCircle = MinusCircle$2;
+exports.$MinusCircleOutline = MinusCircleOutline$2;
+exports.$MinusOutline = MinusOutline$2;
+exports.$MinusSquare = MinusSquare$2;
+exports.$MinusSquareOutline = MinusSquareOutline$2;
+exports.$Monitor = Monitor$2;
+exports.$MonitorOutline = MonitorOutline$2;
+exports.$Moon = Moon$2;
+exports.$MoonOutline = MoonOutline$2;
+exports.$MoreHorizontal = MoreHorizontal$2;
+exports.$MoreHorizontalOutline = MoreHorizontalOutline$2;
+exports.$MoreVertical = MoreVertical$2;
+exports.$MoreVerticalOutline = MoreVerticalOutline$2;
+exports.$Move = Move$2;
+exports.$MoveOutline = MoveOutline$2;
+exports.$Music = Music$2;
+exports.$MusicOutline = MusicOutline$2;
+exports.$Navigation = Navigation$2;
+exports.$NavigationOutline = NavigationOutline$2;
+exports.$Navigation_2 = Navigation_2$2;
+exports.$Navigation_2Outline = Navigation_2Outline$2;
+exports.$Npm = Npm$2;
+exports.$NpmOutline = NpmOutline$2;
+exports.$Options = Options$2;
+exports.$OptionsOutline = OptionsOutline$2;
+exports.$Options_2 = Options_2$2;
+exports.$Options_2Outline = Options_2Outline$2;
+exports.$Pantone = Pantone$2;
+exports.$PantoneOutline = PantoneOutline$2;
+exports.$PaperPlane = PaperPlane$2;
+exports.$PaperPlaneOutline = PaperPlaneOutline$2;
+exports.$PauseCircle = PauseCircle$2;
+exports.$PauseCircleOutline = PauseCircleOutline$2;
+exports.$People = People$2;
+exports.$PeopleOutline = PeopleOutline$2;
+exports.$Percent = Percent$2;
+exports.$PercentOutline = PercentOutline$2;
+exports.$Person = Person$2;
+exports.$PersonAdd = PersonAdd$2;
+exports.$PersonAddOutline = PersonAddOutline$2;
+exports.$PersonDelete = PersonDelete$2;
+exports.$PersonDeleteOutline = PersonDeleteOutline$2;
+exports.$PersonDone = PersonDone$2;
+exports.$PersonDoneOutline = PersonDoneOutline$2;
+exports.$PersonOutline = PersonOutline$2;
+exports.$PersonRemove = PersonRemove$2;
+exports.$PersonRemoveOutline = PersonRemoveOutline$2;
+exports.$Phone = Phone$2;
+exports.$PhoneCall = PhoneCall$2;
+exports.$PhoneCallOutline = PhoneCallOutline$2;
+exports.$PhoneMissed = PhoneMissed$2;
+exports.$PhoneMissedOutline = PhoneMissedOutline$2;
+exports.$PhoneOff = PhoneOff$2;
+exports.$PhoneOffOutline = PhoneOffOutline$2;
+exports.$PhoneOutline = PhoneOutline$2;
+exports.$PieChart = PieChart$2;
+exports.$PieChartOutline = PieChartOutline$2;
+exports.$PieChart_2 = PieChart_2$2;
+exports.$Pin = Pin$2;
+exports.$PinOutline = PinOutline$2;
+exports.$PlayCircle = PlayCircle$2;
+exports.$PlayCircleOutline = PlayCircleOutline$2;
+exports.$Plus = Plus$2;
+exports.$PlusCircle = PlusCircle$2;
+exports.$PlusCircleOutline = PlusCircleOutline$2;
+exports.$PlusOutline = PlusOutline$2;
+exports.$PlusSquare = PlusSquare$2;
+exports.$PlusSquareOutline = PlusSquareOutline$2;
+exports.$Power = Power$2;
+exports.$PowerOutline = PowerOutline$2;
+exports.$Pricetags = Pricetags$2;
+exports.$PricetagsOutline = PricetagsOutline$2;
+exports.$Printer = Printer$2;
+exports.$PrinterOutline = PrinterOutline$2;
+exports.$QuestionMark = QuestionMark$2;
+exports.$QuestionMarkCircle = QuestionMarkCircle$2;
+exports.$QuestionMarkCircleOutline = QuestionMarkCircleOutline$2;
+exports.$QuestionMarkOutline = QuestionMarkOutline$2;
+exports.$Radio = Radio$2;
+exports.$RadioButtonOff = RadioButtonOff$2;
+exports.$RadioButtonOffOutline = RadioButtonOffOutline$2;
+exports.$RadioButtonOn = RadioButtonOn$2;
+exports.$RadioButtonOnOutline = RadioButtonOnOutline$2;
+exports.$RadioOutline = RadioOutline$2;
+exports.$Recording = Recording$2;
+exports.$RecordingOutline = RecordingOutline$2;
+exports.$Refresh = Refresh$2;
+exports.$RefreshOutline = RefreshOutline$2;
+exports.$Repeat = Repeat$2;
+exports.$RepeatOutline = RepeatOutline$2;
+exports.$RewindLeft = RewindLeft$2;
+exports.$RewindLeftOutline = RewindLeftOutline$2;
+exports.$RewindRight = RewindRight$2;
+exports.$RewindRightOutline = RewindRightOutline$2;
+exports.$Save = Save$2;
+exports.$SaveOutline = SaveOutline$2;
+exports.$Scissors = Scissors$2;
+exports.$ScissorsOutline = ScissorsOutline$2;
+exports.$Search = Search$2;
+exports.$SearchOutline = SearchOutline$2;
+exports.$Settings = Settings$2;
+exports.$SettingsOutline = SettingsOutline$2;
+exports.$Settings_2 = Settings_2$2;
+exports.$Settings_2Outline = Settings_2Outline$2;
+exports.$Shake = Shake$2;
+exports.$ShakeOutline = ShakeOutline$2;
+exports.$Share = Share$2;
+exports.$ShareOutline = ShareOutline$2;
+exports.$Shield = Shield$2;
+exports.$ShieldOff = ShieldOff$2;
+exports.$ShieldOffOutline = ShieldOffOutline$2;
+exports.$ShieldOutline = ShieldOutline$2;
+exports.$ShoppingBag = ShoppingBag$2;
+exports.$ShoppingBagOutline = ShoppingBagOutline$2;
+exports.$ShoppingCart = ShoppingCart$2;
+exports.$ShoppingCartOutline = ShoppingCartOutline$2;
+exports.$Shuffle = Shuffle$2;
+exports.$ShuffleOutline = ShuffleOutline$2;
+exports.$Shuffle_2 = Shuffle_2$2;
+exports.$Shuffle_2Outline = Shuffle_2Outline$2;
+exports.$SkipBack = SkipBack$2;
+exports.$SkipBackOutline = SkipBackOutline$2;
+exports.$SkipForward = SkipForward$2;
+exports.$SkipForwardOutline = SkipForwardOutline$2;
+exports.$Slash = Slash$2;
+exports.$SlashOutline = SlashOutline$2;
+exports.$Smartphone = Smartphone$2;
+exports.$SmartphoneOutline = SmartphoneOutline$2;
+exports.$Speaker = Speaker$2;
+exports.$SpeakerOutline = SpeakerOutline$2;
+exports.$Square = Square$2;
+exports.$SquareOutline = SquareOutline$2;
+exports.$Star = Star$2;
+exports.$StarOutline = StarOutline$2;
+exports.$StopCircle = StopCircle$2;
+exports.$StopCircleOutline = StopCircleOutline$2;
+exports.$Sun = Sun$2;
+exports.$SunOutline = SunOutline$2;
+exports.$Swap = Swap$2;
+exports.$SwapOutline = SwapOutline$2;
+exports.$Sync = Sync$2;
+exports.$SyncOutline = SyncOutline$2;
+exports.$Text = Text$2;
+exports.$TextOutline = TextOutline$2;
+exports.$Thermometer = Thermometer$2;
+exports.$ThermometerMinus = ThermometerMinus$2;
+exports.$ThermometerMinusOutline = ThermometerMinusOutline$2;
+exports.$ThermometerOutline = ThermometerOutline$2;
+exports.$ThermometerPlus = ThermometerPlus$2;
+exports.$ThermometerPlusOutline = ThermometerPlusOutline$2;
+exports.$ToggleLeft = ToggleLeft$2;
+exports.$ToggleLeftOutline = ToggleLeftOutline$2;
+exports.$ToggleRight = ToggleRight$2;
+exports.$ToggleRightOutline = ToggleRightOutline$2;
+exports.$Trash = Trash$2;
+exports.$TrashOutline = TrashOutline$2;
+exports.$Trash_2 = Trash_2$2;
+exports.$Trash_2Outline = Trash_2Outline$2;
+exports.$TrendingDown = TrendingDown$2;
+exports.$TrendingDownOutline = TrendingDownOutline$2;
+exports.$TrendingUp = TrendingUp$2;
+exports.$TrendingUpOutline = TrendingUpOutline$2;
+exports.$Tv = Tv$2;
+exports.$TvOutline = TvOutline$2;
+exports.$Twitter = Twitter$2;
+exports.$TwitterOutline = TwitterOutline$2;
+exports.$Umbrella = Umbrella$2;
+exports.$UmbrellaOutline = UmbrellaOutline$2;
+exports.$Undo = Undo$2;
+exports.$UndoOutline = UndoOutline$2;
+exports.$Unlock = Unlock$2;
+exports.$UnlockOutline = UnlockOutline$2;
+exports.$Upload = Upload$2;
+exports.$UploadOutline = UploadOutline$2;
+exports.$Video = Video$2;
+exports.$VideoOff = VideoOff$2;
+exports.$VideoOffOutline = VideoOffOutline$2;
+exports.$VideoOutline = VideoOutline$2;
+exports.$VolumeDown = VolumeDown$2;
+exports.$VolumeDownOutline = VolumeDownOutline$2;
+exports.$VolumeMute = VolumeMute$2;
+exports.$VolumeMuteOutline = VolumeMuteOutline$2;
+exports.$VolumeOff = VolumeOff$2;
+exports.$VolumeOffOutline = VolumeOffOutline$2;
+exports.$VolumeUp = VolumeUp$2;
+exports.$VolumeUpOutline = VolumeUpOutline$2;
+exports.$Wifi = Wifi$2;
+exports.$WifiOff = WifiOff$2;
+exports.$WifiOffOutline = WifiOffOutline$2;
+exports.$WifiOutline = WifiOutline$2;
 exports.$icons = index$1;
-exports.$index = index;
+exports.$index = index$1;
 exports.Icon = reactNativeEvaIcons_1;
 exports.__moduleExports = reactNativeEvaIcons;

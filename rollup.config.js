@@ -3,6 +3,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import json from 'rollup-plugin-json';
 import image from 'rollup-plugin-image';
+import replace from '@rollup/plugin-replace';
 
 const plugins = [
 	resolve({
@@ -859,7 +860,11 @@ export const external = [
 	'lodash.zipWith',
 ];
 
-export const getEndpointConfig = (path, exludeModules = [], { output = {}, ...config } = {}) => ({
+export const getEndpointConfig = (
+	path,
+	exludeModules = [],
+	{ output = {}, plugins: modulePlugins = [], ...config } = {}
+) => ({
 	input: `source/${path}.js`,
 	output: [
 		{
@@ -872,12 +877,30 @@ export const getEndpointConfig = (path, exludeModules = [], { output = {}, ...co
 	],
 	context: 'this',
 	// treeshake: false,
-	plugins: [...plugins],
+	plugins: [...modulePlugins, ...plugins],
 	external: [...external, ...exludeModules],
 	...config,
 });
 
 export default [
+	getEndpointConfig('moment', [], {
+		plugins: [
+			replace({
+				// moment tries to load locales using local path
+				'\'./locale/\'': '\'moment/locale/\'',
+				delimiters: ['', ''],
+			}),
+		],
+	}),
+	getEndpointConfig('moment-locales', ['moment-internal-because-of-rollup'], {
+		plugins: [
+			replace({
+				// each locale requires moment using local path
+				'require(\'../moment\')': 'require(\'moment-import-for-locales\')',
+				delimiters: ['', ''],
+			}),
+		],
+	}),
 	getEndpointConfig('graphql'),
 	getEndpointConfig('graphql-tag', ['graphql', 'graphql/language/parser']),
 	getEndpointConfig('styled-components-native'),
@@ -885,13 +908,16 @@ export default [
 	getEndpointConfig('lodash-fp'),
 	getEndpointConfig('react-native-paper'),
 	getEndpointConfig('react-native-elements'),
-	getEndpointConfig('react-native-ui-kitten', ['moment', '@ui-kitten/eva-icons', '@eva-design/eva', 'react-native-eva-icons', 'react-native-eva-icons/icons'], {
-		output: {
-			interop: false,
-		},
-	}),
+	getEndpointConfig(
+		'react-native-ui-kitten',
+		['moment', '@eva-design/eva', 'react-native-eva-icons', 'react-native-eva-icons/icons'],
+		{
+			output: {
+				interop: false,
+			},
+		}
+	),
 	getEndpointConfig('eva-design_eva'),
-	getEndpointConfig('ui-kitten_eva-icons', ['react-native-eva-icons', 'react-native-eva-icons/icons']),
 	getEndpointConfig('react-native-eva-icons', [], {
 		output: {
 			interop: false,
