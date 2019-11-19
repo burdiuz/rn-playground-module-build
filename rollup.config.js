@@ -2,7 +2,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import json from 'rollup-plugin-json';
-import image from 'rollup-plugin-image';
+import image from 'rollup-plugin-img';
 import replace from '@rollup/plugin-replace';
 
 const plugins = [
@@ -10,8 +10,12 @@ const plugins = [
 		mainFields: ['jsnext:main', 'module', 'main'],
 		extensions: ['.mjs', '.js', '.jsx', '.android.mjs', '.android.js', '.android.jsx', '.json', '.node'],
 	}),
+	image({
+		output: './dest/',
+		include: 'node_modules/**',
+		limit: 1073741824,
+	}),
 	json(),
-	image(),
 	babel({
 		presets: ['@babel/preset-react'],
 		plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-transform-flow-strip-types'],
@@ -144,7 +148,6 @@ export const external = [
 	'react-native-localize',
 	'react-native-mime-types',
 	'react-native-os',
-	'react-native-paper',
 	'react-native-radial-gradient',
 	'react-native-randombytes',
 	'react-native-reanimated',
@@ -906,7 +909,15 @@ export default [
 	getEndpointConfig('styled-components-native'),
 	getEndpointConfig('recompose'),
 	getEndpointConfig('lodash-fp'),
-	getEndpointConfig('react-native-paper'),
+	getEndpointConfig('react-native-paper', [], {
+		plugins: [
+			replace({
+				// there are only one asset, but anyways it causes error
+				'../../assets/': 'react-native-paper/assets/',
+				delimiters: ['', ''],
+			}),
+		],
+	}),
 	getEndpointConfig('react-native-elements'),
 	getEndpointConfig(
 		'react-native-ui-kitten',
