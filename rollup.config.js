@@ -10,12 +10,6 @@ const plugins = [
 		mainFields: ['jsnext:main', 'module', 'main'],
 		extensions: ['.mjs', '.js', '.jsx', '.android.mjs', '.android.js', '.android.jsx', '.json', '.node'],
 	}),
-	image({
-		output: './dest/',
-		include: 'node_modules/**',
-		limit: 1073741824,
-	}),
-	json(),
 	babel({
 		presets: ['@babel/preset-react'],
 		plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-transform-flow-strip-types'],
@@ -41,6 +35,13 @@ const plugins = [
 			'node_modules/react-is/index.js': ['isElement', 'ForwardRef', 'isValidElementType'],
 		},
 	}),
+	image({
+		output: './dest/',
+		include: 'node_modules/**',
+		extensions: /\.(png|jpg|jpeg|gif|svg)$/i, 
+		limit: 1073741824,
+	}),
+	json(),
 ];
 
 export const external = [
@@ -912,13 +913,29 @@ export default [
 	getEndpointConfig('react-native-paper', [], {
 		plugins: [
 			replace({
-				// there are only one asset, but anyways it causes error
+				// assets are converted into Base64 separately and then imported using package-path
 				'../../assets/': 'react-native-paper/assets/',
 				delimiters: ['', ''],
 			}),
 		],
 	}),
-	getEndpointConfig('react-native-elements'),
+	getEndpointConfig('react-native-paper-assets'),
+	getEndpointConfig('react-native-elements', ['react-native-ratings'], {
+		output: {
+			interop: false,
+		},
+	}),
+	getEndpointConfig('react-native-ratings', [], {
+		plugins: [
+			replace({
+				// assets are converted into Base64 separately and then imported using package-path
+				'../images/': 'react-native-ratings/images/',
+				'./images/': 'react-native-ratings/images/',
+				delimiters: ['', ''],
+			}),
+		],
+	}),
+	getEndpointConfig('react-native-ratings-images'),
 	getEndpointConfig(
 		'react-native-ui-kitten',
 		['moment', '@eva-design/eva', 'react-native-eva-icons', 'react-native-eva-icons/icons'],

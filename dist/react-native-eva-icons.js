@@ -3,6 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var react = require('react');
+var reactNative = require('react-native');
 var reactNativeSvg = require('react-native-svg');
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -23944,6 +23945,408 @@ var index$1 = /*#__PURE__*/Object.freeze({
 	findIconByName: icons_1
 });
 
+var svgIcon_component = createCommonjsModule(function (module, exports) {
+
+var __rest = commonjsGlobal && commonjsGlobal.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+var __importStar = commonjsGlobal && commonjsGlobal.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+const React = __importStar(react);
+
+
+
+exports.SvgIcon = props => {
+  const {
+    name
+  } = props,
+        svgProps = __rest(props, ["name"]);
+
+  return React.createElement(icons.findIconByName(name), svgProps);
+};
+});
+
+unwrapExports(svgIcon_component);
+var svgIcon_component_1 = svgIcon_component.SvgIcon;
+
+var animation = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DEFAULT_CONFIG = {
+  cycles: 1,
+  useNativeDriver: true
+};
+/**
+ * Base animation class. Creates `Animated.Value` and maps it to props of `Animated.View`
+ */
+
+class Animation {
+  constructor(config) {
+    this.counter = 0;
+    this.running = false;
+    /**
+     * Default animation completion callback.
+     * Will run animation again if it is not stopped or it should stop regarding to `cycles` property
+     */
+
+    this.onAnimationEnd = result => {
+      this.counter += 1;
+
+      if (this.counter === this.config.cycles) {
+        this.stop();
+      }
+
+      if (this.running) {
+        this.start(this.endCallback);
+      }
+
+      if (!this.running) {
+        this.counter = 0;
+        this.endCallback && this.endCallback(result);
+        this.endCallback = null;
+      }
+    };
+
+    this.config = Object.assign(Object.assign({}, exports.DEFAULT_CONFIG), config);
+  }
+  /**
+   * Starts the animation
+   * @param callback {Animated.EndCallback} - function to execute on animation end.
+   */
+
+
+  start(callback) {
+    this.endCallback = callback;
+    this.running = true;
+    this.animation.start(this.onAnimationEnd);
+  }
+  /**
+   * Stops the animation
+   */
+
+
+  stop() {
+    this.running = false;
+    this.animation.stop();
+  }
+  /**
+   * @returns true if animation is currently running
+   */
+
+
+  isAnimating() {
+    return this.running;
+  }
+
+  release() {
+    this.stop();
+  }
+
+}
+
+exports.Animation = Animation;
+});
+
+unwrapExports(animation);
+var animation_1 = animation.DEFAULT_CONFIG;
+var animation_2 = animation.Animation;
+
+var pulseAnimation = createCommonjsModule(function (module, exports) {
+
+var __rest = commonjsGlobal && commonjsGlobal.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+
+
+
+
+const DEFAULT_CONFIG = {
+  start: 1.0,
+  end: 1.25,
+  easing: reactNative.Easing.linear,
+  duration: 500
+};
+
+class PulseAnimation extends animation.Animation {
+  constructor(config) {
+    super(Object.assign(Object.assign({}, DEFAULT_CONFIG), config));
+    this.value = new reactNative.Animated.Value(this.config.start);
+  }
+
+  get animation() {
+    const _a = this.config,
+          {
+      start,
+      end
+    } = _a,
+          restConfig = __rest(_a, ["start", "end"]);
+
+    const startAnimation = reactNative.Animated.timing(this.value, Object.assign({
+      toValue: end
+    }, restConfig));
+    const endAnimation = reactNative.Animated.timing(this.value, Object.assign({
+      toValue: start
+    }, restConfig));
+    return reactNative.Animated.sequence([startAnimation, endAnimation]);
+  }
+
+  toProps() {
+    return {
+      // @ts-ignore: Animated.Value is not assignable to a number, but it is a number
+      style: {
+        transform: [{
+          scale: this.value
+        }]
+      }
+    };
+  }
+
+}
+
+exports.PulseAnimation = PulseAnimation;
+});
+
+unwrapExports(pulseAnimation);
+var pulseAnimation_1 = pulseAnimation.PulseAnimation;
+
+var shakeAnimation = createCommonjsModule(function (module, exports) {
+
+var __rest = commonjsGlobal && commonjsGlobal.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+
+
+
+
+const DEFAULT_CONFIG = {
+  start: 0.0,
+  offset: 2.5,
+  easing: reactNative.Easing.linear,
+  duration: 25,
+  cycles: 8
+};
+
+class ShakeAnimation extends animation.Animation {
+  constructor(config) {
+    super(Object.assign(Object.assign({}, DEFAULT_CONFIG), config));
+    this.value = new reactNative.Animated.Value(this.config.start);
+  }
+
+  get animation() {
+    const _a = this.config,
+          {
+      start,
+      offset
+    } = _a,
+          restConfig = __rest(_a, ["start", "offset"]);
+
+    const startAnimation = reactNative.Animated.timing(this.value, Object.assign({
+      toValue: this.counter % 2 !== 0 ? -offset : offset
+    }, restConfig));
+    const endAnimation = reactNative.Animated.timing(this.value, Object.assign({
+      toValue: this.counter % 2 !== 0 ? offset : -offset
+    }, restConfig));
+    return reactNative.Animated.sequence([startAnimation, endAnimation]);
+  }
+
+  toProps() {
+    return {
+      // @ts-ignore: Animated.Value is not assignable to a number, but it is a number
+      style: {
+        transform: [{
+          translateX: this.value
+        }]
+      }
+    };
+  }
+
+}
+
+exports.ShakeAnimation = ShakeAnimation;
+});
+
+unwrapExports(shakeAnimation);
+var shakeAnimation_1 = shakeAnimation.ShakeAnimation;
+
+var zoomAnimation = createCommonjsModule(function (module, exports) {
+
+var __rest = commonjsGlobal && commonjsGlobal.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+
+
+
+
+const DEFAULT_CONFIG = {
+  start: 1.0,
+  end: 0.5,
+  easing: reactNative.Easing.linear,
+  duration: 500
+};
+
+class ZoomAnimation extends animation.Animation {
+  constructor(config) {
+    super(Object.assign(Object.assign({}, DEFAULT_CONFIG), config));
+    this.value = new reactNative.Animated.Value(this.config.start);
+  }
+
+  get animation() {
+    const _a = this.config,
+          {
+      start,
+      end
+    } = _a,
+          restConfig = __rest(_a, ["start", "end"]);
+
+    const startAnimation = reactNative.Animated.timing(this.value, Object.assign({
+      toValue: end
+    }, restConfig));
+    const endAnimation = reactNative.Animated.timing(this.value, Object.assign({
+      toValue: start
+    }, restConfig));
+    return reactNative.Animated.sequence([startAnimation, endAnimation]);
+  }
+
+  toProps() {
+    return {
+      // @ts-ignore: Animated.Value is not assignable to a number, but it is a number
+      style: {
+        transform: [{
+          scale: this.value
+        }]
+      }
+    };
+  }
+
+}
+
+exports.ZoomAnimation = ZoomAnimation;
+});
+
+unwrapExports(zoomAnimation);
+var zoomAnimation_1 = zoomAnimation.ZoomAnimation;
+
+var animationRegistry = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+
+
+
+
+
+
+function getIconAnimation(animation, config) {
+  switch (animation) {
+    case 'zoom':
+      return new zoomAnimation.ZoomAnimation(config);
+
+    case 'pulse':
+      return new pulseAnimation.PulseAnimation(config);
+
+    case 'shake':
+      return new shakeAnimation.ShakeAnimation(config);
+  }
+}
+
+exports.getIconAnimation = getIconAnimation;
+});
+
+unwrapExports(animationRegistry);
+var animationRegistry_1 = animationRegistry.getIconAnimation;
+
+var animation$1 = createCommonjsModule(function (module, exports) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+
+
+exports.Animation = animation.Animation;
+
+
+
+exports.PulseAnimation = pulseAnimation.PulseAnimation;
+
+
+
+exports.ShakeAnimation = shakeAnimation.ShakeAnimation;
+
+
+
+exports.ZoomAnimation = zoomAnimation.ZoomAnimation;
+
+
+
+exports.getIconAnimation = animationRegistry.getIconAnimation;
+});
+
+unwrapExports(animation$1);
+var animation_2$1 = animation$1.Animation;
+var animation_3 = animation$1.PulseAnimation;
+var animation_4 = animation$1.ShakeAnimation;
+var animation_5 = animation$1.ZoomAnimation;
+var animation_6 = animation$1.getIconAnimation;
+
 var reactNativeEvaIcons = createCommonjsModule(function (module, exports) {
 
 var __rest = commonjsGlobal && commonjsGlobal.__rest || function (s, e) {
@@ -23957,27 +24360,83 @@ var __rest = commonjsGlobal && commonjsGlobal.__rest || function (s, e) {
   return t;
 };
 
-var __importDefault = commonjsGlobal && commonjsGlobal.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
+var __importStar = commonjsGlobal && commonjsGlobal.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  result["default"] = mod;
+  return result;
 };
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-const react_1 = __importDefault(react);
+const React = __importStar(react);
 
 
 
-exports.Icon = props => {
-  const {
-    name
-  } = props,
-        svgProps = __rest(props, ["name"]);
 
-  return react_1.default.createElement(icons.findIconByName(name), svgProps);
+
+
+/**
+ * @property name {string} - The name of icon. See the list of available icons https://akveo.github.io/eva-icons
+ * @property animation {string} - The name of animation. Could be `zoom`, `pulse` or `shake`. Default is `zoom`
+ * @property animationConfig {AnimationConfig} - Animation config including number of cycles to run. Extends Animated.AnimationConfig.
+ *
+ * @method startAnimation {void} - Starts the passed animation.
+ * @method stopAnimation {void} - Stops the passed animation.
+ * @method isAnimating {boolean} - Indicates if animation is currently running.
+ */
+
+
+class Icon extends React.Component {
+  constructor(props) {
+    super(props);
+    /**
+     * Starts the animation
+     * @param callback {Animated.EndCallback} - function to execute on animation end.
+     */
+
+    this.startAnimation = callback => {
+      this.animation.start(callback);
+    };
+    /**
+     * Stops the animation
+     */
+
+
+    this.stopAnimation = () => {
+      this.animation.stop();
+    };
+    /**
+     * @returns true if animation is currently running
+     */
+
+
+    this.isAnimating = () => {
+      return this.animation.isAnimating();
+    };
+
+    this.animation = animation$1.getIconAnimation(props.animation, props.animationConfig);
+  }
+
+  componentWillUnmount() {
+    this.animation.release();
+  }
+
+  render() {
+    const _a = this.props,
+          svgIconProps = __rest(_a, ["animation", "animationConfig"]);
+
+    return React.createElement(reactNative.Animated.View, this.animation.toProps(), React.createElement(svgIcon_component.SvgIcon, svgIconProps));
+  }
+
+}
+
+exports.Icon = Icon;
+Icon.defaultProps = {
+  animation: 'zoom'
 };
 });
 

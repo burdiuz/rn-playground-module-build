@@ -4717,9 +4717,6 @@ var _jsxFileName$1g="/Users/satya/Workspace/Callstack/react-native-paper/src/com
 
 var _jsxFileName$1h="/Users/satya/Workspace/Callstack/react-native-paper/src/components/Typography/Subheading.tsx";var Subheading=function Subheading(props){return React.createElement(StyledText$1,_extends_1({},props,{alpha:0.87,family:"regular",style:[styles$$.text,props.style],__source:{fileName:_jsxFileName$1h,lineNumber:33}}));};var styles$$=reactNative.StyleSheet.create({text:{fontSize:16,lineHeight:24,marginVertical:2,letterSpacing:0.5}});
 
-var backChevron = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAA/CAYAAABXXxDfAAABsElEQVR4Ae3bQ3ZgUQCE4bZt9zZ62uO2bduMbWsRySi2bRtbiJ281DysOHVunfMt4I/z3r3r1tCuQi50QT24wzaQ3noIBWsKFeofgAiwZuACkgsBaxa1ILcgsOagG6TmB9YcFYLMvMEiPAGJeZLhkSAxVzI8BrYohDuR4XEq4Q5keCJsVQi3IcOTVf6i+0uGp8J2hfCfZHgG7FAI/0aGZ8FOhfAvZHgO7FII/0iG58FuhfB3ZHgB7FEIfw3jRHgR7FUIf0GGl8A+hfCnZHg57FcIfwxjRHgFHFAIf0CGV8FBhfC7MEqE18BhhfDbZHgdHFEIvwEjRHgDHFUIvwbDRHgTHFcIv0yGN8MJhfCLMESEt8IphfBzMEiEt8NpkFg+Ed4BZ0FmPUT8eZBaAfmZPwMyY7/n24jvedmf9ieBn/k9r/EXXiMcA2Lmb3vzX53a//OHgJh5kmOe4Sk9vS0TeHor/tzevLEx7+rMW1rzfp7Yd8mTGcR+CZ7JMaexzDk8YvaLewJT/+xtPGwBzJy6lpgHWIQowMxNC3PHRmWBirerzL06YuECNyoF7tIq3aKeACz+zVVHtmnyAAAAAElFTkSuQmCC";
-
-exports.$backChevronPNG = backChevron;
 exports.$safeAreaView = index$2;
 exports.$themeProvider = index$1;
 exports.ActivityIndicator = ActivityIndicator$1;

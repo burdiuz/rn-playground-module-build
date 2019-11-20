@@ -2,25 +2,21 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
 var React = require('react');
-var React__default = _interopDefault(React);
 var reactNative = require('react-native');
-var ZocialIcon = _interopDefault(require('react-native-vector-icons/Zocial'));
-var OcticonIcon = _interopDefault(require('react-native-vector-icons/Octicons'));
-var MaterialIcon = _interopDefault(require('react-native-vector-icons/MaterialIcons'));
-var MaterialCommunityIcon = _interopDefault(require('react-native-vector-icons/MaterialCommunityIcons'));
-var Ionicon = _interopDefault(require('react-native-vector-icons/Ionicons'));
-var FoundationIcon = _interopDefault(require('react-native-vector-icons/Foundation'));
-var EvilIcon = _interopDefault(require('react-native-vector-icons/EvilIcons'));
-var EntypoIcon = _interopDefault(require('react-native-vector-icons/Entypo'));
-var FAIcon = _interopDefault(require('react-native-vector-icons/FontAwesome'));
-var SimpleLineIcon = _interopDefault(require('react-native-vector-icons/SimpleLineIcons'));
-var FeatherIcon = _interopDefault(require('react-native-vector-icons/Feather'));
-var AntIcon = _interopDefault(require('react-native-vector-icons/AntDesign'));
-var times = _interopDefault(require('lodash/times'));
-var _ = _interopDefault(require('lodash'));
+var ZocialIcon = require('react-native-vector-icons/Zocial');
+var OcticonIcon = require('react-native-vector-icons/Octicons');
+var MaterialIcon = require('react-native-vector-icons/MaterialIcons');
+var MaterialCommunityIcon = require('react-native-vector-icons/MaterialCommunityIcons');
+var Ionicon = require('react-native-vector-icons/Ionicons');
+var FoundationIcon = require('react-native-vector-icons/Foundation');
+var EvilIcon = require('react-native-vector-icons/EvilIcons');
+var EntypoIcon = require('react-native-vector-icons/Entypo');
+var FAIcon = require('react-native-vector-icons/FontAwesome');
+var SimpleLineIcon = require('react-native-vector-icons/SimpleLineIcons');
+var FeatherIcon = require('react-native-vector-icons/Feather');
+var AntIcon = require('react-native-vector-icons/AntDesign');
+var reactNativeRatings = require('react-native-ratings');
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -1416,12 +1412,12 @@ var umd$1 = /*#__PURE__*/Object.freeze({
 });
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-const ThemeContext = React__default.createContext({
+const ThemeContext = React.createContext({
   theme: {
     colors
   }
 });
-class ThemeProvider extends React__default.Component {
+class ThemeProvider extends React.Component {
   constructor(props) {
     super(props);
 
@@ -1450,7 +1446,7 @@ class ThemeProvider extends React__default.Component {
   }
 
   render() {
-    return React__default.createElement(ThemeContext.Provider, {
+    return React.createElement(ThemeContext.Provider, {
       value: {
         theme: this.state.theme,
         updateTheme: this.updateTheme,
@@ -1578,23 +1574,23 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 const isClassComponent = Component => Boolean(Component.prototype && Component.prototype.isReactComponent);
 
 const withTheme = (WrappedComponent, themeKey) => {
-  class ThemedComponent extends React__default.Component {
+  class ThemedComponent extends React.Component {
     render() {
       const {
         forwardedRef,
         children,
         ...rest
       } = this.props;
-      return React__default.createElement(ThemeConsumer, null, context => {
+      return React.createElement(ThemeConsumer, null, context => {
         // If user isn't using ThemeProvider
         if (!context) {
           const props = { ...rest,
             theme: DefaultTheme,
             children
           };
-          return isClassComponent(WrappedComponent) ? React__default.createElement(WrappedComponent, _extends({
+          return isClassComponent(WrappedComponent) ? React.createElement(WrappedComponent, _extends({
             ref: forwardedRef
-          }, props)) : React__default.createElement(WrappedComponent, props);
+          }, props)) : React.createElement(WrappedComponent, props);
         }
 
         const {
@@ -1611,12 +1607,12 @@ const withTheme = (WrappedComponent, themeKey) => {
         };
 
         if (isClassComponent(WrappedComponent)) {
-          return React__default.createElement(WrappedComponent, _extends({
+          return React.createElement(WrappedComponent, _extends({
             ref: forwardedRef
           }, props));
         }
 
-        return React__default.createElement(WrappedComponent, props);
+        return React.createElement(WrappedComponent, props);
       });
     }
 
@@ -1625,12 +1621,12 @@ const withTheme = (WrappedComponent, themeKey) => {
   const name = themeKey ? `Themed.${themeKey}` : `Themed.${WrappedComponent.displayName || WrappedComponent.name || 'Component'}`;
 
   if (isClassComponent(WrappedComponent)) {
-    const forwardRef = (props, ref) => React__default.createElement(ThemedComponent, _extends({}, props, {
+    const forwardRef = (props, ref) => React.createElement(ThemedComponent, _extends({}, props, {
       forwardedRef: ref
     }));
 
     forwardRef.displayName = name;
-    return hoistNonReactStatics_cjs(React__default.forwardRef(forwardRef), WrappedComponent);
+    return hoistNonReactStatics_cjs(React.forwardRef(forwardRef), WrappedComponent);
   }
 
   ThemedComponent.displayName = name;
@@ -3612,7 +3608,7 @@ const renderNode = (Component, content, defaultProps) => {
     return null;
   }
 
-  if (React__default.isValidElement(content)) {
+  if (React.isValidElement(content)) {
     return content;
   }
 
@@ -3622,14 +3618,14 @@ const renderNode = (Component, content, defaultProps) => {
 
 
   if (content === true) {
-    return React__default.createElement(Component, defaultProps);
+    return React.createElement(Component, defaultProps);
   }
 
   if (typeof content === 'string' || typeof content === 'number') {
-    return React__default.createElement(Component, defaultProps, content);
+    return React.createElement(Component, defaultProps, content);
   }
 
-  return React__default.createElement(Component, _extends$1({}, defaultProps, content));
+  return React.createElement(Component, _extends$1({}, defaultProps, content));
 };
 
 const customIcons = {};
@@ -3808,9 +3804,9 @@ const Icon = props => {
     return raised ? 'white' : 'transparent';
   };
 
-  return React__default.createElement(reactNative.View, {
+  return React.createElement(reactNative.View, {
     style: containerStyle && containerStyle
-  }, React__default.createElement(Component, _extends$2({}, attributes, {
+  }, React.createElement(Component, _extends$2({}, attributes, {
     underlayColor: reverse ? color : underlayColor || color,
     style: reactNative.StyleSheet.flatten([(reverse || raised) && styles.button, (reverse || raised) && {
       borderRadius: size + 4,
@@ -3825,7 +3821,7 @@ const Icon = props => {
     disabled
   }, {
     onPress: onPress
-  }), React__default.createElement(IconComponent, {
+  }), React.createElement(IconComponent, {
     testID: "iconIcon",
     style: reactNative.StyleSheet.flatten([{
       backgroundColor: 'transparent'
@@ -3943,23 +3939,23 @@ class Button extends React.Component {
     const loadingProps = { ...defaultLoadingProps(type, theme),
       ...passedLoadingProps
     };
-    return React__default.createElement(reactNative.View, {
+    return React.createElement(reactNative.View, {
       style: reactNative.StyleSheet.flatten([styles$1.container, {
         borderRadius: buttonStyle.borderRadius || styles$1.container.borderRadius
       }, containerStyle, raised && !disabled && styles$1.raised(type)])
-    }, React__default.createElement(TouchableComponent, _extends$3({
+    }, React.createElement(TouchableComponent, _extends$3({
       onPress: onPress,
       activeOpacity: 0.3,
       disabled: disabled
-    }, attributes), React__default.createElement(ViewComponent, _extends$3({}, linearGradientProps, {
+    }, attributes), React.createElement(ViewComponent, _extends$3({}, linearGradientProps, {
       style: reactNative.StyleSheet.flatten([styles$1.button(type, theme), buttonStyle, disabled && styles$1.disabled(type, theme), disabled && disabledStyle])
-    }), loading && React__default.createElement(reactNative.ActivityIndicator, _extends$3({
+    }), loading && React.createElement(reactNative.ActivityIndicator, _extends$3({
       style: reactNative.StyleSheet.flatten([styles$1.loading, loadingStyle]),
       color: loadingProps.color,
       size: loadingProps.size
     }, loadingProps)), !loading && icon && !iconRight && renderNode(Icon$1, icon, {
       containerStyle: reactNative.StyleSheet.flatten([styles$1.iconContainer, iconContainerStyle])
-    }), !loading && !!title && React__default.createElement(reactNative.Text, _extends$3({
+    }), !loading && !!title && React.createElement(reactNative.Text, _extends$3({
       style: reactNative.StyleSheet.flatten([styles$1.title(type, theme), titleStyle, disabled && styles$1.disabledTitle(theme), disabled && disabledTitleStyle])
     }, titleProps), title), !loading && icon && iconRight && renderNode(Icon$1, icon, {
       containerStyle: reactNative.StyleSheet.flatten([styles$1.iconContainer, iconContainerStyle])
@@ -4080,7 +4076,7 @@ const renderText = (content, defaultProps, style) => renderNode(reactNative.Text
   style: reactNative.StyleSheet.flatten([style, defaultProps && defaultProps.style])
 });
 
-class Input extends React__default.Component {
+class Input extends React.Component {
   constructor(...args) {
     super(...args);
 
@@ -4146,20 +4142,20 @@ class Input extends React__default.Component {
       inputRange: [0, 0.5, 1, 1.5, 2, 2.5, 3],
       outputRange: [0, -15, 0, 15, 0, -15, 0]
     });
-    return React__default.createElement(reactNative.View, {
+    return React.createElement(reactNative.View, {
       style: reactNative.StyleSheet.flatten([styles$2.container, containerStyle])
     }, renderText(label, {
       style: labelStyle,
       ...labelProps
-    }, styles$2.label(theme)), React__default.createElement(reactNative.Animated.View, {
+    }, styles$2.label(theme)), React.createElement(reactNative.Animated.View, {
       style: reactNative.StyleSheet.flatten([styles$2.inputContainer(theme), inputContainerStyle, {
         transform: [{
           translateX
         }]
       }])
-    }, leftIcon && React__default.createElement(reactNative.View, {
+    }, leftIcon && React.createElement(reactNative.View, {
       style: reactNative.StyleSheet.flatten([styles$2.iconContainer, leftIconContainerStyle])
-    }, renderNode(Icon$1, leftIcon)), React__default.createElement(InputComponent, _extends$4({
+    }, renderNode(Icon$1, leftIcon)), React.createElement(InputComponent, _extends$4({
       testID: "RNE__Input__text-input",
       underlineColorAndroid: "transparent",
       editable: !disabled
@@ -4168,9 +4164,9 @@ class Input extends React__default.Component {
         this.input = ref;
       },
       style: reactNative.StyleSheet.flatten([styles$2.input, inputStyle, disabled && styles$2.disabledInput, disabled && disabledInputStyle])
-    })), rightIcon && React__default.createElement(reactNative.View, {
+    })), rightIcon && React.createElement(reactNative.View, {
       style: reactNative.StyleSheet.flatten([styles$2.iconContainer, rightIconContainerStyle])
-    }, renderNode(Icon$1, rightIcon))), !!errorMessage && React__default.createElement(reactNative.Text, _extends$4({}, errorProps, {
+    }, renderNode(Icon$1, rightIcon))), !!errorMessage && React.createElement(reactNative.Text, _extends$4({}, errorProps, {
       style: reactNative.StyleSheet.flatten([styles$2.error(theme), errorStyle && errorStyle])
     }), errorMessage));
   }
@@ -4246,7 +4242,7 @@ function _extends$5() { _extends$5 = Object.assign || function (target) { for (v
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-class Image extends React__default.Component {
+class Image extends React.Component {
   constructor(...args) {
     super(...args);
 
@@ -4278,10 +4274,10 @@ class Image extends React__default.Component {
       ...attributes
     } = this.props;
     const hasImage = Boolean(attributes.source);
-    return React__default.createElement(reactNative.View, {
+    return React.createElement(reactNative.View, {
       accessibilityIgnoresInvertColors: true,
       style: reactNative.StyleSheet.flatten([styles$3.container, containerStyle])
-    }, React__default.createElement(ImageComponent, _extends$5({
+    }, React.createElement(ImageComponent, _extends$5({
       testID: "RNE__Image"
     }, attributes, {
       onLoad: this.onLoad,
@@ -4289,17 +4285,17 @@ class Image extends React__default.Component {
         width: style.width,
         height: style.height
       }]
-    })), React__default.createElement(reactNative.Animated.View, {
+    })), React.createElement(reactNative.Animated.View, {
       pointerEvents: hasImage ? 'none' : 'auto',
       accessibilityElementsHidden: hasImage,
       importantForAccessibility: hasImage ? 'no-hide-descendants' : 'yes',
       style: [styles$3.placeholderContainer, {
         opacity: hasImage ? this.state.placeholderOpacity : 1
       }]
-    }, React__default.createElement(reactNative.View, {
+    }, React.createElement(reactNative.View, {
       testID: "RNE__Image__placeholder",
       style: reactNative.StyleSheet.flatten([style, styles$3.placeholder, placeholderStyle])
-    }, PlaceholderContent)), React__default.createElement(reactNative.View, {
+    }, PlaceholderContent)), React.createElement(reactNative.View, {
       style: style
     }, children));
   }
@@ -4376,7 +4372,7 @@ const Avatar = ({
     ...passedEditButton
   };
   const editButtonSize = editButton.size || (width + height) / 2 / 3;
-  const Utils = showEditButton && React__default.createElement(reactNative.TouchableHighlight, {
+  const Utils = showEditButton && React.createElement(reactNative.TouchableHighlight, {
     style: reactNative.StyleSheet.flatten([styles$4.editButton, {
       width: editButtonSize,
       height: editButtonSize,
@@ -4384,14 +4380,14 @@ const Avatar = ({
     }, editButton.style]),
     underlayColor: editButton.underlayColor,
     onPress: onEditPress
-  }, React__default.createElement(reactNative.View, null, React__default.createElement(Icon$1, _extends$6({
+  }, React.createElement(reactNative.View, null, React.createElement(Icon$1, _extends$6({
     size: editButtonSize * 0.8
   }, editButton))));
-  const PlaceholderContent = renderPlaceholderContent && renderNode(undefined, renderPlaceholderContent) || title && React__default.createElement(reactNative.Text, {
+  const PlaceholderContent = renderPlaceholderContent && renderNode(undefined, renderPlaceholderContent) || title && React.createElement(reactNative.Text, {
     style: reactNative.StyleSheet.flatten([styles$4.title, {
       fontSize: titleSize
     }, titleStyle])
-  }, title) || icon && React__default.createElement(Icon$1, {
+  }, title) || icon && React.createElement(Icon$1, {
     style: iconStyle && iconStyle,
     color: icon.color || 'white',
     name: icon.name || 'user',
@@ -4400,7 +4396,7 @@ const Avatar = ({
   }); // Remove placeholder styling if we're not using image
 
   const hidePlaceholder = !source;
-  return React__default.createElement(Component, _extends$6({
+  return React.createElement(Component, _extends$6({
     onPress: onPress,
     onLongPress: onLongPress,
     style: reactNative.StyleSheet.flatten([styles$4.container, {
@@ -4409,7 +4405,7 @@ const Avatar = ({
     }, rounded && {
       borderRadius: width / 2
     }, containerStyle])
-  }, attributes), React__default.createElement(Image$1, _extends$6({
+  }, attributes), React.createElement(Image$1, _extends$6({
     placeholderStyle: reactNative.StyleSheet.flatten([placeholderStyle, hidePlaceholder && {
       backgroundColor: 'transparent'
     }]),
@@ -4522,9 +4518,9 @@ const Badge = props => {
   const element = renderNode(reactNative.Text, value, {
     style: reactNative.StyleSheet.flatten([styles$5.text, textStyle && textStyle])
   });
-  return React__default.createElement(reactNative.View, {
+  return React.createElement(reactNative.View, {
     style: reactNative.StyleSheet.flatten([containerStyle && containerStyle])
-  }, React__default.createElement(Component, _extends$7({}, attributes, {
+  }, React.createElement(Component, _extends$7({}, attributes, {
     style: reactNative.StyleSheet.flatten([styles$5.badge(theme, status), !element && styles$5.miniBadge, badgeStyle && badgeStyle]),
     onPress: onPress
   }), element));
@@ -4588,7 +4584,7 @@ const TextElement = props => {
     h4Style,
     ...rest
   } = props;
-  return React__default.createElement(reactNative.Text, _extends$8({
+  return React.createElement(reactNative.Text, _extends$8({
     style: reactNative.StyleSheet.flatten([styles$6.text, style && style, h1 && styles$6.bold, h2 && styles$6.bold, h3 && styles$6.bold, h4 && styles$6.bold, h1 && reactNative.StyleSheet.flatten([{
       fontSize: normalize(40)
     }, h1Style]), h2 && reactNative.StyleSheet.flatten([{
@@ -4650,16 +4646,16 @@ const CheckBoxIcon = ({
   checkedColor,
   uncheckedColor
 }) => {
-  if (checked && React__default.isValidElement(checkedIcon)) {
+  if (checked && React.isValidElement(checkedIcon)) {
     return checkedIcon;
   }
 
-  if (!checked && React__default.isValidElement(uncheckedIcon)) {
+  if (!checked && React.isValidElement(uncheckedIcon)) {
     return uncheckedIcon;
   }
 
   const VectorIcon = iconType ? getIconType(iconType) : FAIcon;
-  return React__default.createElement(VectorIcon, {
+  return React.createElement(VectorIcon, {
     color: checked ? checkedColor : uncheckedColor,
     name: checked ? checkedIcon : uncheckedIcon,
     size: size || 24,
@@ -4708,25 +4704,25 @@ const CheckBox = props => {
     checkedColor = theme.colors.primary,
     ...attributes
   } = rest;
-  return React__default.createElement(Component, _extends$9({}, attributes, {
+  return React.createElement(Component, _extends$9({}, attributes, {
     testID: "checkbox",
     onLongPress: onLongPress,
     onPress: onPress,
     style: reactNative.StyleSheet.flatten([styles$7.container, title && styles$7.containerHasTitle, containerStyle && containerStyle])
-  }), React__default.createElement(reactNative.View, {
+  }), React.createElement(reactNative.View, {
     style: reactNative.StyleSheet.flatten([styles$7.wrapper, right && {
       justifyContent: 'flex-end'
     }, center && {
       justifyContent: 'center'
     }, wrapperStyle && wrapperStyle])
-  }, !iconRight && React__default.createElement(CheckBoxIcon, _extends$9({}, props, {
+  }, !iconRight && React.createElement(CheckBoxIcon, _extends$9({}, props, {
     checkedColor: checkedColor
-  })), React__default.isValidElement(title) ? title : title && React__default.createElement(Text, _extends$9({
+  })), React.isValidElement(title) ? title : title && React.createElement(Text, _extends$9({
     testID: "checkboxTitle",
     style: reactNative.StyleSheet.flatten([styles$7.text(theme), textStyle && textStyle, fontFamily && {
       fontFamily
     }])
-  }, titleProps), checked ? checkedTitle || title : title), iconRight && React__default.createElement(CheckBoxIcon, _extends$9({}, props, {
+  }, titleProps), checked ? checkedTitle || title : title), iconRight && React.createElement(CheckBoxIcon, _extends$9({}, props, {
     checkedColor: checkedColor
   }))));
 };
@@ -4830,12 +4826,12 @@ const ButtonGroup = props => {
     innerBorderWidth = innerBorderStyle.width;
   }
 
-  return React__default.createElement(reactNative.View, _extends$a({}, attributes, {
+  return React.createElement(reactNative.View, _extends$a({}, attributes, {
     style: reactNative.StyleSheet.flatten([styles$8.container, containerStyle && containerStyle])
   }), buttons.map((button, i) => {
     const isSelected = selectedIndex === i || selectedIndexes.includes(i);
     const isDisabled = disabled === true || Array.isArray(disabled) && disabled.includes(i);
-    return React__default.createElement(reactNative.View, {
+    return React.createElement(reactNative.View, {
       key: i,
       style: reactNative.StyleSheet.flatten([// FIXME: This is a workaround to the borderColor and borderRadius bug
       // react-native ref: https://github.com/facebook/react-native/issues/8236
@@ -4852,7 +4848,7 @@ const ButtonGroup = props => {
         borderTopLeftRadius: containerBorderRadius,
         borderBottomLeftRadius: containerBorderRadius
       }])
-    }, React__default.createElement(Component, {
+    }, React.createElement(Component, {
       testID: "buttonGroupItem",
       activeOpacity: activeOpacity,
       setOpacityTo: setOpacityTo,
@@ -4872,11 +4868,11 @@ const ButtonGroup = props => {
         }
       },
       style: styles$8.button
-    }, React__default.createElement(reactNative.View, {
+    }, React.createElement(reactNative.View, {
       style: reactNative.StyleSheet.flatten([styles$8.textContainer, buttonStyle && buttonStyle, isSelected && {
         backgroundColor: theme.colors.primary
       }, isSelected && selectedButtonStyle && selectedButtonStyle, isDisabled && styles$8.disabled, isDisabled && disabledStyle, isDisabled && isSelected && styles$8.disabledSelected(theme), isDisabled && isSelected && disabledSelectedStyle])
-    }, button.element ? React__default.createElement(button.element, null) : React__default.createElement(Text, {
+    }, button.element ? React.createElement(button.element, null) : React.createElement(Text, {
       testID: "buttonGroupItemText",
       style: reactNative.StyleSheet.flatten([styles$8.buttonText(theme), textStyle && textStyle, isSelected && {
         color: '#fff'
@@ -5047,11 +5043,11 @@ const ListItem = props => {
     theme,
     ...attributes
   } = props;
-  return React__default.createElement(Component, _extends$b({}, attributes, {
+  return React.createElement(Component, _extends$b({}, attributes, {
     onPress: onPress,
     onLongPress: onLongPress,
     disabled: disabled
-  }), React__default.createElement(PadView, _extends$b({
+  }), React.createElement(PadView, _extends$b({
     Component: ViewComponent
   }, linearGradientProps, {
     style: reactNative.StyleSheet.flatten([styles$9.container(theme), (buttonGroup || switchProps) && {
@@ -5062,20 +5058,20 @@ const ListItem = props => {
       borderBottomWidth: reactNative.StyleSheet.hairlineWidth
     }, containerStyle, disabled && disabledStyle]),
     pad: pad
-  }), renderNode(Text, leftElement), renderIcon(leftIcon), renderAvatar(leftAvatar), (typeof title !== 'undefined' || subtitle) && React__default.createElement(reactNative.View, {
+  }), renderNode(Text, leftElement), renderIcon(leftIcon), renderAvatar(leftAvatar), (typeof title !== 'undefined' || subtitle) && React.createElement(reactNative.View, {
     style: reactNative.StyleSheet.flatten([styles$9.contentContainer, contentContainerStyle])
   }, renderText$1(title, {
     testID: 'listItemTitle',
     ...titleProps
-  }, reactNative.StyleSheet.flatten([styles$9.title, titleStyle])), renderText$1(subtitle, subtitleProps, reactNative.StyleSheet.flatten([styles$9.subtitle, subtitleStyle]))), (!!rightTitle || !!rightSubtitle) && React__default.createElement(reactNative.View, {
+  }, reactNative.StyleSheet.flatten([styles$9.title, titleStyle])), renderText$1(subtitle, subtitleProps, reactNative.StyleSheet.flatten([styles$9.subtitle, subtitleStyle]))), (!!rightTitle || !!rightSubtitle) && React.createElement(reactNative.View, {
     style: reactNative.StyleSheet.flatten([styles$9.rightContentContainer, rightContentContainerStyle])
-  }, renderText$1(rightTitle, rightTitleProps, reactNative.StyleSheet.flatten([styles$9.title, styles$9.rightTitle, rightTitleStyle])), renderText$1(rightSubtitle, rightSubtitleProps, reactNative.StyleSheet.flatten([styles$9.subtitle, styles$9.rightSubtitle, rightSubtitleStyle]))), input && React__default.createElement(Input$1, _extends$b({}, input, {
+  }, renderText$1(rightTitle, rightTitleProps, reactNative.StyleSheet.flatten([styles$9.title, styles$9.rightTitle, rightTitleStyle])), renderText$1(rightSubtitle, rightSubtitleProps, reactNative.StyleSheet.flatten([styles$9.subtitle, styles$9.rightSubtitle, rightSubtitleStyle]))), input && React.createElement(Input$1, _extends$b({}, input, {
     inputStyle: reactNative.StyleSheet.flatten([styles$9.input, input && input.inputStyle]),
     inputContainerStyle: reactNative.StyleSheet.flatten([styles$9.inputContentContainer, input && input.inputContainerStyle]),
     containerStyle: reactNative.StyleSheet.flatten([styles$9.inputContainer, input && input.containerStyle])
-  })), switchProps && React__default.createElement(reactNative.Switch, switchProps), checkBox && React__default.createElement(CheckBox$1, _extends$b({}, checkBox, {
+  })), switchProps && React.createElement(reactNative.Switch, switchProps), checkBox && React.createElement(CheckBox$1, _extends$b({}, checkBox, {
     containerStyle: reactNative.StyleSheet.flatten([styles$9.checkboxContainer, checkBox && checkBox.containerStyle])
-  })), badge && React__default.createElement(Badge$1, badge), buttonGroup && React__default.createElement(ButtonGroup$1, _extends$b({}, buttonGroup, {
+  })), badge && React.createElement(Badge$1, badge), buttonGroup && React.createElement(ButtonGroup$1, _extends$b({}, buttonGroup, {
     containerStyle: reactNative.StyleSheet.flatten([styles$9.buttonGroupContainer, buttonGroup && buttonGroup.containerStyle])
   })), renderAvatar(rightAvatar), renderIcon(rightIcon), renderNode(Text, rightElement), renderNode(Icon$1, checkmark, checkmarkDefaultProps(theme)), renderNode(Icon$1, chevron, chevronDefaultProps)));
 };
@@ -5208,7 +5204,7 @@ ListItem.defaultProps = {
   title: ''
 };
 
-class PadView extends React__default.Component {
+class PadView extends React.Component {
   constructor(props) {
     super(props);
 
@@ -5216,7 +5212,7 @@ class PadView extends React__default.Component {
       this._root.current.setNativeProps(nativeProps);
     });
 
-    this._root = React__default.createRef();
+    this._root = React.createRef();
   }
 
   render() {
@@ -5226,14 +5222,14 @@ class PadView extends React__default.Component {
       Component,
       ...props
     } = this.props;
-    const childrens = React__default.Children.toArray(children);
+    const childrens = React.Children.toArray(children);
     const {
       length
     } = childrens;
     const Container = Component || reactNative.View;
-    return React__default.createElement(Container, _extends$b({}, props, {
+    return React.createElement(Container, _extends$b({}, props, {
       ref: this._root
-    }), React__default.Children.map(childrens, (child, index) => child && [child, index !== length - 1 && React__default.createElement(reactNative.View, {
+    }), React.Children.map(childrens, (child, index) => child && [child, index !== length - 1 && React.createElement(reactNative.View, {
       width: pad
     })]));
   }
@@ -5306,7 +5302,7 @@ const SocialIcon = props => {
     underlayColor,
     ...attributes
   } = props;
-  return React__default.createElement(Component, _extends$c({}, attributes, {
+  return React.createElement(Component, _extends$c({}, attributes, {
     underlayColor: light ? 'white' : underlayColor || colors$1[type],
     onLongPress: disabled ? null : onLongPress,
     onPress: disabled ? null : onPress,
@@ -5320,14 +5316,14 @@ const SocialIcon = props => {
     }, light && {
       backgroundColor: 'white'
     }, style && style])
-  }), React__default.createElement(reactNative.View, {
+  }), React.createElement(reactNative.View, {
     style: styles$a.wrapper
-  }, React__default.createElement(FAIcon, {
+  }, React.createElement(FAIcon, {
     style: reactNative.StyleSheet.flatten([iconStyle && iconStyle]),
     color: light ? colors$1[type] : iconColor,
     name: type,
     size: iconSize
-  }), button && title && React__default.createElement(Text, {
+  }), button && title && React.createElement(Text, {
     style: reactNative.StyleSheet.flatten([styles$a.title, light && {
       color: colors$1[type]
     }, fontFamily && {
@@ -5335,7 +5331,7 @@ const SocialIcon = props => {
     }, fontWeight && {
       fontWeight
     }, fontStyle && fontStyle])
-  }, title), loading && React__default.createElement(reactNative.ActivityIndicator, {
+  }, title), loading && React.createElement(reactNative.ActivityIndicator, {
     animating: true,
     style: reactNative.StyleSheet.flatten([styles$a.activityIndicatorStyle, activityIndicatorStyle]),
     color: iconColor || 'white',
@@ -5442,22 +5438,22 @@ const Overlay = props => {
     fullScreen,
     ...rest
   } = props;
-  return React__default.createElement(reactNative.Modal, _extends$d({
+  return React.createElement(reactNative.Modal, _extends$d({
     visible: isVisible,
     onRequestClose: onBackdropPress,
     transparent: true
-  }, rest), React__default.createElement(reactNative.TouchableWithoutFeedback, {
+  }, rest), React.createElement(reactNative.TouchableWithoutFeedback, {
     onPress: onBackdropPress,
     testID: "RNE__Overlay__backdrop"
-  }, React__default.createElement(reactNative.View, {
+  }, React.createElement(reactNative.View, {
     testID: "overlayContainer",
     style: reactNative.StyleSheet.flatten([styles$b.backdrop, {
       backgroundColor: windowBackgroundColor
     }, containerStyle])
-  })), React__default.createElement(reactNative.View, {
+  })), React.createElement(reactNative.View, {
     style: styles$b.container,
     pointerEvents: "box-none"
-  }, React__default.createElement(reactNative.View, {
+  }, React.createElement(reactNative.View, {
     style: reactNative.StyleSheet.flatten([styles$b.overlay, {
       borderRadius,
       backgroundColor: overlayBackgroundColor,
@@ -5650,9 +5646,9 @@ class SearchBar extends React.Component {
       buttonDisabledTextStyle,
       ...otherCancelButtonProps
     } = cancelButtonProps;
-    return React__default.createElement(reactNative.View, {
+    return React.createElement(reactNative.View, {
       style: reactNative.StyleSheet.flatten([styles$c.container, containerStyle])
-    }, React__default.createElement(Input$1, _extends$e({
+    }, React.createElement(Input$1, _extends$e({
       testID: "searchInput"
     }, attributes, {
       onFocus: this.onFocus,
@@ -5671,11 +5667,11 @@ class SearchBar extends React.Component {
       leftIcon: renderNode(Icon$1, searchIcon, defaultSearchIcon),
       leftIconContainerStyle: reactNative.StyleSheet.flatten([styles$c.leftIconContainerStyle, leftIconContainerStyle]),
       placeholderTextColor: placeholderTextColor,
-      rightIcon: React__default.createElement(reactNative.View, {
+      rightIcon: React.createElement(reactNative.View, {
         style: {
           flexDirection: 'row'
         }
-      }, showLoading && React__default.createElement(reactNative.ActivityIndicator, _extends$e({
+      }, showLoading && React.createElement(reactNative.ActivityIndicator, _extends$e({
         key: "loading",
         style: reactNative.StyleSheet.flatten([{
           marginRight: 5
@@ -5685,7 +5681,7 @@ class SearchBar extends React.Component {
         onPress: this.clear
       })),
       rightIconContainerStyle: reactNative.StyleSheet.flatten([styles$c.rightIconContainerStyle, rightIconContainerStyle])
-    })), React__default.createElement(reactNative.View, {
+    })), React.createElement(reactNative.View, {
       style: reactNative.StyleSheet.flatten([styles$c.cancelButtonContainer, {
         opacity: this.state.cancelButtonWidth === null ? 0 : 1,
         right: hasFocus ? 0 : -this.state.cancelButtonWidth
@@ -5693,13 +5689,13 @@ class SearchBar extends React.Component {
       onLayout: event => this.setState({
         cancelButtonWidth: event.nativeEvent.layout.width
       })
-    }, React__default.createElement(reactNative.TouchableOpacity, _extends$e({
+    }, React.createElement(reactNative.TouchableOpacity, _extends$e({
       accessibilityRole: "button",
       onPress: this.cancel,
       disabled: buttonDisabled
-    }, otherCancelButtonProps), React__default.createElement(reactNative.View, {
+    }, otherCancelButtonProps), React.createElement(reactNative.View, {
       style: [buttonStyle, buttonDisabled && buttonDisabledStyle]
-    }, React__default.createElement(reactNative.Text, {
+    }, React.createElement(reactNative.Text, {
       style: [styles$c.buttonTextStyle, buttonColor && {
         color: buttonColor
       }, buttonTextStyle, buttonDisabled && (buttonDisabledTextStyle || styles$c.buttonTextDisabled)],
@@ -5886,9 +5882,9 @@ class SearchBar$1 extends React.Component {
       style: loadingStyle,
       ...otherLoadingProps
     } = loadingProps;
-    return React__default.createElement(reactNative.View, {
+    return React.createElement(reactNative.View, {
       style: reactNative.StyleSheet.flatten([styles$d.container, containerStyle])
-    }, React__default.createElement(Input$1, _extends$f({
+    }, React.createElement(Input$1, _extends$f({
       testID: "searchInput"
     }, attributes, {
       onFocus: this.onFocus,
@@ -5906,11 +5902,11 @@ class SearchBar$1 extends React.Component {
         onPress: this.cancel
       }) : renderNode(Icon$1, searchIcon, defaultSearchIcon$1),
       leftIconContainerStyle: reactNative.StyleSheet.flatten([styles$d.leftIconContainerStyle, leftIconContainerStyle]),
-      rightIcon: React__default.createElement(reactNative.View, {
+      rightIcon: React.createElement(reactNative.View, {
         style: {
           flexDirection: 'row'
         }
-      }, showLoading && React__default.createElement(reactNative.ActivityIndicator, _extends$f({
+      }, showLoading && React.createElement(reactNative.ActivityIndicator, _extends$f({
         key: "loading",
         style: reactNative.StyleSheet.flatten([{
           marginRight: 5
@@ -5996,7 +5992,7 @@ const defaultClearIcon$2 = theme => ({
   color: theme.colors.grey3
 });
 
-class SearchBar$2 extends React__default.Component {
+class SearchBar$2 extends React.Component {
   constructor(props) {
     super(props);
 
@@ -6067,9 +6063,9 @@ class SearchBar$2 extends React__default.Component {
       style: loadingStyle,
       ...otherLoadingProps
     } = loadingProps;
-    return React__default.createElement(reactNative.View, {
+    return React.createElement(reactNative.View, {
       style: reactNative.StyleSheet.flatten([styles$e.container(theme), lightTheme && styles$e.containerLight(theme), containerStyle])
-    }, React__default.createElement(Input$1, _extends$g({
+    }, React.createElement(Input$1, _extends$g({
       testID: "searchInput"
     }, attributes, {
       onFocus: this.onFocus,
@@ -6084,11 +6080,11 @@ class SearchBar$2 extends React__default.Component {
       containerStyle: styles$e.inputContainer,
       leftIcon: renderNode(Icon$1, searchIcon, defaultSearchIcon$2(theme)),
       leftIconContainerStyle: reactNative.StyleSheet.flatten([styles$e.leftIconContainerStyle, leftIconContainerStyle]),
-      rightIcon: React__default.createElement(reactNative.View, {
+      rightIcon: React.createElement(reactNative.View, {
         style: {
           flexDirection: 'row'
         }
-      }, showLoading && React__default.createElement(reactNative.ActivityIndicator, _extends$g({
+      }, showLoading && React.createElement(reactNative.ActivityIndicator, _extends$g({
         key: "loading",
         style: reactNative.StyleSheet.flatten([{
           marginRight: 5
@@ -6185,7 +6181,7 @@ const SEARCHBAR_COMPONENTS = {
   default: SearchBar$2
 };
 
-class SearchBar$3 extends React__default.Component {
+class SearchBar$3 extends React.Component {
   constructor(...args) {
     super(...args);
 
@@ -6208,7 +6204,7 @@ class SearchBar$3 extends React__default.Component {
 
   render() {
     const Component = SEARCHBAR_COMPONENTS[this.props.platform] || SearchBar$2;
-    return React__default.createElement(Component, _extends$h({
+    return React.createElement(Component, _extends$h({
       ref: ref => {
         this.searchbar = ref;
       }
@@ -6247,9 +6243,9 @@ const withBadge = (value, options = {}) => WrappedComponent => {
     }
 
     const badgeValue = typeof value === 'function' ? value(props) : value;
-    return React__default.createElement(reactNative.View, {
+    return React.createElement(reactNative.View, {
       style: reactNative.StyleSheet.flatten([styles$f.container, containerStyle])
-    }, React__default.createElement(WrappedComponent, props), !hidden && React__default.createElement(Badge$1, _extends$i({
+    }, React.createElement(WrappedComponent, props), !hidden && React.createElement(Badge$1, _extends$i({
       value: badgeValue,
       status: "error",
       containerStyle: reactNative.StyleSheet.flatten([styles$f.badgeContainer, {
@@ -6282,7 +6278,7 @@ const Divider = ({
   style,
   theme,
   ...rest
-}) => React__default.createElement(reactNative.View, _extends$j({
+}) => React.createElement(reactNative.View, _extends$j({
   style: reactNative.StyleSheet.flatten([styles$g.container(theme), style])
 }, rest));
 
@@ -6584,7 +6580,7 @@ class Slider extends React.Component {
       width: thumbTouchRect.width,
       height: thumbTouchRect.height
     };
-    return React__default.createElement(reactNative.Animated.View, {
+    return React.createElement(reactNative.Animated.View, {
       style: positionStyle,
       pointerEvents: "none"
     });
@@ -6666,17 +6662,17 @@ class Slider extends React.Component {
     };
     const thumbStyleTransform = thumbStyle && thumbStyle.transform || [];
     const touchOverflowStyle = this.getTouchOverflowStyle();
-    return React__default.createElement(reactNative.View, _extends$k({}, other, {
+    return React.createElement(reactNative.View, _extends$k({}, other, {
       style: reactNative.StyleSheet.flatten([orientation === 'vertical' ? mainStyles.containerVertical : mainStyles.containerHorizontal, style]),
       onLayout: this.measureContainer
-    }), React__default.createElement(reactNative.View, {
+    }), React.createElement(reactNative.View, {
       style: reactNative.StyleSheet.flatten([mainStyles.track, orientation === 'vertical' ? mainStyles.trackVertical : mainStyles.trackHorizontal, trackStyle, {
         backgroundColor: maximumTrackTintColor
       }]),
       onLayout: this.measureTrack
-    }), React__default.createElement(reactNative.Animated.View, {
+    }), React.createElement(reactNative.Animated.View, {
       style: reactNative.StyleSheet.flatten([mainStyles.track, orientation === 'vertical' ? mainStyles.trackVertical : mainStyles.trackHorizontal, trackStyle, minimumTrackStyle])
-    }), React__default.createElement(reactNative.Animated.View, {
+    }), React.createElement(reactNative.Animated.View, {
       testID: "sliderThumb",
       onLayout: this.measureThumb,
       style: reactNative.StyleSheet.flatten([{
@@ -6685,7 +6681,7 @@ class Slider extends React.Component {
         transform: [...this.getThumbPositionStyles(thumbStart), ...thumbStyleTransform],
         ...valueVisibleStyle
       }])
-    }), React__default.createElement(reactNative.View, _extends$k({
+    }), React.createElement(reactNative.View, _extends$k({
       style: reactNative.StyleSheet.flatten([styles$h.touchArea, touchOverflowStyle])
     }, this.panResponder.panHandlers), debugTouchArea === true && this.renderDebugThumbTouchRect(thumbStart)));
   }
@@ -6898,33 +6894,33 @@ const Card = props => {
     theme,
     ...attributes
   } = props;
-  return React__default.createElement(reactNative.View, _extends$l({}, attributes, {
+  return React.createElement(reactNative.View, _extends$l({}, attributes, {
     style: reactNative.StyleSheet.flatten([styles$i.container(theme), image && {
       padding: 0
     }, containerStyle && containerStyle])
-  }), React__default.createElement(reactNative.View, {
+  }), React.createElement(reactNative.View, {
     style: reactNative.StyleSheet.flatten([styles$i.wrapper, wrapperStyle && wrapperStyle])
-  }, title === '' || React__default.isValidElement(title) ? title : title && title.length && React__default.createElement(reactNative.View, null, React__default.createElement(Text, {
+  }, title === '' || React.isValidElement(title) ? title : title && title.length && React.createElement(reactNative.View, null, React.createElement(Text, {
     testID: "cardTitle",
     style: reactNative.StyleSheet.flatten([styles$i.cardTitle(theme), image && styles$i.imageCardTitle, titleStyle && titleStyle]),
     numberOfLines: titleNumberOfLines
-  }, title), !image && React__default.createElement(Divider$1, {
+  }, title), !image && React.createElement(Divider$1, {
     style: reactNative.StyleSheet.flatten([styles$i.divider, dividerStyle && dividerStyle])
-  })), image && React__default.createElement(reactNative.View, {
+  })), image && React.createElement(reactNative.View, {
     style: imageWrapperStyle && imageWrapperStyle
-  }, React__default.createElement(Image$1, _extends$l({
+  }, React.createElement(Image$1, _extends$l({
     style: [{
       width: null,
       height: 150
     }, imageStyle && imageStyle],
     source: image
-  }, imageProps), (featuredTitle || featuredSubtitle) && React__default.createElement(reactNative.View, {
+  }, imageProps), (featuredTitle || featuredSubtitle) && React.createElement(reactNative.View, {
     style: styles$i.overlayContainer
-  }, featuredTitle && React__default.createElement(Text, {
+  }, featuredTitle && React.createElement(Text, {
     style: reactNative.StyleSheet.flatten([styles$i.featuredTitle, featuredTitleStyle && featuredTitleStyle])
-  }, featuredTitle), featuredSubtitle && React__default.createElement(Text, {
+  }, featuredTitle), featuredSubtitle && React.createElement(Text, {
     style: reactNative.StyleSheet.flatten([styles$i.featuredSubtitle, featuredSubtitleStyle && featuredSubtitleStyle])
-  }, featuredSubtitle))), React__default.createElement(reactNative.View, {
+  }, featuredSubtitle))), React.createElement(reactNative.View, {
     style: reactNative.StyleSheet.flatten([{
       padding: 10
     }, wrapperStyle && wrapperStyle])
@@ -7098,18 +7094,18 @@ const FeaturedTile = props => {
       alignSelf: 'center'
     }
   });
-  return React__default.createElement(reactNative.TouchableOpacity, _extends$m({}, attributes, {
+  return React.createElement(reactNative.TouchableOpacity, _extends$m({}, attributes, {
     style: reactNative.StyleSheet.flatten([styles.container, containerStyle && containerStyle])
-  }), React__default.createElement(ImageComponent, _extends$m({
+  }), React.createElement(ImageComponent, _extends$m({
     resizeMode: "cover"
   }, imageProps, {
     source: imageSrc,
     style: reactNative.StyleSheet.flatten([styles.imageContainer, imageContainerStyle && imageContainerStyle])
-  }), React__default.createElement(reactNative.View, {
+  }), React.createElement(reactNative.View, {
     style: reactNative.StyleSheet.flatten([styles.overlayContainer, overlayContainerStyle && overlayContainerStyle])
-  }, React__default.createElement(reactNative.View, {
+  }, React.createElement(reactNative.View, {
     style: reactNative.StyleSheet.flatten([styles.iconContainer, iconContainerStyle && iconContainerStyle])
-  }, icon && React__default.createElement(Icon$1, icon)), React__default.createElement(Text, {
+  }, icon && React.createElement(Icon$1, icon)), React.createElement(Text, {
     testID: "featuredTileTitle",
     h4: true,
     style: reactNative.StyleSheet.flatten([styles.text, titleStyle && titleStyle])
@@ -7188,17 +7184,17 @@ const Tile = props => {
       imageProps,
       ImageComponent
     };
-    return React__default.createElement(FeaturedTile$1, featuredProps);
+    return React.createElement(FeaturedTile$1, featuredProps);
   }
 
-  return React__default.createElement(reactNative.TouchableOpacity, _extends$n({}, attributes, {
+  return React.createElement(reactNative.TouchableOpacity, _extends$n({}, attributes, {
     onPress: onPress,
     activeOpacity: activeOpacity,
     style: reactNative.StyleSheet.flatten([{
       width,
       height
     }, containerStyle && containerStyle])
-  }), React__default.createElement(ImageComponent, _extends$n({
+  }), React.createElement(ImageComponent, _extends$n({
     resizeMode: "cover",
     source: imageSrc,
     containerStyle: reactNative.StyleSheet.flatten([styles$j.imageContainer, imageContainerStyle && imageContainerStyle]),
@@ -7206,11 +7202,11 @@ const Tile = props => {
       alignItems: 'center',
       justifyContent: 'center'
     }
-  }, imageProps), React__default.createElement(reactNative.View, {
+  }, imageProps), React.createElement(reactNative.View, {
     style: reactNative.StyleSheet.flatten([styles$j.iconContainer, iconContainerStyle && iconContainerStyle])
-  }, icon && React__default.createElement(Icon$1, icon))), React__default.createElement(reactNative.View, {
+  }, icon && React.createElement(Icon$1, icon))), React.createElement(reactNative.View, {
     style: reactNative.StyleSheet.flatten([styles$j.contentContainer, contentContainerStyle && contentContainerStyle])
-  }, React__default.createElement(Text, {
+  }, React.createElement(Text, {
     testID: "tileTitle",
     h4: true,
     style: reactNative.StyleSheet.flatten([styles$j.text, titleStyle && titleStyle]),
@@ -7278,7 +7274,7 @@ const Children = ({
   style,
   placement,
   children
-}) => React__default.createElement(reactNative.View, {
+}) => React.createElement(reactNative.View, {
   style: reactNative.StyleSheet.flatten([{
     alignItems: ALIGN_STYLE[placement]
   }, style])
@@ -7331,7 +7327,7 @@ class Header extends React.Component {
       theme,
       ...attributes
     } = this.props;
-    return React__default.createElement(ViewComponent, _extends$o({
+    return React.createElement(ViewComponent, _extends$o({
       testID: "headerContainer"
     }, attributes, {
       style: reactNative.StyleSheet.flatten([styles$k.container(theme), backgroundColor && {
@@ -7339,12 +7335,12 @@ class Header extends React.Component {
       }, containerStyle]),
       source: backgroundImage,
       imageStyle: backgroundImageStyle
-    }, linearGradientProps), React__default.createElement(reactNative.StatusBar, _extends$o({
+    }, linearGradientProps), React.createElement(reactNative.StatusBar, _extends$o({
       barStyle: barStyle
-    }, statusBarProps)), React__default.createElement(Children, {
+    }, statusBarProps)), React.createElement(Children, {
       style: reactNative.StyleSheet.flatten([placement === 'center' && styles$k.rightLeftContainer, leftContainerStyle]),
       placement: "left"
-    }, React__default.isValidElement(children) && children || children[0] || leftComponent), React__default.createElement(Children, {
+    }, React.isValidElement(children) && children || children[0] || leftComponent), React.createElement(Children, {
       style: reactNative.StyleSheet.flatten([styles$k.centerContainer, placement !== 'center' && {
         paddingHorizontal: reactNative.Platform.select({
           android: 16,
@@ -7352,7 +7348,7 @@ class Header extends React.Component {
         })
       }, centerContainerStyle]),
       placement: placement
-    }, children[1] || centerComponent), React__default.createElement(Children, {
+    }, children[1] || centerComponent), React.createElement(Children, {
       style: reactNative.StyleSheet.flatten([placement === 'center' && styles$k.rightLeftContainer, rightContainerStyle]),
       placement: "right"
     }, children[2] || rightComponent));
@@ -7428,28 +7424,28 @@ const PricingCard = props => {
     onButtonPress,
     ...attributes
   } = rest;
-  return React__default.createElement(reactNative.View, _extends$p({}, attributes, {
+  return React.createElement(reactNative.View, _extends$p({}, attributes, {
     style: reactNative.StyleSheet.flatten([styles$l.container(theme), containerStyle && containerStyle])
-  }), React__default.createElement(reactNative.View, {
+  }), React.createElement(reactNative.View, {
     style: reactNative.StyleSheet.flatten([styles$l.wrapper, wrapperStyle && wrapperStyle])
-  }, React__default.createElement(Text, {
+  }, React.createElement(Text, {
     testID: "pricingCardTitle",
     style: reactNative.StyleSheet.flatten([styles$l.pricingTitle, titleStyle, {
       color
     }])
-  }, title), React__default.createElement(Text, {
+  }, title), React.createElement(Text, {
     style: reactNative.StyleSheet.flatten([styles$l.pricingPrice, pricingStyle])
-  }, price), info.map(item => React__default.createElement(Text, {
+  }, price), info.map(item => React.createElement(Text, {
     key: item,
     style: reactNative.StyleSheet.flatten([styles$l.pricingInfo(theme), infoStyle])
-  }, item)), React__default.createElement(Button$1, {
+  }, item)), React.createElement(Button$1, {
     title: button.title,
     buttonStyle: reactNative.StyleSheet.flatten([styles$l.button, button.buttonStyle, {
       backgroundColor: color
     }]),
     titleStyle: button.titleStyle,
     onPress: onButtonPress,
-    icon: React__default.createElement(Icon$1, {
+    icon: React.createElement(Icon$1, {
       name: button.icon,
       size: 15,
       color: "white"
@@ -7547,7 +7543,7 @@ var PricingCard$1 = withTheme(PricingCard, 'PricingCard');
 const Triangle = ({
   style,
   isDown
-}) => React__default.createElement(reactNative.View, {
+}) => React.createElement(reactNative.View, {
   style: reactNative.StyleSheet.flatten([styles$m.triangle, style, isDown ? styles$m.down : {}])
 });
 
@@ -7681,7 +7677,7 @@ const constraintX = (newX, qIndex, x, ScreenWidth, tooltipWidth) => {
 
 function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-class Tooltip extends React__default.PureComponent {
+class Tooltip extends React.PureComponent {
   constructor(...args) {
     super(...args);
 
@@ -7713,7 +7709,7 @@ class Tooltip extends React__default.PureComponent {
 
     _defineProperty$9(this, "wrapWithPress", (toggleOnPress, children) => {
       if (toggleOnPress) {
-        return React__default.createElement(reactNative.TouchableOpacity, {
+        return React.createElement(reactNative.TouchableOpacity, {
           onPress: this.toggleTooltip,
           activeOpacity: 1
         }, children);
@@ -7770,13 +7766,13 @@ class Tooltip extends React__default.PureComponent {
         pointerColor
       } = this.props;
       const pastMiddleLine = yOffset > tooltipY;
-      return React__default.createElement(reactNative.View, {
+      return React.createElement(reactNative.View, {
         style: {
           position: 'absolute',
           top: pastMiddleLine ? yOffset - 13 : yOffset + elementHeight - 2,
           left: xOffset + getElementVisibleWidth(elementWidth, xOffset, ScreenWidth) / 2 - 7.5
         }
-      }, React__default.createElement(Triangle, {
+      }, React.createElement(Triangle, {
         style: {
           borderBottomColor: pointerColor || backgroundColor
         },
@@ -7803,7 +7799,7 @@ class Tooltip extends React__default.PureComponent {
         elementHeight
       } = this.state;
       const tooltipStyle = this.getTooltipStyle();
-      return React__default.createElement(reactNative.View, null, React__default.createElement(reactNative.View, {
+      return React.createElement(reactNative.View, null, React.createElement(reactNative.View, {
         style: {
           position: 'absolute',
           top: yOffset,
@@ -7813,7 +7809,7 @@ class Tooltip extends React__default.PureComponent {
           width: elementWidth,
           height: elementHeight
         }
-      }, this.props.children), withPointer && this.renderPointer(tooltipStyle.top), React__default.createElement(reactNative.View, {
+      }, this.props.children), withPointer && this.renderPointer(tooltipStyle.top), React.createElement(reactNative.View, {
         style: tooltipStyle,
         testID: "tooltipPopoverContainer"
       }, popover));
@@ -7846,19 +7842,19 @@ class Tooltip extends React__default.PureComponent {
       overlayColor,
       onOpen
     } = this.props;
-    return React__default.createElement(reactNative.View, {
+    return React.createElement(reactNative.View, {
       collapsable: false,
       ref: e => {
         this.renderedElement = e;
       }
-    }, this.renderContent(false), React__default.createElement(reactNative.Modal, {
+    }, this.renderContent(false), React.createElement(reactNative.Modal, {
       animationType: "fade",
       visible: isVisible,
       transparent: true,
       onDismiss: onClose,
       onShow: onOpen,
       onRequestClose: onClose
-    }, React__default.createElement(reactNative.TouchableOpacity, {
+    }, React.createElement(reactNative.TouchableOpacity, {
       style: styles$n.container(withOverlay, overlayColor),
       onPress: this.toggleTooltip,
       activeOpacity: 1
@@ -7904,601 +7900,11 @@ const styles$n = {
 };
 var Tooltip$1 = withTheme(Tooltip, 'Tooltip');
 
-function _extends$q() { _extends$q = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$q.apply(this, arguments); }
-
-function _defineProperty$a(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-const STAR_IMAGE = require('./images/star.png');
-
-const HEART_IMAGE = require('./images/heart.png');
-
-const ROCKET_IMAGE = require('./images/rocket.png');
-
-const BELL_IMAGE = require('./images/bell.png');
-
-const TYPES = {
-  star: {
-    source: STAR_IMAGE,
-    color: '#f1c40f',
-    backgroundColor: 'white'
-  },
-  heart: {
-    source: HEART_IMAGE,
-    color: '#e74c3c',
-    backgroundColor: 'white'
-  },
-  rocket: {
-    source: ROCKET_IMAGE,
-    color: '#2ecc71',
-    backgroundColor: 'white'
-  },
-  bell: {
-    source: BELL_IMAGE,
-    color: '#f39c12',
-    backgroundColor: 'white'
-  }
-};
-class SwipeRating extends React.Component {
-  constructor(props) {
-    super(props);
-    const {
-      onStartRating,
-      onFinishRating,
-      fractions
-    } = this.props;
-    const position = new reactNative.Animated.ValueXY();
-    const panResponder = reactNative.PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
-      onPanResponderGrant: () => {
-        if (typeof onStartRating === 'function') {
-          onStartRating();
-        }
-      },
-      onPanResponderMove: (event, gesture) => {
-        const newPosition = new reactNative.Animated.ValueXY();
-        newPosition.setValue({
-          x: gesture.dx,
-          y: 0
-        });
-        this.setState({
-          position: newPosition,
-          value: gesture.dx
-        });
-      },
-      onPanResponderRelease: event => {
-        const rating = this.getCurrentRating(this.state.value);
-
-        if (rating >= this.props.minValue) {
-          if (!fractions) {
-            // 'round up' to the nearest rating image
-            this.setCurrentRating(rating);
-          }
-
-          onFinishRating(rating);
-        }
-      }
-    });
-    this.state = {
-      panResponder,
-      position,
-      display: false
-    };
-  }
-
-  async componentDidMount() {
-    try {
-      const STAR_IMAGE = await require('./images/star.png');
-      const HEART_IMAGE = await require('./images/heart.png');
-      const ROCKET_IMAGE = await require('./images/rocket.png');
-      const BELL_IMAGE = await require('./images/bell.png');
-      this.setState({
-        display: true
-      });
-    } catch (err) {
-      console.log(err);
-    }
-
-    this.setCurrentRating(this.props.startingValue);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.startingValue !== prevProps.startingValue) {
-      this.setCurrentRating(this.props.startingValue);
-    }
-  }
-
-  getPrimaryViewStyle() {
-    const {
-      position
-    } = this.state;
-    const {
-      imageSize,
-      ratingCount,
-      type
-    } = this.props;
-    const color = TYPES[type].color;
-    const width = position.x.interpolate({
-      inputRange: [-ratingCount * (imageSize / 2), 0, ratingCount * (imageSize / 2)],
-      outputRange: [0, ratingCount * imageSize / 2, ratingCount * imageSize],
-      extrapolate: 'clamp'
-    }, {
-      useNativeDriver: true
-    });
-    return {
-      backgroundColor: color,
-      width,
-      height: width ? imageSize : 0
-    };
-  }
-
-  getSecondaryViewStyle() {
-    const {
-      position
-    } = this.state;
-    const {
-      imageSize,
-      ratingCount,
-      type
-    } = this.props;
-    const backgroundColor = TYPES[type].backgroundColor;
-    const width = position.x.interpolate({
-      inputRange: [-ratingCount * (imageSize / 2), 0, ratingCount * (imageSize / 2)],
-      outputRange: [ratingCount * imageSize, ratingCount * imageSize / 2, 0],
-      extrapolate: 'clamp'
-    }, {
-      useNativeDriver: true
-    });
-    return {
-      backgroundColor,
-      width,
-      height: width ? imageSize : 0
-    };
-  }
-
-  renderRatings() {
-    const {
-      imageSize,
-      ratingCount,
-      type,
-      tintColor
-    } = this.props;
-    const source = TYPES[type].source;
-    return times(ratingCount, index => React__default.createElement(reactNative.View, {
-      key: index,
-      style: styles$o.starContainer
-    }, React__default.createElement(reactNative.Image, {
-      source: source,
-      style: {
-        width: imageSize,
-        height: imageSize,
-        tintColor
-      }
-    })));
-  }
-
-  getCurrentRating(value) {
-    // const { value } = this.state;
-    const {
-      fractions,
-      imageSize,
-      ratingCount
-    } = this.props;
-    const startingValue = ratingCount / 2;
-    let currentRating = this.props.minValue ? this.props.minValue : 0;
-
-    if (value > ratingCount * imageSize / 2) {
-      currentRating = ratingCount;
-    } else if (value < -ratingCount * imageSize / 2) {
-      currentRating = this.props.minValue ? this.props.minValue : 0;
-    } else if (value <= imageSize || value > imageSize) {
-      currentRating = startingValue + value / imageSize;
-      currentRating = !fractions ? Math.ceil(currentRating) : +currentRating.toFixed(fractions);
-    } else {
-      currentRating = !fractions ? Math.ceil(startingValue) : +startingValue.toFixed(fractions);
-    }
-
-    return currentRating;
-  }
-
-  setCurrentRating(rating) {
-    const {
-      imageSize,
-      ratingCount
-    } = this.props; // `initialRating` corresponds to `startingValue` in the getter. Naming it
-    // differently here avoids confusion with `value` below.
-
-    const initialRating = ratingCount / 2;
-    let value = null;
-
-    if (rating > ratingCount) {
-      value = ratingCount * imageSize / 2;
-    } else if (rating < 0) {
-      value = -ratingCount * imageSize / 2;
-    } else if (rating < ratingCount / 2 || rating > ratingCount / 2) {
-      value = (rating - initialRating) * imageSize;
-    } else {
-      value = 0;
-    }
-
-    const newPosition = new reactNative.Animated.ValueXY();
-    newPosition.setValue({
-      x: value,
-      y: 0
-    });
-    this.setState({
-      position: newPosition,
-      value
-    });
-  }
-
-  displayCurrentRating() {
-    const {
-      ratingCount,
-      type,
-      readonly,
-      ratingTextColor
-    } = this.props;
-    const color = ratingTextColor || TYPES[type].color;
-    return React__default.createElement(reactNative.View, {
-      style: styles$o.showRatingView
-    }, React__default.createElement(reactNative.View, {
-      style: styles$o.ratingView
-    }, React__default.createElement(reactNative.Text, {
-      style: [styles$o.ratingText, {
-        color
-      }]
-    }, "Rating:", ' '), React__default.createElement(reactNative.Text, {
-      style: [styles$o.currentRatingText, {
-        color
-      }]
-    }, this.getCurrentRating(this.state.value)), React__default.createElement(reactNative.Text, {
-      style: [styles$o.maxRatingText, {
-        color
-      }]
-    }, "/", ratingCount)), React__default.createElement(reactNative.View, null, readonly && React__default.createElement(reactNative.Text, {
-      style: [styles$o.readonlyLabel, {
-        color
-      }]
-    }, "(readonly)")));
-  }
-
-  render() {
-    const {
-      readonly,
-      type,
-      ratingImage,
-      ratingColor,
-      ratingBackgroundColor,
-      style,
-      showRating
-    } = this.props;
-
-    if (type === 'custom') {
-      let custom = {
-        source: ratingImage,
-        color: ratingColor,
-        backgroundColor: ratingBackgroundColor
-      };
-      TYPES.custom = custom;
-    }
-
-    return this.state.display ? React__default.createElement(reactNative.View, {
-      pointerEvents: readonly ? 'none' : 'auto',
-      style: style
-    }, showRating && this.displayCurrentRating(), React__default.createElement(reactNative.View, _extends$q({
-      style: styles$o.starsWrapper
-    }, this.state.panResponder.panHandlers), React__default.createElement(reactNative.View, {
-      style: styles$o.starsInsideWrapper
-    }, React__default.createElement(reactNative.Animated.View, {
-      style: this.getPrimaryViewStyle()
-    }), React__default.createElement(reactNative.Animated.View, {
-      style: this.getSecondaryViewStyle()
-    })), this.renderRatings())) : null;
-  }
-
-}
-
-_defineProperty$a(SwipeRating, "defaultProps", {
-  type: 'star',
-  ratingImage: require('./images/star.png'),
-  ratingColor: '#f1c40f',
-  ratingBackgroundColor: 'white',
-  ratingCount: 5,
-  imageSize: 40,
-  onFinishRating: () => console.log('Attach a onFinishRating function here.'),
-  minValue: 0
-});
-
-const styles$o = reactNative.StyleSheet.create({
-  starsWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  starsInsideWrapper: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  showRatingView: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: 5
-  },
-  ratingView: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: 5
-  },
-  ratingText: {
-    fontSize: 15,
-    textAlign: 'center',
-    fontFamily: reactNative.Platform.OS === 'ios' ? 'Trebuchet MS' : null,
-    color: '#34495e'
-  },
-  readonlyLabel: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize: 12,
-    textAlign: 'center',
-    fontFamily: reactNative.Platform.OS === 'ios' ? 'Trebuchet MS' : null,
-    color: '#34495a'
-  },
-  currentRatingText: {
-    fontSize: 30,
-    textAlign: 'center',
-    fontFamily: reactNative.Platform.OS === 'ios' ? 'Trebuchet MS' : null
-  },
-  maxRatingText: {
-    fontSize: 18,
-    textAlign: 'center',
-    fontFamily: reactNative.Platform.OS === 'ios' ? 'Trebuchet MS' : null,
-    color: '#34495e'
-  }
-});
-
-const fractionsType = (props, propName, componentName) => {
-  if (props[propName]) {
-    const value = props[propName];
-
-    if (typeof value === 'number') {
-      return value >= 0 && value <= 20 ? null : new Error(`\`${propName}\` in \`${componentName}\` must be between 0 and 20`);
-    }
-
-    return new Error(`\`${propName}\` in \`${componentName}\` must be a number`);
-  }
-};
-
-SwipeRating.propTypes = {
-  type: propTypes.string,
-  ratingImage: reactNative.Image.propTypes.source,
-  ratingColor: propTypes.string,
-  ratingBackgroundColor: propTypes.string,
-  ratingCount: propTypes.number,
-  ratingTextColor: propTypes.string,
-  imageSize: propTypes.number,
-  onStartRating: propTypes.func,
-  onFinishRating: propTypes.func,
-  showRating: propTypes.bool,
-  style: reactNative.ViewPropTypes.style,
-  readonly: propTypes.bool,
-  startingValue: propTypes.number,
-  fractions: fractionsType,
-  minValue: propTypes.number
-};
-
-function _defineProperty$b(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-const STAR_IMAGE$1 = require('../images/airbnb-star.png');
-
-const STAR_SELECTED_IMAGE = require('../images/airbnb-star-selected.png');
-
-const STAR_SIZE = 40;
-class Star extends React.PureComponent {
-  constructor() {
-    super();
-    this.springValue = new reactNative.Animated.Value(1);
-    this.state = {
-      selected: false
-    };
-  }
-
-  spring() {
-    const {
-      position,
-      starSelectedInPosition
-    } = this.props;
-    this.springValue.setValue(1.2);
-    reactNative.Animated.spring(this.springValue, {
-      toValue: 1,
-      friction: 2,
-      tension: 1
-    }).start();
-    this.setState({
-      selected: !this.state.selected
-    });
-    starSelectedInPosition(position);
-  }
-
-  render() {
-    const {
-      fill,
-      size,
-      selectedColor,
-      isDisabled,
-      starStyle
-    } = this.props;
-    const starSource = fill && selectedColor === null ? STAR_SELECTED_IMAGE : STAR_IMAGE$1;
-    return React__default.createElement(reactNative.TouchableOpacity, {
-      activeOpacity: 1,
-      onPress: this.spring.bind(this),
-      disabled: isDisabled
-    }, React__default.createElement(reactNative.Animated.Image, {
-      source: starSource,
-      style: [styles$p.starStyle, {
-        tintColor: fill && selectedColor ? selectedColor : undefined,
-        width: size || STAR_SIZE,
-        height: size || STAR_SIZE,
-        transform: [{
-          scale: this.springValue
-        }]
-      }, starStyle]
-    }));
-  }
-
-}
-
-_defineProperty$b(Star, "defaultProps", {
-  selectedColor: '#f1c40f'
-});
-
-const styles$p = reactNative.StyleSheet.create({
-  starStyle: {
-    margin: 3
-  }
-});
-
-function _extends$r() { _extends$r = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$r.apply(this, arguments); }
-
-function _defineProperty$c(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-class TapRating extends React.Component {
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const {
-      defaultRating
-    } = nextProps;
-
-    if (defaultRating !== prevState.defaultRating) {
-      return {
-        position: defaultRating,
-        defaultRating
-      };
-    }
-
-    return null;
-  }
-
-  constructor() {
-    super();
-    this.state = {
-      position: 5
-    };
-  }
-
-  componentDidMount() {
-    const {
-      defaultRating
-    } = this.props;
-    this.setState({
-      position: defaultRating
-    });
-  }
-
-  renderStars(rating_array) {
-    return _.map(rating_array, (star, index) => {
-      return star;
-    });
-  }
-
-  starSelectedInPosition(position) {
-    const {
-      onFinishRating
-    } = this.props;
-    onFinishRating(position);
-    this.setState({
-      position: position
-    });
-  }
-
-  render() {
-    const {
-      position
-    } = this.state;
-    const {
-      count,
-      reviews,
-      showRating,
-      reviewColor,
-      reviewSize
-    } = this.props;
-    const rating_array = [];
-    const starContainerStyle = [styles$q.starContainer];
-
-    if (this.props.starContainerStyle) {
-      starContainerStyle.push(this.props.starContainerStyle);
-    }
-
-    _.times(count, index => {
-      rating_array.push(React__default.createElement(Star, _extends$r({
-        key: index,
-        position: index + 1,
-        starSelectedInPosition: this.starSelectedInPosition.bind(this),
-        fill: position >= index + 1
-      }, this.props)));
-    });
-
-    return React__default.createElement(reactNative.View, {
-      style: styles$q.ratingContainer
-    }, showRating && React__default.createElement(reactNative.Text, {
-      style: [styles$q.reviewText, {
-        fontSize: reviewSize,
-        color: reviewColor
-      }]
-    }, reviews[position - 1]), React__default.createElement(reactNative.View, {
-      style: starContainerStyle
-    }, this.renderStars(rating_array)));
-  }
-
-}
-
-_defineProperty$c(TapRating, "defaultProps", {
-  defaultRating: 3,
-  reviews: ["Terrible", "Bad", "Okay", "Good", "Great"],
-  count: 5,
-  onFinishRating: () => console.log('Rating selected. Attach a function here.'),
-  showRating: true,
-  reviewColor: 'rgba(230, 196, 46, 1)',
-  reviewSize: 25
-});
-
-const styles$q = reactNative.StyleSheet.create({
-  ratingContainer: {
-    backgroundColor: 'transparent',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  reviewText: {
-    fontWeight: 'bold',
-    margin: 10
-  },
-  starContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
-
-
-
-var index$1 = /*#__PURE__*/Object.freeze({
-	__proto__: null,
-	Rating: SwipeRating,
-	AirbnbRating: TapRating
-});
-
 // UI references
-const AirbnbRating = withTheme(TapRating, 'AirbnbRating');
-const Rating = withTheme(SwipeRating, 'Rating');
+const AirbnbRating = withTheme(reactNativeRatings.AirbnbRating, 'AirbnbRating');
+const Rating = withTheme(reactNativeRatings.Rating, 'Rating');
 
 exports.$deepmerge = umd$1;
-exports.$ratings = index$1;
 exports.$statusBarHeight = index;
 exports.AirbnbRating = AirbnbRating;
 exports.Avatar = Avatar$1;
